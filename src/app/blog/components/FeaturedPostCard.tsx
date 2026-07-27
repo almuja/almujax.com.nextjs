@@ -2,15 +2,18 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Clock, Star, ArrowRight } from 'lucide-react';
-import { BlogPost } from '../lib/utils';
+import { Calendar, Clock, Star, ArrowRight } from "lucide-react";
+import { BlogPost } from "../lib/utils";
 
 interface FeaturedPostCardProps {
   post: BlogPost;
   onCategoryClick?: (category: string) => void;
 }
 
-export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProps) {
+export function FeaturedPostCard({
+  post,
+  onCategoryClick,
+}: FeaturedPostCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="block group">
       <article className="group relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card border border-border shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] cursor-pointer h-full flex flex-col min-h-[450px]">
@@ -18,9 +21,9 @@ export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProp
         <div className="relative w-full overflow-hidden">
           <div className="aspect-[16/9] relative overflow-hidden">
             {post.image ? (
-              <Image 
-                src={post.image} 
-                alt={`${post.title} cover`} 
+              <Image
+                src={post.image}
+                alt={`${post.title} cover`}
                 width={800}
                 height={450}
                 className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
@@ -32,11 +35,11 @@ export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProp
             )}
             {/* Enhanced Overlay with Gradient - More visible title area */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-0 transition-opacity duration-300" />
-            
+
             {/* Shine Effect on Hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           </div>
-          
+
           {/* Category and Featured Badges */}
           <div className="absolute top-4 left-4 flex flex-wrap gap-2">
             {post.category && (
@@ -58,7 +61,7 @@ export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProp
               </div>
             )}
           </div>
-          
+
           {/* Read More Arrow */}
           <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500">
             <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
@@ -66,7 +69,7 @@ export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProp
             </div>
           </div>
         </div>
-        
+
         {/* Title always visible - positioned at the bottom of the image */}
         <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
           <h3 className="text-xl font-bold text-white line-clamp-2">
@@ -78,7 +81,7 @@ export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProp
         <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-center p-6">
           {/* Background overlay */}
           <div className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-2xl" />
-          
+
           {/* Content */}
           <div className="relative z-10 w-full max-w-md">
             {/* Description */}
@@ -87,7 +90,7 @@ export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProp
                 {post.description}
               </p>
             </div>
-            
+
             {/* Meta Information */}
             <div className="overflow-hidden mb-4">
               <div className="flex items-center justify-center text-muted-foreground text-sm flex-wrap gap-2">
@@ -101,7 +104,7 @@ export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProp
                 </div>
               </div>
             </div>
-            
+
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
               <div className="overflow-hidden">
@@ -124,10 +127,10 @@ export function FeaturedPostCard({ post, onCategoryClick }: FeaturedPostCardProp
             )}
           </div>
         </div>
-        
+
         {/* Empty content section to maintain card height */}
         <div className="flex-1" />
-        
+
         {/* Glow Effect */}
         <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       </article>

@@ -17,21 +17,23 @@ interface AuthorProps {
 
 export default function Author({ name, image, bio, socialLinks }: AuthorProps) {
   // Use a fallback image if the provided image is empty
-  const imageSrc = image && image.trim() !== '' ? image : null;
-  
+  const imageSrc = image && image.trim() !== "" ? image : null;
+
   return (
     <div className="flex items-start gap-4 p-6 backdrop-blur-xl bg-card border border-border rounded-2xl">
       <div className="flex-shrink-0">
         <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center overflow-hidden border-2 border-primary/20">
-          <img 
-            src="/img/profile.png" 
-            alt={name} 
+          <img
+            src="/img/profile.png"
+            alt={name}
             className="w-full h-full object-cover"
           />
         </div>
       </div>
       <div className="flex-1">
-        <h3 className="text-lg font-semibold text-card-foreground mb-2">About the Author</h3>
+        <h3 className="text-lg font-semibold text-card-foreground mb-2">
+          About the Author
+        </h3>
         <h4 className="text-xl font-bold text-card-foreground mb-2">{name}</h4>
         <p className="text-muted-foreground text-sm mb-3">{bio}</p>
         {socialLinks && (

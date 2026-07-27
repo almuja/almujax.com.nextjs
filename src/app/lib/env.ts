@@ -1,9 +1,11 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 // Server-side environment variables
 const serverEnvSchema = z.object({
-  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  SITE_URL: z.string().url().default('https://mujaxso.com'),
+  NODE_ENV: z
+    .enum(["development", "production", "test"])
+    .default("development"),
+  SITE_URL: z.string().url().default("https://bymuja.com"),
   RESEND_API_KEY: z.string().optional(),
   CONTACT_EMAIL: z.string().email().optional(),
 });

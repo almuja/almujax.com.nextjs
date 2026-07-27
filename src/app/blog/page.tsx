@@ -1,8 +1,25 @@
-import { promises as fs } from 'fs';
-import { join } from 'path';
-import matter from 'gray-matter';
-import BlogPageClient from './page-client';
-import { Hero } from '../components/Hero';
+import { promises as fs } from "fs";
+import { join } from "path";
+import matter from "gray-matter";
+import BlogPageClient from "./page-client";
+import { Hero } from "../components/Hero";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | Mujahid Siyam (Muja / bymuja)",
+  description:
+    "Articles by Mujahid Siyam (Muja / bymuja) on AI engineering, Rust development, DevSecOps, software engineering, and creative technology. Official blog of bymuja.com.",
+  alternates: {
+    canonical: "https://bymuja.com/blog",
+  },
+  openGraph: {
+    title: "Blog | Mujahid Siyam (Muja / bymuja)",
+    description:
+      "AI engineering, Rust, DevSecOps, and technology insights by Mujahid Siyam (Muja / bymuja)",
+    url: "https://bymuja.com/blog",
+    type: "website",
+  },
+};
 
 interface BlogPost {
   slug: string;
@@ -24,40 +41,40 @@ function calculateReadingTime(content: string): string {
 }
 
 async function getBlogPosts(): Promise<BlogPost[]> {
-  const blogDirectory = join(process.cwd(), 'src', 'content', 'blog');
-  
+  const blogDirectory = join(process.cwd(), "src", "content", "blog");
+
   try {
     const files = await fs.readdir(blogDirectory);
     const posts = await Promise.all(
       files
-        .filter(file => file.endsWith('.mdx'))
+        .filter((file) => file.endsWith(".mdx"))
         .map(async (file) => {
-          const slug = file.replace(/\.mdx$/, '');
+          const slug = file.replace(/\.mdx$/, "");
           const fullPath = join(blogDirectory, file);
-          const fileContents = await fs.readFile(fullPath, 'utf8');
+          const fileContents = await fs.readFile(fullPath, "utf8");
           const { data, content } = matter(fileContents);
-          
+
           return {
             slug,
             title: data.title || `Blog Post ${slug}`,
-            description: data.description || 'No description available.',
-            date: data.date || 'Unknown date',
-            image: data.image || '/vercel.svg',
-            category: data.category || 'Uncategorized',
+            description: data.description || "No description available.",
+            date: data.date || "Unknown date",
+            image: data.image || "/vercel.svg",
+            category: data.category || "Uncategorized",
             tags: data.tags || [],
             readingTime: calculateReadingTime(content),
             featured: data.featured || false,
             draft: data.draft || false,
           };
-        })
+        }),
     );
-    
+
     // Filter out draft posts and sort by date in descending order
     return posts
-      .filter(post => !post.draft)
+      .filter((post) => !post.draft)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch (error) {
-    console.error('Error reading blog posts:', error);
+    console.error("Error reading blog posts:", error);
     return [];
   }
 }
@@ -70,9 +87,9 @@ export default async function BlogPage() {
     return (
       <div className="container mx-auto px-4 py-20">
         <div className="flex flex-col items-center">
-          <Hero 
-            title="My Blog" 
-            subtitle="Personal Musings" 
+          <Hero
+            title="My Blog"
+            subtitle="Personal Musings"
             description="Exploring technology, development, and creative ideas through writing"
           />
         </div>
@@ -80,14 +97,14 @@ export default async function BlogPage() {
       </div>
     );
   } catch (error) {
-    console.error('Error in BlogPage:', error);
+    console.error("Error in BlogPage:", error);
     // Return empty array to prevent crashes
     return (
       <div className="container mx-auto px-4 py-20">
         <div className="flex flex-col items-center">
-          <Hero 
-            title="Blog" 
-            subtitle="Latest Insights" 
+          <Hero
+            title="Blog"
+            subtitle="Latest Insights"
             description="Thoughts, ideas, and insights on software engineering, AI, and technology"
           />
         </div>

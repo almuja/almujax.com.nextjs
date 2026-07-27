@@ -1,5 +1,5 @@
 {
-  "name": "mujaxso.com",
+  "name": "bymuja.com",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,10 +13,8 @@
     "test:ui": "vitest --ui",
     "analyze": "ANALYZE=true next build"
   },
-  "pnpm": {
-    "overrides": {
-      "critters": "npm:beasties@^0.4.1"
-    }
+  "pnpm.overrides": {
+    "critters": "npm:beasties@^0.4.1"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

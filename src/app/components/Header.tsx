@@ -17,12 +17,12 @@ export default function Header() {
     { href: "/blog", label: "Blog" },
     { href: "/music", label: "Music" },
     { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" }
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
     <>
-      <header 
+      <header
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/95 border-b border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.1)]"
         suppressHydrationWarning
       >
@@ -30,9 +30,9 @@ export default function Header() {
           <div className="flex justify-between items-center py-3 md:py-4">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-primary/30 shadow-md">
-                <Image 
-                  src="/img/profile.png" 
-                  alt="Mujahid Siyam" 
+                <Image
+                  src="/img/profile.png"
+                  alt="Mujahid Siyam"
                   width={48}
                   height={48}
                   className="w-full h-full object-cover"
@@ -43,22 +43,20 @@ export default function Header() {
                 Mujahid Siyam
               </span>
             </Link>
-            
+
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6">
               <ul className="flex gap-6">
                 {navigationItems.map((item) => (
                   <li key={item.href}>
-                    <Button 
-                      variant="ghost" 
-                      size="md" 
-                      asChild 
+                    <Button
+                      variant="ghost"
+                      size="md"
+                      asChild
                       className="text-foreground font-bold text-base"
                       suppressHydrationWarning
                     >
-                      <Link href={item.href}>
-                        {item.label}
-                      </Link>
+                      <Link href={item.href}>{item.label}</Link>
                     </Button>
                   </li>
                 ))}

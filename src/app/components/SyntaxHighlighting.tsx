@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 export default function SyntaxHighlighting() {
   useEffect(() => {
     // Add custom styles for code blocks that override highlight.js
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = `
       /* Base code block styling */
       .markdown-body pre,

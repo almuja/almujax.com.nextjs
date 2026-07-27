@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { Button } from '../components/ui/Button';
+import { useEffect } from "react";
+import { Button } from "../components/ui/Button";
 
 export default function BlogError({
   error,
@@ -12,7 +12,7 @@ export default function BlogError({
 }) {
   useEffect(() => {
     // Log to error reporting service
-    console.error('Blog error:', error);
+    console.error("Blog error:", error);
   }, [error]);
 
   return (
@@ -23,10 +23,9 @@ export default function BlogError({
           Something went wrong!
         </h2>
         <p className="text-muted-foreground mb-6">
-          {error.digest 
+          {error.digest
             ? `Error reference: ${error.digest}`
-            : 'We couldn\'t load the blog posts. Please try again.'
-          }
+            : "We couldn't load the blog posts. Please try again."}
         </p>
         <div className="flex gap-4 justify-center">
           <Button
@@ -37,7 +36,7 @@ export default function BlogError({
             Try Again
           </Button>
           <Button
-            onClick={() => window.location.href = '/'}
+            onClick={() => (window.location.href = "/")}
             variant="outline"
           >
             Go Home

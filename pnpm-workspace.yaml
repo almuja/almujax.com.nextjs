@@ -1,3 +1,5 @@
+allowBuilds:
+  sharp: true
 overrides:
   esbuild@<=0.24.2: '>=0.25.0'
   flatted@<3.4.0: '>=3.4.0'

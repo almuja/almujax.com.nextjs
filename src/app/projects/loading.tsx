@@ -12,7 +12,10 @@ export default function ProjectsLoading() {
         {/* Skeleton Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="bg-card rounded-lg border border-border p-6 animate-pulse">
+            <div
+              key={i}
+              className="bg-card rounded-lg border border-border p-6 animate-pulse"
+            >
               <div className="w-full h-48 bg-muted rounded-lg mb-4"></div>
               <div className="w-3/4 h-4 bg-muted rounded-lg mb-2"></div>
               <div className="w-1/2 h-3 bg-muted rounded-lg mb-4"></div>

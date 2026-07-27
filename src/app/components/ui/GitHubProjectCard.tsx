@@ -1,22 +1,29 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardFooter, CardHeader } from "./Card"
-import { cn } from "../../lib/utils"
-import { Star, GitFork, Eye, Calendar, ExternalLink, Code2 } from "lucide-react"
+import { Card, CardContent, CardFooter, CardHeader } from "./Card";
+import { cn } from "../../lib/utils";
+import {
+  Star,
+  GitFork,
+  Eye,
+  Calendar,
+  ExternalLink,
+  Code2,
+} from "lucide-react";
 
 interface GitHubProjectCardProps {
-  title: string
-  description: string
-  language?: string
-  languageColor?: string
-  stars?: number
-  forks?: number
-  watchers?: number
-  updatedAt?: string
-  githubUrl?: string
-  liveUrl?: string
-  isFork?: boolean
-  className?: string
+  title: string;
+  description: string;
+  language?: string;
+  languageColor?: string;
+  stars?: number;
+  forks?: number;
+  watchers?: number;
+  updatedAt?: string;
+  githubUrl?: string;
+  liveUrl?: string;
+  isFork?: boolean;
+  className?: string;
 }
 
 export function GitHubProjectCard({
@@ -31,10 +38,15 @@ export function GitHubProjectCard({
   githubUrl,
   liveUrl,
   isFork = false,
-  className
+  className,
 }: GitHubProjectCardProps) {
   return (
-    <Card className={cn("hover:shadow-lg transition-all duration-300 border border-[var(--color-border)]", className)}>
+    <Card
+      className={cn(
+        "hover:shadow-lg transition-all duration-300 border border-[var(--color-border)]",
+        className,
+      )}
+    >
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
@@ -70,23 +82,27 @@ export function GitHubProjectCard({
             )}
           </div>
         </div>
-        <p className="text-sm text-[var(--color-muted-foreground)] mt-2 overflow-hidden" 
-           style={{
-             display: '-webkit-box',
-             WebkitBoxOrient: 'vertical',
-             WebkitLineClamp: 2
-           }}>
+        <p
+          className="text-sm text-[var(--color-muted-foreground)] mt-2 overflow-hidden"
+          style={{
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 2,
+          }}
+        >
           {description}
         </p>
       </CardHeader>
-      
+
       <CardContent className="pb-3">
         <div className="flex items-center gap-4 text-xs text-[var(--color-muted-foreground)]">
           {language && (
             <div className="flex items-center gap-1">
-              <span 
+              <span
                 className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: languageColor || 'var(--color-primary)' }}
+                style={{
+                  backgroundColor: languageColor || "var(--color-primary)",
+                }}
               ></span>
               <span>{language}</span>
             </div>
@@ -111,7 +127,7 @@ export function GitHubProjectCard({
           )}
         </div>
       </CardContent>
-      
+
       <CardFooter className="pt-0">
         {updatedAt && (
           <div className="flex items-center gap-1 text-xs text-[var(--color-muted-foreground)]">
@@ -121,5 +137,5 @@ export function GitHubProjectCard({
         )}
       </CardFooter>
     </Card>
-  )
+  );
 }

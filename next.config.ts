@@ -1,22 +1,22 @@
 import type { NextConfig } from "next";
-import createMDX from '@next/mdx'
+import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   trailingSlash: false,
   async redirects() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         has: [
           {
-            type: 'host',
-            value: 'www.mujaxso.com',
+            type: "host",
+            value: "www.bymuja.com",
           },
         ],
-        destination: 'https://mujaxso.com/:path*',
+        destination: "https://bymuja.com/:path*",
         permanent: true,
       },
     ];
@@ -25,39 +25,39 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: [
           {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
           },
           {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload'
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
           },
           {
-            key: 'X-Frame-Options',
-            value: 'DENY'
+            key: "X-Frame-Options",
+            value: "DENY",
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin'
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
           },
           {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()'
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
           },
           // Content Security Policy
           {
-            key: 'Cross-Origin-Opener-Policy',
-            value: 'same-origin'
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
           },
           {
-            key: 'Content-Security-Policy',
+            key: "Content-Security-Policy",
             value: `
               default-src 'self';
               script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com vercel.live open.spotify.com www.youtube.com;
@@ -71,19 +71,21 @@ const nextConfig: NextConfig = {
               form-action 'self';
               frame-ancestors 'none';
               upgrade-insecure-requests;
-            `.replace(/\s{2,}/g, ' ').trim()
-          }
+            `
+              .replace(/\s{2,}/g, " ")
+              .trim(),
+          },
         ],
       },
-    ]
+    ];
   },
   // Image optimization
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**',
+        protocol: "https",
+        hostname: "**",
       },
     ],
     // Add image optimization settings
@@ -93,46 +95,49 @@ const nextConfig: NextConfig = {
   // Compress responses
   compress: true,
   // Production logging - disable in production
-  logging: process.env.NODE_ENV === 'development' ? {
-    fetches: {
-      fullUrl: true,
-    },
-  } : undefined,
+  logging:
+    process.env.NODE_ENV === "development"
+      ? {
+          fetches: {
+            fullUrl: true,
+          },
+        }
+      : undefined,
   experimental: {
     // Optimize bundle splitting
     optimizeCss: true,
     // Enable optimizations
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ["lucide-react"],
   },
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === "production",
   },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: ["@svgr/webpack"],
     });
-    
+
     // Optimize bundle splitting
     config.optimization = {
       ...config.optimization,
       splitChunks: {
-        chunks: 'all',
+        chunks: "all",
         cacheGroups: {
           default: false,
           vendors: false,
           // Vendor chunk
           vendor: {
-            name: 'vendor',
-            chunks: 'all',
+            name: "vendor",
+            chunks: "all",
             test: /node_modules/,
             priority: 20,
           },
           // Common chunk
           common: {
-            name: 'common',
+            name: "common",
             minChunks: 2,
-            chunks: 'all',
+            chunks: "all",
             priority: 10,
             reuseExistingChunk: true,
             enforce: true,
@@ -146,6 +151,6 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
-})
+});
 
 export default withMDX(nextConfig);

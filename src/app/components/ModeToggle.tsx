@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Moon, Sun, Monitor } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -14,8 +14,8 @@ export default function ModeToggle() {
   }, []);
 
   const cycleTheme = () => {
-    const themes = ['light', 'dark', 'system'] as const;
-    const currentIndex = themes.indexOf(theme as typeof themes[number]);
+    const themes = ["light", "dark", "system"] as const;
+    const currentIndex = themes.indexOf(theme as (typeof themes)[number]);
     const nextIndex = (currentIndex + 1) % themes.length;
     setTheme(themes[nextIndex]);
   };
@@ -23,20 +23,28 @@ export default function ModeToggle() {
   const getTooltip = () => {
     if (!mounted) return "Toggle theme";
     switch (theme) {
-      case 'light': return "Light theme - Click to cycle themes";
-      case 'dark': return "Dark theme - Click to cycle themes";
-      case 'system': return "System theme - Click to cycle themes";
-      default: return "Toggle theme";
+      case "light":
+        return "Light theme - Click to cycle themes";
+      case "dark":
+        return "Dark theme - Click to cycle themes";
+      case "system":
+        return "System theme - Click to cycle themes";
+      default:
+        return "Toggle theme";
     }
   };
 
   const getIcon = () => {
     if (!mounted) return <Monitor className="w-4 h-4" />;
     switch (theme) {
-      case 'light': return <Sun className="w-4 h-4" />;
-      case 'dark': return <Moon className="w-4 h-4" />;
-      case 'system': return <Monitor className="w-4 h-4" />;
-      default: return <Monitor className="w-4 h-4" />;
+      case "light":
+        return <Sun className="w-4 h-4" />;
+      case "dark":
+        return <Moon className="w-4 h-4" />;
+      case "system":
+        return <Monitor className="w-4 h-4" />;
+      default:
+        return <Monitor className="w-4 h-4" />;
     }
   };
 

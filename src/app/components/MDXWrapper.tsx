@@ -1,12 +1,17 @@
 "use client";
 
-import SyntaxHighlighting from './SyntaxHighlighting';
+import SyntaxHighlighting from "./SyntaxHighlighting";
 
-export default function MDXWrapper({ children }: { children: React.ReactNode }) {
+export default function MDXWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="bg-[var(--color-background)] text-[var(--color-foreground)] min-h-screen transition-colors duration-300">
       <SyntaxHighlighting />
-      <div className="prose prose-lg max-w-none 
+      <div
+        className="prose prose-lg max-w-none 
                      prose-headings:text-[var(--color-foreground)] 
                      prose-p:text-[var(--color-foreground)]/90
                      prose-strong:text-[var(--color-foreground)]
@@ -32,7 +37,8 @@ export default function MDXWrapper({ children }: { children: React.ReactNode }) 
                      /* Don't set code colors here - let SyntaxHighlighting handle it */
                      prose-pre:!bg-transparent
                      prose-code:!bg-transparent
-                     prose-hr:border-[var(--color-border)]">
+                     prose-hr:border-[var(--color-border)]"
+      >
         {children}
       </div>
     </div>

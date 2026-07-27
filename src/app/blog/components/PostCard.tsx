@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Clock, Star } from 'lucide-react';
-import { BlogPost } from '../lib/utils';
+import { Calendar, Clock, Star } from "lucide-react";
+import { BlogPost } from "../lib/utils";
 
 interface PostCardProps {
   post: BlogPost;
@@ -18,9 +18,9 @@ export function PostCard({ post, onCategoryClick, onTagClick }: PostCardProps) {
         {post.image && (
           <div className="relative w-full">
             <div className="aspect-[4/3] relative overflow-hidden">
-              <Image 
-                src={post.image} 
-                alt={`${post.title} cover`} 
+              <Image
+                src={post.image}
+                alt={`${post.title} cover`}
                 width={600}
                 height={400}
                 className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
@@ -57,7 +57,7 @@ export function PostCard({ post, onCategoryClick, onTagClick }: PostCardProps) {
               </button>
             ))}
           </div>
-          
+
           <div className="flex items-start justify-between mb-3">
             <h3 className="text-lg sm:text-xl font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 flex-1">
               {post.title}
@@ -69,7 +69,7 @@ export function PostCard({ post, onCategoryClick, onTagClick }: PostCardProps) {
           <p className="text-muted-foreground mb-4 text-sm line-clamp-3 flex-1">
             {post.description}
           </p>
-          
+
           <div className="flex items-center justify-between text-xs sm:text-sm text-muted-foreground mt-auto pt-3 sm:pt-4 border-t border-border">
             <div className="flex items-center gap-1">
               <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />

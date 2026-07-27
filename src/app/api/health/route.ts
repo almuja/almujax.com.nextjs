@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export async function GET() {
-  return NextResponse.json({ 
-    status: 'healthy',
-    timestamp: new Date().toISOString()
+  return NextResponse.json({
+    status: "healthy",
+    timestamp: new Date().toISOString(),
   });
 }
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";

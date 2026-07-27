@@ -11,7 +11,11 @@ interface MobileMenuProps {
   navigationItems: Array<{ href: string; label: string }>;
 }
 
-export default function MobileMenu({ isOpen, onClose, navigationItems }: MobileMenuProps) {
+export default function MobileMenu({
+  isOpen,
+  onClose,
+  navigationItems,
+}: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -44,7 +48,7 @@ export default function MobileMenu({ isOpen, onClose, navigationItems }: MobileM
 
     // Focus first focusable element
     const focusableElements = menuRef.current.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
     const firstElement = focusableElements[0] as HTMLElement;
     if (firstElement) firstElement.focus();
@@ -53,14 +57,17 @@ export default function MobileMenu({ isOpen, onClose, navigationItems }: MobileM
     const handleTabKey = (e: KeyboardEvent) => {
       if (e.key !== "Tab") return;
 
-      const focusableElements = menuRef.current?.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      ) || [];
-      
+      const focusableElements =
+        menuRef.current?.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ) || [];
+
       if (focusableElements.length === 0) return;
 
       const firstElement = focusableElements[0] as HTMLElement;
-      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+      const lastElement = focusableElements[
+        focusableElements.length - 1
+      ] as HTMLElement;
 
       if (e.shiftKey) {
         if (document.activeElement === firstElement) {
@@ -112,13 +119,13 @@ export default function MobileMenu({ isOpen, onClose, navigationItems }: MobileM
     <>
       {/* Overlay */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden animate-in fade-in duration-300"
           onClick={handleOverlayClick}
           aria-hidden="true"
         />
       )}
-      
+
       {/* Drawer */}
       <div
         ref={menuRef}
@@ -158,7 +165,10 @@ export default function MobileMenu({ isOpen, onClose, navigationItems }: MobileM
                     className="w-full justify-center text-base font-semibold py-4 px-4 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 rounded-xl border border-transparent hover:border-white/10 hover:shadow-lg group"
                     onClick={onClose}
                   >
-                    <Link href={item.href} className="group-hover:text-primary transition-colors duration-300">
+                    <Link
+                      href={item.href}
+                      className="group-hover:text-primary transition-colors duration-300"
+                    >
                       {item.label}
                     </Link>
                   </Button>

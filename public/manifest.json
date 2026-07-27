@@ -1,0 +1,21 @@
+{
+  "name": "bymuja.com — Mujahid Siyam (Muja)",
+  "short_name": "bymuja.com",
+  "description": "Official source of truth for Mujahid Siyam (Muja / bymuja) — Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

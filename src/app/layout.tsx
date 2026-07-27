@@ -1,39 +1,71 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
-import { PersonStructuredData } from "./components/StructuredData";
+import {
+  PersonStructuredData,
+  WebSiteStructuredData,
+} from "./components/StructuredData";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: {
     template: "%s | Mujahid Siyam",
-    default: "Mujahid Siyam | Portfolio",
+    default: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
   },
-  description: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps building cutting-edge solutions",
-  keywords: ["software engineer", "AI/ML", "data science", "DevSecOps", "full-stack developer"],
-  authors: [{ name: "Mujahid Siyam" }],
-  metadataBase: new URL('https://mujaxso.com'),
+  description:
+    "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology. Official website of Mujahid Mohamed Ismail Siyam.",
+  keywords: [
+    "Mujahid Siyam",
+    "Muja",
+    "bymuja",
+    "AI Engineer",
+    "Software Engineer",
+    "Rust Developer",
+    "DevSecOps",
+    "Music Artist",
+    "AI Tools",
+    "Programming",
+    "Artificial Intelligence",
+    "Open Source",
+    "Rust",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Python",
+    "full-stack developer",
+    "Zaroxi Studio",
+  ],
+  authors: [{ name: "Mujahid Siyam", url: "https://bymuja.com" }],
+  metadataBase: new URL("https://bymuja.com"),
+  alternates: {
+    canonical: "https://bymuja.com",
+  },
   openGraph: {
-    title: "Mujahid Siyam | Portfolio",
-    description: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps",
+    title: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
+    description:
+      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
     type: "website",
-    url: 'https://mujaxso.com',
+    url: "https://bymuja.com",
     images: [
       {
-        url: 'https://mujaxso.com/img/profile.png',
+        url: "https://bymuja.com/img/profile.png",
         width: 1200,
         height: 630,
-        alt: 'Mujahid Siyam Portfolio',
+        alt: "Mujahid Siyam (Muja / bymuja)",
       },
     ],
-    siteName: 'Mujahid Siyam Portfolio',
+    siteName: "bymuja.com",
+    locale: "en_US",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: "Mujahid Siyam | Portfolio",
-    description: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps",
-    images: ['https://mujaxso.com/img/profile.png'],
+    card: "summary_large_image",
+    title: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
+    description:
+      "Mujahid Siyam, aka Muja (bymuja) — Software Engineer, AI Engineer, DevSecOps, and Music Artist.",
+    images: ["https://bymuja.com/img/profile.png"],
+    site: "@bymuja",
+    creator: "@bymuja",
   },
   robots: {
     index: true,
@@ -41,21 +73,21 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   manifest: "/manifest.json",
   icons: {
-    icon: '/img/favicon.ico',
-    shortcut: '/img/favicon.ico',
-    apple: '/img/apple-touch-icon.png',
+    icon: "/img/favicon.ico",
+    shortcut: "/img/favicon.ico",
+    apple: "/img/apple-touch-icon.png",
   },
-  verification: {
-    // Add Google Search Console verification here when available
-    // google: 'verification-token',
-  },
+  category: "technology",
+  creator: "Mujahid Siyam",
+  publisher: "Mujahid Siyam",
+  verification: {},
 };
 
 export const viewport: Viewport = {
@@ -78,24 +110,51 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <PersonStructuredData />
+        <WebSiteStructuredData />
+        <meta name="geo.region" content="FR" />
+        <meta name="geo.placename" content="France" />
+        <meta name="geo.position" content="46.603354;1.888334" />
+        <meta name="ICBM" content="46.603354, 1.888334" />
+        <meta
+          name="DC.title"
+          content="Mujahid Siyam (Muja / bymuja) | Software & AI Engineer"
+        />
+        <meta name="DC.creator" content="Mujahid Siyam" />
+        <meta
+          name="DC.subject"
+          content="Software Engineering, Artificial Intelligence, AI Engineer, Rust Developer, DevSecOps, Music Artist, Programming"
+        />
+        <meta
+          name="DC.description"
+          content="Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology."
+        />
+        <meta name="DC.publisher" content="Mujahid Siyam" />
+        <meta name="DC.date" content="2025" />
+        <meta name="DC.format" content="text/html" />
+        <meta name="DC.language" content="en" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="bymuja.com Blog RSS Feed"
+          href="/feed.xml"
+        />
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title="bymuja.com Blog Atom Feed"
+          href="/atom.xml"
+        />
       </head>
-      <body
-        className="antialiased font-mono"
-        suppressHydrationWarning
-      >
+      <body className="antialiased font-mono" suppressHydrationWarning>
         <ThemeProvider>
           <div className="flex flex-col min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/30 dark:from-[#0a0f1c] dark:via-[#0f172a] dark:to-[#1e1b4b] relative overflow-hidden">
-            {/* Optimized background elements - reduced for better performance */}
             <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
-            {/* Reduced number of animated elements */}
             <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl animate-pulse-slow"></div>
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
-            
+
             <div className="relative z-10 flex flex-col min-h-screen">
               <Header />
-              <main className="flex-1 pt-14">
-                {children}
-              </main>
+              <main className="flex-1 pt-14">{children}</main>
               <Footer />
             </div>
           </div>
