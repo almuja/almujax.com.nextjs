@@ -8,6 +8,7 @@ import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
 import { SoftwareSourceCodeStructuredData } from "../../../components/StructuredData";
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/i18n/config";
+import { compileMdx } from "@/lib/mdx-compiler";
 
 export const revalidate = 60;
 
@@ -156,6 +157,8 @@ export default async function ProjectPage({
       featured: frontmatter.featured || false,
     };
 
+    const mdxSource = await compileMdx(content);
+
     return (
       <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300">
         <SoftwareSourceCodeStructuredData
@@ -259,7 +262,7 @@ export default async function ProjectPage({
           <div className="flex justify-center">
             <div className="w-full max-w-4xl">
               {/* Elegant Markdown Content */}
-              <ClientMDXRenderer content={content} />
+              <ClientMDXRenderer mdxSource={mdxSource} />
 
               {/* Tags at the bottom */}
               {project.tags && project.tags.length > 0 && (

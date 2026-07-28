@@ -10,6 +10,7 @@ import { ArticleStructuredData } from "../../../components/StructuredData";
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { compileMdx } from "@/lib/mdx-compiler";
 
 export const revalidate = 60;
 
@@ -197,6 +198,9 @@ export default async function BlogPostPage({
     // Calculate reading time
     const readingTime = calculateReadingTime(content);
 
+    // Compile MDX to HTML with syntax highlighting
+    const mdxSource = await compileMdx(content);
+
     return (
       <div className="min-h-screen bg-background transition-colors duration-300">
         <ArticleStructuredData
@@ -318,7 +322,7 @@ export default async function BlogPostPage({
               )}
 
               {/* Elegant Markdown Content */}
-              <ClientMDXRenderer content={content} />
+              <ClientMDXRenderer mdxSource={mdxSource} />
 
               {/* Author Section */}
               <div className="mt-8">
