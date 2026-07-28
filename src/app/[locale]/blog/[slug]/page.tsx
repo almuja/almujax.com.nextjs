@@ -32,7 +32,7 @@ interface AuthorData {
   };
 }
 
-async function getBlogPosts() {
+async function getBlogPosts(_dict?: any) {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
 
   try {
@@ -107,7 +107,7 @@ export async function generateMetadata({
     const { data } = matter(fileContents);
 
     const title = data.title || slug;
-    const description = data.description || "Blog post by Mujahid Siyam";
+    const description = data.description || "";
     const image = data.image || "https://bymuja.com/img/profile.png";
     const publishedTime = data.date;
 
@@ -201,7 +201,7 @@ export default async function BlogPostPage({
       <div className="min-h-screen bg-background transition-colors duration-300">
         <ArticleStructuredData
           title={title}
-          description={frontmatter.description || "Blog post by Mujahid Siyam"}
+          description={frontmatter.description || dict.blog.noDescription}
           datePublished={
             date !== "Unknown date"
               ? new Date(date).toISOString()
@@ -243,7 +243,7 @@ export default async function BlogPostPage({
               <div className="text-center mb-16">
                 <div className="flex flex-wrap gap-3 mb-8 justify-center">
                   <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20">
-                    {frontmatter.category || "Uncategorized"}
+                    {frontmatter.category || dict.blog.uncategorized}
                   </span>
                   {frontmatter.tags?.map((tag: string) => (
                     <span
@@ -323,9 +323,9 @@ export default async function BlogPostPage({
               {/* Author Section */}
               <div className="mt-8">
                 <Author
-                  name="Mujahid Siyam"
+                  name={validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
                   image="/img/profile.png"
-                  bio="Software Engineer • AI/ML Engineer • Data Scientist • DevSecOps building cutting-edge solutions"
+                  bio={dict.blog.authorBio}
                   socialLinks={{
                     github: "https://github.com/bymuja",
                     twitter: "https://twitter.com/bymuja",
@@ -336,12 +336,13 @@ export default async function BlogPostPage({
               </div>
 
               {/* Next/Previous Navigation */}
-              <PostNavigation currentSlug={resolvedParams.slug} />
+              <PostNavigation currentSlug={resolvedParams.slug} locale={validLocale} dict={dict} />
 
-              {/* Related Posts Section */}
               <RelatedPosts
                 currentSlug={resolvedParams.slug}
                 category={frontmatter.category}
+                locale={validLocale}
+                dict={dict}
               />
             </div>
           </div>
@@ -354,8 +355,8 @@ export default async function BlogPostPage({
   }
 }
 
-async function PostNavigation({ currentSlug }: { currentSlug: string }) {
-  const posts = await getBlogPosts();
+async function PostNavigation({ currentSlug, locale, dict }: { currentSlug: string; locale: string; dict: any }) {
+  const posts = await getBlogPosts(dict);
   const currentIndex = posts.findIndex((post) => post.slug === currentSlug);
 
   if (currentIndex === -1) return null;
@@ -369,73 +370,36 @@ async function PostNavigation({ currentSlug }: { currentSlug: string }) {
       <div
         className={`flex flex-col sm:flex-row justify-between gap-6 ${!previousPost || !nextPost ? "items-center" : ""}`}
       >
-        {/* Previous Post */}
         {previousPost && (
           <Link
-            href={`/blog/${previousPost.slug}`}
+            href={`/${locale}/blog/${previousPost.slug}`}
             className={`group flex-1 max-w-md ${!nextPost ? "sm:mx-auto" : ""}`}
           >
             <div className="flex items-start gap-4 p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300">
               <div className="flex-shrink-0">
-                <svg
-                  className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
+                <svg className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-sm text-muted-foreground mb-1">
-                  Previous
-                </div>
-                <h4 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">
-                  {previousPost.title}
-                </h4>
-                <p className="text-sm text-muted-foreground line-clamp-1 mt-1">
-                  {previousPost.description}
-                </p>
+                <div className="text-sm text-muted-foreground mb-1">{dict.blog.previous}</div>
+                <h4 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">{previousPost.title}</h4>
+                <p className="text-sm text-muted-foreground line-clamp-1 mt-1">{previousPost.description}</p>
               </div>
             </div>
           </Link>
         )}
-
-        {/* Next Post */}
         {nextPost && (
           <Link
-            href={`/blog/${nextPost.slug}`}
+            href={`/${locale}/blog/${nextPost.slug}`}
             className={`group flex-1 max-w-md ${!previousPost ? "sm:mx-auto" : "ml-auto"}`}
           >
             <div className="flex items-start gap-4 p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 text-right">
               <div className="flex-1 min-w-0">
-                <div className="text-sm text-muted-foreground mb-1">Next</div>
-                <h4 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">
-                  {nextPost.title}
-                </h4>
-                <p className="text-sm text-muted-foreground line-clamp-1 mt-1">
-                  {nextPost.description}
-                </p>
+                <div className="text-sm text-muted-foreground mb-1">{dict.blog.next}</div>
+                <h4 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">{nextPost.title}</h4>
+                <p className="text-sm text-muted-foreground line-clamp-1 mt-1">{nextPost.description}</p>
               </div>
               <div className="flex-shrink-0">
-                <svg
-                  className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+                <svg className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </div>
             </div>
           </Link>
@@ -448,11 +412,15 @@ async function PostNavigation({ currentSlug }: { currentSlug: string }) {
 async function RelatedPosts({
   currentSlug,
   category,
+  locale,
+  dict,
 }: {
   currentSlug: string;
   category?: string;
+  locale: string;
+  dict: any;
 }) {
-  const posts = await getBlogPosts();
+  const posts = await getBlogPosts(dict);
   const relatedPosts = posts
     .filter((post) => post.slug !== currentSlug && post.category === category)
     .slice(0, 3);
@@ -462,13 +430,13 @@ async function RelatedPosts({
   return (
     <section className="mt-16 pt-8 border-t border-border">
       <h3 className="text-2xl font-bold mb-6 text-card-foreground">
-        Related Posts
+        {dict.blog.relatedPosts}
       </h3>
       <div className="grid gap-6 md:grid-cols-4">
         {relatedPosts.map((post) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/${locale}/blog/${post.slug}`}
             className="group block"
           >
             <article className="backdrop-blur-sm bg-card border border-border rounded-lg p-4 hover:bg-primary/10 transition-colors">

@@ -8,14 +8,16 @@ import { BlogPost } from "../lib/utils";
 interface FeaturedPostCardProps {
   post: BlogPost;
   onCategoryClick?: (category: string) => void;
+  locale?: string;
 }
 
 export function FeaturedPostCard({
   post,
   onCategoryClick,
+  locale = "en",
 }: FeaturedPostCardProps) {
   return (
-    <Link href={`/blog/${post.slug}`} className="block group">
+    <Link href={`/${locale}/blog/${post.slug}`} className="block group">
       <article className="group relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card border border-border shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] cursor-pointer h-full flex flex-col min-h-[450px]">
         {/* Image Container with Enhanced Effects */}
         <div className="relative w-full overflow-hidden">

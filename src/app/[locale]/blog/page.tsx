@@ -44,14 +44,14 @@ interface BlogPost {
   featured?: boolean;
 }
 
-function calculateReadingTime(content: string): string {
+function calculateReadingTime(content: string, t: any): string {
   const wordsPerMinute = 200;
   const words = content.split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} min read`;
+  return `${minutes} ${t.blog.minRead}`;
 }
 
-async function getBlogPosts(): Promise<BlogPost[]> {
+async function getBlogPosts(t: any): Promise<BlogPost[]> {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
 
   try {
@@ -68,19 +68,18 @@ async function getBlogPosts(): Promise<BlogPost[]> {
           return {
             slug,
             title: data.title || `Blog Post ${slug}`,
-            description: data.description || "No description available.",
+            description: data.description || t.blog.noDescription,
             date: data.date || "Unknown date",
             image: data.image || "/vercel.svg",
-            category: data.category || "Uncategorized",
+            category: data.category || t.blog.uncategorized,
             tags: data.tags || [],
-            readingTime: calculateReadingTime(content),
+            readingTime: calculateReadingTime(content, t),
             featured: data.featured || false,
             draft: data.draft || false,
           };
         }),
     );
 
-    // Filter out draft posts and sort by date in descending order
     return posts
       .filter((post) => !post.draft)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -90,36 +89,42 @@ async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const dict = getDictionary(validLocale);
+
   try {
-    const posts = await getBlogPosts();
-    // Ensure posts is always an array
+    const posts = await getBlogPosts(dict);
     const safePosts = Array.isArray(posts) ? posts : [];
     return (
       <div className="container mx-auto px-4 py-20">
         <div className="flex flex-col items-center">
           <Hero
-            title="My Blog"
-            subtitle="Personal Musings"
-            description="Exploring technology, development, and creative ideas through writing"
+            title={dict.blog.heroTitle}
+            subtitle={dict.blog.heroSubtitle}
+            description={dict.blog.heroDescription}
           />
         </div>
-        <BlogPageClient posts={safePosts} />
+        <BlogPageClient locale={validLocale} t={dict.blog} posts={safePosts} />
       </div>
     );
   } catch (error) {
     console.error("Error in BlogPage:", error);
-    // Return empty array to prevent crashes
     return (
       <div className="container mx-auto px-4 py-20">
         <div className="flex flex-col items-center">
           <Hero
-            title="Blog"
-            subtitle="Latest Insights"
-            description="Thoughts, ideas, and insights on software engineering, AI, and technology"
+            title={dict.blog.heroTitleAlt}
+            subtitle={dict.blog.heroSubtitleAlt}
+            description={dict.blog.heroDescriptionAlt}
           />
         </div>
-        <BlogPageClient posts={[]} />
+        <BlogPageClient locale={validLocale} t={dict.blog} posts={[]} />
       </div>
     );
   }

@@ -9,11 +9,12 @@ interface PostCardProps {
   post: BlogPost;
   onCategoryClick?: (category: string) => void;
   onTagClick?: (tag: string) => void;
+  locale?: string;
 }
 
-export function PostCard({ post, onCategoryClick, onTagClick }: PostCardProps) {
+export function PostCard({ post, onCategoryClick, onTagClick, locale = "en" }: PostCardProps) {
   return (
-    <Link href={`/blog/${post.slug}`} className="block group">
+    <Link href={`/${locale}/blog/${post.slug}`} className="block group">
       <article className="bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105 h-full flex flex-col">
         {post.image && (
           <div className="relative w-full">

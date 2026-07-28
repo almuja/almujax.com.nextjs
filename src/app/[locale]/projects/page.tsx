@@ -192,16 +192,37 @@ function formatRelativeTime(dateString: string): string {
   return `${Math.floor(diffInDays / 365)} years ago`;
 }
 
-export default async function ProjectsPage() {
+export default async function ProjectsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const t = getDictionary(validLocale);
   const projects = await getProjects();
+
+  function formatRelativeTime(dateString: string): string {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInMs = now.getTime() - date.getTime();
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+    if (diffInDays === 0) return t.projects.today;
+    if (diffInDays === 1) return t.projects.yesterday;
+    if (diffInDays < 7) return `${diffInDays} ${t.projects.daysAgo}`;
+    if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} ${t.projects.weeksAgo}`;
+    if (diffInDays < 365) return `${Math.floor(diffInDays / 30)} ${t.projects.monthsAgo}`;
+    return `${Math.floor(diffInDays / 365)} ${t.projects.yearsAgo}`;
+  }
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <Hero
-          title="Featured Projects"
-          subtitle="My Work"
-          description="A collection of my open-source projects and contributions"
+          title={t.projects.heroTitle}
+          subtitle={t.projects.heroSubtitle}
+          description={t.projects.heroDescription}
         />
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-16">
@@ -261,7 +282,7 @@ export default async function ProjectsPage() {
               <div className="p-6 flex-1 flex flex-col">
                 {/* Title and Description */}
                 <div className="flex-1">
-                  <Link href={`/projects/${project.slug}`} className="block">
+                  <Link href={`/${validLocale}/projects/${project.slug}`} className="block">
                     <h3 className="text-xl font-bold text-[var(--color-foreground)] group-hover:text-[var(--color-primary)] transition-colors duration-300 mb-3 line-clamp-2">
                       {project.title}
                     </h3>
@@ -329,10 +350,10 @@ export default async function ProjectsPage() {
                       <span>{formatRelativeTime(project.date)}</span>
                     </div>
                     <Link
-                      href={`/projects/${project.slug}`}
+                      href={`/${validLocale}/projects/${project.slug}`}
                       className="flex items-center gap-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] font-medium transition-colors text-sm group/link"
                     >
-                      View project
+                      {t.projects.viewProject}
                       <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform duration-300" />
                     </Link>
                   </div>
@@ -346,7 +367,7 @@ export default async function ProjectsPage() {
           <div className="text-center py-20">
             <div className="text-6xl mb-4">🚧</div>
             <p className="text-[var(--color-muted-foreground)] text-lg">
-              Projects are being prepared. Check back soon!
+              {t.projects.noProjects}
             </p>
           </div>
         )}
