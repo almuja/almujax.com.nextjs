@@ -42,7 +42,20 @@ interface Playlist {
   duration?: string;
 }
 
-export function MusicContent() {
+interface MusicContentProps {
+  locale: string;
+  t: {
+    heading: string;
+    subtitle: string;
+    noPlaylists: string;
+    loading: string;
+    listenOn: string;
+    tracks: string;
+    openInApp: string;
+  };
+}
+
+export function MusicContent({ locale, t }: MusicContentProps) {
   const [playerErrors, setPlayerErrors] = useState<
     Record<string, string | null>
   >({});
@@ -157,12 +170,10 @@ export function MusicContent() {
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            My Music
+            {t.heading}
           </h1>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
-            Explore my curated playlists across different music platforms. From
-            coding focus tracks to original productions, discover the sounds
-            that inspire my work.
+            {t.subtitle}
           </p>
         </div>
 
@@ -170,9 +181,7 @@ export function MusicContent() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {playlists.length === 0 ? (
             <div className="col-span-2 text-center py-12">
-              <p className="text-foreground/60">
-                No playlists available at the moment.
-              </p>
+                <p className="text-foreground/60">{t.noPlaylists}</p>
             </div>
           ) : (
             playlists.map((playlist) => (
@@ -189,7 +198,7 @@ export function MusicContent() {
                       <div className="absolute inset-0 w-full h-full flex items-center justify-center z-10 bg-primary/5">
                         <div className="text-center p-6">
                           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
-                          <p className="text-primary text-sm">Loading...</p>
+                          <p className="text-primary text-sm">{t.loading}</p>
                         </div>
                       </div>
                     )}

@@ -68,7 +68,7 @@ export default async function AboutPage({
                   />
                 </div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">
-                  Mujahid Siyam
+                  {validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
                 </h2>
                 <p className="text-sm text-foreground/50 mb-1">{t.about.akaLabel}</p>
                 <p className="text-foreground/60 mb-4">{t.about.profileTitle}</p>
@@ -112,11 +112,7 @@ export default async function AboutPage({
                 {t.about.languages}
               </h3>
               <div className="space-y-3">
-                {[
-                  { language: "Arabic", level: "Native" },
-                  { language: "English", level: "Fluent" },
-                  { language: "French", level: "Intermediate" },
-                ].map((item) => (
+                {(t.about as any).langList?.map((item: { language: string; level: string }) => (
                   <div
                     key={item.language}
                     className="flex justify-between items-center"
@@ -155,29 +151,7 @@ export default async function AboutPage({
                 {t.about.experience}
               </h3>
               <div className="space-y-6">
-                {[
-                  {
-                    title: "AI & Software Engineer",
-                    company: "Zaroxi Studio",
-                    period: "2023 - Present",
-                    description:
-                      "Building AI-first systems, Rust-based developer tools, and creative technology. Leading development of open-source projects and full-stack applications with modern tooling.",
-                  },
-                  {
-                    title: "AI/ML Engineer",
-                    company: "Data Science Labs",
-                    period: "2020 - 2022",
-                    description:
-                      "Developed machine learning models for predictive analytics. Deployed scalable ML infrastructure on AWS.",
-                  },
-                  {
-                    title: "Software Developer",
-                    company: "Startup Ventures",
-                    period: "2018 - 2020",
-                    description:
-                      "Built responsive web applications and mobile apps. Collaborated in agile development teams.",
-                  },
-                ].map((exp, index) => (
+                {(t.about as any).expItems?.map((exp: any, index: number) => (
                   <div
                     key={index}
                     className="border-l-2 border-[var(--color-primary)]/20 pl-4 relative"
@@ -208,22 +182,7 @@ export default async function AboutPage({
                 {t.about.education}
               </h3>
               <div className="space-y-4">
-                {[
-                  {
-                    degree: "MSc in Computer Science",
-                    school: "University of Technology",
-                    period: "2016 - 2018",
-                    description:
-                      "Specialized in Artificial Intelligence and Machine Learning",
-                  },
-                  {
-                    degree: "BSc in Software Engineering",
-                    school: "Tech University",
-                    period: "2012 - 2016",
-                    description:
-                      "Graduated with Honors. Focus on Distributed Systems",
-                  },
-                ].map((edu, index) => (
+                {(t.about as any).eduItems?.map((edu: any, index: number) => (
                   <div key={index} className="flex justify-between items-start">
                     <div>
                       <h4 className="font-bold text-[var(--color-foreground)]">

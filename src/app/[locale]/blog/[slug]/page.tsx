@@ -9,6 +9,7 @@ import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
 import { ArticleStructuredData } from "../../../components/StructuredData";
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
 
 export const revalidate = 60;
 
@@ -175,6 +176,7 @@ export default async function BlogPostPage({
     }
 
     const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
+    const dict = getDictionary(validLocale);
 
     const blogDirectory = join(process.cwd(), "src", "content", "blog");
     const fullPath = join(blogDirectory, `${resolvedParams.slug}.mdx`);
@@ -214,7 +216,7 @@ export default async function BlogPostPage({
           {/* Back to Blog Link - Always at the top */}
           <div className="flex justify-center mb-8">
             <Link
-              href="/blog"
+              href={`/${validLocale}/blog`}
               className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors group"
             >
               <svg
@@ -230,7 +232,7 @@ export default async function BlogPostPage({
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              Back to Blog
+              {dict.blog.backToBlog}
             </Link>
           </div>
 

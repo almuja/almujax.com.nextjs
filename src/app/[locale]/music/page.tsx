@@ -28,6 +28,14 @@ export async function generateMetadata({
   };
 }
 
-export default function MusicPage() {
-  return <MusicContent />;
+export default async function MusicPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const dict = getDictionary(validLocale);
+
+  return <MusicContent locale={validLocale} t={dict.music} />;
 }
