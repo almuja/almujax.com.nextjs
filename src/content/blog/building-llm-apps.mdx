@@ -1,0 +1,335 @@
+---
+title: "Building AI-Powered Applications with Large Language Models"
+description: "Practical guide to integrating LLMs into real applications — prompt engineering, RAG, function calling, embeddings, vector databases, and production deployment patterns for AI-first systems."
+date: "2024-02-05"
+image: "/vercel.svg"
+category: "AI/ML"
+tags: ["LLM", "RAG", "AI Engineering", "OpenAI", "Vector DB", "Prompt Engineering"]
+featured: false
+author:
+  name: "Mujahid Siyam"
+  image: "/vercel.svg"
+  bio: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps"
+  socialLinks:
+    github: "https://github.com/bymuja"
+    twitter: "https://twitter.com/bymuja"
+    linkedin: "https://linkedin.com/in/bymuja"
+    website: "https://bymuja.com"
+draft: false
+---
+
+Large Language Models have moved from research curiosity to production infrastructure. Building effective AI-powered applications requires more than just calling an API — it demands careful prompt engineering, retrieval-augmented generation (RAG) for grounding, function calling for tool use, and thoughtful deployment patterns. This guide covers the full stack of LLM application development.
+
+## Prompt Engineering Fundamentals
+
+The quality of your prompts directly determines the quality of your outputs. Effective prompting is a systematic practice, not guesswork.
+
+### The Anatomy of a Good Prompt
+
+A well-structured prompt includes: role, context, instructions, constraints, and output format.
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+system_prompt = """You are a senior code reviewer specializing in Rust.
+Review code for:
+1. Correctness — logic errors, edge cases
+2. Safety — unsafe blocks, potential panics
+3. Performance — unnecessary allocations, clones
+4. Idiom — patterns, naming conventions
+
+Provide your review as structured JSON with keys:
+- summary: one-line overall assessment
+- issues: list of {severity, file, line, description, suggestion}
+- score: 1-10 overall quality rating"""
+
+def review_code(code: str) -> dict:
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"Review this Rust code:\n```rust\n{code}\n```"},
+        ],
+        temperature=0.2,  # Low temperature for consistent reviews
+        response_format={"type": "json_object"},
+    )
+    return json.loads(response.choices[0].message.content)
+```
+
+### Chain-of-Thought and Few-Shot Prompting
+
+```python
+def solve_complex_problem(question: str) -> str:
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{
+            "role": "system",
+            "content": """Think step by step before answering.
+1. Restate the problem in your own words
+2. Break it into sub-problems
+3. Solve each sub-problem
+4. Combine into final answer
+5. Verify your answer against edge cases"""
+        }, {
+            "role": "user",
+            "content": question
+        }],
+    )
+    return response.choices[0].message.content
+```
+
+Key principles:
+- **Be specific**: "Explain" versus "Explain to a senior engineer with code examples"
+- **Provide examples**: 2-3 examples dramatically improve output quality
+- **Define output format**: JSON schema, markdown structure, or specific sections
+- **Control temperature**: 0-0.3 for factual tasks, 0.5-0.8 for creative tasks
+- **Iterate**: Treat prompts as code — version them and A/B test
+
+## Retrieval-Augmented Generation (RAG)
+
+RAG grounds LLM responses in your own data, reducing hallucinations and making the model useful for domain-specific questions.
+
+### Architecture Overview
+
+```python
+import chromadb
+from openai import OpenAI
+import numpy as np
+
+class RAGPipeline:
+    def __init__(self):
+        self.client = OpenAI()
+        self.chroma = chromadb.PersistentClient(path="./chroma_db")
+        self.collection = self.chroma.get_or_create_collection("docs")
+
+    def embed(self, text: str) -> list[float]:
+        response = self.client.embeddings.create(
+            model="text-embedding-3-small",
+            input=text,
+        )
+        return response.data[0].embedding
+
+    def index_document(self, doc_id: str, text: str, metadata: dict = None):
+        chunks = self._chunk_text(text, chunk_size=500, overlap=50)
+        for i, chunk in enumerate(chunks):
+            embedding = self.embed(chunk)
+            self.collection.add(
+                ids=[f"{doc_id}_{i}"],
+                embeddings=[embedding],
+                documents=[chunk],
+                metadatas=[metadata or {}],
+            )
+
+    def _chunk_text(self, text: str, chunk_size: int, overlap: int) -> list[str]:
+        words = text.split()
+        chunks = []
+        for i in range(0, len(words), chunk_size - overlap):
+            chunk = " ".join(words[i:i + chunk_size])
+            if len(chunk) > 0:
+                chunks.append(chunk)
+        return chunks
+
+    def query(self, question: str, top_k: int = 5) -> str:
+        query_embedding = self.embed(question)
+        results = self.collection.query(
+            query_embeddings=[query_embedding],
+            n_results=top_k,
+        )
+
+        context = "\n\n".join(results["documents"][0])
+
+        response = self.client.chat.completions.create(
+            model="gpt-4o",
+            messages=[{
+                "role": "system",
+                "content": "Answer based on the provided context. If the context doesn't contain the answer, say so."
+            }, {
+                "role": "user",
+                "content": f"Context:\n{context}\n\nQuestion: {question}"
+            }],
+        )
+        return response.choices[0].message.content
+```
+
+### Chunking Strategies
+
+Choosing the right chunking strategy is critical for RAG quality:
+
+| Strategy | Best For | Trade-off |
+|---|---|---|
+| Fixed-size | General documents | Simple, may split sentences |
+| Sentence-based | Articles, prose | Preserves meaning, variable size |
+| Semantic | Code, structured docs | Requires embedding each sentence, slower |
+| Recursive | Mixed content | Tries multiple separators, balanced |
+| Document-specific | PDFs, legal docs | Requires custom parser per format |
+
+## Function Calling (Tool Use)
+
+Function calling lets the LLM decide when to invoke external tools — APIs, databases, calculators, code execution.
+
+```python
+tools = [{
+    "type": "function",
+    "function": {
+        "name": "search_codebase",
+        "description": "Search the codebase for relevant files and functions",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "Natural language search query"
+                },
+                "file_type": {
+                    "type": "string",
+                    "enum": ["rust", "typescript", "python", "any"]
+                },
+            },
+            "required": ["query"],
+        },
+    },
+}, {
+    "type": "function",
+    "function": {
+        "name": "run_tests",
+        "description": "Run the test suite for a specific module",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "module": {
+                    "type": "string",
+                    "description": "Module path to test"
+                },
+            },
+            "required": ["module"],
+        },
+    },
+}]
+
+def handle_tool_call(tool_call) -> str:
+    name = tool_call.function.name
+    args = json.loads(tool_call.function.arguments)
+
+    if name == "search_codebase":
+        return search_codebase(args["query"], args.get("file_type", "any"))
+    elif name == "run_tests":
+        return run_test_suite(args["module"])
+    else:
+        return f"Unknown tool: {name}"
+```
+
+## Embeddings and Semantic Search
+
+Embeddings convert text into dense vectors where semantic similarity equals geometric proximity.
+
+```python
+import numpy as np
+
+class SemanticSearch:
+    def __init__(self, client: OpenAI):
+        self.client = client
+        self.documents: list[dict] = []
+
+    def add_documents(self, docs: list[dict]):
+        texts = [doc["content"] for doc in docs]
+        embeddings = self._batch_embed(texts)
+        for doc, emb in zip(docs, embeddings):
+            self.documents.append({**doc, "embedding": emb})
+
+    def _batch_embed(self, texts: list[str]) -> list[list[float]]:
+        response = self.client.embeddings.create(
+            model="text-embedding-3-small",
+            input=texts,
+        )
+        return [d.embedding for d in response.data]
+
+    def search(self, query: str, top_k: int = 10) -> list[dict]:
+        query_emb = self._batch_embed([query])[0]
+        scores = []
+        for doc in self.documents:
+            similarity = np.dot(query_emb, doc["embedding"])
+            scores.append((similarity, doc))
+        scores.sort(key=lambda x: x[0], reverse=True)
+        return [doc for _, doc in scores[:top_k]]
+```
+
+## Production Deployment Patterns
+
+### Streaming Responses
+
+```python
+from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
+import asyncio
+
+app = FastAPI()
+
+@app.post("/chat/stream")
+async def chat_stream(request: ChatRequest):
+    async def generate():
+        stream = client.chat.completions.create(
+            model="gpt-4o",
+            messages=request.messages,
+            stream=True,
+        )
+        for chunk in stream:
+            if chunk.choices[0].delta.content:
+                yield f"data: {json.dumps({'content': chunk.choices[0].delta.content})}\n\n"
+        yield "data: [DONE]\n\n"
+
+    return StreamingResponse(generate(), media_type="text/event-stream")
+```
+
+### Rate Limiting and Cost Control
+
+```python
+from functools import wraps
+from datetime import datetime, timedelta
+import asyncio
+
+class RateLimiter:
+    def __init__(self, calls_per_minute: int):
+        self.rate = calls_per_minute
+        self.tokens = calls_per_minute
+        self.last_refill = datetime.now()
+
+    def _refill(self):
+        now = datetime.now()
+        elapsed = (now - self.last_refill).total_seconds()
+        self.tokens = min(self.rate, self.tokens + elapsed * self.rate / 60)
+        self.last_refill = now
+
+    async def acquire(self):
+        while True:
+            self._refill()
+            if self.tokens >= 1:
+                self.tokens -= 1
+                return
+            await asyncio.sleep(0.1)
+
+rate_limiter = RateLimiter(calls_per_minute=500)
+
+async def call_llm_with_retry(messages, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            await rate_limiter.acquire()
+            return client.chat.completions.create(model="gpt-4o", messages=messages)
+        except openai.RateLimitError:
+            wait = 2 ** attempt
+            await asyncio.sleep(wait)
+    raise Exception("Max retries exceeded")
+```
+
+## Key Takeaways
+
+- **Prompt engineering** is systematic — structure your prompts with role, context, instructions, and output format
+- **RAG** grounds LLM responses in your data; chunking strategy is critical for quality
+- **Function calling** lets the LLM invoke external tools — think of it as an AI-powered workflow engine
+- **Embeddings** enable semantic search; cosine similarity between vectors maps to conceptual similarity
+- **Streaming and rate limiting** are essential for production; users expect real-time responses
+- **Temperature control** separates factual tasks (low) from creative tasks (high)
+- The best LLM applications combine multiple techniques: RAG + function calling + structured output
+
+Building with LLMs is different from traditional software — the system is probabilistic, and quality depends as much on your prompts and retrieval as on your code. Test rigorously, monitor outputs, and iterate on your prompts like you would on any other code.

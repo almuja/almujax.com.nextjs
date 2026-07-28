@@ -1,0 +1,369 @@
+---
+title: "Nix and NixOS: Reproducible Development Environments"
+description: "Master Nix for deterministic builds, reproducible dev environments, and declarative system configuration. From nix-shell to home-manager and NixOS production deployments."
+date: "2024-02-15"
+image: "/vercel.svg"
+category: "DevOps"
+tags: ["Nix", "NixOS", "DevOps", "Reproducibility", "Linux", "Home Manager"]
+featured: false
+author:
+  name: "Mujahid Siyam"
+  image: "/vercel.svg"
+  bio: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps"
+  socialLinks:
+    github: "https://github.com/bymuja"
+    twitter: "https://twitter.com/bymuja"
+    linkedin: "https://linkedin.com/in/bymuja"
+    website: "https://bymuja.com"
+draft: false
+---
+
+Nix is a paradigm shift in how we manage software. Instead of installing packages imperatively, you declare what you want — and Nix builds it deterministically, in isolation, with exact dependency hashing. The result: builds that work the same everywhere, development environments that are identical across machines, and operating systems configured as code. This guide covers Nix from first principles to production practice.
+
+## Why Nix?
+
+Traditional package managers (apt, brew, pip, npm) suffer from dependency hell, non-deterministic builds, and environment pollution. Nix solves all three:
+
+- **Deterministic**: Every package is identified by the hash of its entire dependency tree. The same derivation always produces the same output.
+- **Isolated**: Packages don't interfere with each other. Multiple versions of the same library coexist peacefully.
+- **Declarative**: Your entire system configuration is a single file. Rebuild, rollback, or replicate instantly.
+
+## Getting Started: nix-shell and Flakes
+
+### Ad-hoc Development Shells
+
+```bash
+# Instant shell with specific packages — no installation needed
+nix-shell -p python312 nodejs_22 rustup postgresql_16
+
+# Or use shell.nix for reproducible environments
+```
+
+```nix
+# shell.nix — share with your team
+{ pkgs ? import <nixpkgs> {} }:
+
+pkgs.mkShell {
+  buildInputs = with pkgs; [
+    python312
+    python312Packages.pip
+    python312Packages.virtualenv
+    nodejs_22
+    nodePackages.pnpm
+    rustup
+    postgresql_16
+    redis
+    just
+    watchexec
+  ];
+
+  shellHook = ''
+    export DATABASE_URL="postgresql://localhost/dev"
+    export REDIS_URL="redis://localhost:6379"
+    echo "Development environment ready!"
+  '';
+}
+```
+
+### Nix Flakes
+
+Flakes are the modern standard — they lock dependencies and make builds truly reproducible.
+
+```nix
+# flake.nix
+{
+  description = "My Python project";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        python = pkgs.python312;
+      in {
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            python
+            python.pkgs.pip
+            python.pkgs.virtualenv
+            ruff
+            pyright
+            just
+          ];
+        };
+
+        packages.default = python.pkgs.buildPythonPackage {
+          pname = "my-app";
+          version = "0.1.0";
+          src = ./.;
+          propagatedBuildInputs = with python.pkgs; [
+            fastapi
+            uvicorn
+            sqlalchemy
+          ];
+        };
+      });
+}
+```
+
+## Building Packages with Nix
+
+```nix
+# default.nix — package a Rust application
+{ pkgs ? import <nixpkgs> {} }:
+
+pkgs.rustPlatform.buildRustPackage {
+  pname = "my-rust-app";
+  version = "0.1.0";
+
+  src = ./.;
+
+  cargoLock = {
+    lockFile = ./Cargo.lock;
+  };
+
+  nativeBuildInputs = with pkgs; [
+    pkg-config
+    protobuf
+  ];
+
+  buildInputs = with pkgs; [
+    openssl
+    postgresql
+  ];
+
+  meta = with pkgs.lib; {
+    description = "A high-performance Rust service";
+    license = licenses.mit;
+    platforms = platforms.linux;
+  };
+}
+```
+
+## Home Manager: Declarative User Environments
+
+Home Manager extends Nix to your user environment — dotfiles, services, and applications declared as code.
+
+```nix
+# home.nix
+{ config, pkgs, ... }:
+
+{
+  home.username = "muja";
+  home.homeDirectory = "/home/muja";
+
+  home.packages = with pkgs; [
+    neovim
+    tmux
+    ripgrep
+    fd
+    bat
+    delta
+    jq
+    fzf
+    zoxide
+    starship
+  ];
+
+  programs = {
+    git = {
+      enable = true;
+      userName = "Mujahid Siyam";
+      userEmail = "contact@bymuja.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+        pull.rebase = true;
+      };
+    };
+
+    zsh = {
+      enable = true;
+      shellAliases = {
+        g = "git";
+        v = "nvim";
+        ll = "ls -lah";
+        k = "kubectl";
+      };
+      initExtra = ''
+        eval "$(zoxide init zsh)"
+        eval "$(starship init zsh)"
+      '';
+    };
+
+    vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        rust-lang.rust-analyzer
+        ms-python.python
+        bradlc.vscode-tailwindcss
+      ];
+      userSettings = {
+        "editor.fontFamily" = "JetBrains Mono";
+        "editor.fontSize" = 14;
+        "workbench.colorTheme" = "Catppuccin Mocha";
+      };
+    };
+  };
+
+  services = {
+    syncthing.enable = true;
+    gpg-agent = {
+      enable = true;
+      pinentryFlavor = "curses";
+    };
+  };
+
+  home.stateVersion = "24.05";
+}
+```
+
+Apply with: `home-manager switch`
+
+## NixOS: Your Operating System as Code
+
+```nix
+# configuration.nix
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./hardware-configuration.nix
+    ./modules/desktop.nix
+    ./modules/development.nix
+  ];
+
+  boot.loader.systemd-boot.enable = true;
+
+  networking = {
+    hostName = "workstation";
+    firewall.enable = true;
+    firewall.allowedTCPPorts = [ 22 3000 8080 5432 ];
+  };
+
+  users.users.muja = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "docker" "networkmanager" ];
+    hashedPasswordFile = "/etc/nixos/secrets/password";
+  };
+
+  services = {
+    openssh.enable = true;
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_16;
+    };
+  };
+
+  security = {
+    sudo.wheelNeedsPassword = false;
+  };
+
+  virtualisation.docker.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    curl wget git vim htop
+  ];
+
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
+
+  system.stateVersion = "24.05";
+}
+```
+
+### Atomic Upgrades and Rollbacks
+
+```bash
+# Update the system
+sudo nixos-rebuild switch --flake .#workstation
+
+# List all generations
+sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+
+# Rollback to previous generation
+sudo nixos-rebuild switch --rollback
+
+# Boot into specific generation from GRUB menu
+# Each generation appears as a boot entry — select any to rollback
+```
+
+This means you can safely experiment with system changes — if something breaks, just reboot into the previous generation.
+
+## Development Shells for Monorepos
+
+```nix
+# flake.nix for a monorepo
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        devShells = {
+          frontend = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              nodejs_22
+              nodePackages.pnpm
+              nodePackages.typescript
+              nodePackages.tailwindcss
+            ];
+          };
+
+          backend = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              rustup
+              pkg-config
+              openssl
+              protobuf
+              postgresql_16
+            ];
+          };
+
+          # Combined shell for full-stack development
+          default = pkgs.mkShell {
+            inputsFrom = [
+              self.devShells.${system}.frontend
+              self.devShells.${system}.backend
+            ];
+          };
+        };
+      });
+}
+```
+
+```bash
+# Enter specific dev shell
+nix develop .#frontend
+nix develop .#backend
+nix develop  # default = combined
+```
+
+## Key Takeaways
+
+- **Nix provides deterministic, reproducible builds** — same input always produces same output
+- **Flakes** are the modern standard — lock dependencies and enable composition
+- **`nix develop`** replaces docker-compose for development with less overhead
+- **Home Manager** manages your user environment declaratively — dotfiles as code
+- **NixOS** gives you atomic upgrades and instant rollbacks — your OS is a Git branch
+- **CI/CD with Nix** means builds work identically on your machine and in CI — no "works on my machine"
+- The **learning curve is real** but the payoff is permanent — once you go declarative, you never go back
+
+Nix isn't just a package manager — it's a philosophy for managing software that eliminates an entire category of bugs caused by environment differences and non-deterministic builds.

@@ -1,0 +1,250 @@
+---
+title: "PostgreSQL Performance: Query Optimization and Indexing Strategies"
+description: "Deep dive into PostgreSQL performance — query planning, indexing strategies, EXPLAIN ANALYZE, partitioning, connection pooling, and real-world optimization patterns for high-traffic databases."
+date: "2024-02-20"
+image: "/vercel.svg"
+category: "Databases"
+tags: ["PostgreSQL", "SQL", "Performance", "Indexing", "Database"]
+featured: false
+author:
+  name: "Mujahid Siyam"
+  image: "/vercel.svg"
+  bio: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps"
+  socialLinks:
+    github: "https://github.com/bymuja"
+    twitter: "https://twitter.com/bymuja"
+    linkedin: "https://linkedin.com/in/bymuja"
+    website: "https://bymuja.com"
+draft: false
+---
+
+PostgreSQL is one of the most powerful relational databases available, but unlocking its full performance requires understanding how it executes queries. A slow query isn't just an annoyance — at scale, it cascades into connection pool exhaustion, increased cloud costs, and degraded user experience. This guide covers the optimization techniques I use daily to keep PostgreSQL fast at any scale.
+
+## Reading EXPLAIN ANALYZE
+
+`EXPLAIN ANALYZE` is your primary debugging tool. It shows the actual execution plan, not just the estimated one.
+
+```sql
+EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)
+SELECT
+    u.id, u.email,
+    COUNT(o.id) as order_count,
+    SUM(o.total) as total_spent
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE u.created_at > NOW() - INTERVAL '30 days'
+  AND u.status = 'active'
+GROUP BY u.id
+ORDER BY total_spent DESC NULLS LAST
+LIMIT 50;
+```
+
+Key metrics to watch:
+- **actual time**: The real execution time per node. Look for nodes that dominate.
+- **rows vs planned rows**: Large discrepancies mean stale statistics — run `ANALYZE`.
+- **Buffers: shared hit/read**: `hit` = from cache (fast), `read` = from disk (slow). High reads = insufficient `shared_buffers` or working set too large.
+- **Seq Scan on large tables**: Sequential scans on tables with millions of rows are almost always a red flag.
+
+## Indexing Strategies
+
+### B-Tree Indexes (Default)
+
+```sql
+-- Single column index
+CREATE INDEX idx_users_email ON users(email);
+
+-- Composite index — order matters for query matching
+CREATE INDEX idx_orders_user_status ON orders(user_id, status);
+
+-- Partial index — smaller, faster for specific queries
+CREATE INDEX idx_active_users ON users(id)
+    WHERE status = 'active';
+
+-- Covering index (INCLUDE) — avoids heap lookup
+CREATE INDEX idx_orders_user_covering ON orders(user_id)
+    INCLUDE (total, created_at);
+```
+
+### When to Use Each Index Type
+
+| Index Type | Best For | Example |
+|---|---|---|
+| B-Tree | Equality, range, sorting | `WHERE email = $1` |
+| GIN | Full-text search, arrays, JSONB | `WHERE tags @> ARRAY['rust']` |
+| GiST | Geometric, full-text, ranges | `WHERE bounding_box && point` |
+| BRIN | Very large tables, sequential data | `WHERE created_at > date` |
+| Hash | Equality only (rarely needed) | `WHERE token = $1` |
+| Partial | Subset of rows | `WHERE status = 'active'` |
+
+### Expression and Functional Indexes
+
+```sql
+-- Index on lowercased email for case-insensitive search
+CREATE INDEX idx_users_lower_email ON users(LOWER(email));
+
+-- Index on extracted JSONB field
+CREATE INDEX idx_orders_metadata_type ON orders((metadata->>'type'));
+
+-- Index on date_trunc for time-series queries
+CREATE INDEX idx_events_hour ON events(DATE_TRUNC('hour', created_at));
+```
+
+### Indexing for ORDER BY + LIMIT
+
+```sql
+-- Bad: Sorts 1M rows then takes 10
+SELECT * FROM posts ORDER BY created_at DESC LIMIT 10;
+
+-- Good: Index matches ORDER BY — reads only 10 rows
+CREATE INDEX idx_posts_created ON posts(created_at DESC);
+
+-- Even better: Covering index avoids heap access entirely
+CREATE INDEX idx_posts_created_covering ON posts(created_at DESC)
+    INCLUDE (title, excerpt, author_id);
+```
+
+The difference: 1,000,000 rows sorted → 10 rows directly from index. This is the most impactful optimization for paginated APIs.
+
+## Query Optimization Patterns
+
+### N+1 Queries → JOINs
+
+```sql
+-- Bad: N+1 — one query for users, then one per user for orders
+SELECT * FROM users WHERE status = 'active';
+-- Then for each user: SELECT * FROM orders WHERE user_id = $1
+
+-- Good: Single JOIN
+SELECT u.*, o.*
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE u.status = 'active';
+```
+
+### Correlated Subqueries → LATERAL JOINs
+
+```sql
+-- Get each user's 3 most recent orders
+SELECT u.id, u.email, recent.*
+FROM users u
+CROSS JOIN LATERAL (
+    SELECT o.id, o.total, o.created_at
+    FROM orders o
+    WHERE o.user_id = u.id
+    ORDER BY o.created_at DESC
+    LIMIT 3
+) recent;
+```
+
+### Aggregate Filtering
+
+```sql
+-- Filter AFTER aggregation (HAVING) vs filtering BEFORE (WHERE)
+-- WHERE runs before GROUP BY — faster
+
+SELECT user_id, COUNT(*) as order_count
+FROM orders
+WHERE created_at > NOW() - INTERVAL '90 days'  -- filter first
+GROUP BY user_id
+HAVING COUNT(*) > 5;  -- then aggregate filter
+```
+
+## Table Partitioning
+
+For tables with hundreds of millions of rows, partition by time or range:
+
+```sql
+CREATE TABLE events (
+    id BIGSERIAL,
+    user_id BIGINT NOT NULL,
+    event_type TEXT NOT NULL,
+    payload JSONB,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+) PARTITION BY RANGE (created_at);
+
+CREATE TABLE events_2024_q1 PARTITION OF events
+    FOR VALUES FROM ('2024-01-01') TO ('2024-04-01');
+
+CREATE TABLE events_2024_q2 PARTITION OF events
+    FOR VALUES FROM ('2024-04-01') TO ('2024-07-01');
+
+-- Queries automatically use partition pruning
+SELECT * FROM events WHERE created_at >= '2024-02-01';
+-- PostgreSQL only scans events_2024_q1
+```
+
+### Partition Maintenance
+
+```sql
+-- Detach old partition
+ALTER TABLE events DETACH PARTITION events_2023_q4;
+
+-- Create new partition for upcoming quarter
+CREATE TABLE events_2024_q3 PARTITION OF events
+    FOR VALUES FROM ('2024-07-01') TO ('2024-10-01');
+```
+
+## Connection Pooling with PgBouncer
+
+Too many connections kill PostgreSQL performance. Each connection consumes ~10MB and adds context-switching overhead.
+
+```ini
+# pgbouncer.ini
+[databases]
+mydb = host=localhost port=5432 dbname=mydb
+
+[pgbouncer]
+listen_addr = 0.0.0.0
+listen_port = 6432
+auth_type = scram-sha-256
+auth_file = /etc/pgbouncer/userlist.txt
+
+pool_mode = transaction
+max_client_conn = 1000
+default_pool_size = 25
+reserve_pool_size = 5
+reserve_pool_timeout = 3
+```
+
+Pool mode comparison:
+- **Session**: One server connection per client connection — least efficient
+- **Transaction**: Server connection returned to pool after each transaction — good default
+- **Statement**: Server connection returned after each statement — best for simple queries
+
+## PostgreSQL Configuration Tuning
+
+```ini
+# postgresql.conf — key tuning parameters
+
+# Memory
+shared_buffers = 4GB              # 25% of RAM
+effective_cache_size = 12GB       # 75% of RAM
+work_mem = 64MB                   # Per-operation sort memory
+maintenance_work_mem = 1GB        # For VACUUM, CREATE INDEX
+
+# WAL and Checkpoints
+wal_level = replica
+max_wal_size = 4GB
+checkpoint_timeout = 15min
+checkpoint_completion_target = 0.9
+
+# Planner
+random_page_cost = 1.1            # 1.1 for SSDs, 4.0 for HDDs
+effective_io_concurrency = 200    # SSDs can handle many concurrent IOs
+
+# Connections
+max_connections = 200              # Use PgBouncer instead of raising this
+```
+
+## Key Takeaways
+
+- **EXPLAIN ANALYZE** is your first step — never guess, always measure
+- **Indexes match your queries** — create indexes that support WHERE, JOIN, ORDER BY, and LIMIT together
+- **Covering indexes with INCLUDE** eliminate heap lookups for common query patterns
+- **Partitioning** enables efficient queries on tables with 100M+ rows
+- **PgBouncer in transaction mode** is essential for connection management at scale
+- **shared_buffers = 25% RAM** is the sweet spot for most workloads
+- **VACUUM and ANALYZE** are not optional — schedule them or enable autovacuum
+- **Functional and partial indexes** are underused tools for specific query patterns
+
+PostgreSQL performance isn't magic — it's about understanding how the query planner works and giving it the structures it needs to execute efficiently.

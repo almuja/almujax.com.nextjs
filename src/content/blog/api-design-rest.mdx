@@ -1,0 +1,361 @@
+---
+title: "Designing REST APIs That Scale: Best Practices and Patterns"
+description: "Architect robust, versioned, and performant REST APIs — resource modeling, pagination, error handling, rate limiting, caching, HATEOAS, and OpenAPI documentation patterns."
+date: "2024-03-01"
+image: "/vercel.svg"
+category: "Software Engineering"
+tags: ["API Design", "REST", "Backend", "Architecture", "OpenAPI"]
+featured: false
+author:
+  name: "Mujahid Siyam"
+  image: "/vercel.svg"
+  bio: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps"
+  socialLinks:
+    github: "https://github.com/bymuja"
+    twitter: "https://twitter.com/bymuja"
+    linkedin: "https://linkedin.com/in/bymuja"
+    website: "https://bymuja.com"
+draft: false
+---
+
+A well-designed API is a joy to use; a poorly designed one is a constant source of frustration. REST APIs power the modern web, but "RESTful" means more than just HTTP + JSON. This guide covers the patterns and principles that separate production-grade APIs from quick hacks — from resource modeling to caching, versioning to documentation.
+
+## Resource Modeling
+
+The foundation of any REST API is how you model your resources. Resources are nouns, not verbs. Relationships are expressed through URLs.
+
+```
+GET    /projects              # List projects
+POST   /projects              # Create project
+GET    /projects/{id}         # Get project
+PATCH  /projects/{id}         # Update project
+DELETE /projects/{id}         # Delete project
+
+GET    /projects/{id}/members  # List members of a project
+POST   /projects/{id}/members  # Add member to project
+
+GET    /projects/{id}/deployments/latest  # Get latest deployment
+```
+
+### Collection vs Singleton Resources
+
+```typescript
+// Collection resource — always returns array
+GET /projects
+{
+  "data": [...],
+  "meta": { "total": 100, "page": 1 }
+}
+
+// Singleton resource — single object
+GET /projects/{id}
+{
+  "data": { "id": "...", "name": "..." }
+}
+
+// Sub-collection
+GET /projects/{id}/members
+{
+  "data": [...],
+  "meta": { "total": 5 }
+}
+```
+
+### Avoid These Anti-Patterns
+
+```
+❌ GET /getProjects          # Verb in URL
+❌ GET /projects?id=123      # ID as query param when it identifies the resource
+❌ POST /projects/delete     # HTTP method already specifies the action
+❌ GET /projects/active      # Filtering should use query params: GET /projects?status=active
+✅ GET /projects             # Clean, RESTful
+✅ GET /projects/123         # Resource identified by path
+✅ DELETE /projects/123      # HTTP method = action
+✅ GET /projects?status=active  # Filter via query params
+```
+
+## Consistent Response Envelope
+
+Adopt a consistent response format across all endpoints:
+
+```typescript
+interface ApiResponse<T> {
+  data: T;
+  meta?: {
+    total: number;
+    page: number;
+    perPage: number;
+    totalPages: number;
+  };
+  links?: {
+    self: string;
+    first?: string;
+    prev?: string;
+    next?: string;
+    last?: string;
+  };
+}
+
+interface ApiError {
+  error: {
+    code: string;
+    message: string;
+    details?: Array<{
+      field?: string;
+      message: string;
+    }>;
+    requestId: string;
+  };
+}
+```
+
+### Pagination
+
+```typescript
+// Offset-based (simple, works for most cases)
+GET /projects?page=1&per_page=20
+
+// Cursor-based (consistent under concurrent writes, better for real-time data)
+GET /projects?cursor=eyJpZCI6MTIzfQ&limit=20
+
+// Response with pagination metadata
+{
+  "data": [...],
+  "meta": {
+    "total": 1547,
+    "page": 1,
+    "per_page": 20,
+    "total_pages": 78
+  },
+  "links": {
+    "self": "/projects?page=1&per_page=20",
+    "next": "/projects?page=2&per_page=20",
+    "last": "/projects?page=78&per_page=20"
+  }
+}
+```
+
+### Cursor Pagination Implementation
+
+```typescript
+// Cursor = base64-encoded JSON containing the last item's sort key
+function encodeCursor(lastItem: { id: string; createdAt: string }): string {
+  return Buffer.from(JSON.stringify({
+    id: lastItem.id,
+    createdAt: lastItem.createdAt,
+  })).toString("base64url");
+}
+
+// Query with cursor
+const query = `
+  SELECT * FROM projects
+  WHERE (created_at, id) < ($1, $2)
+  ORDER BY created_at DESC, id DESC
+  LIMIT $3
+`;
+// Pass decoded cursor values: { createdAt, id }
+```
+
+## Filtering, Sorting, and Field Selection
+
+```
+# Filtering
+GET /projects?status=active&language=typescript&archived=false
+
+# Sorting
+GET /projects?sort=-created_at,name     # - for descending
+
+# Field selection (sparse fieldsets)
+GET /projects?fields=id,name,language,stars
+
+# Search
+GET /projects?q=rust+nix
+
+# Combined
+GET /projects?status=active&sort=-stars&fields=id,name,stars&page=1&per_page=50
+```
+
+## Error Handling
+
+### HTTP Status Codes
+
+| Code | When to Use |
+|---|---|
+| 200 | Successful GET, PATCH |
+| 201 | Successful POST (resource created) |
+| 204 | Successful DELETE (no content) |
+| 400 | Bad request — invalid input, validation failure |
+| 401 | Unauthenticated — missing or invalid credentials |
+| 403 | Forbidden — authenticated but not authorized |
+| 404 | Resource not found |
+| 409 | Conflict — duplicate resource, stale version |
+| 422 | Unprocessable — semantically invalid request |
+| 429 | Rate limited |
+| 500 | Internal server error |
+
+### Structured Error Responses
+
+```typescript
+// Validation error
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Request validation failed",
+    "details": [
+      { "field": "email", "message": "Must be a valid email address" },
+      { "field": "age", "message": "Must be a positive integer" }
+    ],
+    "requestId": "req_abc123"
+  }
+}
+
+// Not found
+{
+  "error": {
+    "code": "NOT_FOUND",
+    "message": "Project with ID 'xyz' not found",
+    "requestId": "req_def456"
+  }
+}
+```
+
+## Rate Limiting
+
+```typescript
+// Rate limit headers
+X-RateLimit-Limit: 1000
+X-RateLimit-Remaining: 987
+X-RateLimit-Reset: 1706745600
+Retry-After: 60
+
+// When exceeded (429)
+{
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Too many requests. Try again in 60 seconds.",
+    "requestId": "req_xyz"
+  }
+}
+```
+
+## Versioning
+
+Three common strategies:
+
+```typescript
+// 1. URL path versioning (most explicit, easiest to understand)
+GET /v1/projects
+GET /v2/projects
+
+// 2. Header versioning (clean URLs, harder to test)
+GET /projects
+Accept: application/vnd.api+json; version=2
+
+// 3. Query parameter (simple, pollutes URL)
+GET /projects?version=2
+```
+
+URL path versioning is the most widely adopted and easiest to implement. Version only when you must — most changes are additive and don't need version bumps.
+
+## Caching
+
+### HTTP Cache Headers
+
+```typescript
+// Public, cachable response
+Cache-Control: public, max-age=3600, s-maxage=3600
+ETag: "abc123"
+
+// Conditional request
+GET /projects/123
+If-None-Match: "abc123"
+// Response: 304 Not Modified (no body sent)
+
+// Private, per-user response
+Cache-Control: private, max-age=60
+
+// Never cache
+Cache-Control: no-store
+```
+
+### ETags for Optimistic Concurrency
+
+```typescript
+// Client sends If-Match with the ETag they last received
+PATCH /projects/123
+If-Match: "abc123"
+
+// Server checks ETag matches current version
+// If not: 412 Precondition Failed — someone else modified the resource
+```
+
+## OpenAPI Documentation
+
+```yaml
+# openapi.yaml
+openapi: 3.1.0
+info:
+  title: Project Management API
+  version: 1.0.0
+  description: API for managing software projects
+servers:
+  - url: https://api.example.com/v1
+paths:
+  /projects:
+    get:
+      summary: List projects
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, archived]
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectList"
+    post:
+      summary: Create project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProject"
+      responses:
+        "201":
+          description: Project created
+
+components:
+  schemas:
+    Project:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        status: { type: string, enum: [active, archived] }
+        created_at: { type: string, format: date-time }
+```
+
+Generate docs with: `npx @redocly/cli build-docs openapi.yaml`
+
+## Key Takeaways
+
+- **Resources are nouns, HTTP methods are verbs** — express actions through the HTTP method
+- **Consistent response envelopes** make clients predictable and reduce integration work
+- **Cursor-based pagination** handles real-time data better than offset-based
+- **Sparse fieldsets** (`?fields=`) reduce payload size for bandwidth-constrained clients
+- **Structured errors** with codes, messages, and details make debugging possible
+- **Conditional requests** with ETags save bandwidth and prevent lost updates
+- **Rate limiting** protects your service and communicates clearly via headers
+- **OpenAPI** generates documentation, client SDKs, and validation — write it first
+
+A well-designed API is an investment that pays dividends every time someone integrates with it. Take the time to model your resources thoughtfully, version deliberately, and document exhaustively.

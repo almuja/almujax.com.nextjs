@@ -1,0 +1,365 @@
+---
+title: "Rust Systems Programming: From Zero to Production"
+description: "Master Rust for systems programming — ownership, borrowing, lifetimes, zero-cost abstractions, async/await, FFI, and building high-performance networked services."
+date: "2024-02-01"
+image: "/vercel.svg"
+category: "Rust"
+tags: ["Rust", "Systems Programming", "Performance", "Async", "FFI"]
+featured: true
+author:
+  name: "Mujahid Siyam"
+  image: "/vercel.svg"
+  bio: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps"
+  socialLinks:
+    github: "https://github.com/bymuja"
+    twitter: "https://twitter.com/bymuja"
+    linkedin: "https://linkedin.com/in/bymuja"
+    website: "https://bymuja.com"
+draft: false
+---
+
+Rust has been Stack Overflow's most loved language for eight consecutive years — and for good reason. It combines C-level performance with memory safety guaranteed at compile time, no garbage collector, and a modern type system that makes entire classes of bugs impossible. This guide covers the core concepts, advanced patterns, and production practices I've learned building real systems in Rust.
+
+## Why Rust for Systems Programming
+
+Traditional systems languages (C, C++) give you raw performance but leave memory safety to the programmer — leading to buffer overflows, use-after-free, data races, and null pointer dereferences. Rust eliminates all of these at compile time through its ownership model, without a runtime or garbage collector.
+
+The result: software that runs at native speed, never segfaults, never leaks memory, and handles concurrency safely by construction.
+
+## Ownership and Borrowing
+
+Ownership is Rust's central innovation. Every value has exactly one owner at a time. When the owner goes out of scope, the value is dropped. This simple rule eliminates memory leaks and double-free bugs.
+
+```rust
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1;              // s1 is moved to s2
+    // println!("{}", s1);    // Compile error: s1 was moved
+
+    let s3 = s2.clone();      // Deep copy — both s2 and s3 are valid
+    println!("{} {}", s2, s3);
+}
+
+fn take_ownership(s: String) {
+    println!("{}", s);
+} // s is dropped here
+
+fn borrow(s: &String) {
+    println!("{}", s);
+} // s is just a reference, nothing is dropped
+```
+
+### Borrowing Rules
+
+1. You can have either one mutable reference OR any number of immutable references — never both
+2. References must always be valid (no dangling pointers)
+3. These rules are enforced at compile time
+
+```rust
+let mut data = vec![1, 2, 3];
+
+// Multiple immutable borrows — fine
+let r1 = &data;
+let r2 = &data;
+println!("{} {}", r1.len(), r2.len());
+
+// Mutable borrow — only one allowed
+let r3 = &mut data;
+r3.push(4);
+// let r4 = &data; // Error: cannot borrow as immutable, already mutably borrowed
+```
+
+## Lifetimes: Making References Safe
+
+Lifetimes tell the compiler how long references are valid. Most of the time they're elided — the compiler infers them. But when you write functions that return references, you need explicit lifetime annotations.
+
+```rust
+// Lifetime elision — compiler infers it
+fn first_word(s: &str) -> &str {
+    s.split_whitespace().next().unwrap_or("")
+}
+
+// Explicit lifetime — needed when returning a reference from multiple inputs
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() { x } else { y }
+}
+
+// Structs holding references must declare lifetimes
+struct Excerpt<'a> {
+    content: &'a str,
+    start: usize,
+    end: usize,
+}
+
+impl<'a> Excerpt<'a> {
+    fn text(&self) -> &'a str {
+        &self.content[self.start..self.end]
+    }
+}
+```
+
+The key insight: lifetimes don't make your references live longer. They describe relationships between reference lifetimes so the compiler can verify safety.
+
+## Zero-Cost Abstractions
+
+Rust's iterators, closures, and generics compile down to the same machine code you'd write by hand. This is the "zero-cost abstraction" principle.
+
+```rust
+// This high-level code
+let sum: u64 = (0..1_000_000)
+    .filter(|x| x % 2 == 0)
+    .map(|x| x * x)
+    .sum();
+
+// Compiles to the same assembly as a hand-written loop
+// No heap allocations, no virtual dispatch, no runtime overhead
+```
+
+### Traits and Generics
+
+```rust
+// Static dispatch via generics (monomorphization)
+fn print_info<T: std::fmt::Display>(item: &T) {
+    println!("{}", item);
+}
+
+// Dynamic dispatch via trait objects (vtables)
+fn print_dyn(items: &[&dyn std::fmt::Display]) {
+    for item in items {
+        println!("{}", item);
+    }
+}
+
+// Custom trait with default implementation
+trait Serializable {
+    fn serialize(&self) -> String {
+        format!("{}", std::any::type_name::<Self>())
+    }
+}
+
+impl Serializable for Vec<u8> {
+    fn serialize(&self) -> String {
+        hex::encode(self)
+    }
+}
+```
+
+## Error Handling with Result and Option
+
+Rust has no exceptions. Instead, recoverable errors use `Result<T, E>` and absence of values uses `Option<T>`. The `?` operator propagates errors up the call stack elegantly.
+
+```rust
+use std::fs;
+use std::io;
+
+fn read_config() -> Result<Config, io::Error> {
+    let content = fs::read_to_string("config.toml")?;
+    let config: Config = toml::from_str(&content)
+        .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+    Ok(config)
+}
+
+// Custom error type with thiserror
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+enum AppError {
+    #[error("IO error: {0}")]
+    Io(#[from] io::Error),
+    #[error("Config parse error: {0}")]
+    Config(#[from] toml::de::Error),
+    #[error("Not found: {0}")]
+    NotFound(String),
+}
+
+fn load_app() -> Result<AppState, AppError> {
+    let config = read_config()?;
+    Ok(AppState::new(config))
+}
+```
+
+## Async/Await and Tokio
+
+Rust's async ecosystem is built on the `Future` trait, with Tokio as the dominant runtime. Unlike JavaScript's Promise or Python's asyncio, Rust futures are lazy — they do nothing until polled.
+
+```rust
+use tokio::net::TcpListener;
+use tokio::io::{AsyncReadExt, AsyncWriteExt};
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let listener = TcpListener::bind("127.0.0.1:8080").await?;
+    println!("Server listening on port 8080");
+
+    loop {
+        let (mut socket, addr) = listener.accept().await?;
+        println!("Connection from {}", addr);
+
+        tokio::spawn(async move {
+            let mut buf = [0; 1024];
+            loop {
+                match socket.read(&mut buf).await {
+                    Ok(0) => return, // Connection closed
+                    Ok(n) => {
+                        if socket.write_all(&buf[..n]).await.is_err() {
+                            return;
+                        }
+                    }
+                    Err(_) => return,
+                }
+            }
+        });
+    }
+}
+```
+
+### Concurrent Request Processing
+
+```rust
+use tokio::task;
+use futures::future::join_all;
+
+async fn fetch_all(urls: &[&str]) -> Vec<Result<String, reqwest::Error>> {
+    let fetches: Vec<_> = urls.iter().map(|url| {
+        let url = url.to_string();
+        tokio::spawn(async move {
+            reqwest::get(&url).await?.text().await
+        })
+    }).collect();
+
+    join_all(fetches).await
+        .into_iter()
+        .map(|r| r.unwrap_or(Err(reqwest::Error::new(
+            reqwest::StatusCode::INTERNAL_SERVER_ERROR, "task panicked"
+        ))))
+        .collect()
+}
+```
+
+## Foreign Function Interface (FFI)
+
+Calling C code from Rust is straightforward, making it easy to leverage decades of existing libraries:
+
+```rust
+extern "C" {
+    fn getpid() -> i32;
+    fn strerror(errnum: i32) -> *const libc::c_char;
+}
+
+fn main() {
+    unsafe {
+        let pid = getpid();
+        println!("Process ID: {}", pid);
+
+        let err_ptr = strerror(2); // ENOENT
+        let err_msg = std::ffi::CStr::from_ptr(err_ptr);
+        println!("Error: {:?}", err_msg);
+    }
+}
+
+// Exposing Rust functions to C
+#[no_mangle]
+pub extern "C" fn add_numbers(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+
+## Building a Production Service
+
+Putting it all together — a production HTTP service with axum:
+
+```rust
+use axum::{
+    Router, routing::{get, post},
+    extract::{State, Path, Json},
+    http::StatusCode,
+};
+use serde::{Deserialize, Serialize};
+use sqlx::postgres::PgPool;
+use tower_http::trace::TraceLayer;
+use tracing_subscriber;
+
+#[derive(Debug, Serialize, Deserialize, sqlx::FromRow)]
+struct Project {
+    id: uuid::Uuid,
+    name: String,
+    description: Option<String>,
+    created_at: chrono::DateTime<chrono::Utc>,
+}
+
+#[derive(Deserialize)]
+struct CreateProject {
+    name: String,
+    description: Option<String>,
+}
+
+type AppState = PgPool;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    tracing_subscriber::fmt::init();
+
+    let pool = PgPool::connect("postgres://user:pass@localhost/db").await?;
+    sqlx::migrate!().run(&pool).await?;
+
+    let app = Router::new()
+        .route("/projects", get(list_projects).post(create_project))
+        .route("/projects/{id}", get(get_project))
+        .layer(TraceLayer::new_for_http())
+        .with_state(pool);
+
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await?;
+    tracing::info!("Server running on port 3000");
+    axum::serve(listener, app).await?;
+
+    Ok(())
+}
+
+async fn list_projects(State(pool): State<AppState>) -> Result<Json<Vec<Project>>, StatusCode> {
+    sqlx::query_as::<_, Project>("SELECT * FROM projects ORDER BY created_at DESC")
+        .fetch_all(&pool)
+        .await
+        .map(Json)
+        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)
+}
+
+async fn create_project(
+    State(pool): State<AppState>,
+    Json(input): Json<CreateProject>,
+) -> Result<(StatusCode, Json<Project>), StatusCode> {
+    sqlx::query_as::<_, Project>(
+        "INSERT INTO projects (name, description) VALUES ($1, $2) RETURNING *"
+    )
+    .bind(&input.name)
+    .bind(&input.description)
+    .fetch_one(&pool)
+    .await
+    .map(|p| (StatusCode::CREATED, Json(p)))
+    .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)
+}
+
+async fn get_project(
+    State(pool): State<AppState>,
+    Path(id): Path<uuid::Uuid>,
+) -> Result<Json<Project>, StatusCode> {
+    sqlx::query_as::<_, Project>("SELECT * FROM projects WHERE id = $1")
+        .bind(id)
+        .fetch_optional(&pool)
+        .await
+        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?
+        .map(Json)
+        .ok_or(StatusCode::NOT_FOUND)
+}
+```
+
+## Key Takeaways
+
+- Rust's **ownership model** eliminates memory bugs at compile time without garbage collection
+- **Lifetimes** are about relationships, not duration — the compiler needs them to verify safety
+- **Zero-cost abstractions** mean iterators, closures, and generics have no runtime overhead
+- **Result and Option** replace exceptions — explicit, exhaustive, and thread-safe
+- **Tokio** provides the async runtime; Rust futures are lazy and composed efficiently
+- **FFI** lets you call C libraries with minimal overhead, making Rust a drop-in replacement for C in existing codebases
+- **Axum + SQLx** form a production-ready stack with compile-time checked SQL queries
+
+Rust has a steep learning curve, but the compiler becomes your most valuable teammate — catching bugs before they ever reach production. The confidence you gain from "if it compiles, it works correctly" fundamentally changes how you approach systems programming.

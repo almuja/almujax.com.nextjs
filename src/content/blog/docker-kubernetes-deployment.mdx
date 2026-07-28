@@ -1,0 +1,348 @@
+---
+title: "Docker to Kubernetes: Container Orchestration in Production"
+description: "From Docker Compose to production Kubernetes — containerization fundamentals, multi-stage builds, Kubernetes architecture, deployments, services, ingress, and GitOps with ArgoCD."
+date: "2024-02-25"
+image: "/vercel.svg"
+category: "DevOps"
+tags: ["Docker", "Kubernetes", "Containers", "DevOps", "K8s", "ArgoCD"]
+featured: false
+author:
+  name: "Mujahid Siyam"
+  image: "/vercel.svg"
+  bio: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps"
+  socialLinks:
+    github: "https://github.com/bymuja"
+    twitter: "https://twitter.com/bymuja"
+    linkedin: "https://linkedin.com/in/bymuja"
+    website: "https://bymuja.com"
+draft: false
+---
+
+Containers revolutionized how we package and deploy software. Docker made them accessible, and Kubernetes made them manageable at scale. But the gap between "hello world on Docker" and "production Kubernetes" is substantial. This guide covers the journey — from Docker fundamentals to production-grade Kubernetes deployments with GitOps.
+
+## Docker Fundamentals
+
+### Multi-Stage Builds
+
+Multi-stage builds keep your images small by separating build dependencies from runtime:
+
+```dockerfile
+# Stage 1: Build
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN corepack enable && pnpm install --frozen-lockfile
+COPY . .
+RUN pnpm build
+
+# Stage 2: Production runtime
+FROM node:22-alpine
+RUN addgroup -S app && adduser -S app -G app
+WORKDIR /app
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/node_modules ./node_modules
+USER app
+EXPOSE 3000
+CMD ["node_modules/.bin/next", "start"]
+```
+
+Key practices:
+- Use specific tags, never `:latest` in production
+- Run as non-root user
+- Minimize layers by combining RUN commands
+- Use `.dockerignore` to exclude `node_modules`, `.git`, build artifacts
+
+### Docker Compose for Development
+
+```yaml
+# docker-compose.yml
+services:
+  app:
+    build:
+      context: .
+      target: builder
+    ports: ["3000:3000"]
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - DATABASE_URL=postgresql://app:dev@db:5432/app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: app
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+volumes:
+  pgdata:
+```
+
+## Kubernetes Architecture
+
+Kubernetes abstracts your infrastructure into a unified API. The key resources:
+
+```
+Cluster
+└── Namespace
+    ├── Deployment (manages Pods)
+    │   └── ReplicaSet
+    │       └── Pod (smallest deployable unit)
+    │           └── Container(s)
+    ├── Service (stable network endpoint)
+    ├── Ingress (HTTP routing)
+    ├── ConfigMap (configuration)
+    └── Secret (sensitive data)
+```
+
+### Deployment
+
+```yaml
+# k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: production
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: app
+        image: registry.example.com/app:v1.2.3
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: app-secrets
+```
+
+### Service
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+  namespace: production
+spec:
+  selector:
+    app: my-app
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: ClusterIP
+```
+
+### Ingress with TLS
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  namespace: production
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    - app.example.com
+    secretName: app-tls
+  rules:
+  - host: app.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+```
+
+## Resource Management
+
+```yaml
+# Horizontal Pod Autoscaler
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: app
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+```
+
+## GitOps with ArgoCD
+
+ArgoCD continuously syncs your Kubernetes manifests from Git — your repo is the source of truth.
+
+```yaml
+# argocd/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/bymuja/my-app
+    targetRevision: main
+    path: k8s/overlays/production
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+```
+
+With this setup:
+- Push to main → ArgoCD detects the change → applies to cluster
+- Drift detection: if someone manually changes a resource, ArgoCD reverts it
+- Rollbacks are `git revert` + push
+
+## Kustomize for Environment Overlays
+
+```yaml
+# k8s/base/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+images:
+- name: registry.example.com/app
+  newTag: v1.2.3
+
+# k8s/overlays/production/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+- ../../base
+patches:
+- path: replicas-patch.yaml
+- path: resources-patch.yaml
+```
+
+### Namespace Isolation
+
+```yaml
+# k8s/base/namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: prod-quota
+  namespace: production
+spec:
+  hard:
+    requests.cpu: "20"
+    requests.memory: 40Gi
+    limits.cpu: "40"
+    limits.memory: 80Gi
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: production
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+```
+
+## Key Takeaways
+
+- **Multi-stage Docker builds** separate build from runtime — smaller, more secure images
+- **Always set resource requests and limits** — prevent noisy neighbors and OOM kills
+- **Readiness and liveness probes** are essential — without them, you ship broken pods
+- **HorizontalPodAutoscaler** scales based on actual metrics, not guesses
+- **ArgoCD + GitOps** makes deployments auditable, repeatable, and self-healing
+- **Kustomize** handles environment differences without duplicating manifests
+- **NetworkPolicy** is your firewall — deny by default, allow explicitly
+- **cert-manager** automates TLS certificate management with Let's Encrypt
+
+The jump from Docker to Kubernetes is significant, but the payoff is immense: self-healing deployments, automatic scaling, zero-downtime rollouts, and infrastructure as code that you can reason about.

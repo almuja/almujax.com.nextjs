@@ -1,0 +1,318 @@
+---
+title: "DevSecOps: Building Secure CI/CD Pipelines from Day One"
+description: "Integrate security into your CI/CD pipeline — SAST, DAST, dependency scanning, secret management, container hardening, and automated compliance checks for modern deployment workflows."
+date: "2024-02-10"
+image: "/vercel.svg"
+category: "DevSecOps"
+tags: ["DevSecOps", "CI/CD", "Security", "Docker", "GitHub Actions", "Compliance"]
+featured: false
+author:
+  name: "Mujahid Siyam"
+  image: "/vercel.svg"
+  bio: "Software Engineer | AI/ML Engineer | Data Scientist | DevSecOps"
+  socialLinks:
+    github: "https://github.com/bymuja"
+    twitter: "https://twitter.com/bymuja"
+    linkedin: "https://linkedin.com/in/bymuja"
+    website: "https://bymuja.com"
+draft: false
+---
+
+Security shouldn't be a gate at the end of your pipeline — it should be woven into every commit. DevSecOps shifts security left, integrating automated checks, vulnerability scanning, and compliance validation directly into your CI/CD workflow. This guide covers the tools, patterns, and practices for building pipelines that are fast, reliable, and secure by default.
+
+## The DevSecOps Pipeline Architecture
+
+A secure pipeline has layers of defense at every stage:
+
+```
+Commit → SAST → Dependency Scan → Build → Container Scan → Deploy Staging → DAST → Deploy Prod → Monitoring
+```
+
+Each layer catches different classes of issues before they reach production.
+
+## Static Application Security Testing (SAST)
+
+SAST analyzes source code for security vulnerabilities without executing it. Semgrep is fast, open-source, and has a comprehensive rule set.
+
+### GitHub Actions Integration
+
+```yaml
+# .github/workflows/security.yml
+name: Security Pipeline
+on: [push, pull_request]
+
+jobs:
+  sast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Semgrep SAST
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: p/default
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+
+      - name: Run custom rules
+        run: |
+          semgrep --config=.semgrep/ --sarif --output=semgrep.sarif
+        continue-on-error: true
+
+      - name: Upload SARIF results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: semgrep.sarif
+```
+
+### Custom Semgrep Rules
+
+```yaml
+# .semgrep/hardcoded-credentials.yml
+rules:
+  - id: hardcoded-aws-credentials
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $KEY = "AKIA..."
+          - pattern: |
+              $SECRET = "$SECRET_KEY"
+    message: "Hardcoded AWS credentials detected"
+    severity: ERROR
+    languages: [python, javascript, typescript]
+
+  - id: sql-injection-string-format
+    patterns:
+      - pattern: |
+          cursor.execute(f"SELECT ... {$VAR} ...")
+    message: "Potential SQL injection via string formatting"
+    severity: WARNING
+    languages: [python]
+```
+
+## Dependency Scanning
+
+Your dependencies are part of your attack surface. Scan them continuously.
+
+```yaml
+  dependency-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          scan-ref: .
+          format: sarif
+          output: trivy-results.sarif
+          severity: CRITICAL,HIGH
+
+      - name: Upload Trivy results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-results.sarif
+
+      - name: Check for vulnerable npm packages
+        run: |
+          npm audit --audit-level=high
+        continue-on-error: true
+```
+
+### Automated Dependency Updates
+
+```yaml
+# .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "security"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+```
+
+## Container Security
+
+### Multi-Stage Docker Builds
+
+```dockerfile
+# Build stage — includes dev tools, compilers
+FROM rust:1.77-slim AS builder
+WORKDIR /app
+COPY Cargo.toml Cargo.lock ./
+RUN mkdir src && echo "fn main() {}" > src/main.rs
+RUN cargo build --release
+RUN rm -rf src
+COPY src ./src
+RUN cargo build --release
+
+# Runtime stage — minimal, no build tools
+FROM debian:bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+RUN useradd -m -u 1000 appuser
+COPY --from=builder /app/target/release/app /usr/local/bin/app
+USER appuser
+EXPOSE 8080
+ENTRYPOINT ["/usr/local/bin/app"]
+```
+
+### Container Image Scanning in CI
+
+```yaml
+  container-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build container
+        run: docker build -t app:${{ github.sha }} .
+
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: app:${{ github.sha }}
+          format: table
+          exit-code: 1
+          severity: CRITICAL,HIGH
+
+      - name: Check for non-root user
+        run: |
+          USER=$(docker inspect app:${{ github.sha }} --format '{{.Config.User}}')
+          if [ -z "$USER" ] || [ "$USER" = "root" ] || [ "$USER" = "0" ]; then
+            echo "ERROR: Container must run as non-root user"
+            exit 1
+          fi
+```
+
+## Secrets Management
+
+Never store secrets in code or environment variables without protection.
+
+### Using SOPS with Age
+
+```bash
+# Encrypt secrets file
+sops --age=age1... --encrypt secrets.yaml > secrets.enc.yaml
+
+# Decrypt in CI
+sops --decrypt secrets.enc.yaml > secrets.yaml
+```
+
+### GitHub Actions Secrets + Vault Integration
+
+```yaml
+  deploy:
+    needs: [sast, dependency-scan, container-scan]
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Import secrets from Vault
+        uses: hashicorp/vault-action@v2
+        with:
+          url: ${{ secrets.VAULT_ADDR }}
+          token: ${{ secrets.VAULT_TOKEN }}
+          secrets: |
+            secret/data/production/db DATABASE_URL ;
+            secret/data/production/api API_KEY
+
+      - name: Deploy with sealed secrets
+        run: |
+          echo "$DATABASE_URL" | docker secret create db_url -
+          docker stack deploy -c docker-compose.yml app
+```
+
+## Dynamic Application Security Testing (DAST)
+
+Scan your running application for vulnerabilities that SAST can't find.
+
+```yaml
+  dast:
+    runs-on: ubuntu-latest
+    needs: [deploy-staging]
+    steps:
+      - name: OWASP ZAP Scan
+        uses: zaproxy/action-full-scan@v0.9.0
+        with:
+          target: https://staging.example.com
+          rules_file_name: .zap/rules.tsv
+          cmd_options: "-a -j -T 5"
+```
+
+### Common Checks in Your Pipeline
+
+```yaml
+  compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for exposed ports
+        run: |
+          if grep -r "0.0.0.0" docker-compose*.yml; then
+            echo "WARNING: Services binding to 0.0.0.0 found"
+          fi
+
+      - name: Verify HTTPS enforcement
+        run: |
+          if grep -r "http://" nginx*.conf 2>/dev/null; then
+            echo "ERROR: HTTP (non-TLS) endpoints found in nginx config"
+            exit 1
+          fi
+
+      - name: Run kube-bench (Kubernetes CIS benchmark)
+        uses: aquasecurity/kube-bench-action@v1
+        with:
+          targets: node,master
+```
+
+## Infrastructure as Code Security
+
+Scan your Terraform, CloudFormation, or Pulumi configurations.
+
+```yaml
+  iac-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tfsec
+        uses: aquasecurity/tfsec-action@v1
+        with:
+          working_directory: infrastructure/
+
+      - name: Run checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: infrastructure/
+          framework: terraform
+          output_format: sarif
+```
+
+## Key Takeaways
+
+- **Shift left**: Catch vulnerabilities at commit time, not deployment time
+- **Layer your defenses**: SAST → dependencies → container → DAST → runtime monitoring
+- **Automate everything**: Security checks that require manual approval will be skipped
+- **Use multi-stage builds**: Separate build tools from runtime — smaller attack surface
+- **Run as non-root**: Containers should never run as root in production
+- **Scan your dependencies**: Your code might be secure, but your dependencies might not be
+- **Secrets belong in vaults**: Never in code, never in environment variables without encryption
+- **Infrastructure is code too**: Scan your Terraform/Pulumi configs for misconfigurations
+
+A secure pipeline doesn't slow you down — it catches problems when they're cheapest to fix. The goal isn't perfect security; it's making the secure path the easy path.
