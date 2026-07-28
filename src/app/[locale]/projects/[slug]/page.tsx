@@ -120,7 +120,7 @@ export async function generateMetadata({
 export default async function ProjectPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
   const resolvedParams = await params;
 
@@ -129,6 +129,8 @@ export default async function ProjectPage({
   }
 
   const slug = resolvedParams.slug;
+  const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
+  const dir = validLocale === "ar" ? "rtl" : "ltr";
   const fullPath = await findProjectFile(slug);
 
   if (!fullPath) {
@@ -157,7 +159,7 @@ export default async function ProjectPage({
     const html = await compileMdx(content);
 
     return (
-      <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300">
+      <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300" dir={dir}>
         <SoftwareSourceCodeStructuredData
           name={project.title}
           description={project.description}
@@ -170,11 +172,11 @@ export default async function ProjectPage({
           {/* Back to Projects Link - Centered and Bigger */}
           <div className="flex justify-center mb-12">
             <Link
-              href="/projects"
+              href={`/${validLocale}/projects`}
               className="inline-flex items-center text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors group text-lg"
             >
               <svg
-                className="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform"
+                className={`w-5 h-5 me-3 group-hover:-translate-x-1 transition-transform ${dir === "rtl" ? "rotate-180 group-hover:translate-x-1" : ""}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

@@ -31,14 +31,18 @@ export default function LocaleSwitcher({ locale }: LocaleSwitcherProps) {
   }, []);
 
   function switchLocale(newLocale: string) {
+    const info = locales[newLocale as keyof typeof locales] || locales.en;
+    document.documentElement.lang = newLocale === "ar" ? "ar" : newLocale === "fr" ? "fr" : "en";
+    document.documentElement.dir = info.dir;
+    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
+
     const segments = pathname.split("/").filter(Boolean);
     if (segments.length > 0 && ["en", "ar", "fr"].includes(segments[0])) {
       segments[0] = newLocale;
     } else {
       segments.unshift(newLocale);
     }
-    const newPath = "/" + segments.join("/");
-    router.push(newPath);
+    router.push("/" + segments.join("/"));
     setOpen(false);
   }
 

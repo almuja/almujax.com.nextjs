@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { locales, type Locale, localeDirections } from "@/i18n/config";
+import { locales, type Locale } from "@/i18n/config";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Script from "next/script";
+import DirManager from "../components/DirManager";
 
 export async function generateMetadata({
   params,
@@ -85,17 +85,12 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
-  const dir = localeDirections[validLocale];
-  const htmlLang = validLocale === "ar" ? "ar" : validLocale === "fr" ? "fr" : "en";
   const dict = getDictionary(validLocale);
   const authorName = validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam";
 
   return (
     <>
-      <Script id="locale-direction">{`
-        document.documentElement.lang = "${htmlLang}";
-        document.documentElement.dir = "${dir}";
-      `}</Script>
+      <DirManager locale={validLocale} />
       {locales.map((loc) => (
         <link
           key={loc}

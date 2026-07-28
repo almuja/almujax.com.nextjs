@@ -178,6 +178,7 @@ export default async function BlogPostPage({
 
     const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
     const dict = getDictionary(validLocale);
+    const dir = validLocale === "ar" ? "rtl" : "ltr";
 
     const blogDirectory = join(process.cwd(), "src", "content", "blog");
     const fullPath = join(blogDirectory, `${resolvedParams.slug}.mdx`);
@@ -202,7 +203,7 @@ export default async function BlogPostPage({
     const html = await compileMdx(content);
 
     return (
-      <div className="min-h-screen bg-background transition-colors duration-300">
+      <div className="min-h-screen bg-background transition-colors duration-300" dir={dir}>
         <ArticleStructuredData
           title={title}
           description={frontmatter.description || dict.blog.noDescription}
