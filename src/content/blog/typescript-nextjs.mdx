@@ -1,10 +1,10 @@
 ---
-title: "TypeScript with Next.js"
-description: "Building type-safe applications with Next.js and TypeScript"
+title: "TypeScript with Next.js: Building Type-Safe Full-Stack Applications"
+description: "A comprehensive guide to leveraging TypeScript in Next.js — from strict configuration and type-safe routing to server actions, API routes, and advanced patterns for production applications."
 date: "2024-01-25"
 image: "/vercel.svg"
 category: "Web Development"
-tags: ["TypeScript", "Next.js", "Full Stack"]
+tags: ["TypeScript", "Next.js", "Full Stack", "React", "Server Components"]
 featured: true
 author:
   name: "Mujahid Siyam"
@@ -13,18 +13,384 @@ author:
   socialLinks:
     github: "https://github.com/bymuja"
     twitter: "https://twitter.com/bymuja"
-    linkedin: "https://linkedin.com/in/mujahidsiyam"
+    linkedin: "https://linkedin.com/in/bymuja"
     website: "https://bymuja.com"
-draft: false
+draft: true
 ---
 
-# TypeScript with Next.js
+Next.js and TypeScript form one of the most powerful combinations in modern web development. Next.js gives you server-side rendering, static generation, API routes, and the App Router — while TypeScript catches bugs at compile time, provides unparalleled editor support, and makes refactoring fearless. This guide covers practical patterns I use daily to build type-safe, production-grade Next.js applications.
 
-Building type-safe, scalable applications with Next.js and TypeScript for better developer experience and fewer runtime errors.
+## TypeScript Configuration for Next.js
 
-## Benefits
+Next.js ships with excellent TypeScript support out of the box, but the default configuration is intentionally permissive. For production applications, tighten your `tsconfig.json`:
 
-- Type safety for your entire application
-- Better IDE support and autocompletion
-- Early error detection
-- Improved code maintainability
+```json
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+```
+
+The key additions over the default: `noUncheckedIndexedAccess` prevents undefined from array/object access, `noImplicitReturns` ensures all code paths return a value, and `noFallthroughCasesInSwitch` prevents accidental switch fall-through.
+
+## Type-Safe Routing with the App Router
+
+Next.js 13+ App Router uses file-system routing with full TypeScript support. The `params` and `searchParams` are properly typed.
+
+### Route Parameters
+
+```typescript
+// app/blog/[slug]/page.tsx
+interface BlogPostPageProps {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ preview?: string }>;
+}
+
+export default async function BlogPostPage({
+  params,
+  searchParams,
+}: BlogPostPageProps) {
+  const { slug } = await params;
+  const { preview } = await searchParams;
+
+  const post = await getPost(slug);
+  if (!post) notFound();
+
+  return <Article post={post} isPreview={preview === "true"} />;
+}
+```
+
+### generateMetadata with Full Typing
+
+```typescript
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  if (!post) return { title: "Not Found" };
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      images: [{ url: post.image }],
+    },
+    alternates: {
+      canonical: `https://yoursite.com/blog/${slug}`,
+    },
+  };
+}
+```
+
+### generateStaticParams
+
+```typescript
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
+```
+
+## Server Components vs Client Components
+
+One of Next.js 13+'s most powerful features is the Server Components / Client Components boundary. Server Components run only on the server — they can read databases directly, have zero client-side JavaScript, and never expose secrets.
+
+```typescript
+// Server Component — can be async, access DB directly
+// app/dashboard/page.tsx
+import { db } from "@/lib/db";
+import { auth } from "@/lib/auth";
+
+export default async function DashboardPage() {
+  const session = await auth();
+  const projects = await db.project.findMany({
+    where: { userId: session.user.id },
+    orderBy: { updatedAt: "desc" },
+  });
+
+  return <DashboardContent projects={projects} userId={session.user.id} />;
+}
+```
+
+```typescript
+// Client Component — marked with "use client"
+// app/dashboard/DashboardContent.tsx
+"use client";
+
+import { useState } from "react";
+
+interface DashboardContentProps {
+  projects: Project[];
+  userId: string;
+}
+
+export function DashboardContent({
+  projects,
+  userId,
+}: DashboardContentProps) {
+  const [filter, setFilter] = useState<ProjectStatus>("active");
+
+  const filtered = projects.filter((p) => p.status === filter);
+
+  return (
+    <div>
+      <FilterBar current={filter} onChange={setFilter} />
+      <ProjectList projects={filtered} />
+    </div>
+  );
+}
+```
+
+### The Pattern: Server Component Wrapper
+
+The most effective pattern: Server Components fetch data and pass it as props to Client Components. This eliminates client-side waterfalls and keeps secrets safe.
+
+## Type-Safe API Routes and Server Actions
+
+### Route Handlers (API Routes)
+
+```typescript
+// app/api/projects/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+
+const CreateProjectSchema = z.object({
+  name: z.string().min(1).max(100),
+  description: z.string().max(1000).optional(),
+  language: z.enum(["typescript", "rust", "python", "go"]),
+});
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const validated = CreateProjectSchema.parse(body);
+
+    const project = await db.project.create({ data: validated });
+
+    return NextResponse.json(project, { status: 201 });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Validation failed", details: error.errors },
+        { status: 400 }
+      );
+    }
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+```
+
+### Server Actions (Type-Safe Form Handling)
+
+Server Actions let you call server-side functions directly from forms without creating API endpoints:
+
+```typescript
+// app/actions/projects.ts
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { z } from "zod";
+import { auth } from "@/lib/auth";
+
+const schema = z.object({
+  name: z.string().min(1),
+  description: z.string().optional(),
+});
+
+export async function createProject(formData: FormData) {
+  const session = await auth();
+  if (!session) throw new Error("Unauthorized");
+
+  const validated = schema.parse({
+    name: formData.get("name"),
+    description: formData.get("description"),
+  });
+
+  await db.project.create({
+    data: {
+      ...validated,
+      userId: session.user.id,
+    },
+  });
+
+  revalidatePath("/dashboard");
+}
+```
+
+```typescript
+// Client component using Server Action
+"use client";
+
+import { createProject } from "@/app/actions/projects";
+import { useRef } from "react";
+
+export function NewProjectForm() {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  return (
+    <form
+      ref={formRef}
+      action={async (formData) => {
+        await createProject(formData);
+        formRef.current?.reset();
+      }}
+    >
+      <input name="name" required />
+      <textarea name="description" />
+      <button type="submit">Create Project</button>
+    </form>
+  );
+}
+```
+
+## Database Access with Type Safety
+
+Using Prisma or Drizzle with TypeScript gives you end-to-end type safety from database to UI:
+
+```typescript
+// lib/db.ts — Prisma example
+import { PrismaClient } from "@prisma/client";
+
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined;
+};
+
+export const db = globalForPrisma.prisma ?? new PrismaClient();
+
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = db;
+}
+```
+
+The Prisma client is fully typed — your queries return typed objects, and TypeScript catches schema mismatches at compile time. Combined with Next.js Server Components, you can query the database directly in your page components without API layers.
+
+## Error Handling Patterns
+
+### Error Boundaries
+
+```typescript
+// app/dashboard/error.tsx
+"use client";
+
+export default function DashboardError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[400px]">
+      <h2 className="text-2xl font-bold mb-4">Something went wrong!</h2>
+      <p className="text-muted-foreground mb-4">
+        {error.message || "An unexpected error occurred"}
+      </p>
+      <button onClick={reset} className="px-4 py-2 bg-primary text-white rounded-lg">
+        Try again
+      </button>
+    </div>
+  );
+}
+```
+
+### notFound and redirect
+
+```typescript
+import { notFound, redirect } from "next/navigation";
+
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const project = await db.project.findUnique({ where: { id } });
+
+  if (!project) notFound();
+  if (project.isPrivate) redirect("/unauthorized");
+
+  return <ProjectDetail project={project} />;
+}
+```
+
+## Image, Font, and Metadata Optimization
+
+Next.js provides built-in optimizations that are fully typed:
+
+```typescript
+import Image from "next/image";
+import { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | My App",
+    default: "My App — Type-Safe Next.js",
+  },
+  metadataBase: new URL("https://myapp.com"),
+  openGraph: {
+    type: "website",
+    siteName: "My App",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={inter.variable}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## Key Takeaways
+
+- **Enable strict TypeScript** — `noUncheckedIndexedAccess` and `noImplicitReturns` prevent entire categories of bugs
+- **Server Components** fetch data and pass as props to Client Components — zero client waterfalls
+- **Zod + Server Actions** give you type-safe form handling without API boilerplate
+- **generateMetadata** and **generateStaticParams** are fully typed — leverage the types for better SEO
+- **Prisma/Drizzle** provide end-to-end type safety from database to UI
+- **Route handlers** with Zod validation prevent malformed requests before they reach your business logic
+- **Error boundaries and `notFound`** provide graceful degradation without crashing the page
+
+TypeScript and Next.js together let you build with confidence — your editor catches mistakes as you type, the compiler catches type mismatches before deployment, and the framework provides the infrastructure to ship fast without sacrificing quality.

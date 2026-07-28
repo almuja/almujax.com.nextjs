@@ -1,10 +1,10 @@
 ---
-title: "React Hooks Guide"
-description: "A comprehensive guide to React Hooks"
+title: "React Hooks: A Complete Guide to Modern React State Management"
+description: "Master React Hooks from fundamentals to advanced patterns — useState, useEffect, useReducer, useMemo, useCallback, custom hooks, and real-world performance optimization strategies."
 date: "2024-01-20"
 image: "/vercel.svg"
 category: "Web Development"
-tags: ["React", "Hooks", "JavaScript"]
+tags: ["React", "Hooks", "JavaScript", "TypeScript", "State Management"]
 featured: true
 author:
   name: "Mujahid Siyam"
@@ -13,18 +13,336 @@ author:
   socialLinks:
     github: "https://github.com/bymuja"
     twitter: "https://twitter.com/bymuja"
-    linkedin: "https://linkedin.com/in/mujahidsiyam"
+    linkedin: "https://linkedin.com/in/bymuja"
     website: "https://bymuja.com"
-draft: false
+draft: true
 ---
 
-# React Hooks Guide
+React Hooks fundamentally changed how we write React components. Introduced in React 16.8, they let you use state and lifecycle features without writing class components — leading to cleaner, more composable, and more testable code. This guide covers every built-in hook with practical examples, common pitfalls, and patterns I've refined across dozens of production applications.
 
-A comprehensive guide to understanding and using React Hooks effectively in your applications.
+## useState: The Foundation
 
-## Core Hooks
+`useState` manages local component state. Despite its simplicity, there are nuances worth understanding.
 
-- useState: For managing state in functional components
-- useEffect: For handling side effects
-- useContext: For accessing context values
-- useReducer: For complex state management
+```typescript
+import { useState } from "react";
+
+// Basic usage
+const [count, setCount] = useState<number>(0);
+
+// Lazy initializer — runs only on first render
+const [data, setData] = useState<ExpensiveObject>(() => {
+  const stored = localStorage.getItem("app-data");
+  return stored ? JSON.parse(stored) : defaultData;
+});
+
+// Functional update — always uses latest state
+setCount(prev => prev + 1);
+setCount(prev => prev + 1); // increments by 2, not 1
+```
+
+### The Stale Closure Problem
+
+This is the most common hook bug. Event handlers and timeouts capture the state value at render time:
+
+```typescript
+// Bug: count is 0 inside the interval forever
+useEffect(() => {
+  const id = setInterval(() => {
+    console.log(count); // always logs 0
+    setCount(count + 1); // always sets to 1
+  }, 1000);
+  return () => clearInterval(id);
+}, []);
+
+// Fix: use functional updates
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount(prev => prev + 1); // correctly increments
+  }, 1000);
+  return () => clearInterval(id);
+}, []);
+```
+
+### useState vs useReducer Decision Guide
+
+| Criterion | useState | useReducer |
+|---|---|---|
+| State shape | Simple values, objects | Complex nested state |
+| Updates | Independent updates | Multiple fields change together |
+| Logic location | Inline in component | Reducer function (testable!) |
+| Number of state transitions | Few (2-3) | Many (5+) |
+| Related state | Unrelated | Related transitions |
+
+## useEffect: Side Effects Done Right
+
+`useEffect` synchronizes your component with external systems — APIs, DOM, subscriptions, timers.
+
+```typescript
+// Data fetching with cleanup
+useEffect(() => {
+  let cancelled = false;
+
+  async function fetchUser() {
+    const res = await fetch(`/api/users/${userId}`);
+    const data = await res.json();
+    if (!cancelled) setUser(data);
+  }
+
+  fetchUser();
+  return () => { cancelled = true; };
+}, [userId]);
+
+// Event listeners
+useEffect(() => {
+  function handleResize() {
+    setWindowWidth(window.innerWidth);
+  }
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+```
+
+### The Dependency Array
+
+The dependency array tells React when to re-run the effect. Missing dependencies cause stale closures; unnecessary dependencies cause redundant executions.
+
+```typescript
+// Bad — fetchData is recreated every render, causing infinite loops
+useEffect(() => {
+  fetchData();
+}, [fetchData]);
+
+// Good — stable reference with useCallback
+const fetchData = useCallback(async () => {
+  const res = await fetch("/api/data");
+  return res.json();
+}, []);
+
+useEffect(() => {
+  fetchData().then(setData);
+}, [fetchData]);
+```
+
+### When NOT to Use useEffect
+
+Not everything needs an effect. Calculate derived state directly:
+
+```typescript
+// Bad — unnecessary effect
+const [fullName, setFullName] = useState("");
+useEffect(() => {
+  setFullName(`${firstName} ${lastName}`);
+}, [firstName, lastName]);
+
+// Good — calculate during render
+const fullName = `${firstName} ${lastName}`;
+```
+
+## useRef: Beyond DOM References
+
+`useRef` holds a mutable value that persists across renders without triggering re-renders.
+
+```typescript
+// DOM reference
+const inputRef = useRef<HTMLInputElement>(null);
+function focusInput() {
+  inputRef.current?.focus();
+}
+
+// Mutable instance variable
+const renderCount = useRef(0);
+renderCount.current += 1;
+
+// Previous value tracking
+function usePrevious<T>(value: T): T | undefined {
+  const ref = useRef<T>();
+  useEffect(() => { ref.current = value; });
+  return ref.current;
+}
+
+// Interval ID reference
+const intervalRef = useRef<number>();
+useEffect(() => {
+  intervalRef.current = setInterval(tick, 1000);
+  return () => clearInterval(intervalRef.current);
+}, []);
+```
+
+## useMemo and useCallback: Performance Optimization
+
+These hooks memoize values and functions respectively. Use them sparingly — premature optimization adds complexity.
+
+```typescript
+// useMemo — cache expensive computations
+const sortedList = useMemo(() => {
+  return items
+    .filter(item => item.active)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 10);
+}, [items]);
+
+// useCallback — stable function references for child components
+const handleDelete = useCallback((id: string) => {
+  setItems(prev => prev.filter(item => item.id !== id));
+}, []); // stable reference — no dependencies
+
+// Pass to memoized child to prevent unnecessary re-renders
+<ExpensiveList items={sortedList} onDelete={handleDelete} />
+```
+
+### Profile Before Optimizing
+
+Use React DevTools Profiler or the `performance.now()` API to measure before adding memoization:
+
+```typescript
+useEffect(() => {
+  const start = performance.now();
+  // ... your work
+  const duration = performance.now() - start;
+  if (duration > 16) console.warn(`Slow render: ${duration}ms`);
+});
+```
+
+## Custom Hooks: Composable Logic
+
+Custom hooks are where React's composition model shines. Here are three patterns I use regularly:
+
+### useDebounce
+
+```typescript
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedValue(value), delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
+// Usage
+const [search, setSearch] = useState("");
+const debouncedSearch = useDebounce(search, 300);
+useEffect(() => {
+  if (debouncedSearch) fetchResults(debouncedSearch);
+}, [debouncedSearch]);
+```
+
+### useLocalStorage
+
+```typescript
+function useLocalStorage<T>(key: string, initialValue: T) {
+  const [value, setValue] = useState<T>(() => {
+    try {
+      const stored = localStorage.getItem(key);
+      return stored ? JSON.parse(stored) : initialValue;
+    } catch {
+      return initialValue;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue] as const;
+}
+```
+
+### useMediaQuery
+
+```typescript
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
+
+  useEffect(() => {
+    const mql = window.matchMedia(query);
+    function handler(e: MediaQueryListEvent) { setMatches(e.matches); }
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, [query]);
+
+  return matches;
+}
+
+const isDark = useMediaQuery("(prefers-color-scheme: dark)");
+```
+
+## Rules of Hooks
+
+1. **Only call hooks at the top level** — never inside loops, conditions, or nested functions
+2. **Only call hooks from React functions** — functional components or custom hooks
+3. **Name custom hooks with `use` prefix** — enables lint rules and signals intent
+4. **Keep dependencies honest** — use the `exhaustive-deps` ESLint rule
+
+```typescript
+// Violation — conditional hook
+if (shouldFetch) {
+  useEffect(() => { /* ... */ }); // ❌ breaks rules of hooks
+}
+
+// Fix — condition inside the hook
+useEffect(() => {
+  if (shouldFetch) { /* ... */ }
+}, [shouldFetch]);
+```
+
+## Advanced: useReducer for Complex State
+
+When state logic grows beyond a few `useState` calls, `useReducer` brings structure.
+
+```typescript
+type State = {
+  items: Item[];
+  filter: "all" | "active" | "completed";
+  loading: boolean;
+  error: string | null;
+};
+
+type Action =
+  | { type: "FETCH_START" }
+  | { type: "FETCH_SUCCESS"; items: Item[] }
+  | { type: "FETCH_ERROR"; error: string }
+  | { type: "SET_FILTER"; filter: State["filter"] }
+  | { type: "TOGGLE_ITEM"; id: string };
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "FETCH_START":
+      return { ...state, loading: true, error: null };
+    case "FETCH_SUCCESS":
+      return { ...state, loading: false, items: action.items };
+    case "FETCH_ERROR":
+      return { ...state, loading: false, error: action.error };
+    case "SET_FILTER":
+      return { ...state, filter: action.filter };
+    case "TOGGLE_ITEM":
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.id === action.id
+            ? { ...item, completed: !item.completed }
+            : item
+        ),
+      };
+    default:
+      return state;
+  }
+}
+```
+
+The reducer is pure — no side effects, easily unit-testable, and the state transitions are explicit and traceable.
+
+## Key Takeaways
+
+- **useState** for simple local state; **useReducer** when logic gets complex
+- **useEffect** for synchronization with external systems; derive state in render when possible
+- **useRef** for mutable values that shouldn't trigger re-renders
+- **useMemo** and **useCallback** are optimization tools — measure before applying
+- **Custom hooks** are your primary abstraction for reusable logic
+- Always respect the **rules of hooks** and use the ESLint plugin
+
+Mastering hooks transforms how you think about React components — from lifecycle methods to declarative, composable functions that model your application state cleanly.

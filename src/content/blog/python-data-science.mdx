@@ -1,11 +1,11 @@
 ---
-title: "Python Data Science"
-description: "Exploring data science with Python"
+title: "Python Data Science: From Pandas to Machine Learning"
+description: "A complete walkthrough of the Python data science ecosystem — from data manipulation with Pandas and visualization with Matplotlib to building production-ready machine learning pipelines with Scikit-learn."
 date: "2024-01-15"
 image: "/vercel.svg"
 category: "Data Science"
-tags: ["Python", "Pandas", "Machine Learning"]
-featured: ture
+tags: ["Python", "Pandas", "Machine Learning", "Scikit-learn", "Data Engineering"]
+featured: true
 author:
   name: "Mujahid Siyam"
   image: "/vercel.svg"
@@ -13,19 +13,268 @@ author:
   socialLinks:
     github: "https://github.com/bymuja"
     twitter: "https://twitter.com/bymuja"
-    linkedin: "https://linkedin.com/in/mujahidsiyam"
+    linkedin: "https://linkedin.com/in/bymuja"
     website: "https://bymuja.com"
-
-draft: false
+draft: true
 ---
 
-# Python Data Science
+Python has become the lingua franca of data science, powering everything from exploratory analysis in Jupyter notebooks to large-scale machine learning systems deployed on cloud infrastructure. This guide walks through the complete Python data science workflow — from raw data to trained models — using the libraries that make Python indispensable for data professionals.
 
-Exploring the world of data science with Python, from data manipulation with Pandas to building machine learning models.
+## Setting Up Your Data Science Environment
 
-## Key Topics
+Before diving into code, let's get the environment right. I recommend using a virtual environment with the core scientific Python stack:
 
-- Data manipulation with Pandas
-- Data visualization with Matplotlib and Seaborn
-- Machine learning with Scikit-learn
-- Deep learning with TensorFlow and PyTorch
+```bash
+python -m venv ds-env
+source ds-env/bin/activate
+pip install pandas numpy matplotlib seaborn scikit-learn jupyter
+```
+
+A well-configured environment prevents dependency conflicts that plague data science projects. I personally use Nix flakes for reproducible environments, but venv + pip is the most accessible starting point.
+
+## Data Manipulation with Pandas
+
+Pandas is the foundation of Python data work. At its core are two primary data structures: `Series` (1D) and `DataFrame` (2D). Here's how to load and inspect data effectively:
+
+```python
+import pandas as pd
+import numpy as np
+
+# Load a dataset
+df = pd.read_csv("sales_data.csv")
+
+# First look
+print(df.shape)        # (rows, columns)
+print(df.info())       # dtypes, missing values
+print(df.describe())   # summary statistics
+print(df.isnull().sum())  # count missing values per column
+```
+
+### Common Data Transformations
+
+Real-world data is messy. Here are operations you'll use in every project:
+
+```python
+# Filtering
+high_value = df[df["revenue"] > 10000]
+
+# Multiple conditions
+target = df[(df["region"] == "EU") & (df["status"] == "active")]
+
+# Grouping and aggregation
+monthly = df.groupby("month").agg({
+    "revenue": "sum",
+    "customers": "count",
+    "avg_order": "mean"
+}).round(2)
+
+# Handling missing values
+df["price"].fillna(df["price"].median(), inplace=True)
+df["category"].fillna("Unknown", inplace=True)
+
+# Creating derived features
+df["revenue_per_customer"] = df["revenue"] / df["customers"]
+df["year_month"] = pd.to_datetime(df["date"]).dt.to_period("M")
+
+# Merging datasets
+enriched = df.merge(
+    product_catalog,
+    on="product_id",
+    how="left"
+)
+```
+
+### Performance Tip: Vectorized Operations
+
+Avoid `iterrows()` and `apply()` where possible. Pandas is built on NumPy, and vectorized operations are orders of magnitude faster:
+
+```python
+# Bad — iterating row by row
+for idx, row in df.iterrows():
+    df.at[idx, "tax"] = row["price"] * 0.08
+
+# Good — vectorized
+df["tax"] = df["price"] * 0.08
+```
+
+## Visualization with Matplotlib and Seaborn
+
+Data visualization turns numbers into insights. Matplotlib gives you fine-grained control, while Seaborn provides beautiful statistical plots with minimal code.
+
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set style
+sns.set_theme(style="whitegrid")
+plt.rcParams["figure.figsize"] = (12, 6)
+
+# Distribution plot
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+sns.histplot(df["revenue"], bins=50, kde=True, ax=axes[0])
+axes[0].set_title("Revenue Distribution")
+sns.boxplot(x="region", y="revenue", data=df, ax=axes[1])
+axes[1].set_title("Revenue by Region")
+plt.tight_layout()
+plt.savefig("revenue_analysis.png", dpi=150, bbox_inches="tight")
+
+# Correlation heatmap
+numeric_df = df.select_dtypes(include=[np.number])
+corr = numeric_df.corr()
+sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm",
+            center=0, square=True, linewidths=0.5)
+plt.title("Feature Correlation Matrix")
+```
+
+### Key Visualization Principles
+- **Use color purposefully**: Sequential palettes for continuous data, diverging for differences
+- **Label everything**: Axes, titles, and legends make plots self-explanatory
+- **Choose the right chart**: Bar charts for categories, line charts for trends, scatter plots for relationships
+- **Export at high DPI**: Production charts should be 150+ DPI for clarity
+
+## Machine Learning with Scikit-learn
+
+Scikit-learn's consistent API makes machine learning approachable. Every model follows the same pattern: instantiate, fit, predict.
+
+### Building a Complete ML Pipeline
+
+```python
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error
+import numpy as np
+
+# Prepare features and target
+X = df.drop(["revenue", "date"], axis=1)
+y = df["revenue"]
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Define preprocessing for numeric and categorical columns
+numeric_features = ["price", "customers", "marketing_spend"]
+categorical_features = ["region", "category", "season"]
+
+preprocessor = ColumnTransformer(
+    transformers=[
+        ("num", StandardScaler(), numeric_features),
+        ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_features),
+    ]
+)
+
+# Create the full pipeline
+pipeline = Pipeline([
+    ("preprocessor", preprocessor),
+    ("model", RandomForestRegressor(n_estimators=200, random_state=42))
+])
+
+# Train
+pipeline.fit(X_train, y_train)
+
+# Evaluate
+y_pred = pipeline.predict(X_test)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+
+print(f"MAE:  {mae:.2f}")
+print(f"RMSE: {rmse:.2f}")
+print(f"R²:   {r2:.3f}")
+
+# Cross-validation for robust evaluation
+cv_scores = cross_val_score(pipeline, X_train, y_train, cv=5, scoring="r2")
+print(f"CV R²: {cv_scores.mean():.3f} (±{cv_scores.std():.3f})")
+```
+
+### Hyperparameter Tuning
+
+```python
+param_grid = {
+    "model__n_estimators": [100, 200, 300],
+    "model__max_depth": [10, 20, None],
+    "model__min_samples_split": [2, 5, 10],
+}
+
+grid_search = GridSearchCV(
+    pipeline, param_grid, cv=5, scoring="r2", n_jobs=-1, verbose=1
+)
+grid_search.fit(X_train, y_train)
+
+print(f"Best params: {grid_search.best_params_}")
+print(f"Best CV R²: {grid_search.best_score_:.3f}")
+
+# Use the best model
+best_model = grid_search.best_estimator_
+final_score = best_model.score(X_test, y_test)
+```
+
+### Feature Importance
+
+Understanding which features drive predictions is essential for model interpretation:
+
+```python
+# Extract feature names after one-hot encoding
+model = best_model.named_steps["model"]
+preprocessor = best_model.named_steps["preprocessor"]
+ohe = preprocessor.named_transformers_["cat"]
+
+cat_features = ohe.get_feature_names_out(categorical_features)
+all_features = list(numeric_features) + list(cat_features)
+
+# Create importance DataFrame
+importance_df = pd.DataFrame({
+    "feature": all_features,
+    "importance": model.feature_importances_
+}).sort_values("importance", ascending=False)
+
+# Plot top 15 features
+top_n = importance_df.head(15)
+plt.figure(figsize=(10, 6))
+sns.barplot(x="importance", y="feature", data=top_n, palette="viridis")
+plt.title("Top 15 Feature Importances")
+plt.tight_layout()
+```
+
+## Moving to Production
+
+A notebook model is only the beginning. Production ML requires:
+
+1. **Model serialization**: Use `joblib` or `pickle` to save trained pipelines
+2. **Input validation**: Validate incoming data against expected schemas
+3. **Monitoring**: Track prediction distributions and detect drift over time
+4. **Versioning**: Tag models with version numbers and training metadata
+5. **API wrapping**: Serve models via FastAPI or Flask endpoints
+
+```python
+import joblib
+from datetime import datetime
+
+# Save model with metadata
+metadata = {
+    "version": "1.0.0",
+    "trained_at": datetime.now().isoformat(),
+    "features": all_features,
+    "metrics": {"mae": mae, "r2": r2, "rmse": rmse},
+}
+joblib.dump({"pipeline": best_model, "metadata": metadata}, "model_v1.joblib")
+
+# Load and predict
+bundle = joblib.load("model_v1.joblib")
+predictions = bundle["pipeline"].predict(new_data)
+```
+
+## Key Takeaways
+
+- **Pandas** is your data workhorse — master `groupby`, `merge`, and vectorized operations
+- **Visualization** precedes modeling — always plot your data before training
+- **Pipelines** prevent data leakage between training and prediction
+- **Cross-validation** gives honest performance estimates
+- **Feature importance** helps you understand and explain your models
+- **Production ML** requires versioning, monitoring, and robust serving infrastructure
+
+The Python data science ecosystem is vast but coherent. Start with Pandas and Scikit-learn, then expand into deep learning frameworks and MLOps tooling as your needs grow. The skills you build on these fundamentals transfer across the entire ML landscape.
