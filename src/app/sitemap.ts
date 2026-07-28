@@ -1,11 +1,11 @@
 import { MetadataRoute } from "next";
 import { join } from "path";
 import { promises as fs } from "fs";
+import matter from "gray-matter";
 
 const baseUrl = "https://bymuja.com";
 
-// Function to get all blog posts with their last modified dates
-async function getBlogPosts(): Promise<{ url: string; lastModified: Date }[]> {
+async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
 
   try {
@@ -16,109 +16,119 @@ async function getBlogPosts(): Promise<{ url: string; lastModified: Date }[]> {
         .map(async (file) => {
           const slug = file.replace(/\.mdx$/, "");
           const filePath = join(blogDirectory, file);
+          const fileContents = await fs.readFile(filePath, "utf8");
+          const { data } = matter(fileContents);
           const stats = await fs.stat(filePath);
+
+          if (data.draft === true) return null;
+
+          const postDate = data.date ? new Date(data.date) : stats.mtime;
+          const image = data.image || undefined;
+
           return {
             url: `${baseUrl}/blog/${slug}`,
-            lastModified: stats.mtime,
+            lastModified: postDate > stats.mtime ? postDate : stats.mtime,
+            changeFrequency: "daily" as const,
+            priority: 0.9,
+            images: image ? [image] : undefined,
           };
         }),
     );
-    return posts;
-  } catch (error) {
-    console.error("Error reading blog posts for sitemap:", error);
+
+    return posts.filter(
+      (p): p is NonNullable<typeof p> => p !== null,
+    );
+  } catch {
     return [];
   }
 }
 
-// Function to get all projects with their last modified dates
-async function getProjects(): Promise<{ url: string; lastModified: Date }[]> {
+async function getProjects(): Promise<MetadataRoute.Sitemap> {
   const projectsDirectory = join(process.cwd(), "src", "content", "projects");
 
   try {
     const files = await fs.readdir(projectsDirectory, { recursive: true });
     const projects = await Promise.all(
       files
-        .filter((file) => typeof file === "string" && file.endsWith(".mdx"))
+        .filter(
+          (file): file is string =>
+            typeof file === "string" && file.endsWith(".mdx"),
+        )
         .map(async (file) => {
-          // Use the directory name as slug for nested projects
-          const slug = file
-            .replace(/\.mdx$/, "")
-            .split("/")
-            .pop();
+          const slug = file.replace(/\.mdx$/, "").split("/").pop()!;
           const filePath = join(projectsDirectory, file);
+          const fileContents = await fs.readFile(filePath, "utf8");
+          const { data } = matter(fileContents);
           const stats = await fs.stat(filePath);
+
+          if (data.draft === true) return null;
+
+          const projDate = data.date ? new Date(data.date) : stats.mtime;
+          const image = data.image || undefined;
+
           return {
             url: `${baseUrl}/projects/${slug}`,
-            lastModified: stats.mtime,
+            lastModified:
+              projDate > stats.mtime ? projDate : stats.mtime,
+            changeFrequency: "daily" as const,
+            priority: 0.9,
+            images: image ? [image] : undefined,
           };
         }),
     );
-    return projects;
-  } catch (error) {
-    console.error("Error reading projects for sitemap:", error);
+
+    return projects.filter(
+      (p): p is NonNullable<typeof p> => p !== null,
+    );
+  } catch {
     return [];
   }
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPages = [
+  const now = new Date();
+
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily" as const,
+      lastModified: now,
+      changeFrequency: "daily",
       priority: 1,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "daily" as const,
+      lastModified: now,
+      changeFrequency: "daily",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "daily" as const,
+      lastModified: now,
+      changeFrequency: "daily",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
+      lastModified: now,
+      changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/music`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.5,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.6,
     },
   ];
 
-  // Get dynamic content
   const blogPosts = await getBlogPosts();
   const projects = await getProjects();
 
-  // Add dynamic pages to sitemap
-  const dynamicPages = [
-    ...blogPosts.map((post) => ({
-      url: post.url,
-      lastModified: post.lastModified,
-      changeFrequency: "daily" as const,
-      priority: 0.7,
-    })),
-    ...projects.map((project) => ({
-      url: project.url,
-      lastModified: project.lastModified,
-      changeFrequency: "daily" as const,
-      priority: 0.6,
-    })),
-  ];
-
-  return [...staticPages, ...dynamicPages];
+  return [...staticPages, ...blogPosts, ...projects];
 }

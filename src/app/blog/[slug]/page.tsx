@@ -9,6 +9,8 @@ import ClientMDXRenderer from "../../components/ClientMDXRenderer";
 import { ArticleStructuredData } from "../../components/StructuredData";
 import type { Metadata } from "next";
 
+export const revalidate = 60;
+
 function calculateReadingTime(content: string): string {
   const wordsPerMinute = 200;
   const words = content.split(/\s+/).length;
@@ -147,28 +149,19 @@ export default async function BlogPostPage({
     // Await the params to ensure they're resolved
     const resolvedParams = await params;
 
-    // Validate that slug exists
     if (!resolvedParams?.slug) {
-      console.error("Slug is undefined or null");
       notFound();
     }
 
-    console.log("Rendering blog post:", resolvedParams.slug);
     const blogDirectory = join(process.cwd(), "src", "content", "blog");
     const fullPath = join(blogDirectory, `${resolvedParams.slug}.mdx`);
 
-    // Check if the file exists first
     await fs.access(fullPath);
-    console.log("File exists:", fullPath);
 
-    // Read and parse the file
     const fileContents = await fs.readFile(fullPath, "utf8");
     const { data: frontmatter, content } = matter(fileContents);
-    console.log("Frontmatter:", frontmatter);
 
-    // Check if the post is a draft
     if (frontmatter.draft === true) {
-      console.log("Post is a draft, returning 404");
       notFound();
     }
 
@@ -482,7 +475,6 @@ export async function generateStaticParams() {
       .map((file) => ({
         slug: file.replace(/\.mdx$/, ""),
       }));
-    console.log("Generated blog params:", params);
     return params;
   } catch (error) {
     console.error("Error generating blog static params:", error);

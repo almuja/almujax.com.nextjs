@@ -8,6 +8,8 @@ import ClientMDXRenderer from "../../components/ClientMDXRenderer";
 import { SoftwareSourceCodeStructuredData } from "../../components/StructuredData";
 import type { Metadata } from "next";
 
+export const revalidate = 60;
+
 interface Project {
   slug: string;
   title: string;
