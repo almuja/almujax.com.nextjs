@@ -144,6 +144,18 @@ export default function RootLayout({
           title="bymuja.com Blog Atom Feed"
           href="/atom.xml"
         />
+        <link
+          rel="llm"
+          type="text/plain"
+          title="LLMs.txt for AI discovery"
+          href="/llms.txt"
+        />
+        <link
+          rel="llm-full"
+          type="text/plain"
+          title="Full content for AI indexing"
+          href="/llms-full.txt"
+        />
       </head>
       <body className="antialiased font-mono" suppressHydrationWarning>
         <ThemeProvider>

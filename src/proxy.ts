@@ -36,7 +36,8 @@ export function proxy(request: NextRequest) {
 
   if (subdomain === "projects") {
     if (!url.pathname.startsWith("/projects")) {
-      url.pathname = url.pathname === "/" ? "/projects" : `/projects${url.pathname}`;
+      url.pathname =
+        url.pathname === "/" ? "/projects" : `/projects${url.pathname}`;
       return NextResponse.rewrite(url);
     }
     return NextResponse.next();
@@ -44,7 +45,8 @@ export function proxy(request: NextRequest) {
 
   if (subdomain === "music") {
     if (!url.pathname.startsWith("/music")) {
-      url.pathname = url.pathname === "/" ? "/music" : `/music${url.pathname}`;
+      url.pathname =
+        url.pathname === "/" ? "/music" : `/music${url.pathname}`;
       return NextResponse.rewrite(url);
     }
     return NextResponse.next();
@@ -52,7 +54,8 @@ export function proxy(request: NextRequest) {
 
   if (subdomain === "funmacs") {
     if (!url.pathname.startsWith("/funmacs")) {
-      url.pathname = url.pathname === "/" ? "/funmacs" : `/funmacs${url.pathname}`;
+      url.pathname =
+        url.pathname === "/" ? "/funmacs" : `/funmacs${url.pathname}`;
       return NextResponse.rewrite(url);
     }
     return NextResponse.next();
@@ -60,7 +63,8 @@ export function proxy(request: NextRequest) {
 
   if (subdomain === "mujaos") {
     if (!url.pathname.startsWith("/mujaos")) {
-      url.pathname = url.pathname === "/" ? "/mujaos" : `/mujaos${url.pathname}`;
+      url.pathname =
+        url.pathname === "/" ? "/mujaos" : `/mujaos${url.pathname}`;
       return NextResponse.rewrite(url);
     }
     return NextResponse.next();

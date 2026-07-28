@@ -71,13 +71,24 @@ export async function generateMetadata({
       data.description || "Open-source project by Mujahid Siyam";
 
     return {
-      title: `${title} | Mujahid Siyam`,
+      title: `${title} | Mujahid Siyam (Muja / bymuja)`,
       description,
+      keywords: [
+        ...(data.tags || []),
+        data.category,
+        "Mujahid Siyam",
+        "Muja",
+        "bymuja",
+        "AI Engineer",
+        "open source",
+        "project",
+        "Rust",
+      ].filter(Boolean),
       alternates: {
         canonical: `https://bymuja.com/projects/${slug}`,
       },
       openGraph: {
-        title: `${title} | Mujahid Siyam`,
+        title: `${title} | Mujahid Siyam (Muja / bymuja)`,
         description,
         type: "article",
         url: `https://bymuja.com/projects/${slug}`,
@@ -86,6 +97,14 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: `${title} | Mujahid Siyam`,
         description,
+      },
+      other: {
+        "geo.region": "FR",
+        "geo.placename": "France",
+        "geo.position": "46.603354;1.888334",
+        ICBM: "46.603354, 1.888334",
+        "DC.creator": "Mujahid Siyam",
+        "DC.subject": (data.tags || []).join(", "),
       },
     };
   } catch {

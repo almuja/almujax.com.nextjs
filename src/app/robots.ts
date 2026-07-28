@@ -9,6 +9,26 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
       {
+        userAgent: "GPTBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "ChatGPT-User",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "OAI-SearchBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Google-Extended",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
         userAgent: "Googlebot",
         allow: "/",
         disallow: ["/api/"],
@@ -18,8 +38,41 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
+      {
+        userAgent: "PerplexityBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Claude-Web",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "anthropic-ai",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "CCBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "meta-externalagent",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "cohere-ai",
+        allow: "/",
+        disallow: ["/api/"],
+      },
     ],
-    sitemap: ["https://bymuja.com/sitemap.xml", "https://bymuja.com/geo.kml"],
+    sitemap: [
+      "https://bymuja.com/sitemap.xml",
+      "https://bymuja.com/geo.kml",
+    ],
     host: "https://bymuja.com",
   };
 }
