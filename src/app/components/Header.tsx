@@ -8,6 +8,7 @@ import MobileMenu from "./MobileMenu";
 import { Menu } from "lucide-react";
 import { Button } from "./ui/Button";
 import { useState } from "react";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 interface HeaderProps {
   locale: string;
@@ -67,12 +68,14 @@ export default function Header({ locale, nav }: HeaderProps) {
               <div className="flex items-center gap-4">
                 <div className="relative"><Search /></div>
                 <div><ModeToggle /></div>
+                <LocaleSwitcher locale={locale} />
               </div>
             </nav>
 
             <div className="flex md:hidden items-center gap-2">
               <div><Search /></div>
               <div><ModeToggle /></div>
+              <LocaleSwitcher locale={locale} />
               <Button variant="default" size="sm" onClick={() => setIsMobileMenuOpen(true)} className="h-9 w-9 flex items-center justify-center p-0" aria-label={nav.menu} suppressHydrationWarning>
                 <Menu className="w-4 h-4" />
               </Button>
