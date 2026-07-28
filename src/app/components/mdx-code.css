@@ -1,4 +1,4 @@
-/* rehype-pretty-code + shiki code block styles */
+/* Code block container */
 .prose-content pre {
   padding: 1.25rem 1.5rem;
   margin: 2rem 0;
@@ -6,24 +6,18 @@
   border: 1px solid hsl(var(--border));
   overflow-x: auto;
   background: #0d1117 !important;
-  font-size: 0.875rem;
-  line-height: 1.7;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
-.prose-content pre > code {
-  display: block;
+.prose-content pre code {
   background: transparent !important;
-  border: none;
-  padding: 0;
+  padding: 0 !important;
+  border: none !important;
   font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, SFMono-Regular, monospace;
   font-size: 0.8125rem;
   line-height: 1.75;
   tab-size: 2;
-}
-
-.prose-content pre code [data-line] {
-  padding: 0 0.25rem;
+  color: #e6edf3;
 }
 
 /* Inline code */
@@ -37,19 +31,9 @@
   color: hsl(var(--foreground));
 }
 
-/* Highlighted lines */
-.prose-content code [data-highlighted-line] {
-  background: rgba(88, 166, 255, 0.08);
-  border-left: 3px solid #58a6ff;
-  margin-left: -1rem;
-  padding-left: 0.75rem;
-}
-
-/* Word highlighted */
-.prose-content code [data-highlighted-word] {
-  background: rgba(200, 200, 255, 0.15);
-  border-radius: 0.25rem;
-  padding: 0.1rem 0.2rem;
+/* Override highlight.js background */
+.prose-content .hljs {
+  background: transparent !important;
 }
 
 /* Tables */

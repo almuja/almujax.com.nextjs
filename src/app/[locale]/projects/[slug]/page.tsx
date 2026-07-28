@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 import { locales, type Locale } from "@/i18n/config";
 import { compileMdx } from "@/lib/mdx-compiler";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 interface Project {
   slug: string;
@@ -30,10 +30,7 @@ async function findProjectFile(slug: string): Promise<string | null> {
     const files = await fs.readdir(projectsDirectory, { recursive: true });
     for (const file of files) {
       if (typeof file === "string" && file.endsWith(".mdx")) {
-        const fileName = file
-          .split("/")
-          .pop()!
-          .replace(/\.mdx$/, "");
+        const fileName = file.split("/").pop()!.replace(/\.mdx$/, "");
         if (fileName === slug) {
           return join(projectsDirectory, file);
         }
@@ -157,7 +154,12 @@ export default async function ProjectPage({
       featured: frontmatter.featured || false,
     };
 
-    const mdxSource = await compileMdx(content);
+    let mdxSource;
+    try {
+      mdxSource = await compileMdx(content);
+    } catch {
+      mdxSource = null;
+    }
 
     return (
       <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300">
@@ -262,7 +264,13 @@ export default async function ProjectPage({
           <div className="flex justify-center">
             <div className="w-full max-w-4xl">
               {/* Elegant Markdown Content */}
-              <ClientMDXRenderer mdxSource={mdxSource} />
+              {mdxSource ? (
+                <ClientMDXRenderer mdxSource={mdxSource} />
+              ) : (
+                <div className="prose-content max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, "<br/>") }} />
+                </div>
+              )}
 
               {/* Tags at the bottom */}
               {project.tags && project.tags.length > 0 && (

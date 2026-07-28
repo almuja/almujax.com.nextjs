@@ -1,6 +1,7 @@
 "use client";
 
 import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
+import "highlight.js/styles/github-dark.css";
 import "./mdx-code.css";
 
 interface ClientMDXRendererProps {

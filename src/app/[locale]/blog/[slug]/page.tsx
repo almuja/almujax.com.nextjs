@@ -12,7 +12,7 @@ import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { compileMdx } from "@/lib/mdx-compiler";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 function calculateReadingTime(content: string): string {
   const wordsPerMinute = 200;
@@ -199,7 +199,12 @@ export default async function BlogPostPage({
     const readingTime = calculateReadingTime(content);
 
     // Compile MDX to HTML with syntax highlighting
-    const mdxSource = await compileMdx(content);
+    let mdxSource;
+    try {
+      mdxSource = await compileMdx(content);
+    } catch {
+      mdxSource = null;
+    }
 
     return (
       <div className="min-h-screen bg-background transition-colors duration-300">
@@ -322,7 +327,13 @@ export default async function BlogPostPage({
               )}
 
               {/* Elegant Markdown Content */}
-              <ClientMDXRenderer mdxSource={mdxSource} />
+              {mdxSource ? (
+                <ClientMDXRenderer mdxSource={mdxSource} />
+              ) : (
+                <div className="prose-content">
+                  <div dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, "<br/>") }} />
+                </div>
+              )}
 
               {/* Author Section */}
               <div className="mt-8">
@@ -460,21 +471,4 @@ async function RelatedPosts({
       </div>
     </section>
   );
-}
-
-export async function generateStaticParams() {
-  const blogDirectory = join(process.cwd(), "src", "content", "blog");
-
-  try {
-    const files = await fs.readdir(blogDirectory);
-    const params = files
-      .filter((file) => file.endsWith(".mdx"))
-      .map((file) => ({
-        slug: file.replace(/\.mdx$/, ""),
-      }));
-    return params;
-  } catch (error) {
-    console.error("Error generating blog static params:", error);
-    return [];
-  }
 }
