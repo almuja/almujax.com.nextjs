@@ -45,16 +45,9 @@ export default async function AboutPage({
     <div className="min-h-screen pt-20 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
             {t.about.heading}
           </h1>
-          <p className="text-lg text-foreground/60 mb-2">
-            {t.about.fullName}
-          </p>
-          <p className="text-lg text-foreground/50 mb-4" dangerouslySetInnerHTML={{ __html: t.about.aka }} />
-          <p className="text-base text-foreground/50 max-w-2xl mx-auto mb-8 leading-relaxed">
-            {t.about.identityStatement}
-          </p>
           <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
             {t.about.roles}
           </p>

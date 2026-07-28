@@ -1,46 +1,53 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import {
-  Code2,
-  LinkIcon,
-  Mail,
-  ExternalLink,
-  Heart,
-  Sparkles,
-  Send,
-} from "lucide-react";
+import { Code2, LinkIcon, Mail, ExternalLink, Heart, Send } from "lucide-react";
 import { Button } from "./ui/Button";
-import ModeToggle from "./ModeToggle";
 import { useState } from "react";
 import { submitContactForm } from "../actions/contact";
 
-export default function Footer() {
+interface FooterProps {
+  locale: string;
+  footer: {
+    connect: string;
+    connectDescription: string;
+    getInTouch: string;
+    quickMessage: string;
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    subjectPlaceholder: string;
+    messagePlaceholder: string;
+    sendMessage: string;
+    sending: string;
+    copyright: string;
+    builtWith: string;
+    and: string;
+    openSource: string;
+    tagline: string;
+    errorMessage: string;
+  };
+  authorBio: string;
+  authorName: string;
+}
+
+export default function Footer({ footer: t, authorBio, authorName }: FooterProps) {
   const [pending, setPending] = useState(false);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
 
   async function handleSubmit(formData: FormData) {
     setMsg(null);
     setPending(true);
-
     try {
       const result = await submitContactForm(formData);
-
       if (result.success) {
         setMsg({ ok: true, text: result.message });
-        // Reset the form
         const form = document.querySelector("form") as HTMLFormElement;
         if (form) form.reset();
       } else {
         setMsg({ ok: false, text: result.message });
       }
-    } catch (err) {
-      console.error("Submission error:", err);
-      setMsg({
-        ok: false,
-        text: "I apologize for the inconvenience, but there seems to be a network issue. Please try again in a moment or use one of my other contact methods.",
-      });
+    } catch {
+      setMsg({ ok: false, text: t.errorMessage });
     } finally {
       setPending(false);
     }
@@ -48,90 +55,37 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden backdrop-blur-2xl bg-background/30 border-t border-white/10">
-      {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/20 to-background/40"></div>
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Connect Section - Left */}
           <div className="md:order-1 order-2 text-center md:text-left">
-            <h3 className="font-bold text-foreground mb-6 text-lg tracking-wide">
-              Let's Connect
-            </h3>
-            <p className="text-muted-foreground mb-6 text-base leading-relaxed">
-              Ready to bring your next project to life? Let's discuss how we can
-              work together.
-            </p>
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="w-full md:w-auto border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 px-8 py-6 mx-auto md:mx-0 h-auto"
-            >
-              <a
-                href="mailto:contact@bymuja.com"
-                className="inline-flex items-center gap-3 text-base font-medium"
-              >
-                Get in touch
+            <h3 className="font-bold text-foreground mb-6 text-lg tracking-wide">{t.connect}</h3>
+            <p className="text-muted-foreground mb-6 text-base leading-relaxed">{t.connectDescription}</p>
+            <Button variant="outline" size="lg" asChild className="w-full md:w-auto border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 px-8 py-6 mx-auto md:mx-0 h-auto">
+              <a href="mailto:contact@bymuja.com" className="inline-flex items-center gap-3 text-base font-medium">
+                {t.getInTouch}
                 <ExternalLink className="w-4 h-4" />
               </a>
             </Button>
           </div>
 
-          {/* About Section - Center */}
           <div className="md:order-2 order-1">
             <div className="flex flex-col items-center text-center">
-              {/* Profile Photo Above Name */}
               <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/30 shadow-lg mb-4">
-                <Image
-                  src="/img/profile.png"
-                  alt="Mujahid Siyam"
-                  width={80}
-                  height={80}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
+                <Image src="/img/profile.png" alt={authorName} width={80} height={80} className="w-full h-full object-cover" loading="lazy" />
               </div>
-              {/* Name and Title */}
               <div className="mb-4">
-                <span className="text-2xl font-bold text-foreground block">
-                  Mujahid Siyam
-                </span>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Software Engineer • AI/ML Engineer
-                </p>
+                <span className="text-2xl font-bold text-foreground block">{authorName}</span>
+                <p className="text-sm text-muted-foreground mt-1">{authorBio}</p>
               </div>
-              <p className="text-muted-foreground max-w-sm text-base leading-relaxed mb-6">
-                Building cutting-edge solutions with code, AI, and innovative
-                technology.
-              </p>
+              <p className="text-muted-foreground max-w-sm text-base leading-relaxed mb-6">{t.tagline}</p>
               <div className="flex gap-4 justify-center">
                 {[
-                  {
-                    name: "GitHub",
-                    icon: Code2,
-                    url: "https://github.com/bymuja",
-                  },
-                  {
-                    name: "LinkedIn",
-                    icon: LinkIcon,
-                    url: "https://linkedin.com/in/bymuja",
-                  },
-                  {
-                    name: "Email",
-                    icon: Mail,
-                    url: "mailto:contact@bymuja.com",
-                  },
+                  { name: "GitHub", icon: Code2, url: "https://github.com/bymuja" },
+                  { name: "LinkedIn", icon: LinkIcon, url: "https://linkedin.com/in/bymuja" },
+                  { name: "Email", icon: Mail, url: "mailto:contact@bymuja.com" },
                 ].map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-white/10 rounded-xl backdrop-blur-sm"
-                    aria-label={social.name}
-                  >
+                  <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="p-3 text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-white/10 rounded-xl backdrop-blur-sm" aria-label={social.name}>
                     <social.icon className="w-5 h-5" />
                   </a>
                 ))}
@@ -139,85 +93,29 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contact Form Section - Right */}
           <div className="md:order-3 order-3">
-            <h3 className="font-bold text-foreground mb-6 text-lg tracking-wide text-center md:text-left">
-              Quick Message
-            </h3>
+            <h3 className="font-bold text-foreground mb-6 text-lg tracking-wide text-center md:text-left">{t.quickMessage}</h3>
             {msg && (
-              <div
-                className={`mb-4 p-3 rounded-lg text-sm ${
-                  msg.ok
-                    ? "bg-green-500/10 border border-green-500/20 text-green-600"
-                    : "bg-red-500/10 border border-red-500/20 text-red-600"
-                }`}
-              >
+              <div className={`mb-4 p-3 rounded-lg text-sm ${msg.ok ? "bg-green-500/10 border border-green-500/20 text-green-600" : "bg-red-500/10 border border-red-500/20 text-red-600"}`}>
                 {msg.text}
               </div>
             )}
             <form action={handleSubmit} className="space-y-4">
-              {/* Hidden honeypot field */}
-              <input
-                type="text"
-                name="botcheck"
-                tabIndex={-1}
-                autoComplete="off"
-                className="hidden"
-                aria-hidden="true"
-              />
-
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  required
-                  className="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all duration-300 backdrop-blur-sm text-center placeholder:text-center"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  required
-                  className="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all duration-300 backdrop-blur-sm text-center placeholder:text-center"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="subject_line"
-                  placeholder="Subject"
-                  required
-                  className="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all duration-300 backdrop-blur-sm text-center placeholder:text-center"
-                />
-              </div>
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  rows={3}
-                  required
-                  className="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all duration-300 backdrop-blur-sm resize-none text-center placeholder:text-center"
-                />
-              </div>
-              <Button
-                type="submit"
-                variant="default"
-                size="lg"
-                disabled={pending}
-                className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group py-8 border border-white/10 hover:opacity-95 hover:scale-[1.02]"
-              >
+              <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+              <div><input type="text" name="name" placeholder={t.namePlaceholder} required className="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all duration-300 backdrop-blur-sm text-center placeholder:text-center" /></div>
+              <div><input type="email" name="email" placeholder={t.emailPlaceholder} required className="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all duration-300 backdrop-blur-sm text-center placeholder:text-center" /></div>
+              <div><input type="text" name="subject_line" placeholder={t.subjectPlaceholder} required className="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all duration-300 backdrop-blur-sm text-center placeholder:text-center" /></div>
+              <div><textarea name="message" placeholder={t.messagePlaceholder} rows={3} required className="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all duration-300 backdrop-blur-sm resize-none text-center placeholder:text-center" /></div>
+              <Button type="submit" variant="default" size="lg" disabled={pending} className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group py-8 border border-white/10 hover:opacity-95 hover:scale-[1.02]">
                 {pending ? (
                   <div className="flex flex-col items-center space-y-3">
                     <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    <span>Sending...</span>
+                    <span>{t.sending}</span>
                   </div>
                 ) : (
                   <div className="flex flex-col items-center space-y-3">
                     <Send className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
-                    <span>Send Message</span>
+                    <span>{t.sendMessage}</span>
                   </div>
                 )}
               </Button>
@@ -225,31 +123,20 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center">
-            {/* Copyright */}
             <div className="text-base text-muted-foreground order-2 md:order-1">
-              © {new Date().getFullYear()} Mujahid Siyam. All rights reserved.
+              &copy; {new Date().getFullYear()} {authorName}. {t.copyright}
             </div>
-
-            {/* Build with love */}
             <div className="flex items-center gap-3 text-base text-muted-foreground order-1 md:order-2">
-              <span>Built with</span>
+              <span>{t.builtWith}</span>
               <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
-              <span>and</span>
-              <span className="text-primary font-medium">Open Source</span>
+              <span>{t.and}</span>
+              <span className="text-primary font-medium">{t.openSource}</span>
             </div>
-
-            {/* Tech stack */}
             <div className="flex gap-2 order-3">
               {["Linux", "Rust", "AI/ML", "DevSecOps"].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-2 bg-white/5 text-muted-foreground text-sm rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
-                >
-                  {tech}
-                </span>
+                <span key={tech} className="px-3 py-2 bg-white/5 text-muted-foreground text-sm rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">{tech}</span>
               ))}
             </div>
           </div>

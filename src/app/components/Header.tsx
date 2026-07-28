@@ -7,28 +7,38 @@ import Search from "./Search";
 import MobileMenu from "./MobileMenu";
 import { Menu } from "lucide-react";
 import { Button } from "./ui/Button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export default function Header() {
+interface HeaderProps {
+  locale: string;
+  nav: {
+    projects: string;
+    blog: string;
+    music: string;
+    about: string;
+    contact: string;
+    search: string;
+    menu: string;
+  };
+}
+
+export default function Header({ locale, nav }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigationItems = [
-    { href: "/projects", label: "Projects" },
-    { href: "/blog", label: "Blog" },
-    { href: "/music", label: "Music" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: `/${locale}/projects`, label: nav.projects },
+    { href: `/${locale}/blog`, label: nav.blog },
+    { href: `/${locale}/music`, label: nav.music },
+    { href: `/${locale}/about`, label: nav.about },
+    { href: `/${locale}/contact`, label: nav.contact },
   ];
 
   return (
     <>
-      <header
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/95 border-b border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.1)]"
-        suppressHydrationWarning
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/95 border-b border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.1)]" suppressHydrationWarning>
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3 md:py-4">
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href={`/${locale}`} className="flex items-center gap-3 group">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-primary/30 shadow-md">
                 <Image
                   src="/img/profile.png"
@@ -40,53 +50,30 @@ export default function Header() {
                 />
               </div>
               <span className="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
-                Mujahid Siyam
+                {locale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6">
               <ul className="flex gap-6">
                 {navigationItems.map((item) => (
                   <li key={item.href}>
-                    <Button
-                      variant="ghost"
-                      size="md"
-                      asChild
-                      className="text-foreground font-bold text-base"
-                      suppressHydrationWarning
-                    >
+                    <Button variant="ghost" size="md" asChild className="text-foreground font-bold text-base" suppressHydrationWarning>
                       <Link href={item.href}>{item.label}</Link>
                     </Button>
                   </li>
                 ))}
               </ul>
               <div className="flex items-center gap-4">
-                <div className="relative">
-                  <Search />
-                </div>
-                <div>
-                  <ModeToggle />
-                </div>
+                <div className="relative"><Search /></div>
+                <div><ModeToggle /></div>
               </div>
             </nav>
 
-            {/* Mobile Menu Button */}
             <div className="flex md:hidden items-center gap-2">
-              <div>
-                <Search />
-              </div>
-              <div>
-                <ModeToggle />
-              </div>
-              <Button
-                variant="default"
-                size="sm"
-                onClick={() => setIsMobileMenuOpen(true)}
-                className="h-9 w-9 flex items-center justify-center p-0"
-                aria-label="Open menu"
-                suppressHydrationWarning
-              >
+              <div><Search /></div>
+              <div><ModeToggle /></div>
+              <Button variant="default" size="sm" onClick={() => setIsMobileMenuOpen(true)} className="h-9 w-9 flex items-center justify-center p-0" aria-label={nav.menu} suppressHydrationWarning>
                 <Menu className="w-4 h-4" />
               </Button>
             </div>
@@ -94,12 +81,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Drawer */}
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-        navigationItems={navigationItems}
-      />
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} navigationItems={navigationItems} />
     </>
   );
 }

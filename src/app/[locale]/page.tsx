@@ -62,14 +62,9 @@ export default async function Home({
               </div>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Mujahid Siyam
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              {validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
             </h1>
-            <p className="text-lg text-foreground/60 mb-2">{t.home.fullName}</p>
-            <p className="text-base text-foreground/50 mb-6" dangerouslySetInnerHTML={{ __html: t.home.aka }} />
-            <p className="text-sm text-foreground/50 max-w-xl mx-auto mb-8 px-4 leading-relaxed">
-              {t.home.identityStatement}
-            </p>
 
             <div className="flex justify-center gap-4 mb-8 flex-wrap">
               {[

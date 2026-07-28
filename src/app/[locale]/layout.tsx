@@ -16,7 +16,9 @@ export async function generateMetadata({
 
   return {
     title: {
-      template: `%s | Mujahid Siyam (Muja / bymuja)`,
+      template: validLocale === "ar"
+        ? `%s | مجاهد صيام (موجا / bymuja)`
+        : `%s | Mujahid Siyam (Muja / bymuja)`,
       default: dict.site.defaultTitle,
     },
     description: dict.site.description,
@@ -85,6 +87,8 @@ export default async function LocaleLayout({
   const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
   const dir = localeDirections[validLocale];
   const htmlLang = validLocale === "ar" ? "ar" : validLocale === "fr" ? "fr" : "en";
+  const dict = getDictionary(validLocale);
+  const authorName = validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam";
 
   return (
     <>
@@ -101,9 +105,9 @@ export default async function LocaleLayout({
         />
       ))}
       <link rel="alternate" hrefLang="x-default" href="https://bymuja.com/en" />
-      <Header />
+      <Header locale={validLocale} nav={dict.nav} />
       <main className="flex-1 pt-14">{children}</main>
-      <Footer />
+      <Footer locale={validLocale} footer={dict.footer} authorBio={dict.blog.authorBio} authorName={authorName} />
     </>
   );
 }

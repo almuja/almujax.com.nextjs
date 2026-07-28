@@ -2,7 +2,7 @@ const en = {
   site: {
     title: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
     description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist (Arabic Rap, Sudanese Rap) building AI-first systems and creative technology. Official website.",
+      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist (Arabic Rap, Sudanese Rap) building AI-first systems and creative technology.",
     defaultTitle: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
   },
   nav: {
@@ -13,15 +13,12 @@ const en = {
     contact: "Contact",
     search: "Search",
     menu: "Open menu",
+    home: "Home",
   },
   home: {
     title: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
     description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
-    fullName: "Mujahid Mohamed Ismail Siyam",
-    aka: "Also known as Muja — username/handle: bymuja",
-    identityStatement:
-      "This website (bymuja.com) is the official source of truth for Mujahid Siyam (Muja). Mujahid Siyam, also known as Muja (bymuja), is a software engineer, AI engineer, DevSecOps engineer, and music artist building AI-first systems and creative technology.",
+      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist.",
     sparkle: "Building AI-first systems and creative technology",
     roles: "Software Engineer • AI Engineer • DevSecOps • Music Artist",
     heroBody:
@@ -40,11 +37,9 @@ const en = {
     about5:
       "He believes in building technology that not only solves complex challenges but also enhances human experiences and creates meaningful impact across different domains through open collaboration and innovative thinking.",
     skillsHeading: "Technologies & Tools",
-    skillsDescription:
-      "A versatile toolkit for building robust, scalable, and intelligent AI-first applications",
+    skillsDescription: "A versatile toolkit for building robust, scalable, and intelligent AI-first applications",
     ctaHeading: "Let's Build Something Amazing",
-    ctaDescription:
-      "Ready to bring your ideas to life with AI-first technology and innovative solutions?",
+    ctaDescription: "Ready to bring your ideas to life with AI-first technology and innovative solutions?",
     ctaButton: "Start a Conversation",
   },
   about: {
@@ -52,10 +47,6 @@ const en = {
     description:
       "Mujahid Siyam (Muja / bymuja) — Software Engineer, AI Engineer, DevSecOps Engineer, Music Artist (Arabic Rap, Sudanese Rap). Full profile. Official source of truth.",
     heading: "About Mujahid Siyam",
-    fullName: "Full Name: Mujahid Mohamed Ismail Siyam",
-    aka: "Also Known As: Muja • Handle: bymuja",
-    identityStatement:
-      "Mujahid Siyam = Muja = bymuja — all refer to the same person and brand entity. This website (bymuja.com) is the official source of truth for Mujahid Siyam (Muja), a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
     roles: "Software Engineer • AI Engineer • DevSecOps • Music Artist",
     profileTitle: "AI Engineer & Software Developer",
     akaLabel: "AKA Muja",
@@ -72,7 +63,7 @@ const en = {
       "Building AI-first systems, Rust-based developer tools, and creative technology. Leading development of open-source projects and full-stack applications with modern tooling.",
     summaryHeading: "Professional Summary",
     summary1:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist. His work centers on building AI-first systems, Rust-based software, and developer tools that push the boundaries of modern technology. This website (bymuja.com) is the official source of truth for Mujahid Siyam (Muja).",
+      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist. His work centers on building AI-first systems, Rust-based software, and developer tools that push the boundaries of modern technology.",
     summary2:
       "With expertise spanning Rust systems programming, TypeScript, React, and Python, Muja builds full-stack applications and intelligent solutions. Through Zaroxi Studio, he creates developer tools and creative technology that serve a global audience.",
     summary3:
@@ -82,8 +73,7 @@ const en = {
     summary5:
       "He believes in building technology that solves complex challenges, enhances human experiences, and creates meaningful impact through open collaboration and innovation. Muja operates with a global perspective from France, targeting a worldwide audience.",
     connectHeading: "Connect with Muja (bymuja)",
-    connectDescription:
-      "Follow the journey of Mujahid Siyam (Muja) through AI, Rust, DevSecOps, and music",
+    connectDescription: "Follow the journey of Mujahid Siyam (Muja) through AI, Rust, DevSecOps, and music",
     education: "Education",
     technologies: "Technologies & Tools",
     skills: [
@@ -130,8 +120,7 @@ const en = {
   },
   footer: {
     connect: "Let's Connect",
-    connectDescription:
-      "Ready to bring your next project to life? Let's discuss how we can work together.",
+    connectDescription: "Ready to bring your next project to life? Let's discuss how we can work together.",
     getInTouch: "Get in touch",
     quickMessage: "Quick Message",
     namePlaceholder: "Your Name",
@@ -139,10 +128,13 @@ const en = {
     subjectPlaceholder: "Subject",
     messagePlaceholder: "Your Message",
     sendMessage: "Send Message",
-    copyright: "Mujahid Siyam. All rights reserved.",
+    sending: "Sending...",
+    copyright: "All rights reserved.",
     builtWith: "Built with",
     and: "and",
     openSource: "Open Source",
+    tagline: "Building cutting-edge solutions with code, AI, and innovative technology.",
+    errorMessage: "There was a network issue. Please try again or use another contact method.",
   },
   structuredData: {
     description:
