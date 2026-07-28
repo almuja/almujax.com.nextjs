@@ -1,15 +1,18 @@
-import { serialize } from "next-mdx-remote/serialize";
-import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 
-export async function compileMdx(source: string) {
-  const mdxSource = await serialize(source, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeHighlight],
-    },
-    parseFrontmatter: false,
-  });
+export async function compileMdx(source: string): Promise<string> {
+  const result = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeHighlight)
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(source);
 
-  return mdxSource;
+  return String(result);
 }
