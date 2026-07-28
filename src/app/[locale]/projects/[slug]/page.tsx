@@ -4,9 +4,10 @@ import { promises as fs } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 import { Code2, ExternalLink } from "lucide-react";
-import ClientMDXRenderer from "../../components/ClientMDXRenderer";
-import { SoftwareSourceCodeStructuredData } from "../../components/StructuredData";
+import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
+import { SoftwareSourceCodeStructuredData } from "../../../components/StructuredData";
 import type { Metadata } from "next";
+import { locales, type Locale } from "@/i18n/config";
 
 export const revalidate = 60;
 
@@ -47,17 +48,18 @@ async function findProjectFile(slug: string): Promise<string | null> {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
+  const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
   const fullPath = await findProjectFile(slug);
 
   if (!fullPath) {
     return {
       title: slug,
       alternates: {
-        canonical: `https://bymuja.com/projects/${slug}`,
+        canonical: `https://bymuja.com/${validLocale}/projects/${slug}`,
       },
     };
   }
@@ -85,13 +87,13 @@ export async function generateMetadata({
         "Rust",
       ].filter(Boolean),
       alternates: {
-        canonical: `https://bymuja.com/projects/${slug}`,
+        canonical: `https://bymuja.com/${validLocale}/projects/${slug}`,
       },
       openGraph: {
         title: `${title} | Mujahid Siyam (Muja / bymuja)`,
         description,
         type: "article",
-        url: `https://bymuja.com/projects/${slug}`,
+          url: `https://bymuja.com/${validLocale}/projects/${slug}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -111,7 +113,7 @@ export async function generateMetadata({
     return {
       title: slug,
       alternates: {
-        canonical: `https://bymuja.com/projects/${slug}`,
+        canonical: `https://bymuja.com/${validLocale}/projects/${slug}`,
       },
     };
   }

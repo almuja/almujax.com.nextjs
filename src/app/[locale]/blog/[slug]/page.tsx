@@ -4,10 +4,11 @@ import Image from "next/image";
 import { promises as fs } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import Author from "../../components/Author";
-import ClientMDXRenderer from "../../components/ClientMDXRenderer";
-import { ArticleStructuredData } from "../../components/StructuredData";
+import Author from "../../../components/Author";
+import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
+import { ArticleStructuredData } from "../../../components/StructuredData";
 import type { Metadata } from "next";
+import { locales, type Locale } from "@/i18n/config";
 
 export const revalidate = 60;
 
@@ -91,10 +92,11 @@ async function getBlogPosts() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
+  const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
   const fullPath = join(blogDirectory, `${slug}.mdx`);
 
@@ -123,13 +125,13 @@ export async function generateMetadata({
         "blog",
       ].filter(Boolean),
       alternates: {
-        canonical: `https://bymuja.com/blog/${slug}`,
+        canonical: `https://bymuja.com/${validLocale}/blog/${slug}`,
       },
       openGraph: {
         title: `${title} | Mujahid Siyam (Muja / bymuja)`,
         description,
         type: "article",
-        url: `https://bymuja.com/blog/${slug}`,
+        url: `https://bymuja.com/${validLocale}/blog/${slug}`,
         images: [{ url: image, width: 1200, height: 630, alt: title }],
         publishedTime,
         authors: ["Mujahid Siyam"],
@@ -163,15 +165,16 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
   try {
-    // Await the params to ensure they're resolved
     const resolvedParams = await params;
 
     if (!resolvedParams?.slug) {
       notFound();
     }
+
+    const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
 
     const blogDirectory = join(process.cwd(), "src", "content", "blog");
     const fullPath = join(blogDirectory, `${resolvedParams.slug}.mdx`);
@@ -203,7 +206,7 @@ export default async function BlogPostPage({
               : new Date().toISOString()
           }
           image={frontmatter.image || ""}
-          url={`https://bymuja.com/blog/${resolvedParams.slug}`}
+          url={`https://bymuja.com/${validLocale}/blog/${resolvedParams.slug}`}
           authorName="Mujahid Siyam"
           authorUrl="https://bymuja.com"
         />

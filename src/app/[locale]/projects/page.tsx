@@ -10,24 +10,35 @@ import {
 } from "lucide-react";
 import { join } from "path";
 import { promises as fs } from "fs";
-import { Hero } from "../components/Hero";
+import { Hero } from "../../components/Hero";
 import type { Metadata } from "next";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { locales, type Locale } from "@/i18n/config";
 
-export const metadata: Metadata = {
-  title: "Projects | Mujahid Siyam (Muja / bymuja)",
-  description:
-    "Open-source projects and contributions by Mujahid Siyam (Muja / bymuja). AI-first systems, Rust-based developer tools, Zaroxi Studio, and creative technology.",
-  alternates: {
-    canonical: "https://bymuja.com/projects",
-  },
-  openGraph: {
-    title: "Projects | Mujahid Siyam (Muja / bymuja)",
-    description:
-      "AI-first systems, Rust tools, and creative technology projects by Mujahid Siyam (Muja / bymuja)",
-    url: "https://bymuja.com/projects",
-    type: "website",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const t = getDictionary(validLocale);
+
+  return {
+    title: t.projects.title,
+    description: t.projects.description,
+    keywords: [...t.seo.keywords],
+    alternates: {
+      canonical: `https://bymuja.com/${validLocale}/projects`,
+    },
+    openGraph: {
+      title: t.projects.title,
+      description: t.projects.description,
+      url: `https://bymuja.com/${validLocale}/projects`,
+      type: "website",
+    },
+  };
+}
 
 interface Project {
   slug: string;

@@ -63,8 +63,8 @@ export async function GET() {
 
   const atom = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
-  <title>bymuja.com Blog — Mujahid Siyam (Muja)</title>
-  <subtitle>AI engineering, Rust development, DevSecOps, and technology insights by Mujahid Siyam (Muja / bymuja)</subtitle>
+  <title>bymuja.com — Mujahid Siyam (Muja) | راب عربي | Software & AI Engineer</title>
+  <subtitle>AI engineering, Rust, DevSecOps, Arabic Rap, Sudanese Rap, and technology insights by Mujahid Siyam (Muja / bymuja). مدونة تقنية.</subtitle>
   <link href="${baseUrl}/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="${baseUrl}/blog" rel="alternate" type="text/html"/>
   <id>${baseUrl}/blog</id>

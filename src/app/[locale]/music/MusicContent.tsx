@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { ExternalLink, Music2 } from "lucide-react";
-import { Button } from "../components/ui/Button";
-import { Card, CardContent, CardFooter } from "../components/ui/Card";
+import { Button } from "../../components/ui/Button";
+import { Card, CardContent, CardFooter } from "../../components/ui/Card";
 
 // Import SVG icons for music services
 const SpotifyIcon = () => (

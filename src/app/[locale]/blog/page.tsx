@@ -2,24 +2,35 @@ import { promises as fs } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 import BlogPageClient from "./page-client";
-import { Hero } from "../components/Hero";
+import { Hero } from "../../components/Hero";
 import type { Metadata } from "next";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { locales, type Locale } from "@/i18n/config";
 
-export const metadata: Metadata = {
-  title: "Blog | Mujahid Siyam (Muja / bymuja)",
-  description:
-    "Articles by Mujahid Siyam (Muja / bymuja) on AI engineering, Rust development, DevSecOps, software engineering, and creative technology. Official blog of bymuja.com.",
-  alternates: {
-    canonical: "https://bymuja.com/blog",
-  },
-  openGraph: {
-    title: "Blog | Mujahid Siyam (Muja / bymuja)",
-    description:
-      "AI engineering, Rust, DevSecOps, and technology insights by Mujahid Siyam (Muja / bymuja)",
-    url: "https://bymuja.com/blog",
-    type: "website",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const t = getDictionary(validLocale);
+
+  return {
+    title: t.blog.title,
+    description: t.blog.description,
+    keywords: [...t.seo.keywords],
+    alternates: {
+      canonical: `https://bymuja.com/${validLocale}/blog`,
+    },
+    openGraph: {
+      title: t.blog.title,
+      description: t.blog.description,
+      url: `https://bymuja.com/${validLocale}/blog`,
+      type: "website",
+    },
+  };
+}
 
 interface BlogPost {
   slug: string;

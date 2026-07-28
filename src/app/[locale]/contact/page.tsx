@@ -9,7 +9,7 @@ import {
   Camera,
   LinkIcon,
 } from "lucide-react";
-import { submitContactForm } from "../actions/contact";
+import { submitContactForm } from "../../actions/contact";
 
 export default function ContactPage() {
   const [pending, setPending] = useState(false);

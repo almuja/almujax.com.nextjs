@@ -1,11 +1,20 @@
+const arDescription =
+  "مجاهد سيام المعروف أيضاً باسم موجا (bymuja)، مهندس برمجيات ومهندس ذكاء اصطناعي ومهندس DevSecOps وفنان موسيقي. راب عربي، راب سوداني، موسيقى وتكنولوجيا. الموقع الرسمي لمجاهد محمد إسماعيل سيام.";
+
+const frDescription =
+  "Mujahid Siyam, également connu sous le nom de Muja (bymuja), est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical. Rap arabe, rap soudanais, musique et technologie. Site officiel.";
+
 export function PersonStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Mujahid Siyam",
-    alternateName: ["Muja", "bymuja"],
+    alternateName: ["Muja", "bymuja", "مجاهد", "موجا"],
     description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology. Official source of truth for Mujahid Mohamed Ismail Siyam.",
+      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology. Arabic Rap and Sudanese Rap artist. Official source of truth for Mujahid Mohamed Ismail Siyam. " +
+      arDescription +
+      " " +
+      frDescription,
     url: "https://bymuja.com",
     image: "https://bymuja.com/img/profile.png",
     email: "contact@bymuja.com",
@@ -19,7 +28,18 @@ export function PersonStructuredData() {
       "https://soundcloud.com/bymuja",
       "https://tiktok.com/@bymuja",
     ],
-    jobTitle: ["Software Engineer", "AI Engineer", "DevSecOps Engineer", "Music Artist"],
+    jobTitle: [
+      "Software Engineer",
+      "AI Engineer",
+      "DevSecOps Engineer",
+      "Music Artist",
+      "مهندس برمجيات",
+      "مهندس ذكاء اصطناعي",
+      "فنان موسيقي",
+      "Ingénieur logiciel",
+      "Ingénieur IA",
+      "Artiste musical",
+    ],
     worksFor: {
       "@type": "Organization",
       name: "Zaroxi Studio",
@@ -31,6 +51,10 @@ export function PersonStructuredData() {
       "Software Engineering",
       "DevSecOps",
       "Music Production",
+      "Arabic Rap",
+      "Sudanese Rap",
+      "راب عربي",
+      "راب سوداني",
       "AI-first systems",
       "Developer Tools",
       "Open Source",
@@ -42,6 +66,7 @@ export function PersonStructuredData() {
       "Machine Learning",
       "Full-Stack Development",
     ],
+    knowsLanguage: ["Arabic", "English", "French", "العربية", "English", "français"],
     nationality: {
       "@type": "Country",
       name: "France",
@@ -60,15 +85,15 @@ export function WebSiteStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "bymuja.com — Mujahid Siyam (Muja)",
+    name: "bymuja.com — Mujahid Siyam (Muja) | راب عربي وسوداني",
     url: "https://bymuja.com",
     description:
-      "Official source of truth for Mujahid Siyam (Muja), a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
-    inLanguage: "en",
+      "Official source of truth for Mujahid Siyam (Muja), a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist (Arabic Rap, Sudanese Rap) building AI-first systems and creative technology. الموقع الرسمي لمجاهد سيام.",
+    inLanguage: ["en", "ar", "fr"],
     about: {
       "@type": "Person",
       name: "Mujahid Siyam",
-      alternateName: ["Muja", "bymuja"],
+      alternateName: ["Muja", "bymuja", "مجاهد", "موجا"],
       url: "https://bymuja.com",
     },
     potentialAction: {
@@ -117,10 +142,11 @@ export function ArticleStructuredData({
     dateModified: dateModified || datePublished,
     image: image || "https://bymuja.com/img/profile.png",
     url: url,
+    inLanguage: "en",
     author: {
       "@type": "Person",
       name: "Mujahid Siyam",
-      alternateName: ["Muja", "bymuja"],
+      alternateName: ["Muja", "bymuja", "مجاهد", "موجا"],
       url: "https://bymuja.com",
     },
     publisher: {
@@ -180,7 +206,7 @@ export function SoftwareSourceCodeStructuredData({
   structuredData.author = {
     "@type": "Person",
     name: "Mujahid Siyam",
-    alternateName: ["Muja", "bymuja"],
+    alternateName: ["Muja", "bymuja", "مجاهد", "موجا"],
     url: "https://bymuja.com",
   };
 

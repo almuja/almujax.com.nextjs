@@ -1,51 +1,62 @@
 import type { Metadata } from "next";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { locales, type Locale } from "@/i18n/config";
 
-export const metadata: Metadata = {
-  title: "About | Mujahid Siyam (Muja / bymuja)",
-  description:
-    "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist. Full profile of Mujahid Mohamed Ismail Siyam — the official source of truth.",
-  alternates: {
-    canonical: "https://bymuja.com/about",
-  },
-  openGraph: {
-    title: "About | Mujahid Siyam (Muja / bymuja)",
-    description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
-    type: "profile",
-    url: "https://bymuja.com/about",
-    images: ["https://bymuja.com/img/profile.png"],
-    firstName: "Mujahid",
-    lastName: "Siyam",
-    username: "bymuja",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const t = getDictionary(validLocale);
 
-export default function AboutPage() {
+  return {
+    title: t.about.title,
+    description: t.about.description,
+    keywords: [...t.seo.keywords],
+    alternates: {
+      canonical: `https://bymuja.com/${validLocale}/about`,
+    },
+    openGraph: {
+      title: t.about.title,
+      description: t.about.description,
+      type: "profile",
+      url: `https://bymuja.com/${validLocale}/about`,
+      images: ["https://bymuja.com/img/profile.png"],
+      firstName: "Mujahid",
+      lastName: "Siyam",
+      username: "bymuja",
+    },
+  };
+}
+
+export default async function AboutPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const t = getDictionary(validLocale);
+  const dir = validLocale === "ar" ? "rtl" : "ltr";
+
   return (
     <div className="min-h-screen pt-20 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Identity Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
-            About Mujahid Siyam
+            {t.about.heading}
           </h1>
           <p className="text-lg text-foreground/60 mb-2">
-            Full Name: Mujahid Mohamed Ismail Siyam
+            {t.about.fullName}
           </p>
-          <p className="text-lg text-foreground/50 mb-4">
-            Also Known As: <strong>Muja</strong> &bull; Handle:{" "}
-            <strong>bymuja</strong>
-          </p>
+          <p className="text-lg text-foreground/50 mb-4" dangerouslySetInnerHTML={{ __html: t.about.aka }} />
           <p className="text-base text-foreground/50 max-w-2xl mx-auto mb-8 leading-relaxed">
-            <strong>Mujahid Siyam = Muja = bymuja</strong> — all refer to the
-            same person and brand entity. This website (bymuja.com) is the
-            official source of truth for Mujahid Siyam (Muja), a Software
-            Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building
-            AI-first systems and creative technology.
+            {t.about.identityStatement}
           </p>
           <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
-            Software Engineer &bull; AI Engineer &bull; DevSecOps &bull; Music
-            Artist
+            {t.about.roles}
           </p>
         </div>
 
@@ -66,24 +77,20 @@ export default function AboutPage() {
                 <h2 className="text-2xl font-bold text-foreground mb-1">
                   Mujahid Siyam
                 </h2>
-                <p className="text-sm text-foreground/50 mb-1">AKA Muja</p>
-                <p className="text-foreground/60 mb-4">
-                  AI Engineer &amp; Software Developer
-                </p>
-
-                {/* Contact Info */}
+                <p className="text-sm text-foreground/50 mb-1">{t.about.akaLabel}</p>
+                <p className="text-foreground/60 mb-4">{t.about.profileTitle}</p>
                 <div className="space-y-3 w-full">
                   <div className="flex items-center gap-3 text-sm text-foreground/70">
                     <span>📍</span>
-                    <span>France — Global Reach</span>
+                    <span>{t.about.location}</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-foreground/70">
                     <span>📧</span>
-                    <span>contact@bymuja.com</span>
+                    <span>{t.about.email}</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-foreground/70">
                     <span>🔗</span>
-                    <span>bymuja.com</span>
+                    <span>{t.about.website}</span>
                   </div>
                 </div>
               </div>
@@ -92,21 +99,10 @@ export default function AboutPage() {
             {/* Core Competencies */}
             <div className="backdrop-blur-xl bg-[var(--color-card)] border border-[var(--color-border)]/50 rounded-2xl p-6">
               <h3 className="text-lg font-bold text-[var(--color-foreground)] mb-4">
-                Core Competencies
+                {t.about.coreCompetencies}
               </h3>
               <div className="space-y-3">
-                {[
-                  "Artificial Intelligence & ML",
-                  "Rust Systems Programming",
-                  "Full-Stack Development",
-                  "DevSecOps & CI/CD",
-                  "AI-First System Design",
-                  "Developer Tools (Zaroxi Studio)",
-                  "Open Source Advocacy",
-                  "Nix/NixOS Ecosystem",
-                  "Linux System Administration",
-                  "Music Production & Creative Tech",
-                ].map((skill) => (
+                {t.about.skills.map((skill: string) => (
                   <div key={skill} className="flex items-center gap-2 group">
                     <div className="w-2 h-2 bg-[var(--color-primary)] rounded-full group-hover:scale-150 transition-transform duration-300"></div>
                     <span className="text-sm text-[var(--color-foreground)]/80 group-hover:text-[var(--color-primary)] transition-colors duration-300">
@@ -120,7 +116,7 @@ export default function AboutPage() {
             {/* Languages */}
             <div className="backdrop-blur-xl bg-[var(--color-card)] border border-[var(--color-border)]/50 rounded-2xl p-6">
               <h3 className="text-lg font-bold text-[var(--color-foreground)] mb-4">
-                Languages
+                {t.about.languages}
               </h3>
               <div className="space-y-3">
                 {[
@@ -149,56 +145,21 @@ export default function AboutPage() {
             {/* Professional Summary */}
             <div className="backdrop-blur-xl bg-[var(--color-card)] border border-[var(--color-border)]/50 rounded-2xl p-6">
               <h3 className="text-2xl font-bold text-[var(--color-foreground)] mb-4">
-                Professional Summary
+                {t.about.summaryHeading}
               </h3>
               <div className="space-y-4 text-[var(--color-foreground)]/80 leading-relaxed">
-                <p>
-                  <strong>
-                    Mujahid Siyam, also known as Muja (bymuja), is a Software
-                    Engineer, AI Engineer, DevSecOps Engineer, and Music
-                    Artist.
-                  </strong>{" "}
-                  His work centers on building AI-first systems, Rust-based
-                  software, and developer tools that push the boundaries of
-                  modern technology. This website (bymuja.com) is the official
-                  source of truth for Mujahid Siyam (Muja).
-                </p>
-                <p>
-                  With expertise spanning Rust systems programming, TypeScript,
-                  React, and Python, Muja builds full-stack applications and
-                  intelligent solutions. Through{" "}
-                  <strong>Zaroxi Studio</strong>, he creates developer tools and
-                  creative technology that serve a global audience.
-                </p>
-                <p>
-                  As a dedicated <strong>Open Source Advocate</strong>, Muja
-                  actively contributes to and promotes open-source projects,
-                  believing that collaborative development drives innovation and
-                  accessibility in technology. He is particularly passionate
-                  about the <strong>Nix/NixOS ecosystem</strong>, reproducible
-                  builds, and declarative system configurations.
-                </p>
-                <p>
-                  Beyond engineering, Muja is a <strong>Music Artist</strong>{" "}
-                  — music is not just a hobby but a core part of his creative
-                  identity. This artistic dimension informs his approach to
-                  building creative technology and shapes his perspective as a
-                  well-rounded technologist.
-                </p>
-                <p>
-                  He believes in building technology that solves complex
-                  challenges, enhances human experiences, and creates meaningful
-                  impact through open collaboration and innovation. Muja
-                  operates with a global perspective from France, targeting a
-                  worldwide audience.
-                </p>
+                <p>{t.about.summary1}</p>
+                <p>{t.about.summary2}</p>
+                <p>{t.about.summary3}</p>
+                <p>{t.about.summary4}</p>
+                <p>{t.about.summary5}</p>
               </div>
             </div>
 
             {/* Experience */}
             <div className="backdrop-blur-xl bg-[var(--color-card)] border border-[var(--color-border)]/50 rounded-2xl p-6">
               <h3 className="text-2xl font-bold text-[var(--color-foreground)] mb-6">
-                Experience
+                {t.about.experience}
               </h3>
               <div className="space-y-6">
                 {[
@@ -251,7 +212,7 @@ export default function AboutPage() {
             {/* Education */}
             <div className="backdrop-blur-xl bg-[var(--color-card)] border border-[var(--color-border)]/50 rounded-2xl p-6">
               <h3 className="text-2xl font-bold text-[var(--color-foreground)] mb-6">
-                Education
+                {t.about.education}
               </h3>
               <div className="space-y-4">
                 {[
@@ -293,7 +254,7 @@ export default function AboutPage() {
             {/* Technologies */}
             <div className="backdrop-blur-xl bg-[var(--color-card)] border border-[var(--color-border)]/50 rounded-2xl p-6">
               <h3 className="text-2xl font-bold text-[var(--color-foreground)] mb-6">
-                Technologies &amp; Tools
+                {t.about.technologies}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
@@ -332,11 +293,10 @@ export default function AboutPage() {
             {/* Social Media Links */}
             <div className="backdrop-blur-xl bg-[var(--color-card)] border border-[var(--color-border)]/50 rounded-2xl p-6">
               <h3 className="text-2xl font-bold text-[var(--color-foreground)] mb-6">
-                Connect with Muja (bymuja)
+                {t.about.connectHeading}
               </h3>
               <p className="text-[var(--color-foreground)]/60 mb-6">
-                Follow the journey of Mujahid Siyam (Muja) through AI, Rust,
-                DevSecOps, and music
+                {t.about.connectDescription}
               </p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[

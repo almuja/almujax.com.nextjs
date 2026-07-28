@@ -60,13 +60,13 @@ export async function GET() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
   <channel>
-    <title>bymuja.com Blog — Mujahid Siyam (Muja)</title>
+    <title>bymuja.com — Mujahid Siyam (Muja) | راب عربي | Software & AI Engineer</title>
     <link>${baseUrl}/blog</link>
-    <description>AI engineering, Rust development, DevSecOps, software engineering, and creative technology insights by Mujahid Siyam (Muja / bymuja).</description>
+    <description>AI engineering, Rust development, DevSecOps, Arabic Rap, Sudanese Rap, software engineering, and creative technology insights by Mujahid Siyam (Muja / bymuja). مدونة تقنية وهندسية.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>
-    <dc:creator>Mujahid Siyam (Muja / bymuja)</dc:creator>
+    <dc:creator>Mujahid Siyam (Muja / bymuja) | مجاهد سيام</dc:creator>
     <geo:lat>46.603354</geo:lat>
     <geo:long>1.888334</geo:long>
 ${rssItems}
