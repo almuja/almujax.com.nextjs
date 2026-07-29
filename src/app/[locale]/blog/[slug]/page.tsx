@@ -7,6 +7,7 @@ import matter from "gray-matter";
 import Author from "../../../components/Author";
 import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
 import { ArticleStructuredData } from "../../../components/StructuredData";
+import { BreadcrumbStructuredData } from "../../../components/BreadcrumbJsonLd";
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -141,29 +142,38 @@ export async function generateMetadata({
         url: `https://bymuja.com/${validLocale}/blog/${slug}`,
         images: [{ url: image, width: 1200, height: 630, alt: title }],
         publishedTime,
+        modifiedTime: publishedTime,
         authors: ["Mujahid Siyam"],
+        tags: data.tags || [],
       },
       twitter: {
         card: "summary_large_image",
         title: `${title} | Mujahid Siyam`,
         description,
         images: [image],
+        site: "@bymuja",
+        creator: "@bymuja",
       },
+      category: data.category || undefined,
       other: {
+        "article:published_time": publishedTime,
+        "article:author": "Mujahid Siyam",
+        "article:tag": (data.tags || []).join(", "),
+        "article:section": data.category || "",
         "geo.region": "FR",
         "geo.placename": "France",
         "geo.position": "46.603354;1.888334",
         ICBM: "46.603354, 1.888334",
-        "DC.date": publishedTime || "",
         "DC.creator": "Mujahid Siyam",
         "DC.subject": (data.tags || []).join(", "),
+        "DC.date": publishedTime || "",
       },
     };
   } catch {
     return {
       title: slug,
       alternates: {
-        canonical: `https://bymuja.com/blog/${slug}`,
+        canonical: `https://bymuja.com/${validLocale}/blog/${slug}`,
       },
     };
   }
@@ -221,6 +231,13 @@ export default async function BlogPostPage({
           url={`https://bymuja.com/${validLocale}/blog/${resolvedParams.slug}`}
           authorName="Mujahid Siyam"
           authorUrl="https://bymuja.com"
+        />
+        <BreadcrumbStructuredData
+          items={[
+            { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://bymuja.com/${validLocale}` },
+            { name: dict.blog.title.replace(" | Mujahid Siyam (Muja / bymuja)", "").replace(/^Blog \| /, ""), url: `https://bymuja.com/${validLocale}/blog` },
+            { name: title, url: `https://bymuja.com/${validLocale}/blog/${resolvedParams.slug}` },
+          ]}
         />
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           {/* Back to Blog Link - Always at the top */}

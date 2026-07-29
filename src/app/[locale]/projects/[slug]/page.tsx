@@ -6,6 +6,7 @@ import matter from "gray-matter";
 import { Code2, ExternalLink } from "lucide-react";
 import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
 import { SoftwareSourceCodeStructuredData } from "../../../components/StructuredData";
+import { BreadcrumbStructuredData } from "../../../components/BreadcrumbJsonLd";
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/i18n/config";
 import { compileMdx } from "@/lib/mdx-compiler";
@@ -173,10 +174,17 @@ export default async function ProjectPage({
         <SoftwareSourceCodeStructuredData
           name={project.title}
           description={project.description}
-          url={`https://bymuja.com/projects/${slug}`}
+          url={`https://bymuja.com/${validLocale}/projects/${slug}`}
           codeRepository={project.githubUrl}
           dateCreated={project.date}
           programmingLanguage={project.tags}
+        />
+        <BreadcrumbStructuredData
+          items={[
+            { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://bymuja.com/${validLocale}` },
+            { name: validLocale === "ar" ? "المشاريع" : "Projects", url: `https://bymuja.com/${validLocale}/projects` },
+            { name: project.title, url: `https://bymuja.com/${validLocale}/projects/${slug}` },
+          ]}
         />
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           {/* Back to Projects Link - Centered and Bigger */}
