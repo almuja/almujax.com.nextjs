@@ -171,24 +171,26 @@ export function MusicContent({ locale, t }: MusicContentProps) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {musicVideos.map((video, i) => (
                 <div key={video.id}
-                  className="group rounded-2xl overflow-hidden border border-border/20 bg-card/10 backdrop-blur-sm hover:border-red-500/30 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-500">
-                  <div className="aspect-video w-full relative bg-black/40 overflow-hidden">
+                  className="group rounded-2xl overflow-hidden bg-gradient-to-b from-card/30 to-card/5 border border-border/20 hover:border-red-500/40 hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-500 hover:-translate-y-1">
+                  <div className="aspect-video w-full bg-black">
                     <iframe
                       src={`https://www.youtube.com/embed/${video.id}`}
                       width="100%" height="100%"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       loading="lazy"
-                      className="w-full h-full group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full"
                       title={video.title}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
                   <div className="p-4 flex items-center justify-between">
-                    <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors truncate">{video.title}</span>
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+                      <span className="text-sm font-medium text-foreground/60 group-hover:text-foreground transition-colors truncate">{video.title}</span>
+                    </div>
                     <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer"
-                      className="text-xs text-foreground/30 hover:text-red-400 flex items-center gap-1 transition-colors flex-shrink-0 ml-2">
-                      <ExternalLink className="w-3 h-3" /> YouTube
+                      className="flex items-center gap-1 text-xs text-foreground/20 group-hover:text-red-400 transition-colors flex-shrink-0 ml-2">
+                      <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 </div>
