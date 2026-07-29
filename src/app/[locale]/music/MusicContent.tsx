@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink, Music2, Disc3, Volume2, ChevronDown, ChevronUp, Play, Pause } from "lucide-react";
+import { ExternalLink, Disc3, ChevronDown, ChevronUp, Music2 } from "lucide-react";
 
 const SpotifyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-2-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -9,6 +9,26 @@ const SpotifyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
 
 const YouTubeIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M19.67 8.12c-.24-.84-.94-1.5-1.83-1.73C16.04 6 12 6 12 6s-4.04 0-5.84.39c-.89.23-1.59.89-1.83 1.73C4 9.91 4 12 4 12s0 2.09.33 3.88c.24.84.94 1.5 1.83 1.73C7.96 18 12 18 12 18s4.04 0 5.84-.39c.89-.23 1.59-.89 1.83-1.73C20 14.09 20 12 20 12s0-2.09-.33-3.88zm-9.35 6.15V9.73l4.47 2.27-4.47 2.27z"/></svg>
+);
+
+const SoundCloudIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M11.56 8.87V17h8.76c1.85 0 3.31-1.46 3.31-3.31 0-1.84-1.46-3.31-3.31-3.31-.41 0-.82.08-1.2.22-.61-3.47-3.6-6.1-7.26-6.1-3.62 0-6.7 2.67-7.26 6.1-.38-.14-.79-.22-1.2-.22C2.07 10.38.5 11.95.5 13.84c0 1.89 1.57 3.26 3.46 3.26h7.6zM2.92 13.84c0-.63.5-1.15 1.12-1.15.63 0 1.12.52 1.12 1.15v1.16H2.92v-1.16zm2.4-.58c0-.63.5-1.15 1.12-1.15.63 0 1.12.52 1.12 1.15v1.74H5.32v-1.74zm2.4-.58c0-.63.5-1.15 1.12-1.15.63 0 1.12.52 1.12 1.15v2.32H7.72v-2.32zm2.4-.58c0-.63.5-1.15 1.12-1.15.63 0 1.12.52 1.12 1.15v2.9h-2.24v-2.9z"/></svg>
+);
+
+const AppleMusicIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M21.65 2.24a1 1 0 0 0-.8-.2l-13 2A1 1 0 0 0 7 5v10.35A3.45 3.45 0 0 0 5.5 15 3.5 3.5 0 1 0 9 18.5v-7.64l11-1.69v4.18a3.45 3.45 0 0 0-1.5-.35 3.5 3.5 0 1 0 3.5 3.5V3a1 1 0 0 0-.35-.76zM9 15.35a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm10 .65a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+);
+
+const TidalIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M12 3L6 9l3 3-3 3 6 6 6-6-3-3 3-3-6-6zm0 4.5l3 3-3 3-3-3 3-3z"/></svg>
+);
+
+const AmazonMusicIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm-1 4h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg>
+);
+
+const PandoraIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M6 3h8c3.31 0 6 2.69 6 6s-2.69 6-6 6h-4v6H6V3zm4 8h4c1.1 0 2-.9 2-2s-.9-2-2-2h-4v4z"/></svg>
 );
 
 interface MusicContentProps {
@@ -21,13 +41,13 @@ interface MusicContentProps {
 }
 
 const streamingPlatforms = [
-  { name: "Spotify", icon: SpotifyIcon, url: "https://open.spotify.com/user/bymuja", color: "#1DB954", gradient: "from-green-500/20 to-green-600/5" },
-  { name: "YouTube", icon: YouTubeIcon, url: "https://www.youtube.com/@bymuja", color: "#FF0000", gradient: "from-red-500/20 to-red-600/5" },
-  { name: "SoundCloud", icon: Volume2, url: "https://soundcloud.com/bymuja", color: "#FF5500", gradient: "from-orange-500/20 to-orange-600/5" },
-  { name: "Apple Music", icon: Music2, url: "https://music.apple.com/profile/bymuja", color: "#FC3C44", gradient: "from-rose-500/20 to-rose-600/5" },
-  { name: "Tidal", icon: Music2, url: "https://tidal.com/browse/artist/", color: "#00FFFF", gradient: "from-cyan-500/20 to-cyan-600/5" },
-  { name: "Amazon", icon: Music2, url: "https://music.amazon.com/", color: "#00A8E1", gradient: "from-sky-500/20 to-sky-600/5" },
-  { name: "Pandora", icon: Music2, url: "https://www.pandora.com/", color: "#3668FF", gradient: "from-blue-500/20 to-blue-600/5" },
+  { name: "Spotify", icon: SpotifyIcon, url: "https://open.spotify.com/user/bymuja", color: "#1DB954" },
+  { name: "YouTube", icon: YouTubeIcon, url: "https://www.youtube.com/@bymuja", color: "#FF0000" },
+  { name: "SoundCloud", icon: SoundCloudIcon, url: "https://soundcloud.com/bymuja", color: "#FF5500" },
+  { name: "Apple Music", icon: AppleMusicIcon, url: "https://music.apple.com/profile/bymuja", color: "#FC3C44" },
+  { name: "Tidal", icon: TidalIcon, url: "https://tidal.com/browse/artist/", color: "#00FFFF" },
+  { name: "Amazon", icon: AmazonMusicIcon, url: "https://music.amazon.com/", color: "#00A8E1" },
+  { name: "Pandora", icon: PandoraIcon, url: "https://www.pandora.com/", color: "#3668FF" },
 ] as const;
 
 const musicVideos = [
@@ -85,7 +105,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 style={{ animationDelay: `${i * 80}ms` }}>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-gradient-to-br" style={{ backgroundImage: `linear-gradient(to bottom right, ${p.color}15, transparent)` }} />
                 <div className="relative z-10 p-3 rounded-xl transition-all duration-300 group-hover:shadow-lg" style={{ backgroundColor: `${p.color}15`, boxShadow: `0 0 20px ${p.color}10` }}>
-                  <p.icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" style={{ color: p.color }} />
+                  <span className="text-white/90" style={{ color: p.color }}><p.icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" /></span>
                 </div>
                 <span className="relative z-10 text-[11px] font-bold uppercase tracking-wider text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">{p.name}</span>
               </a>
@@ -142,7 +162,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 <div className="flex flex-wrap gap-2.5">
                   {[
                     { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@MujaOfficiel", icon: YouTubeIcon, primary: true },
-                    { label: "SoundCloud", url: "https://soundcloud.com/bymuja", icon: Volume2, primary: false },
+                    { label: "SoundCloud", url: "https://soundcloud.com/bymuja", icon: SoundCloudIcon, primary: false },
                     { label: "Spotify", url: "https://open.spotify.com/user/bymuja", icon: SpotifyIcon, primary: false },
                   ].map((b) => (
                     <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
