@@ -45,7 +45,7 @@ export default async function AboutPage({
     <div dir={dir} className="min-h-screen pt-20 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
             {t.about.heading}
           </h1>
           <p className="text-xl text-foreground/60 max-w-2xl mx-auto">

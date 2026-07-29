@@ -84,7 +84,7 @@ export default function Header({ locale, nav }: HeaderProps) {
         </div>
       </header>
 
-      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} navigationItems={navigationItems} />
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} navigationItems={navigationItems} locale={locale} menuLabel={nav.menu} authorName={locale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"} authorBio={locale === "ar" ? "مهندس برمجيات" : "Software Engineer"} />
     </>
   );
 }

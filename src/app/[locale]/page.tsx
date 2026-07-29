@@ -53,7 +53,7 @@ export default async function Home({
         <section dir={dir} className="min-h-screen flex items-center justify-center text-center py-20">
           <div className="max-w-4xl">
             <div className="flex justify-center mb-8">
-              <div className="w-48 h-48 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center border-4 border-primary/20 overflow-hidden group hover:border-primary/40 transition-all duration-300">
+              <div className="w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center border-4 border-primary/20 overflow-hidden group hover:border-primary/40 transition-all duration-300">
                 <Image
                   src="/img/profile.png"
                   alt="Mujahid Siyam (Muja / bymuja)"
@@ -61,13 +61,14 @@ export default async function Home({
                   height={192}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   priority
+                  sizes="(max-width: 640px) 128px, 192px"
                   placeholder="blur"
                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 />
               </div>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               {validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
             </h1>
 
@@ -99,10 +100,10 @@ export default async function Home({
               {t.home.sparkle}
             </div>
 
-            <h2 className="text-2xl md:text-3xl text-foreground/80 mb-8 font-light">
+            <h2 className="text-xl md:text-3xl text-foreground/80 mb-8 font-light">
               {t.home.roles}
             </h2>
-            <p className="text-xl text-foreground/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-xl text-foreground/60 mb-12 max-w-2xl mx-auto leading-relaxed px-2">
               {t.home.heroBody}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -135,7 +136,7 @@ export default async function Home({
         {/* About Section */}
         <section dir={dir} className="py-20">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h3 className="text-4xl font-bold mb-8 text-foreground">
+            <h3 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">
               {t.home.aboutHeading}
             </h3>
             <div className="prose prose-lg text-foreground/80 max-w-none">
@@ -151,10 +152,10 @@ export default async function Home({
         {/* Skills Section */}
         <section className="py-20">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold mb-4 text-foreground">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               {t.home.skillsHeading}
             </h3>
-            <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
+            <p className="text-base md:text-xl text-foreground/60 max-w-2xl mx-auto">
               {t.home.skillsDescription}
             </p>
           </div>
@@ -170,8 +171,8 @@ export default async function Home({
         {/* CTA Section */}
         <section className="py-20">
           <div className="backdrop-blur-xl bg-gradient-to-r from-primary to-secondary rounded-3xl p-12 text-center border border-glass-border">
-            <h3 className="text-4xl font-bold mb-6 text-white">{t.home.ctaHeading}</h3>
-            <p className="text-white/80 text-xl mb-8 max-w-2xl mx-auto">{t.home.ctaDescription}</p>
+            <h3 className="text-2xl md:text-4xl font-bold mb-6 text-white">{t.home.ctaHeading}</h3>
+            <p className="text-white/80 text-base md:text-xl mb-8 max-w-2xl mx-auto">{t.home.ctaDescription}</p>
             <Link
               href="mailto:contact@bymuja.com"
               className="inline-flex items-center gap-2 px-8 py-4 backdrop-blur-sm bg-glass border border-glass-border text-white rounded-2xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
