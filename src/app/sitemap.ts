@@ -6,6 +6,19 @@ import matter from "gray-matter";
 const baseUrl = "https://bymuja.com";
 const defaultLocale = "en";
 
+function toAbsoluteImage(image: string | undefined): string | undefined {
+  if (!image) return undefined;
+  if (image.startsWith("http://") || image.startsWith("https://")) return image;
+  if (image.startsWith("/")) return `${baseUrl}${image}`;
+  return `${baseUrl}/${image}`;
+}
+
+function isValidImage(image: string | undefined): boolean {
+  if (!image) return false;
+  if (image === "/vercel.svg" || image.endsWith("/vercel.svg")) return false;
+  return true;
+}
+
 async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
 
@@ -24,7 +37,7 @@ async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
           if (data.draft === true) return null;
 
           const postDate = data.date ? new Date(data.date) : stats.mtime;
-          const image = data.image || undefined;
+          const image = isValidImage(data.image) ? toAbsoluteImage(data.image) : undefined;
 
           return {
             url: `${baseUrl}/${defaultLocale}/blog/${slug}`,
@@ -60,7 +73,7 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
           if (data.draft === true) return null;
 
           const projDate = data.date ? new Date(data.date) : stats.mtime;
-          const image = data.image || undefined;
+          const image = isValidImage(data.image) ? toAbsoluteImage(data.image) : undefined;
 
           return {
             url: `${baseUrl}/${defaultLocale}/projects/${slug}`,
@@ -82,42 +95,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/en`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/en/about`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/projects`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/blog`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/contact`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/en/music`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
+    { url: `${baseUrl}/en`, lastModified: now, changeFrequency: "daily", priority: 1 },
+    { url: `${baseUrl}/en/about`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/en/projects`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    { url: `${baseUrl}/en/blog`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    { url: `${baseUrl}/en/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/en/music`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
   ];
 
   const blogPosts = await getBlogPosts();
