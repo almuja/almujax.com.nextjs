@@ -52,6 +52,9 @@ interface MusicContentProps {
     listenOn: string;
     tracks: string;
     openInApp: string;
+    artistName: string;
+    artistDescription: string;
+    artistStory: string;
   };
 }
 
@@ -172,9 +175,18 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {t.heading}
           </h1>
-          <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-6">
             {t.subtitle}
           </p>
+
+          {/* Artist Story */}
+          {t.artistStory && (
+            <div className="max-w-3xl mx-auto mb-12 p-6 rounded-2xl bg-primary/5 border border-primary/20">
+              <p className="text-foreground/80 leading-relaxed text-base">
+                {t.artistStory}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Playlists Grid */}

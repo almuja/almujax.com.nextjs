@@ -13,8 +13,13 @@ export function PersonStructuredData() {
     "@type": "Person",
     name: "Mujahid Siyam",
     alternateName: ["Muja", "bymuja", "مجاهد صيام", "موجا"],
+    birthDate: "1991-09-23",
+    birthPlace: {
+      "@type": "Place",
+      name: "Sudan",
+    },
     description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist. Muja (موجا) is his music artist name for Arabic Rap and Sudanese Rap. " +
+      "Mujahid Siyam (Muja / bymuja / موجا) is a Software Engineer, AI Engineer, and Music Artist, born September 23, 1991 in Sudan. He started music at age 16, building successful bands before relocating to France. He then transitioned into software engineering and web development, building systems and websites. In 2022, he returned to music production as a side hobby, releasing his first EP 'KAKASHI' — which he considers a new beginning in his artistic career. Today, Muja focuses primarily on software engineering and AI engineering, with plans to return to music soon. " +
       enMusicDescription +
       " " +
       arDescription +
@@ -232,10 +237,19 @@ export function MusicArtistStructuredData() {
     name: "Muja",
     alternateName: ["Muja", "موجا", "bymuja"],
     description:
-      "Muja (موجا) is the music artist name of Mujahid Siyam — Arabic Rap and Sudanese Rap artist. Combining technology and music, Muja creates rap music with modern production.",
+      "Muja (موجا) is the music artist name of Mujahid Siyam — born September 23, 1991 in Sudan. He started music at age 16, created successful bands, then moved to France. After a break for software engineering, he returned to music in 2022 with his first EP 'KAKASHI'. Arabic Rap and Sudanese Rap artist. Today he focuses on AI and software engineering while planning his return to music.",
     url: "https://bymuja.com/music",
     image: "https://bymuja.com/img/profile.png",
+    foundingDate: "2022",
     genre: ["Arabic Rap", "Sudanese Rap", "Hip Hop", "راب عربي", "راب سوداني"],
+    album: [
+      {
+        "@type": "MusicAlbum",
+        name: "KAKASHI",
+        datePublished: "2022",
+        albumProductionType: "https://schema.org/EP",
+      },
+    ],
     sameAs: [
       "https://open.spotify.com/user/bymuja",
       "https://soundcloud.com/bymuja",

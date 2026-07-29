@@ -161,6 +161,7 @@ const fr = {
     openInApp: "Ouvrir dans",
     artistName: "Muja",
     artistDescription: "Rap Arabe • Rap Soudanais • Hip Hop",
+    artistStory: "Muja (Mujahid Siyam) est un artiste et ingénieur logiciel, né le 23 septembre 1991 au Soudan. Il a commencé sa carrière artistique à l'âge de 16 ans. Il a créé de nombreux groupes à succès avant de déménager en France, puis a quitté la musique pour travailler dans l'ingénierie logicielle et le développement web, où il a développé des systèmes et sites web. Il est revenu à la production musicale comme hobby en 2022 avec son premier EP intitulé KAKASHI, qu'il considère comme un nouveau départ dans sa carrière artistique. Aujourd'hui, Muja se concentre principalement sur l'ingénierie logicielle et l'IA, mais reviendra bientôt à la musique.",
   },
   contact: {
     title: "Contact | Mujahid Siyam (Muja / bymuja)",

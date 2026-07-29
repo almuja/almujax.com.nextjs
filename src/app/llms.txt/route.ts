@@ -98,9 +98,14 @@ ${projectLinks || "- No published projects yet."}
 ## Entity Identity
 Mujahid Siyam = Muja = bymuja (all refer to the same person and brand entity)
 Full name: Mujahid Mohamed Ismail Siyam
+Born: September 23, 1991 in Sudan
 Location: France (global reach)
-Roles: Software Engineer · AI Engineer · DevSecOps Engineer · Music Artist
+Roles: Software Engineer · AI Engineer · DevSecOps Engineer · Music Artist (Muja / موجا)
 Organization: Zaroxi Studio
+EP: KAKASHI (2022)
+
+## Biography
+Muja (Mujahid Siyam) is an artist and software engineer, born on September 23, 1991 in Sudan. He started his artistic career when he was 16 years old, creating many successful bands. He moved to France and transitioned into software engineering and web development, building systems and websites. He returned to music production as a side hobby in 2022, releasing his first EP titled KAKASHI — which he considers a new beginning in his artistic career. Today, Muja focuses primarily on software engineering and AI engineering, with plans to return to music soon.
 `;
 
   return new Response(llmsTxt, {
