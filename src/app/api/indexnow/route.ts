@@ -8,7 +8,7 @@ const SEARCH_ENGINES = [
 ];
 
 async function notifyIndexNow(urls: string[]) {
-  const results: { engine: string; status: number; ok: boolean }[] = [];
+  const results: Array<{ engine: string; status: number }> = [];
 
   await Promise.allSettled(
     SEARCH_ENGINES.map(async (engine) => {
@@ -20,21 +20,13 @@ async function notifyIndexNow(urls: string[]) {
             host: "bymuja.com",
             key: INDEXNOW_KEY,
             keyLocation: `${BASE_URL}/${INDEXNOW_KEY}.txt`,
-            urlList: urls,
+            urlList: urls.slice(0, 100),
           }),
-          signal: AbortSignal.timeout(10000),
+          signal: AbortSignal.timeout(15000),
         });
-        results.push({
-          engine: new URL(engine).hostname,
-          status: response.status,
-          ok: response.ok || response.status === 200,
-        });
-      } catch (err) {
-        results.push({
-          engine: new URL(engine).hostname,
-          status: 0,
-          ok: false,
-        });
+        results.push({ engine: new URL(engine).hostname, status: response.status });
+      } catch {
+        results.push({ engine: new URL(engine).hostname, status: 0 });
       }
     }),
   );
@@ -42,10 +34,11 @@ async function notifyIndexNow(urls: string[]) {
   return results;
 }
 
-async function notifyGoogle(urls: string[]) {
+async function pingGoogle() {
   try {
-    const pingUrl = `https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`;
-    await fetch(pingUrl, { signal: AbortSignal.timeout(10000) });
+    await fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`, {
+      signal: AbortSignal.timeout(10000),
+    });
     return true;
   } catch {
     return false;
@@ -58,28 +51,17 @@ export async function GET(request: Request) {
   const url = searchParams.get("url");
 
   if (key !== INDEXNOW_KEY) {
-    return Response.json(
-      { error: "Invalid key" },
-      { status: 401 },
-    );
+    return Response.json({ error: "Invalid key" }, { status: 401 });
   }
 
-  const urls = url ? [url] : [];
-  if (urls.length === 0) {
-    return Response.json(
-      { error: "No URL provided" },
-      { status: 400 },
-    );
+  if (!url) {
+    return Response.json({ error: "url parameter required" }, { status: 400 });
   }
 
-  const results = await notifyIndexNow(urls);
-  await notifyGoogle(urls);
+  const results = await notifyIndexNow([url]);
+  await pingGoogle();
 
-  return Response.json({
-    success: true,
-    submitted: urls,
-    results,
-  });
+  return Response.json({ success: true, submitted: [url], results });
 }
 
 export async function POST(request: Request) {
@@ -88,31 +70,23 @@ export async function POST(request: Request) {
     const { key, urls } = body;
 
     if (key !== INDEXNOW_KEY) {
-      return Response.json(
-        { error: "Invalid key" },
-        { status: 401 },
-      );
+      return Response.json({ error: "Invalid key" }, { status: 401 });
     }
 
     if (!urls || !Array.isArray(urls) || urls.length === 0) {
-      return Response.json(
-        { error: "No URLs provided" },
-        { status: 400 },
-      );
+      return Response.json({ error: "urls array required" }, { status: 400 });
     }
 
     const results = await notifyIndexNow(urls);
-    await notifyGoogle(urls);
+    const googleOk = await pingGoogle();
 
     return Response.json({
       success: true,
-      submitted: urls,
+      submitted: urls.length,
+      google: googleOk ? "pinged" : "failed",
       results,
     });
   } catch {
-    return Response.json(
-      { error: "Invalid request body" },
-      { status: 400 },
-    );
+    return Response.json({ error: "Invalid request" }, { status: 400 });
   }
 }

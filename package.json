@@ -11,7 +11,8 @@
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "test:ui": "vitest --ui",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "index-all": "node scripts/index-all.mjs"
   },
   "pnpm.overrides": {
     "critters": "npm:beasties@^0.4.1"
