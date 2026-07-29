@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink, Music2, Play, Disc3, Volume2, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, Music2, Disc3, Volume2, ChevronDown, ChevronUp } from "lucide-react";
 
 const SpotifyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-2-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -30,9 +30,14 @@ const services = [
   { name: "Pandora", icon: Music2, url: "https://www.pandora.com/", color: "#3668FF", glow: "shadow-blue-500/20" },
 ] as const;
 
-// Add your YouTube videos here. Use the video ID from the URL.
-// Example: https://www.youtube.com/watch?v=VIDEO_ID → { title: "Song Name", url: "https://www.youtube.com/embed/VIDEO_ID" }
-const musicVideos: { title: string; url: string }[] = [];
+const musicVideos = [
+  { id: "QETIqXOf_KU", title: "Music Video" },
+  { id: "3JEXFwKn24g", title: "Music Video" },
+  { id: "FY_braEkhIo", title: "Music Video" },
+  { id: "c-EY43l0M7Y", title: "Music Video" },
+  { id: "j28Cn-NPpH4", title: "Music Video" },
+  { id: "XGGFjI9hMx0", title: "Music Video" },
+];
 
 export function MusicContent({ locale, t }: MusicContentProps) {
   const [showStory, setShowStory] = useState(true);
@@ -146,50 +151,49 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
           {/* === VIDEOS === */}
           <div className="mb-14">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-xl bg-red-500/10 border border-red-500/20">
-                <YouTubeIcon className="w-4 h-4 text-red-500" />
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2.5 rounded-2xl bg-red-500/10 border border-red-500/20">
+                <YouTubeIcon className="w-5 h-5 text-red-500" />
               </div>
               <div className="flex-1">
-                <h2 className="text-lg font-bold text-foreground">
-                  {locale === "ar" ? "مقاطع الفيديو" : locale === "fr" ? "Vidéos" : "Videos"}
+                <h2 className="text-2xl font-bold text-foreground">
+                  {locale === "ar" ? "الفيديوهات" : locale === "fr" ? "Vidéos" : "Videos"}
                 </h2>
-                <p className="text-xs text-foreground/40">@MujaOfficiel & @bymuja</p>
+                <p className="text-sm text-foreground/40">@MujaOfficiel</p>
               </div>
+              <a href="https://www.youtube.com/@MujaOfficiel" target="_blank" rel="noopener noreferrer"
+                className="text-xs text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors font-medium">
+                {locale === "ar" ? "القناة" : locale === "fr" ? "Chaîne" : "Channel"}
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
 
-            {musicVideos.length > 0 ? (
-              <div className="grid gap-6">
-                {musicVideos.map((video, i) => (
-                  <div key={i} className="rounded-2xl overflow-hidden border border-border/20 shadow-xl bg-black/20">
-                    <div className="aspect-video w-full">
-                      <iframe src={video.url} width="100%" height="100%" allowFullScreen loading="lazy" className="w-full h-full" title={video.title} />
-                    </div>
-                    <div className="p-3 flex items-center justify-between">
-                      <span className="text-sm font-medium text-foreground/70">{video.title}</span>
-                      <a href={video.url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary/50 hover:text-primary flex items-center gap-1">
-                        <ExternalLink className="w-3 h-3" /> YouTube
-                      </a>
-                    </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {musicVideos.map((video, i) => (
+                <div key={video.id}
+                  className="group rounded-2xl overflow-hidden border border-border/20 bg-card/10 backdrop-blur-sm hover:border-red-500/30 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-500">
+                  <div className="aspect-video w-full relative bg-black/40 overflow-hidden">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${video.id}`}
+                      width="100%" height="100%"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      loading="lazy"
+                      className="w-full h-full group-hover:scale-105 transition-transform duration-700"
+                      title={video.title}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
-                ))}
-              </div>
-            ) : (
-              <a href="https://www.youtube.com/@MujaOfficiel" target="_blank" rel="noopener noreferrer"
-                className="block p-10 rounded-2xl border border-dashed border-border/30 bg-card/10 hover:border-primary/20 hover:bg-card/20 transition-all duration-300 group text-center">
-                <YouTubeIcon className="w-10 h-10 text-red-500/40 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-lg font-bold text-foreground/60 mb-2 group-hover:text-foreground transition-colors">
-                  {locale === "ar" ? "شاهد على يوتيوب" : locale === "fr" ? "Voir sur YouTube" : "Watch on YouTube"}
-                </h3>
-                <p className="text-sm text-foreground/30 group-hover:text-foreground/50 transition-colors">
-                  @MujaOfficiel
-                </p>
-                <div className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-red-600/10 text-red-400 text-xs font-medium border border-red-500/20 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                  <ExternalLink className="w-3 h-3" />
-                  {locale === "ar" ? "فتح يوتيوب" : locale === "fr" ? "Ouvrir YouTube" : "Open YouTube"}
+                  <div className="p-4 flex items-center justify-between">
+                    <span className="text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors truncate">{video.title}</span>
+                    <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer"
+                      className="text-xs text-foreground/30 hover:text-red-400 flex items-center gap-1 transition-colors flex-shrink-0 ml-2">
+                      <ExternalLink className="w-3 h-3" /> YouTube
+                    </a>
+                  </div>
                 </div>
-              </a>
-            )}
+              ))}
+            </div>
           </div>
 
           {/* === COMING SOON === */}
