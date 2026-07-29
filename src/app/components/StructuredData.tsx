@@ -254,6 +254,7 @@ export function MusicArtistStructuredData() {
       "https://open.spotify.com/user/bymuja",
       "https://soundcloud.com/bymuja",
       "https://youtube.com/@bymuja",
+      "https://youtube.com/@MujaOfficiel",
       "https://music.youtube.com/@bymuja",
       "https://instagram.com/bymuja",
       "https://tiktok.com/@bymuja",
