@@ -1,8 +1,11 @@
 const arDescription =
-  "مجاهد صيام المعروف أيضاً باسم موجا (bymuja)، مهندس برمجيات ومهندس ذكاء اصطناعي ومهندس DevSecOps وفنان موسيقي. راب عربي، راب سوداني، موسيقى وتكنولوجيا. الموقع الرسمي لمجاهد محمد إسماعيل صيام.";
+  "مجاهد صيام المعروف أيضاً باسم موجا (bymuja)، مهندس برمجيات ومهندس ذكاء اصطناعي وفنان موسيقي باسم Muja. راب عربي، راب سوداني، موسيقى وتكنولوجيا. الموقع الرسمي.";
 
 const frDescription =
-  "Mujahid Siyam, également connu sous le nom de Muja (bymuja), est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical. Rap arabe, rap soudanais, musique et technologie. Site officiel.";
+  "Mujahid Siyam, également connu sous le nom de Muja (bymuja), est un ingénieur logiciel, ingénieur IA et artiste musical sous le nom Muja. Rap arabe, rap soudanais, musique et technologie. Site officiel.";
+
+const enMusicDescription =
+  "Muja is the music artist name of Mujahid Siyam (bymuja) — Arabic Rap and Sudanese Rap artist.";
 
 export function PersonStructuredData() {
   const structuredData = {
@@ -11,7 +14,9 @@ export function PersonStructuredData() {
     name: "Mujahid Siyam",
     alternateName: ["Muja", "bymuja", "مجاهد صيام", "موجا"],
     description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology. Arabic Rap and Sudanese Rap artist. Official source of truth for Mujahid Mohamed Ismail Siyam. " +
+      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist. Muja (موجا) is his music artist name for Arabic Rap and Sudanese Rap. " +
+      enMusicDescription +
+      " " +
       arDescription +
       " " +
       frDescription,
@@ -27,6 +32,8 @@ export function PersonStructuredData() {
       "https://open.spotify.com/user/bymuja",
       "https://soundcloud.com/bymuja",
       "https://tiktok.com/@bymuja",
+      "https://music.youtube.com/@bymuja",
+      "https://music.apple.com/profile/bymuja",
     ],
     jobTitle: [
       "Software Engineer",
@@ -214,6 +221,42 @@ export function SoftwareSourceCodeStructuredData({
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function MusicArtistStructuredData() {
+  const musicSchema = {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    name: "Muja",
+    alternateName: ["Muja", "موجا", "bymuja"],
+    description:
+      "Muja (موجا) is the music artist name of Mujahid Siyam — Arabic Rap and Sudanese Rap artist. Combining technology and music, Muja creates rap music with modern production.",
+    url: "https://bymuja.com/music",
+    image: "https://bymuja.com/img/profile.png",
+    genre: ["Arabic Rap", "Sudanese Rap", "Hip Hop", "راب عربي", "راب سوداني"],
+    sameAs: [
+      "https://open.spotify.com/user/bymuja",
+      "https://soundcloud.com/bymuja",
+      "https://youtube.com/@bymuja",
+      "https://music.youtube.com/@bymuja",
+      "https://instagram.com/bymuja",
+      "https://tiktok.com/@bymuja",
+    ],
+    founder: {
+      "@type": "Person",
+      name: "Mujahid Siyam",
+      alternateName: ["Muja", "bymuja", "مجاهد صيام", "موجا"],
+      url: "https://bymuja.com",
+    },
+    inLanguage: ["en", "ar", "fr"],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(musicSchema) }}
     />
   );
 }

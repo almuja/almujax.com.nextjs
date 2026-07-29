@@ -149,16 +149,18 @@ const fr = {
     yearsAgo: "ans",
   },
   music: {
-    title: "Musique | Mujahid Siyam (Muja / bymuja) | Rap Arabe | Rap Soudanais",
+    title: "Musique | Muja (Mujahid Siyam) | Rap Arabe | Rap Soudanais",
     description:
-      "Mujahid Siyam (Muja / bymuja) — Rap arabe, rap soudanais, artiste musical. Explorez les playlists et le parcours musical.",
-    heading: "Ma Musique",
-    subtitle: "Explorez mes playlists sur différentes plateformes musicales. Des pistes de concentration pour coder aux productions originales.",
-    noPlaylists: "Aucune playlist disponible pour le moment.",
+      "Muja (موجا) est le nom d'artiste de Mujahid Siyam (bymuja) — Rap arabe, rap soudanais, artiste musical. Explorez les playlists, albums à venir et parcours musical.",
+    heading: "Muja — Musique",
+    subtitle: "Muja (موجا) est le nom d'artiste de Mujahid Siyam. Explorez le rap arabe, le rap soudanais, les playlists et la musique originale sur les plateformes.",
+    noPlaylists: "Aucune sortie disponible pour le moment. Restez à l'écoute pour les albums et singles à venir.",
     loading: "Chargement...",
     listenOn: "Écouter sur",
     tracks: "pistes",
     openInApp: "Ouvrir dans",
+    artistName: "Muja",
+    artistDescription: "Rap Arabe • Rap Soudanais • Hip Hop",
   },
   contact: {
     title: "Contact | Mujahid Siyam (Muja / bymuja)",
@@ -213,6 +215,7 @@ const fr = {
     keywords: [
       "Mujahid Siyam", "Muja", "bymuja", "Ingénieur IA", "Ingénieur logiciel",
       "Développeur Rust", "DevSecOps", "Artiste musical", "Rap arabe", "Rap soudanais",
+      "Muja musique", "Muja rappeur", "Muja rap arabe", "موجا",
       "Outils IA", "Programmation", "Open Source", "Rust", "TypeScript",
       "React", "Next.js", "Python", "full-stack", "Zaroxi Studio",
     ],

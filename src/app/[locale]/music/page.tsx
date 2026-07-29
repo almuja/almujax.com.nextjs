@@ -1,5 +1,6 @@
 import { MusicContent } from "./MusicContent";
 import { BreadcrumbStructuredData } from "../../components/BreadcrumbJsonLd";
+import { MusicArtistStructuredData } from "../../components/StructuredData";
 import type { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { locales, type Locale } from "@/i18n/config";
@@ -64,6 +65,7 @@ export default async function MusicPage({
 
   return (
     <>
+      <MusicArtistStructuredData />
       <BreadcrumbStructuredData
         items={[
           { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://bymuja.com/${validLocale}` },

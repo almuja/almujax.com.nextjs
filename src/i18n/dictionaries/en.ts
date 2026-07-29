@@ -157,16 +157,18 @@ const en = {
     yearsAgo: "years ago",
   },
   music: {
-    title: "Music | Mujahid Siyam (Muja / bymuja) | Arabic Rap | Sudanese Rap",
+    title: "Music | Muja (Mujahid Siyam) | Arabic Rap | Sudanese Rap",
     description:
-      "Mujahid Siyam (Muja / bymuja) — Arabic Rap, Sudanese Rap, Music Artist. Explore curated playlists and musical journey.",
-    heading: "My Music",
-    subtitle: "Explore my curated playlists across different music platforms. From coding focus tracks to original productions, discover the sounds that inspire my work.",
-    noPlaylists: "No playlists available at the moment.",
+      "Muja (موجا) is the music artist name of Mujahid Siyam (bymuja). Arabic Rap, Sudanese Rap, Music Artist. Explore curated playlists, upcoming albums, and musical journey.",
+    heading: "Muja — Music",
+    subtitle: "Muja (موجا) is the artist name of Mujahid Siyam. Explore Arabic Rap, Sudanese Rap, curated playlists, and original music across platforms.",
+    noPlaylists: "No releases available at the moment. Stay tuned for upcoming albums and singles.",
     loading: "Loading...",
     listenOn: "Listen on",
     tracks: "tracks",
     openInApp: "Open in",
+    artistName: "Muja",
+    artistDescription: "Arabic Rap • Sudanese Rap • Hip Hop",
   },
   contact: {
     title: "Contact | Mujahid Siyam (Muja / bymuja)",
@@ -221,6 +223,7 @@ const en = {
     keywords: [
       "Mujahid Siyam", "Muja", "bymuja", "AI Engineer", "Software Engineer",
       "Rust Developer", "DevSecOps", "Music Artist", "Arabic Rap", "Sudanese Rap",
+      "Muja music", "Muja rapper", "Muja arabic rap", "موجا", "راب عربي",
       "AI Tools", "Programming", "Open Source", "Rust", "TypeScript", "React",
       "Next.js", "Python", "full-stack developer", "Zaroxi Studio",
     ],
