@@ -1,5 +1,5 @@
 const arDescription =
-  "مجاهد سيام المعروف أيضاً باسم موجا (bymuja)، مهندس برمجيات ومهندس ذكاء اصطناعي ومهندس DevSecOps وفنان موسيقي. راب عربي، راب سوداني، موسيقى وتكنولوجيا. الموقع الرسمي لمجاهد محمد إسماعيل سيام.";
+  "مجاهد صيام المعروف أيضاً باسم موجا (bymuja)، مهندس برمجيات ومهندس ذكاء اصطناعي ومهندس DevSecOps وفنان موسيقي. راب عربي، راب سوداني، موسيقى وتكنولوجيا. الموقع الرسمي لمجاهد محمد إسماعيل صيام.";
 
 const frDescription =
   "Mujahid Siyam, également connu sous le nom de Muja (bymuja), est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical. Rap arabe, rap soudanais, musique et technologie. Site officiel.";
@@ -9,7 +9,7 @@ export function PersonStructuredData() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Mujahid Siyam",
-    alternateName: ["Muja", "bymuja", "مجاهد", "موجا"],
+    alternateName: ["Muja", "bymuja", "مجاهد صيام", "موجا"],
     description:
       "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology. Arabic Rap and Sudanese Rap artist. Official source of truth for Mujahid Mohamed Ismail Siyam. " +
       arDescription +
@@ -93,7 +93,7 @@ export function WebSiteStructuredData() {
     about: {
       "@type": "Person",
       name: "Mujahid Siyam",
-      alternateName: ["Muja", "bymuja", "مجاهد", "موجا"],
+      alternateName: ["Muja", "bymuja", "مجاهد صيام", "موجا"],
       url: "https://bymuja.com",
     },
     potentialAction: {
@@ -146,7 +146,7 @@ export function ArticleStructuredData({
     author: {
       "@type": "Person",
       name: "Mujahid Siyam",
-      alternateName: ["Muja", "bymuja", "مجاهد", "موجا"],
+      alternateName: ["Muja", "bymuja", "مجاهد صيام", "موجا"],
       url: "https://bymuja.com",
     },
     publisher: {
@@ -206,7 +206,7 @@ export function SoftwareSourceCodeStructuredData({
   structuredData.author = {
     "@type": "Person",
     name: "Mujahid Siyam",
-    alternateName: ["Muja", "bymuja", "مجاهد", "موجا"],
+    alternateName: ["Muja", "bymuja", "مجاهد صيام", "موجا"],
     url: "https://bymuja.com",
   };
 

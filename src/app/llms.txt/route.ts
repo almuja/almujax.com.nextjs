@@ -3,7 +3,7 @@ import { join } from "path";
 import matter from "gray-matter";
 
 export async function GET() {
-  const baseUrl = "https://bymuja.com";
+  const baseUrl = "https://bymuja.com/en";
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
   const projectsDirectory = join(process.cwd(), "src", "content", "projects");
 

@@ -4,7 +4,7 @@ import matter from "gray-matter";
 
 export async function GET() {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
-  const baseUrl = "https://bymuja.com";
+  const baseUrl = "https://bymuja.com/en";
 
   let posts: Array<{
     slug: string;

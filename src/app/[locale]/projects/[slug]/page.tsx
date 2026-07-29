@@ -58,6 +58,11 @@ export async function generateMetadata({
       title: slug,
       alternates: {
         canonical: `https://bymuja.com/${validLocale}/projects/${slug}`,
+        languages: {
+          en: `https://bymuja.com/en/projects/${slug}`,
+          ar: `https://bymuja.com/ar/projects/${slug}`,
+          fr: `https://bymuja.com/fr/projects/${slug}`,
+        },
       },
     };
   }
@@ -86,12 +91,17 @@ export async function generateMetadata({
       ].filter(Boolean),
       alternates: {
         canonical: `https://bymuja.com/${validLocale}/projects/${slug}`,
+        languages: {
+          en: `https://bymuja.com/en/projects/${slug}`,
+          ar: `https://bymuja.com/ar/projects/${slug}`,
+          fr: `https://bymuja.com/fr/projects/${slug}`,
+        },
       },
       openGraph: {
         title: `${title} | Mujahid Siyam (Muja / bymuja)`,
         description,
         type: "article",
-          url: `https://bymuja.com/${validLocale}/projects/${slug}`,
+        url: `https://bymuja.com/${validLocale}/projects/${slug}`,
       },
       twitter: {
         card: "summary_large_image",

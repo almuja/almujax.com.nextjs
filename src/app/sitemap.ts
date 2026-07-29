@@ -4,6 +4,7 @@ import { promises as fs } from "fs";
 import matter from "gray-matter";
 
 const baseUrl = "https://bymuja.com";
+const defaultLocale = "en";
 
 async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
@@ -26,7 +27,7 @@ async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
           const image = data.image || undefined;
 
           return {
-            url: `${baseUrl}/blog/${slug}`,
+            url: `${baseUrl}/${defaultLocale}/blog/${slug}`,
             lastModified: postDate > stats.mtime ? postDate : stats.mtime,
             changeFrequency: "daily" as const,
             priority: 0.9,
@@ -35,9 +36,7 @@ async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
         }),
     );
 
-    return posts.filter(
-      (p): p is NonNullable<typeof p> => p !== null,
-    );
+    return posts.filter((p): p is NonNullable<typeof p> => p !== null);
   } catch {
     return [];
   }
@@ -50,10 +49,7 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
     const files = await fs.readdir(projectsDirectory, { recursive: true });
     const projects = await Promise.all(
       files
-        .filter(
-          (file): file is string =>
-            typeof file === "string" && file.endsWith(".mdx"),
-        )
+        .filter((file): file is string => typeof file === "string" && file.endsWith(".mdx"))
         .map(async (file) => {
           const slug = file.replace(/\.mdx$/, "").split("/").pop()!;
           const filePath = join(projectsDirectory, file);
@@ -67,9 +63,8 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
           const image = data.image || undefined;
 
           return {
-            url: `${baseUrl}/projects/${slug}`,
-            lastModified:
-              projDate > stats.mtime ? projDate : stats.mtime,
+            url: `${baseUrl}/${defaultLocale}/projects/${slug}`,
+            lastModified: projDate > stats.mtime ? projDate : stats.mtime,
             changeFrequency: "daily" as const,
             priority: 0.9,
             images: image ? [image] : undefined,
@@ -77,9 +72,7 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
         }),
     );
 
-    return projects.filter(
-      (p): p is NonNullable<typeof p> => p !== null,
-    );
+    return projects.filter((p): p is NonNullable<typeof p> => p !== null);
   } catch {
     return [];
   }
@@ -90,37 +83,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: `${baseUrl}/en`,
       lastModified: now,
       changeFrequency: "daily",
       priority: 1,
     },
     {
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}/en/about`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/projects`,
+      url: `${baseUrl}/en/projects`,
       lastModified: now,
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/en/blog`,
       lastModified: now,
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${baseUrl}/en/contact`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/music`,
+      url: `${baseUrl}/en/music`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.6,

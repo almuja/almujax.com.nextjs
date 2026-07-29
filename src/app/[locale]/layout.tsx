@@ -4,6 +4,7 @@ import { locales, type Locale } from "@/i18n/config";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import DirManager from "../components/DirManager";
+import HreflangLinks from "../components/HreflangLinks";
 
 export async function generateMetadata({
   params,
@@ -26,11 +27,6 @@ export async function generateMetadata({
     authors: [{ name: "Mujahid Siyam", url: "https://bymuja.com" }],
     alternates: {
       canonical: `https://bymuja.com/${validLocale}`,
-      languages: {
-        en: "https://bymuja.com/en",
-        ar: "https://bymuja.com/ar",
-        fr: "https://bymuja.com/fr",
-      },
     },
     openGraph: {
       title: dict.site.defaultTitle,
@@ -91,15 +87,7 @@ export default async function LocaleLayout({
   return (
     <>
       <DirManager locale={validLocale} />
-      {locales.map((loc) => (
-        <link
-          key={loc}
-          rel="alternate"
-          hrefLang={loc}
-          href={`https://bymuja.com/${loc}`}
-        />
-      ))}
-      <link rel="alternate" hrefLang="x-default" href="https://bymuja.com/en" />
+      <HreflangLinks locale={validLocale} />
       <Header locale={validLocale} nav={dict.nav} />
       <main className="flex-1 pt-14">{children}</main>
       <Footer locale={validLocale} footer={dict.footer} authorBio={dict.blog.authorBio} authorName={authorName} />

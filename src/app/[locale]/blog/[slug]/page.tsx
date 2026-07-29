@@ -128,6 +128,11 @@ export async function generateMetadata({
       ].filter(Boolean),
       alternates: {
         canonical: `https://bymuja.com/${validLocale}/blog/${slug}`,
+        languages: {
+          en: `https://bymuja.com/en/blog/${slug}`,
+          ar: `https://bymuja.com/ar/blog/${slug}`,
+          fr: `https://bymuja.com/fr/blog/${slug}`,
+        },
       },
       openGraph: {
         title: `${title} | Mujahid Siyam (Muja / bymuja)`,

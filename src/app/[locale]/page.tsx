@@ -20,6 +20,11 @@ export async function generateMetadata({
     keywords: [...dict.seo.keywords],
     alternates: {
       canonical: `https://bymuja.com/${validLocale}`,
+      languages: {
+        en: "https://bymuja.com/en",
+        ar: "https://bymuja.com/ar",
+        fr: "https://bymuja.com/fr",
+      },
     },
     openGraph: {
       title: dict.home.title,
