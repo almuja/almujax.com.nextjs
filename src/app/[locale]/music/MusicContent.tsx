@@ -87,7 +87,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
           {/* Name */}
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-none mb-6">
-            <span className="bg-gradient-to-r from-primary via-purple-400 to-secondary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient bg-right">
+            <span className="bg-gradient-to-r from-primary via-purple-400 to-secondary bg-clip-text text-transparent">
               {t.heading}
             </span>
           </h1>
@@ -231,16 +231,6 @@ export function MusicContent({ locale, t }: MusicContentProps) {
         </div>
 
       </div>
-
-      <style jsx>{`
-        @keyframes gradient {
-          0%, 100% { background-position: right; }
-          50% { background-position: left; }
-        }
-        .animate-gradient {
-          animation: gradient 4s ease infinite;
-        }
-      `}</style>
     </div>
   );
 }
