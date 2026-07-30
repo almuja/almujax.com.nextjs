@@ -1502,3 +1502,39 @@ pre [data-line] {
   animation: pulse-slow 2s ease-in-out infinite;
   animation-delay: 0.5s;
 }
+
+/* ─── Mobile Performance Optimizations ─── */
+@media (max-width: 767px) {
+  /* Reduce expensive blur rendering on mobile GPUs */
+  *[style*="blur(140px)"],
+  *[style*="blur(120px)"],
+  *[style*="blur(100px)"] {
+    filter: blur(60px) !important;
+  }
+  *[style*="blur(80px)"] {
+    filter: blur(40px) !important;
+  }
+
+  /* Disable heavy pulse animations on mobile for performance */
+  .animate-pulse-slow {
+    animation: none !important;
+  }
+
+  /* Reduce animation overhead */
+  .animation-delay-2000,
+  .animation-delay-3000,
+  .animation-delay-4000 {
+    animation: none !important;
+  }
+}
+
+/* GPU acceleration for animated elements */
+.wave-orb,
+[class*="blur-"],
+[style*="filter: blur"] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
