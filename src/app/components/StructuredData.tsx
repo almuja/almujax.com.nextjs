@@ -1,5 +1,5 @@
 const arDescription =
-  "مجاهد صيام المعروف أيضاً باسم ماوجا (itsmawja)، مهندس برمجيات ومهندس ذكاء اصطناعي وفنان موسيقي باسم Mawja. راب عربي، راب سوداني، موسيقى وتكنولوجيا. الموقع الرسمي.";
+  "مجاهد صيام المعروف أيضاً باسم موجا (itsmawja)، مهندس برمجيات ومهندس ذكاء اصطناعي وفنان موسيقي باسم Mawja. راب عربي، راب سوداني، موسيقى وتكنولوجيا. الموقع الرسمي.";
 
 const enMusicDescription =
   "Mawja is the music artist name of Mujahid Siyam (itsmawja) — Arabic Rap and Sudanese Rap artist.";
@@ -9,14 +9,14 @@ export function PersonStructuredData() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Mujahid Siyam",
-    alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "ماوجا", "موجة"],
+    alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
     birthDate: "1991-09-23",
     birthPlace: {
       "@type": "Place",
       name: "Sudan",
     },
     description:
-      "Mujahid Siyam (Mawja / itsmawja / ماوجا) is a Software Engineer, AI Engineer, and Music Artist, born September 23, 1991 in Sudan. He started music at age 16, building successful bands before relocating to France. He then transitioned into software engineering and web development, building systems and websites. In 2022, he returned to music production as a side hobby, releasing his first EP 'KAKASHI' — which he considers a new beginning in his artistic career. Today, Mawja focuses primarily on software engineering and AI engineering, with plans to return to music soon. " +
+      "Mujahid Siyam (Mawja / itsmawja / موجا) is a Software Engineer, AI Engineer, and Music Artist, born September 23, 1991 in Sudan. He started music at age 16, building successful bands before relocating to France. He then transitioned into software engineering and web development, building systems and websites. In 2022, he returned to music production as a side hobby, releasing his first EP 'KAKASHI' — which he considers a new beginning in his artistic career. Today, Mawja focuses primarily on software engineering and AI engineering, with plans to return to music soon. " +
       enMusicDescription +
       " " +
       arDescription,
@@ -100,7 +100,7 @@ export function WebSiteStructuredData() {
     about: {
       "@type": "Person",
       name: "Mujahid Siyam",
-      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "ماوجا", "موجة"],
+      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
       url: "https://itsmawja.com",
     },
     potentialAction: {
@@ -153,7 +153,7 @@ export function ArticleStructuredData({
     author: {
       "@type": "Person",
       name: "Mujahid Siyam",
-      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "ماوجا", "موجة"],
+      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
       url: "https://itsmawja.com",
     },
     publisher: {
@@ -213,7 +213,7 @@ export function SoftwareSourceCodeStructuredData({
   structuredData.author = {
     "@type": "Person",
     name: "Mujahid Siyam",
-    alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "ماوجا", "موجة"],
+    alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
     url: "https://itsmawja.com",
   };
 
@@ -257,7 +257,7 @@ export function MusicArtistStructuredData() {
     founder: {
       "@type": "Person",
       name: "Mujahid Siyam",
-      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "ماوجا", "موجة"],
+      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
       url: "https://itsmawja.com",
     },
     inLanguage: ["en", "ar", "fr"],

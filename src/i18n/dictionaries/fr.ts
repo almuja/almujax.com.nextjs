@@ -152,9 +152,9 @@ const fr = {
   music: {
     title: "Musique | Mawja (Mujahid Siyam) | Rap Arabe | Rap Soudanais",
     description:
-      "Mawja (ماوجا) est le nom d'artiste de Mujahid Siyam (itsmawja) — Rap arabe, rap soudanais, artiste musical. Explorez les playlists, albums à venir et parcours musical.",
+      "Mawja (موجا) est le nom d'artiste de Mujahid Siyam (itsmawja) — Rap arabe, rap soudanais, artiste musical. Explorez les playlists, albums à venir et parcours musical.",
     heading: "Mawja — Musique",
-    subtitle: "Mawja (ماوجا) est le nom d'artiste de Mujahid Siyam. Explorez le rap arabe, le rap soudanais, les playlists et la musique originale sur les plateformes.",
+    subtitle: "Mawja (موجا) est le nom d'artiste de Mujahid Siyam. Explorez le rap arabe, le rap soudanais, les playlists et la musique originale sur les plateformes.",
     noPlaylists: "Aucune sortie disponible pour le moment. Restez à l'écoute pour les albums et singles à venir.",
     loading: "Chargement...",
     listenOn: "Écouter sur",
@@ -217,7 +217,7 @@ const fr = {
     keywords: [
       "Mujahid Siyam", "Mawja", "itsmawja", "Ingénieur IA", "Ingénieur logiciel",
       "Développeur Rust", "DevSecOps", "Artiste musical", "Rap arabe", "Rap soudanais",
-      "Mawja musique", "Mawja rappeur", "Mawja rap arabe", "ماوجا",
+      "Mawja musique", "Mawja rappeur", "Mawja rap arabe", "موجا",
       "Outils IA", "Programmation", "Open Source", "Rust", "TypeScript",
       "React", "Next.js", "Python", "full-stack", "Zaroxi Studio",
     ],

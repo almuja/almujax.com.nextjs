@@ -77,16 +77,9 @@ export default function RootLayout({
         <link rel="llm" type="text/plain" title="LLMs.txt" href="/llms.txt" />
         <link rel="llm-full" type="text/plain" title="Full content" href="/llms-full.txt" />
       </head>
-      <body className="antialiased font-mono" suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>
-          <div className="flex flex-col min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/30 dark:from-[#0a0f1c] dark:via-[#0f172a] dark:to-[#1e1b4b] relative overflow-hidden">
-            <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
-            <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl animate-pulse-slow"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
-            <div className="relative z-10 flex flex-col min-h-screen">
-              {children}
-            </div>
-          </div>
+          {children}
         </ThemeProvider>
       </body>
     </html>

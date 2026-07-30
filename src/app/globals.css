@@ -3,22 +3,22 @@
 :root, 
 :root.light,
 :root.system:not(.dark) {
-  /* Wave-Inspired Light Theme */
-  --color-background: #f5f8ff;
-  --color-foreground: #0f172a;
-  --color-primary: #5b5fff;
-  --color-primary-hover: #4347d9;
-  --color-secondary: #7c3aed;
+  /* Elegant Light Theme */
+  --color-background: #fafafa;
+  --color-foreground: #18181b;
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-secondary: #a855f7;
   --color-accent: #06b6d4;
-  --color-wave-1: #5b5fff;
-  --color-wave-2: #7c3aed;
+  --color-wave-1: #6366f1;
+  --color-wave-2: #a855f7;
   --color-wave-3: #06b6d4;
   --color-wave-4: #0ea5e9;
-  --color-muted: #f1f5f9;
-  --color-muted-foreground: #64748b;
-  --color-border: #e2e8f0;
-  --color-card: rgba(255, 255, 255, 0.85);
-  --color-card-foreground: #0f172a;
+  --color-muted: #f4f4f5;
+  --color-muted-foreground: #71717a;
+  --color-border: #e4e4e7;
+  --color-card: rgba(255, 255, 255, 0.8);
+  --color-card-foreground: #18181b;
   --color-glass: rgba(255, 255, 255, 0.3);
   --color-glass-border: rgba(255, 255, 255, 0.2);
   --color-glass-dark: rgba(255, 255, 255, 0.4);
@@ -71,9 +71,9 @@
 
 :root.dark,
 :root.system.dark {
-  /* Wave-Inspired Dark Theme */
-  --color-background: #030712;
-  --color-foreground: #f1f5f9;
+  /* Elegant Dark Theme */
+  --color-background: #09090b;
+  --color-foreground: #fafafa;
   --color-primary: #818cf8;
   --color-primary-hover: #a5b4fc;
   --color-secondary: #c084fc;
@@ -82,15 +82,15 @@
   --color-wave-2: #c084fc;
   --color-wave-3: #22d3ee;
   --color-wave-4: #38bdf8;
-  --color-muted: #0f172a;
-  --color-muted-foreground: #94a3b8;
-  --color-border: #1e293b;
-  --color-card: rgba(15, 23, 42, 0.6);
-  --color-card-foreground: #f1f5f9;
-  --color-glass: rgba(15, 23, 42, 0.5);
-  --color-glass-border: rgba(255, 255, 255, 0.08);
-  --color-glass-dark: rgba(3, 7, 18, 0.8);
-  --shadow-glow: 0 0 60px rgba(129, 140, 248, 0.2);
+  --color-muted: #18181b;
+  --color-muted-foreground: #a1a1aa;
+  --color-border: #27272a;
+  --color-card: rgba(24, 24, 27, 0.6);
+  --color-card-foreground: #fafafa;
+  --color-glass: rgba(24, 24, 27, 0.5);
+  --color-glass-border: rgba(255, 255, 255, 0.06);
+  --color-glass-dark: rgba(9, 9, 11, 0.8);
+  --shadow-glow: 0 0 80px rgba(129, 140, 248, 0.15);
 }
 
 /* Remove the @theme inline block and use direct CSS variable references */
@@ -570,23 +570,22 @@ header {
     0 0 80px rgba(129, 140, 248, 0.15);
 }
 
-/* Ensure all elements use the CSS variables */
-* {
-  border-color: var(--color-border);
-  transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
-}
+/* Theme handled by CSS variables */
+html {
 
-html, body {
-  background: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-family-primary), system-ui, sans-serif;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* Always show content to prevent PageSpeed errors */
 html {
   visibility: visible !important;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-family-primary), system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 /* Ultra-modern animations - optimized for performance */
@@ -755,30 +754,11 @@ html {
 .stagger-item:nth-child(5) { animation-delay: 0.5s; }
 .stagger-item:nth-child(6) { animation-delay: 0.6s; }
 
-/* Ensure all pages have proper background and text colors */
-#__next, .layout-container, main, section, article, div {
-  background: inherit;
-  color: inherit;
-}
-
-/* Force all text and backgrounds to use theme variables */
-* {
-  background-color: inherit;
-  color: inherit;
-}
-
-/* next-themes handles FOUC prevention automatically */
-/* No need to hide content */
-
-/* Ensure all direct children of body inherit the theme */
-body, body > * {
-  background-color: var(--color-background) !important;
-  color: var(--color-foreground) !important;
-}
+/* Theme handled by Tailwind + CSS variables + next-themes */
 
 /* Smooth transitions for theme changes */
-* {
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+:root {
+  color-scheme: light dark;
 }
 
 /* Ensure consistent theme for all interactive elements */
