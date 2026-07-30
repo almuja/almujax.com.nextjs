@@ -157,7 +157,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-3">KAKASHI</h2>
                 <p className="text-foreground/40 text-sm mb-6 max-w-sm">
-                  {locale === "ar" ? "أول EP لموجا — بداية جديدة" : locale === "fr" ? "Premier EP de Mawja — un nouveau départ" : "Mawja's debut EP — a new beginning"}
+                  {locale === "ar" ? "أول EP لماوجا — بداية جديدة" : locale === "fr" ? "Premier EP de Mawja — un nouveau départ" : "Mawja's debut EP — a new beginning"}
                 </p>
                 <div className="flex flex-wrap gap-2.5">
                   {[
