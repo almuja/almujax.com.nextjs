@@ -3,12 +3,13 @@ import Link from "next/link";
 import { promises as fs } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import { Code2, ExternalLink } from "lucide-react";
+import { Code2, ExternalLink, ArrowLeft, Clock, Tag } from "lucide-react";
 import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
 import { SoftwareSourceCodeStructuredData } from "../../../components/StructuredData";
 import { BreadcrumbStructuredData } from "../../../components/BreadcrumbJsonLd";
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
 import { compileMdx } from "@/lib/mdx-compiler";
 
 export const revalidate = 60;
@@ -26,22 +27,16 @@ interface Project {
 }
 
 async function findProjectFile(slug: string): Promise<string | null> {
-  const projectsDirectory = join(process.cwd(), "src", "content", "projects");
+  const dir = join(process.cwd(), "src", "content", "projects");
   try {
-    const files = await fs.readdir(projectsDirectory, { recursive: true });
+    const files = await fs.readdir(dir, { recursive: true });
     for (const file of files) {
       if (typeof file === "string" && file.endsWith(".mdx")) {
-        const fileName = file.split("/").pop()!.replace(/\.mdx$/, "");
-        if (fileName === slug) {
-          return join(projectsDirectory, file);
-        }
+        if (file.split("/").pop()!.replace(/\.mdx$/, "") === slug) return join(dir, file);
       }
     }
     return null;
-  } catch (error) {
-    console.error("Error searching for project file:", error);
-    return null;
-  }
+  } catch { return null; }
 }
 
 export async function generateMetadata({
@@ -49,82 +44,27 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
-  const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
+  const { locale, slug } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
   const fullPath = await findProjectFile(slug);
+  const base = { canonical: `https://itsmawja.com/${validLocale}/projects/${slug}`, languages: { en: `https://itsmawja.com/en/projects/${slug}`, ar: `https://itsmawja.com/ar/projects/${slug}`, fr: `https://itsmawja.com/fr/projects/${slug}` } };
 
-  if (!fullPath) {
-    return {
-      title: slug,
-      alternates: {
-        canonical: `https://itsmawja.com/${validLocale}/projects/${slug}`,
-        languages: {
-          en: `https://itsmawja.com/en/projects/${slug}`,
-          ar: `https://itsmawja.com/ar/projects/${slug}`,
-          fr: `https://itsmawja.com/fr/projects/${slug}`,
-        },
-      },
-    };
-  }
+  if (!fullPath) return { title: slug, alternates: base };
 
   try {
-    const fileContent = await fs.readFile(fullPath, "utf8");
-    const { data } = matter(fileContent);
-
+    const { data } = matter(await fs.readFile(fullPath, "utf8"));
     const title = data.title || slug;
-    const description =
-      data.description || "Open-source project by Mujahid Siyam";
-
+    const desc = data.description || "Open-source project by Mujahid Siyam";
     return {
       title: `${title} | Mawja (Mujahid Siyam)`,
-      description,
-      keywords: [
-        ...(data.tags || []),
-        data.category,
-        "Mujahid Siyam",
-        "Mawja",
-        "itsmawja",
-        "AI Engineer",
-        "open source",
-        "project",
-        "Rust",
-      ].filter(Boolean),
-      alternates: {
-        canonical: `https://itsmawja.com/${validLocale}/projects/${slug}`,
-        languages: {
-          en: `https://itsmawja.com/en/projects/${slug}`,
-          ar: `https://itsmawja.com/ar/projects/${slug}`,
-          fr: `https://itsmawja.com/fr/projects/${slug}`,
-        },
-      },
-      openGraph: {
-        title: `${title} | Mawja (Mujahid Siyam)`,
-        description,
-        type: "article",
-        url: `https://itsmawja.com/${validLocale}/projects/${slug}`,
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: `${title} | Mujahid Siyam`,
-        description,
-      },
-      other: {
-        "geo.region": "FR",
-        "geo.placename": "France",
-        "geo.position": "46.603354;1.888334",
-        ICBM: "46.603354, 1.888334",
-        "DC.creator": "Mujahid Siyam",
-        "DC.subject": (data.tags || []).join(", "),
-      },
+      description: desc,
+      keywords: [...(data.tags || []), data.category, "Mujahid Siyam", "Mawja", "itsmawja", "open source", "project", "Arabic Rap", "Sudanese Rap", "Hip Hop", "راب سوداني", "راب عربي"].filter(Boolean),
+      alternates: base,
+      openGraph: { title: `${title} | Mawja (Mujahid Siyam)`, description: desc, type: "article", url: `https://itsmawja.com/${validLocale}/projects/${slug}` },
+      twitter: { card: "summary_large_image", title, description: desc },
     };
   } catch {
-    return {
-      title: slug,
-      alternates: {
-        canonical: `https://itsmawja.com/${validLocale}/projects/${slug}`,
-      },
-    };
+    return { title: slug, alternates: base };
   }
 }
 
@@ -133,198 +73,135 @@ export default async function ProjectPage({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const resolvedParams = await params;
-
-  if (!resolvedParams?.slug) {
-    notFound();
-  }
-
-  const slug = resolvedParams.slug;
-  const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
+  const { locale, slug } = await params;
+  if (!slug) notFound();
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const dict = getDictionary(validLocale);
   const dir = validLocale === "ar" ? "rtl" : "ltr";
   const fullPath = await findProjectFile(slug);
-
-  if (!fullPath) {
-    notFound();
-  }
+  if (!fullPath) notFound();
 
   try {
-    await fs.access(fullPath);
-    const fileContent = await fs.readFile(fullPath, "utf8");
-
-    // Parse frontmatter and content using gray-matter
-    const { data: frontmatter, content } = matter(fileContent);
-
+    const { data: fm, content } = matter(await fs.readFile(fullPath, "utf8"));
     const project: Project = {
       slug,
-      title: frontmatter.title || "",
-      description: frontmatter.description || "",
-      date: frontmatter.date || "",
-      category: frontmatter.category,
-      tags: frontmatter.tags || [],
-      githubUrl: frontmatter.githubUrl,
-      liveUrl: frontmatter.liveUrl,
-      featured: frontmatter.featured || false,
+      title: fm.title || "",
+      description: fm.description || "",
+      date: fm.date || "",
+      category: fm.category,
+      tags: fm.tags || [],
+      githubUrl: fm.githubUrl,
+      liveUrl: fm.liveUrl,
+      featured: fm.featured || false,
     };
-
     const html = await compileMdx(content);
 
     return (
-      <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300" dir={dir}>
-        <SoftwareSourceCodeStructuredData
-          name={project.title}
-          description={project.description}
-          url={`https://itsmawja.com/${validLocale}/projects/${slug}`}
-          codeRepository={project.githubUrl}
-          dateCreated={project.date}
-          programmingLanguage={project.tags}
-        />
-        <BreadcrumbStructuredData
-          items={[
-            { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://itsmawja.com/${validLocale}` },
-            { name: validLocale === "ar" ? "المشاريع" : "Projects", url: `https://itsmawja.com/${validLocale}/projects` },
-            { name: project.title, url: `https://itsmawja.com/${validLocale}/projects/${slug}` },
-          ]}
-        />
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          {/* Back to Projects Link - Centered and Bigger */}
-          <div className="flex justify-center mb-12">
-            <Link
-              href={`/${validLocale}/projects`}
-              className="inline-flex items-center text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors group text-lg"
-            >
-              <svg
-                className={`w-5 h-5 me-3 group-hover:-translate-x-1 transition-transform ${dir === "rtl" ? "rotate-180 group-hover:translate-x-1" : ""}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Back to Projects
-            </Link>
+      <div className="min-h-screen" dir={dir}>
+        <SoftwareSourceCodeStructuredData name={project.title} description={project.description} url={`https://itsmawja.com/${validLocale}/projects/${slug}`} codeRepository={project.githubUrl} dateCreated={project.date} programmingLanguage={project.tags} />
+        <BreadcrumbStructuredData items={[{ name: validLocale === "ar" ? "الرئيسية" : validLocale === "fr" ? "Accueil" : "Home", url: `https://itsmawja.com/${validLocale}` }, { name: validLocale === "ar" ? "المشاريع" : validLocale === "fr" ? "Projets" : "Projects", url: `https://itsmawja.com/${validLocale}/projects` }, { name: project.title, url: `https://itsmawja.com/${validLocale}/projects/${slug}` }]} />
+
+        {/* Hero Header */}
+        <section className="relative pt-32 pb-16 overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[350px] rounded-full bg-[var(--color-wave-1)] opacity-[0.04] blur-[140px] animate-pulse-slow" />
+            <div className="absolute top-[20%] right-[10%] w-[350px] h-[250px] rounded-full bg-[var(--color-wave-3)] opacity-[0.03] blur-[100px] animate-pulse-slow animation-delay-2000" />
           </div>
 
-          {/* Modern Project Header */}
-          <div className="text-center mb-16">
-            <div className="mb-8">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight tracking-tight">
-                {project.title}
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                {project.description}
-              </p>
+          <div className="relative max-w-3xl mx-auto px-4 sm:px-6">
+            {/* Back link */}
+            <div className="hero-enter mb-10">
+              <Link
+                href={`/${validLocale}/projects`}
+                className="inline-flex items-center gap-2 text-xs text-foreground/30 hover:text-foreground/60 transition-colors group"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
+                {dict.projects.backToProjects}
+              </Link>
             </div>
 
-            {/* Action Buttons - Modern */}
-            <div className="flex justify-center gap-4 mb-8">
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-primary text-white rounded-xl hover:bg-primary-dark transition-all duration-300 text-sm font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <Code2 className="w-5 h-5" />
-                  View on GitHub
-                </a>
-              )}
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-6 py-3 border-2 border-primary text-primary rounded-xl hover:bg-primary/5 transition-all duration-300 text-sm font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                  Visit Website
-                </a>
-              )}
-            </div>
-
-            {/* Metadata - Modern */}
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
-              {project.date && (
-                <span className="flex items-center gap-2 bg-muted/50 px-3 py-1.5 rounded-full border border-border">
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                  {new Date(project.date).toLocaleDateString()}
-                </span>
-              )}
+            {/* Category badge + date */}
+            <div className="hero-enter flex items-center gap-3 mb-4">
               {project.category && (
-                <span className="px-3 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-medium border border-primary/20">
+                <span className="px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-semibold uppercase tracking-[0.15em] text-primary/60">
                   {project.category}
                 </span>
               )}
-            </div>
-          </div>
-
-          {/* Elegant Content Area - Wider */}
-          <div className="flex justify-center">
-            <div className="w-full max-w-4xl">
-              {/* Elegant Markdown Content */}
-              <ClientMDXRenderer html={html} />
-
-              {/* Tags at the bottom */}
-              {project.tags && project.tags.length > 0 && (
-                <div className="mt-12 pt-8 border-t border-border/50">
-                  <h4 className="text-xl font-semibold text-foreground mb-6 text-center">
-                    Technologies Used
-                  </h4>
-                  <div className="flex flex-wrap gap-3 justify-center">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 transition-all duration-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              {project.date && (
+                <span className="flex items-center gap-1.5 text-[10px] text-foreground/25">
+                  <Clock className="w-3 h-3" />
+                  {new Date(project.date).toLocaleDateString(validLocale === "ar" ? "ar-SA" : validLocale === "fr" ? "fr-FR" : "en-US", { month: "long", day: "numeric", year: "numeric" })}
+                </span>
               )}
             </div>
+
+            {/* Title with gradient */}
+            <h1 className="hero-enter text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[1.05] mb-6">
+              <span className="wave-gradient-text">{project.title}</span>
+            </h1>
+
+            {/* Description */}
+            <p className="hero-enter text-sm sm:text-base text-foreground/35 font-light leading-relaxed max-w-2xl mb-10">
+              {project.description}
+            </p>
+
+            {/* Action buttons */}
+            <div className="hero-enter flex flex-wrap gap-3">
+              {project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-5 py-3 bg-foreground text-background rounded-xl text-sm font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300">
+                  <Code2 className="w-4 h-4" />
+                  {dict.projects.viewOnGithub}
+                </a>
+              )}
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-5 py-3 border border-border rounded-xl text-sm font-semibold text-foreground hover:bg-muted hover:scale-[1.02] transition-all duration-300">
+                  <ExternalLink className="w-4 h-4" />
+                  {dict.projects.liveSite}
+                </a>
+              )}
+            </div>
+
+            {/* Decorative line */}
+            <div className="hero-enter mt-12 w-full h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
           </div>
+        </section>
+
+        {/* Content */}
+        <main className="max-w-3xl mx-auto px-4 sm:px-6 pb-24">
+          <div className="prose-content">
+            <ClientMDXRenderer html={html} />
+          </div>
+
+          {/* Tags */}
+          {project.tags && project.tags.length > 0 && (
+            <div className="mt-16 pt-8 border-t border-border/20">
+              <div className="flex items-center gap-2 mb-5">
+                <Tag className="w-3.5 h-3.5 text-foreground/20" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">{dict.projects.technologiesUsed}</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="px-3 py-1.5 text-xs bg-muted/40 text-foreground/40 rounded-lg border border-border/20 hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </main>
       </div>
     );
-  } catch (error) {
-    console.error("Error loading project:", error);
+  } catch {
     notFound();
   }
 }
 
 export async function generateStaticParams() {
-  const projectsDirectory = join(process.cwd(), "src", "content", "projects");
-
+  const dir = join(process.cwd(), "src", "content", "projects");
   try {
-    const files = await fs.readdir(projectsDirectory, { recursive: true });
-    return files
-      .filter((file) => typeof file === "string" && file.endsWith(".mdx"))
-      .map((file) => {
-        const slug = file
-          .split("/")
-          .pop()!
-          .replace(/\.mdx$/, "");
-        return { slug };
-      });
-  } catch (error) {
-    return [];
-  }
+    const files = await fs.readdir(dir, { recursive: true });
+    return files.filter((f) => typeof f === "string" && f.endsWith(".mdx")).map((f) => ({ slug: f.split("/").pop()!.replace(/\.mdx$/, "") }));
+  } catch { return []; }
 }

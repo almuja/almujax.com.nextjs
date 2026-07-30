@@ -10,22 +10,18 @@ interface ClientMDXRendererProps {
 export default function ClientMDXRenderer({ html }: ClientMDXRendererProps) {
   if (!html) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="animate-pulse space-y-4">
-          <div className="h-4 bg-muted/30 rounded w-3/4"></div>
-          <div className="h-4 bg-muted/30 rounded w-1/2"></div>
-          <div className="h-4 bg-muted/30 rounded w-5/6"></div>
-        </div>
+      <div className="animate-pulse space-y-4">
+        <div className="h-4 bg-muted/30 rounded w-3/4"></div>
+        <div className="h-4 bg-muted/30 rounded w-1/2"></div>
+        <div className="h-4 bg-muted/30 rounded w-5/6"></div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <article
-        className="prose-content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-    </div>
+    <article
+      className="prose-content"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 }

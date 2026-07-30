@@ -88,7 +88,7 @@ export default async function LocaleLayout({
     <>
       <DirManager locale={validLocale} />
       <HreflangLinks locale={validLocale} />
-      <Header locale={validLocale} nav={dict.nav} />
+      <Header locale={validLocale} dict={{ blog: { authorBio: dict.blog.authorBio } }} nav={dict.nav} />
       <main className="flex-1 pt-14">{children}</main>
       <Footer locale={validLocale} footer={dict.footer} authorBio={dict.blog.authorBio} authorName={authorName} />
     </>

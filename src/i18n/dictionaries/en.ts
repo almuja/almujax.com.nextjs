@@ -1,9 +1,9 @@
 const en = {
   site: {
-    title: "Mawja (Mujahid Siyam) | Software & AI Engineer",
+    title: "Mawja (Mujahid Siyam) | Software, AI & Network Engineer",
     description:
-      "Mawja, also known as Mujahid Siyam, is a software engineer specializing in AI, open source, systems engineering, DevSecOps, and music production.",
-    defaultTitle: "Mawja (Mujahid Siyam) | Software & AI Engineer",
+      "Mawja, also known as Mujahid Siyam, is a software engineer specializing in AI, open source, systems engineering, DevSecOps, network engineering, systems administration (Linux & Windows), and music production.",
+    defaultTitle: "Mawja (Mujahid Siyam) | Software, AI & Network Engineer",
   },
   nav: {
     projects: "Projects",
@@ -15,28 +15,54 @@ const en = {
     menu: "Open menu",
     home: "Home",
     now: "Now",
+    blogBadge: "Blog",
   },
   home: {
-    title: "Mawja (Mujahid Siyam) | Software & AI Engineer",
+    title: "Mawja (Mujahid Siyam) | Software, AI & Network Engineer",
     description:
-      "Mawja, also known as Mujahid Siyam, is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist.",
+      "Mawja, also known as Mujahid Siyam, is a Software Engineer, AI Engineer, DevSecOps Engineer, Network Engineer, Systems Administrator, and Music Artist.",
     sparkle: "Building AI-first systems and creative technology",
-    roles: "Software Engineer • AI Engineer • DevSecOps • Music Artist",
+    roles: "Software Engineer • AI Engineer • DevSecOps • Network Engineer • SysAdmin (Linux/Windows) • Music Artist",
     heroBody:
-      "Mawja (Mujahid Siyam) builds AI-first systems, Rust-based software, developer tools like Zaroxi Studio, and creates music and creative technology. Crafting elegant solutions at the intersection of software engineering, artificial intelligence, and secure development practices.",
+      "Mawja (Mujahid Siyam) builds AI-first systems, manages Linux and Windows infrastructure, engineers networks, writes Rust-based software, creates developer tools like Zaroxi Studio, and produces music. Crafting elegant solutions at the intersection of software engineering, artificial intelligence, network infrastructure, and secure development practices.",
+    whatIDo: "What I Do",
+    capabilities: [
+      { title: "AI & ML Engineering", description: "Building intelligent systems with LLMs, TensorFlow, PyTorch, and custom model pipelines. End-to-end ML infrastructure from training to production." },
+      { title: "Systems & Infrastructure", description: "Linux & Windows server administration, network architecture, Docker, Kubernetes, AWS. Designing resilient, auto-scaling infrastructure." },
+      { title: "Software Development", description: "Full-stack applications in Rust, TypeScript, React, Next.js, Python, and C/C++. Clean architecture, type-safe code, and performant systems." },
+      { title: "DevSecOps", description: "CI/CD pipelines, security-first development, container security, vulnerability scanning. Shifting security left in the development lifecycle." },
+      { title: "Open Source", description: "Building and contributing to open-source tools and libraries. Nix/NixOS advocate. Reproducible builds and declarative system configurations." },
+      { title: "Music & Creative Tech", description: "Arabic Rap, Sudanese Rap, Hip Hop production. Bridging creative expression with technology through audio engineering and digital production." },
+    ],
+    techGroups: {
+      languages: "Languages",
+      frontend: "Frontend",
+      backend: "Backend",
+      aiMl: "AI/ML",
+      infra: "Infra",
+      systems: "Systems",
+      data: "Data",
+      tools: "Tools",
+    },
+    latest: {
+      heading: "Latest",
+      blog: { label: "Blog", title: "Read my articles", description: "Thoughts on software engineering, AI, and technology", cta: "Browse posts" },
+      projects: { label: "Projects", title: "Explore my work", description: "AI systems, Rust tools, open-source projects", cta: "View projects" },
+      music: { label: "Music", title: "Listen to my music", description: "Arabic Rap, Sudanese Rap, Hip Hop. Original productions and curated playlists.", cta: "Explore music" },
+    },
     exploreProjects: "Explore Projects",
     readBlog: "Read Blog",
     aboutHeading: "About Mawja (Mujahid Siyam)",
     about1:
-      "Mawja, also known as Mujahid Siyam and by the handle itsmawja, is a passionate Software Engineer, AI Engineer, DevSecOps professional, and Music Artist with expertise spanning from systems programming to modern AI-first application development. He builds AI-first systems, Rust-based software, and developer tools through Zaroxi Studio.",
+      "Mawja, also known as Mujahid Siyam and by the handle itsmawja, is a versatile Software Engineer, AI Engineer, DevSecOps professional, Network Engineer, Systems Administrator (Linux & Windows), and Music Artist. He builds AI-first systems, manages complex network infrastructures, administers Linux and Windows servers, writes Rust-based software, and creates developer tools through Zaroxi Studio.",
     about2:
-      "With deep experience in Linux environments and a strong commitment to open-source development, Mawja specializes in creating robust, end-to-end solutions that leverage the full spectrum of modern technology. His work focuses on building systems that are not only performant and secure but also intelligent, scalable, and user-centric.",
+      "With deep experience in Linux and Windows environments, network architecture, and a strong commitment to open-source development, Mawja specializes in creating robust, end-to-end solutions. His work spans from low-level systems administration and network engineering to modern AI-first application development — building systems that are performant, secure, intelligent, and scalable.",
     about3:
-      "Mawja actively contributes to open-source projects and believes in the power of collaborative development to drive innovation. His expertise in Linux systems administration and open-source technologies enables him to build solutions that are both technically sophisticated and community-driven.",
+      "Mawja actively contributes to open-source projects and believes in the power of collaborative development. His expertise in Linux systems administration, Windows Server management, and network infrastructure engineering enables him to build solutions that are technically sophisticated, secure by design, and community-driven.",
     about4:
-      "Beyond the world of code and algorithms, Mawja is also a Music Artist, finding creative expression through music as a core part of his identity. His music spans Arabic Rap and Sudanese Rap. This artistic pursuit complements his technical work, bringing balance and inspiration to his problem-solving approach.",
+      "Beyond the world of code, networks, and algorithms, Mawja is also a Music Artist, finding creative expression through music as a core part of his identity. His music spans Arabic Rap and Sudanese Rap. This artistic pursuit complements his technical work, bringing balance and inspiration to his problem-solving approach.",
     about5:
-      "He believes in building technology that not only solves complex challenges but also enhances human experiences and creates meaningful impact across different domains through open collaboration and innovative thinking.",
+      "He believes in building technology and infrastructure that not only solve complex challenges but also enhance human experiences and create meaningful impact across different domains through open collaboration and innovative thinking.",
     skillsHeading: "Technologies & Tools",
     skillsDescription: "A versatile toolkit for building robust, scalable, and intelligent AI-first applications",
     ctaHeading: "Let's Build Something Amazing",
@@ -46,9 +72,9 @@ const en = {
   about: {
     title: "About | Mawja (Mujahid Siyam)",
     description:
-      "Mawja (Mujahid Siyam) — Software Engineer, AI Engineer, DevSecOps Engineer, Music Artist (Arabic Rap, Sudanese Rap). Full profile. Official source of truth.",
+      "Mawja (Mujahid Siyam) — Software Engineer, AI Engineer, DevSecOps Engineer, Network Engineer, Systems Administrator (Linux/Windows), Music Artist. Full profile.",
     heading: "About Mujahid Siyam",
-    roles: "Software Engineer • AI Engineer • DevSecOps • Music Artist",
+    roles: "Software Engineer • AI Engineer • DevSecOps • Network Engineer • SysAdmin (Linux/Windows) • Music Artist",
     profileTitle: "AI Engineer & Software Developer",
     akaLabel: "AKA Mawja",
     location: "France — Global Reach",
@@ -61,38 +87,47 @@ const en = {
     currentCompany: "Zaroxi Studio",
     currentPeriod: "2023 - Present",
     currentDescription:
-      "Building AI-first systems, Rust-based developer tools, and creative technology. Leading development of open-source projects and full-stack applications with modern tooling.",
+      "Building AI-first systems, managing Linux/Windows infrastructure, engineering network solutions, developing Rust-based tools, and creating creative technology.",
     summaryHeading: "Professional Summary",
     summary1:
-      "Mawja, also known as Mujahid Siyam, is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist. His work centers on building AI-first systems, Rust-based software, and developer tools that push the boundaries of modern technology.",
+      "Mawja, also known as Mujahid Siyam, is a Software Engineer, AI Engineer, DevSecOps Engineer, Network Engineer, Systems Administrator (Linux & Windows), and Music Artist. His work spans AI-first systems, network infrastructure, Linux/Windows server administration, Rust-based software, and developer tools.",
     summary2:
-      "With expertise spanning Rust systems programming, TypeScript, React, and Python, Mawja builds full-stack applications and intelligent solutions. Through Zaroxi Studio, he creates developer tools and creative technology that serve a global audience.",
+      "With expertise spanning network engineering, Linux & Windows systems administration, Rust, TypeScript, React, and Python, Mawja builds full-stack applications and intelligent solutions. Through Zaroxi Studio, he creates developer tools and creative technology for a global audience.",
     summary3:
-      "As a dedicated Open Source Advocate, Mawja actively contributes to and promotes open-source projects, believing that collaborative development drives innovation and accessibility in technology. He is particularly passionate about the Nix/NixOS ecosystem, reproducible builds, and declarative system configurations.",
+      "As a dedicated Open Source Advocate and network infrastructure engineer, Mawja actively contributes to open-source projects and designs secure, scalable network architectures. He is particularly passionate about the Nix/NixOS ecosystem, reproducible builds, declarative system configurations, and network automation.",
     summary4:
-      "Beyond engineering, Mawja is a Music Artist — music is not just a hobby but a core part of his creative identity. This artistic dimension informs his approach to building creative technology and shapes his perspective as a well-rounded technologist.",
+      "Beyond engineering, Mawja is a Music Artist — music is a core part of his creative identity. This artistic dimension informs his approach to building creative technology and shapes his perspective as a well-rounded, multidisciplinary technologist.",
     summary5:
-      "He believes in building technology that solves complex challenges, enhances human experiences, and creates meaningful impact through open collaboration and innovation. Mawja operates with a global perspective from France, targeting a worldwide audience.",
+      "He believes in building technology and infrastructure that solves complex challenges, enhances human experiences, and creates meaningful impact through open collaboration and innovation. Mawja operates from France with a global perspective.",
     connectHeading: "Connect with Mawja (itsmawja)",
-    connectDescription: "Follow the journey of Mawja (Mujahid Siyam) through AI, Rust, DevSecOps, and music",
+    connectDescription: "Follow the journey of Mawja (Mujahid Siyam) through AI, Rust, networking, DevSecOps, and music",
     education: "Education",
     technologies: "Technologies & Tools",
+    principlesHeading: "Principles",
+    principles: [
+      { title: "Open Source First", description: "Building and sharing software freely" },
+      { title: "Security First", description: "Security is built-in, not bolted on" },
+      { title: "Creativity Fuels Innovation", description: "Music and art inform my technical approach" },
+      { title: "Automate Everything", description: "Reproducible systems, infrastructure as code" },
+    ],
     langList: [
       { language: "Arabic", level: "Native" },
       { language: "English", level: "Fluent" },
       { language: "French", level: "Intermediate" },
     ],
     expItems: [
-      { title: "AI & Software Engineer", company: "Zaroxi Studio", period: "2023 - Present", description: "Building AI-first systems, Rust-based developer tools, and creative technology. Leading development of open-source projects and full-stack applications with modern tooling." },
-      { title: "AI/ML Engineer", company: "Data Science Labs", period: "2020 - 2022", description: "Developed machine learning models for predictive analytics. Deployed scalable ML infrastructure on AWS." },
-      { title: "Software Developer", company: "Startup Ventures", period: "2018 - 2020", description: "Built responsive web applications and mobile apps. Collaborated in agile development teams." },
+      { title: "AI & Software Engineer", company: "Zaroxi Studio", period: "2023 - Present", description: "Building AI-first systems, managing Linux/Windows infrastructure, engineering network solutions, developing Rust-based developer tools. Leading open-source projects." },
+      { title: "AI/ML Engineer", company: "Data Science Labs", period: "2020 - 2022", description: "Developed machine learning models for predictive analytics. Deployed scalable ML infrastructure on AWS. Managed Linux servers and network configurations." },
+      { title: "Software Developer & SysAdmin", company: "Startup Ventures", period: "2018 - 2020", description: "Built web and mobile applications. Administered Linux/Windows servers, configured network infrastructure, and collaborated in agile development teams." },
     ],
     eduItems: [
       { degree: "MSc in Computer Science", school: "University of Technology", period: "2016 - 2018", description: "Specialized in Artificial Intelligence and Machine Learning" },
-      { degree: "BSc in Software Engineering", school: "Tech University", period: "2012 - 2016", description: "Graduated with Honors. Focus on Distributed Systems" },
+      { degree: "BSc in Software Engineering", school: "Tech University", period: "2012 - 2016", description: "Graduated with Honors. Focus on Distributed Systems and Network Architecture" },
     ],
     skills: [
       "Artificial Intelligence & ML",
+      "Network Engineering & Architecture",
+      "Linux & Windows System Admin",
       "Rust Systems Programming",
       "Full-Stack Development",
       "DevSecOps & CI/CD",
@@ -100,19 +135,19 @@ const en = {
       "Developer Tools (Zaroxi Studio)",
       "Open Source Advocacy",
       "Nix/NixOS Ecosystem",
-      "Linux System Administration",
+      "Cloud Infrastructure (AWS)",
       "Music Production & Creative Tech",
     ],
   },
   blog: {
     title: "Blog | Mawja (Mujahid Siyam)",
     description:
-      "Articles by Mawja (Mujahid Siyam) on AI engineering, Rust development, DevSecOps, software engineering, and creative technology.",
+      "Articles by Mawja (Mujahid Siyam) on AI engineering, Rust development, DevSecOps, network engineering, systems administration, and creative technology.",
     backToBlog: "Back to Blog",
     previous: "Previous",
     next: "Next",
     relatedPosts: "Related Posts",
-    authorBio: "Software Engineer • AI Engineer • DevSecOps • Music Artist",
+    authorBio: "Software Engineer • AI Engineer • DevSecOps • Network Engineer • SysAdmin • Music Artist",
     heroTitle: "My Blog",
     heroSubtitle: "Personal Musings",
     heroDescription: "Exploring technology, development, and creative ideas through writing",
@@ -136,11 +171,17 @@ const en = {
     noPostsFound: "No posts found matching your filters.",
     noPostsAvailable: "No posts available yet.",
     clearFilters: "Clear Filters",
+    pinned: "Pinned",
+    allPostsLower: "All posts",
+    searchPlaceholder: "Search articles...",
+    allFilter: "All",
+    read: "Read",
+    browsePosts: "Browse posts",
   },
   projects: {
     title: "Projects | Mawja (Mujahid Siyam)",
     description:
-      "Open-source projects and contributions by Mawja (Mujahid Siyam). AI-first systems, Rust-based developer tools, Zaroxi Studio, and creative technology.",
+      "Open-source projects and contributions by Mawja (Mujahid Siyam). AI-first systems, Rust-based developer tools, network automation, and creative technology.",
     backToProjects: "Back to Projects",
     viewOnGithub: "View on GitHub",
     visitWebsite: "Visit Website",
@@ -156,6 +197,11 @@ const en = {
     weeksAgo: "weeks ago",
     monthsAgo: "months ago",
     yearsAgo: "years ago",
+    pinned: "Pinned",
+    allProjects: "All projects",
+    work: "Work",
+    view: "View",
+    liveSite: "Live Site",
   },
   music: {
     title: "Music | Mawja (Mujahid Siyam) | Arabic Rap | Sudanese Rap",
@@ -174,9 +220,10 @@ const en = {
   },
   contact: {
     title: "Contact | Mawja (Mujahid Siyam)",
-    description: "Get in touch with Mawja (Mujahid Siyam). AI engineering, Rust development, Arabic Rap, Sudanese Rap collaborations.",
+    description: "Get in touch with Mawja (Mujahid Siyam). AI engineering, network engineering, Rust development, systems administration, Arabic Rap collaborations.",
     heading: "Let's Connect",
     subtitle: "I'm always excited to discuss new opportunities, creative projects, or potential collaborations. Feel free to reach out—I'd be delighted to hear from you.",
+    badge: "Contact",
     startConversation: "Start a Conversation",
     startConversationDesc: "Whether you have a project in mind, want to explore collaboration opportunities, or simply wish to connect, I'm here to listen. Let's discuss how we can work together to bring your ideas to life.",
     emailResponseTime: "I typically respond within a few hours",
@@ -185,6 +232,16 @@ const en = {
     instagramDesc: "Follow for creative insights and updates",
     tiktokDesc: "Creative content and tech insights",
     websiteDesc: "Explore my portfolio and blog",
+    links: [
+      { label: "GitHub", desc: "Explore my latest projects" },
+      { label: "X", desc: "Follow on X" },
+      { label: "LinkedIn", desc: "Connect with me professionally" },
+      { label: "Instagram", desc: "Follow for creative insights" },
+      { label: "YouTube", desc: "Watch on YouTube" },
+      { label: "Spotify", desc: "Listen on Spotify" },
+      { label: "Apple Music", desc: "Listen on Apple Music" },
+      { label: "Email", desc: "I typically respond within a few hours" },
+    ],
     formName: "Your Name",
     formEmail: "Email Address",
     formSubject: "Subject",
@@ -217,20 +274,26 @@ const en = {
   },
   structuredData: {
     description:
-      "Mawja, also known as Mujahid Siyam, is a software engineer specializing in AI, open source, systems engineering, DevSecOps, and music production. Official source of truth for Mujahid Mohamed Ismail Siyam.",
+      "Mawja, also known as Mujahid Siyam, is a software engineer specializing in AI, open source, systems engineering, DevSecOps, network engineering, Linux/Windows systems administration, and music production.",
     websiteDescription:
-      "Official source of truth for Mawja (Mujahid Siyam), a software engineer specializing in AI, open source, systems engineering, DevSecOps, and music production.",
+      "Official source of truth for Mawja (Mujahid Siyam), a software engineer specializing in AI, open source, network engineering, systems administration, DevSecOps, and music production.",
   },
   seo: {
     keywords: [
-      "Mujahid Siyam", "Mawja", "itsmawja", "AI Engineer", "Software Engineer",
-      "Rust Developer", "DevSecOps", "Music Artist", "Arabic Rap", "Sudanese Rap",
-      "Mawja music", "Mawja rapper", "Mawja arabic rap", "موجا", "راب عربي",
+      "Mujahid Siyam", "Mawja", "itsmawja",
+      "AI Engineer", "Software Engineer", "Network Engineer", "Systems Administrator",
+      "Rust Developer", "DevSecOps Engineer", "Music Artist",
+      "Linux Administrator", "Windows Server Administrator",
+      "Arabic Rap", "Sudanese Rap", "Mawja music", "موجا", "راب عربي",
       "AI Tools", "Programming", "Open Source", "Rust", "TypeScript", "React",
       "Next.js", "Python", "full-stack developer", "Zaroxi Studio",
+      "Network Architecture", "Infrastructure Engineer", "Cloud Engineer",
+      "Sudanese Rap", "Sudanese Rapper", "Sudanese Hip Hop", "Arabic Hip Hop", "Arabic Rapper",
+      "Middle Eastern Rap", "African Rap", "Underground Rap", "Rap Artist",
+      "Hip Hop Producer", "Music Producer", "Sound Engineer",
     ],
     dcSubject:
-      "Software Engineering, Artificial Intelligence, AI Engineer, Rust Developer, DevSecOps, Music Artist, Arabic Rap, Sudanese Rap, Programming",
+      "Software Engineering, Artificial Intelligence, AI Engineer, Rust Developer, Network Engineer, Systems Administrator, Linux, Windows Server, DevSecOps, Music Artist, Arabic Rap, Sudanese Rap, Sudanese Rapper, Sudanese Hip Hop, Arabic Hip Hop, Arabic Rapper, Middle Eastern Rap, African Rap, Underground Rap, Rap Artist, Hip Hop Producer, Music Producer, Sound Engineer, Programming",
   },
 } as const;
 

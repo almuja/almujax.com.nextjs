@@ -162,8 +162,8 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 <div className="flex flex-wrap gap-2.5">
                   {[
                     { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@MujaOfficiel", icon: YouTubeIcon, primary: true },
-                    { label: "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon, primary: false },
-                    { label: "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, primary: false },
+                    { label: locale === "ar" ? "ساوند كلاود" : "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon, primary: false },
+                    { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, primary: false },
                   ].map((b) => (
                     <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
                       className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs transition-all duration-300 hover:scale-105 ${

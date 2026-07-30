@@ -37,7 +37,7 @@ export async function generateMetadata({
 function GitHubIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
     </svg>
   );
 }
@@ -61,7 +61,7 @@ function LinkedInIcon({ className }: { className?: string }) {
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+      <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 1 0 0-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 0 1-2.884 0 1.441 1.441 0 0 1 2.884 0z"/>
     </svg>
   );
 }
@@ -69,7 +69,7 @@ function InstagramIcon({ className }: { className?: string }) {
 function YouTubeIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
     </svg>
   );
 }
@@ -82,13 +82,31 @@ function SpotifyIcon({ className }: { className?: string }) {
   );
 }
 
+function AppleMusicIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M9 18V5l12-2v13c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4c.8 0 1.5.2 2 .6V3l-8 1.3v10.7c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4c.8 0 1.5.2 2 .6z"/>
+    </svg>
+  );
+}
+
+function SnapchatIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2c5.25 0 9 4.2 9 9.28 0 2.19-.76 4.21-2.06 5.85-.19.25-.49.36-.77.25-.63-.27-1.31-.42-2.03-.48l-.75 1.64c-.08.17-.24.29-.43.35l-1.15.3c-.33.09-.68.05-.97-.11a13.93 13.93 0 0 1-2.84 0 1.74 1.74 0 0 0-.97.11l-1.14-.3a.56.56 0 0 1-.43-.35l-.75-1.64c-.72.06-1.4.21-2.04.48-.28.11-.58 0-.77-.25A9.24 9.24 0 0 1 3 11.28C3 6.2 6.75 2 12 2zM7.5 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S9 12.83 9 12s-.67-1.5-1.5-1.5zm9 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/>
+    </svg>
+  );
+}
+
 const socials = [
   { href: "https://github.com/itsmawja", icon: GitHubIcon, label: "GitHub" },
   { href: "https://x.com/itsmawja", icon: XIcon, label: "X" },
   { href: "https://linkedin.com/in/itsmawja", icon: LinkedInIcon, label: "LinkedIn" },
   { href: "https://instagram.com/itsmawja", icon: InstagramIcon, label: "Instagram" },
+  { href: "https://snapchat.com/add/itsmawja", icon: SnapchatIcon, label: "Snapchat" },
   { href: "https://youtube.com/@itsmawja", icon: YouTubeIcon, label: "YouTube" },
   { href: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, label: "Spotify" },
+  { href: "https://music.apple.com/profile/itsmawja", icon: AppleMusicIcon, label: "Apple Music" },
 ];
 
 export default async function Home({
@@ -194,12 +212,20 @@ export default async function Home({
       </section>
 
       {/* About Section */}
-      <section dir={dir} className="py-24 px-6">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-foreground">
+      <section dir={dir} className="relative py-24 px-6 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute bottom-[10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-[var(--color-wave-2)] opacity-[0.03] blur-[120px] animate-pulse-slow animation-delay-3000" />
+        </div>
+        <div className="relative max-w-3xl mx-auto">
+          <div className="flex items-center gap-2 mb-8">
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground/25">
+              {validLocale === "ar" ? "عنّي" : validLocale === "fr" ? "À propos" : "About"}
+            </span>
+          </div>
+          <h2 className={`font-bold mb-10 text-foreground tracking-tight ${validLocale === "ar" ? "text-4xl sm:text-5xl" : "text-3xl sm:text-4xl"}`}>
             {t.home.aboutHeading}
           </h2>
-          <div className="space-y-5 text-foreground/60 leading-relaxed text-base md:text-lg">
+          <div className="space-y-5 text-sm sm:text-base text-foreground/45 leading-relaxed">
             <p>{t.home.about1}</p>
             <p>{t.home.about2}</p>
             <p>{t.home.about3}</p>
@@ -209,30 +235,133 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Skills */}
+      {/* What I Do — Capabilities */}
       <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-foreground text-center">
-            {t.home.skillsHeading}
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
-            {["Rust", "C/C++", "React", "TypeScript", "Python", "AI/LLM", "AWS", "Docker", "Kubernetes", "PostgreSQL", "NixOS", "Next.js", "DevSecOps", "TensorFlow"].map((skill) => (
-              <div key={skill} className="rounded-xl border border-border/50 bg-muted/30 px-4 py-3 text-center text-sm font-medium text-foreground/60 hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-300">
-                {skill}
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight">
+              {t.home.whatIDo}
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {t.home.capabilities.map((item) => (
+              <div key={item.title} className="group relative p-6 rounded-2xl border border-border/30 bg-card/20 hover:border-primary/15 hover:bg-card/40 hover:shadow-lg hover:shadow-primary/[0.03] transition-all duration-500">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative">
+                  <div className="w-8 h-8 rounded-lg bg-primary/[0.06] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary/60 transition-colors" />
+                  </div>
+                  <h3 className="text-sm font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h3>
+                  <p className="text-xs text-foreground/35 leading-relaxed">{item.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Technologies — elegant cloud */}
       <section className="py-24 px-6">
-        <div className="max-w-2xl mx-auto rounded-3xl bg-gradient-to-br from-[#6366f1] via-[#8b5cf6] to-[#06b6d4] p-12 md:p-16 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold mb-3 text-white">{t.home.ctaHeading}</h3>
-          <p className="text-white/60 text-sm md:text-base mb-8 max-w-md mx-auto">{t.home.ctaDescription}</p>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight mb-12">{t.home.skillsHeading}</h2>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {[
+              { n: "Rust" }, { n: "TypeScript" }, { n: "Python" }, { n: "C/C++" },
+              { n: "React" }, { n: "Next.js" }, { n: "Tailwind CSS" },
+              { n: "Node.js" }, { n: "FastAPI" }, { n: "GraphQL" },
+              { n: "TensorFlow" }, { n: "PyTorch" }, { n: "LLMs" },
+              { n: "Docker" }, { n: "Kubernetes" }, { n: "AWS" },
+              { n: "Linux" }, { n: "Windows Server" }, { n: "NixOS" },
+              { n: "PostgreSQL" }, { n: "MongoDB" }, { n: "Redis" },
+              { n: "Git" }, { n: "DevSecOps" }, { n: "CI/CD" },
+            ].map((s) => (
+              <span key={s.n} className="px-5 py-3 rounded-xl border border-border/20 bg-muted/5 text-sm font-medium text-foreground/30 hover:text-primary hover:border-primary/20 hover:bg-primary/[0.03] hover:scale-[1.03] transition-all duration-300 cursor-default">
+                {s.n}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest — Blog + Projects + Music */}
+      <section className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight">
+              {t.home.latest.heading}
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href={`/${validLocale}/blog`} className="group relative p-8 rounded-2xl border border-border/30 bg-card/20 hover:border-primary/15 hover:shadow-lg hover:shadow-primary/[0.03] transition-all duration-500 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/20 mb-4 block">
+                  {t.home.latest.blog.label}
+                </span>
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-2">
+                  {t.home.latest.blog.title}
+                </h3>
+                <p className="text-xs text-foreground/30 leading-relaxed">
+                  {t.home.latest.blog.description}
+                </p>
+                <div className="mt-6 flex items-center gap-2 text-xs text-foreground/20 group-hover:text-primary transition-colors duration-300">
+                  {t.home.latest.blog.cta} <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+                </div>
+              </div>
+            </Link>
+            <Link href={`/${validLocale}/projects`} className="group relative p-8 rounded-2xl border border-border/30 bg-card/20 hover:border-primary/15 hover:shadow-lg hover:shadow-primary/[0.03] transition-all duration-500 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/20 mb-4 block">
+                  {t.home.latest.projects.label}
+                </span>
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-2">
+                  {t.home.latest.projects.title}
+                </h3>
+                <p className="text-xs text-foreground/30 leading-relaxed">
+                  {t.home.latest.projects.description}
+                </p>
+                <div className="mt-6 flex items-center gap-2 text-xs text-foreground/20 group-hover:text-primary transition-colors duration-300">
+                  {t.home.latest.projects.cta} <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+                </div>
+              </div>
+            </Link>
+            <Link href={`/${validLocale}/music`} className="group relative p-8 rounded-2xl border border-border/30 bg-card/20 hover:border-primary/15 hover:shadow-lg hover:shadow-primary/[0.03] transition-all duration-500 overflow-hidden sm:col-span-2 lg:col-span-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/20 mb-4 block">
+                  {t.home.latest.music.label}
+                </span>
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-2">
+                  {t.home.latest.music.title}
+                </h3>
+                <p className="text-xs text-foreground/30 leading-relaxed">
+                  {t.home.latest.music.description}
+                </p>
+                <div className="mt-6 flex items-center gap-2 text-xs text-foreground/20 group-hover:text-primary transition-colors duration-300">
+                  {t.home.latest.music.cta} <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative py-24 px-6 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[400px] rounded-full bg-gradient-to-br from-[var(--color-wave-1)] via-[var(--color-wave-2)] to-[var(--color-wave-3)] opacity-[0.06] blur-[120px] animate-pulse-slow" />
+        </div>
+        <div className="relative max-w-2xl mx-auto text-center">
+          <h3 className="text-3xl sm:text-4xl font-black tracking-tighter mb-4">
+            <span className="wave-gradient-text">{t.home.ctaHeading}</span>
+          </h3>
+          <p className="text-sm sm:text-base text-foreground/35 font-light leading-relaxed max-w-md mx-auto mb-10">
+            {t.home.ctaDescription}
+          </p>
           <Link
             href="mailto:hello@itsmawja.com"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-gray-900 rounded-xl font-semibold text-sm hover:bg-white/90 transition-all duration-300 hover:scale-[1.02]"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-2xl font-semibold text-sm hover:opacity-90 hover:scale-[1.02] hover:shadow-2xl transition-all duration-300"
           >
             {t.home.ctaButton}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>

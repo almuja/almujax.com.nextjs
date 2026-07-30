@@ -4,6 +4,7 @@ import Image from "next/image";
 import { promises as fs } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import { ArrowLeft, Clock } from "lucide-react";
 import Author from "../../../components/Author";
 import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
 import { ArticleStructuredData } from "../../../components/StructuredData";
@@ -125,6 +126,11 @@ export async function generateMetadata({
         "AI Engineer",
         "Software Engineer",
         "DevSecOps",
+        "Arabic Rap",
+        "Sudanese Rap",
+        "Hip Hop",
+        "راب سوداني",
+        "راب عربي",
         "blog",
       ].filter(Boolean),
       alternates: {
@@ -239,140 +245,115 @@ export default async function BlogPostPage({
             { name: title, url: `https://itsmawja.com/${validLocale}/blog/${resolvedParams.slug}` },
           ]}
         />
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          {/* Back to Blog Link - Always at the top */}
-          <div className="flex justify-center mb-8">
-            <Link
-              href={`/${validLocale}/blog`}
-              className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors group"
-            >
-              <svg
-                className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+
+        {/* Hero Header — full width, flowing naturally */}
+        <section className="relative pt-32 pb-12 overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[450px] rounded-full bg-[var(--color-wave-1)] opacity-[0.04] blur-[140px] animate-pulse-slow" />
+            <div className="absolute top-[30%] right-[5%] w-[400px] h-[300px] rounded-full bg-[var(--color-wave-3)] opacity-[0.03] blur-[100px] animate-pulse-slow animation-delay-2000" />
+          </div>
+
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Back link */}
+            <div className="hero-enter mb-12">
+              <Link
+                href={`/${validLocale}/blog`}
+                className="inline-flex items-center gap-2 text-xs text-foreground/30 hover:text-foreground/60 transition-colors group"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              {dict.blog.backToBlog}
-            </Link>
-          </div>
-
-          {/* Centered Article Content - Wider */}
-          <div className="flex justify-center">
-            <div className="w-full max-w-4xl">
-              {/* Modern Article Header */}
-              <div className="text-center mb-16">
-                <div className="flex flex-wrap gap-3 mb-8 justify-center">
-                  <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20">
-                    {frontmatter.category || dict.blog.uncategorized}
-                  </span>
-                  {frontmatter.tags?.map((tag: string) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1.5 bg-muted/50 text-muted-foreground rounded-full text-xs font-medium border border-border"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight tracking-tight">
-                  {title}
-                </h1>
-                <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto leading-relaxed">
-                  {frontmatter.description}
-                </p>
-                <div className="flex flex-wrap items-center gap-4 text-muted-foreground justify-center text-sm">
-                  <span className="flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                    {date !== "Unknown date"
-                      ? new Date(date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      : date}
-                  </span>
-                  <span>•</span>
-                  <span className="flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    {readingTime}
-                  </span>
-                </div>
-              </div>
-
-              {frontmatter.image && (
-                <div className="mb-16">
-                  <div className="relative aspect-video w-full max-w-5xl mx-auto">
-                    <Image
-                      src={frontmatter.image}
-                      alt={title}
-                      fill
-                      className="object-cover rounded-2xl shadow-2xl border border-border/50"
-                      priority
-                    />
-                  </div>
-                </div>
-              )}
-
-              {/* Elegant Markdown Content */}
-              <ClientMDXRenderer html={html} />
-
-              {/* Author Section */}
-              <div className="mt-8">
-                <Author
-                  name={validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
-                  image="/img/profile.png"
-                  bio={dict.blog.authorBio}
-                  socialLinks={{
-                    github: "https://github.com/itsmawja",
-                    twitter: "https://x.com/itsmawja",
-                    linkedin: "https://linkedin.com/in/itsmawja",
-                    website: "https://itsmawja.com",
-                  }}
-                />
-              </div>
-
-              {/* Next/Previous Navigation */}
-              <PostNavigation currentSlug={resolvedParams.slug} locale={validLocale} dict={dict} />
-
-              <RelatedPosts
-                currentSlug={resolvedParams.slug}
-                category={frontmatter.category}
-                locale={validLocale}
-                dict={dict}
-              />
+                <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
+                {dict.blog.backToBlog}
+              </Link>
             </div>
+
+            {/* Category + tags */}
+            <div className="hero-enter flex flex-wrap items-center gap-2 mb-6">
+              <span className="px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-semibold uppercase tracking-[0.15em] text-primary/60">
+                {frontmatter.category || dict.blog.uncategorized}
+              </span>
+              {frontmatter.tags?.slice(0, 3).map((tag: string) => (
+                <span key={tag} className="px-2.5 py-0.5 rounded-full bg-muted/50 text-[10px] text-foreground/30 border border-border/30">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Title — full width gradient */}
+            <h1 className="hero-enter text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] mb-8">
+              <span className="wave-gradient-text">{title}</span>
+            </h1>
+
+            {/* Description — set under the title */}
+            <p className="hero-enter text-base sm:text-lg text-foreground/35 font-light leading-relaxed max-w-3xl">
+              {frontmatter.description}
+            </p>
           </div>
+        </section>
+
+        {/* Content */}
+        <main className="max-w-3xl mx-auto px-4 sm:px-6 pb-24">
+          {/* Hero image */}
+          {frontmatter.image && (
+            <div className="mb-12">
+              <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-border/20">
+                <Image
+                  src={frontmatter.image}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Post details — date + reading time before content */}
+          <div className="flex items-center gap-3 mb-12 text-xs text-foreground/25">
+            {date !== "Unknown date" && (
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5" />
+                {new Date(date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+              </span>
+            )}
+            {readingTime && (
+              <>
+                <span className="text-foreground/10">·</span>
+                <span className="flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5" />
+                  {readingTime}
+                </span>
+              </>
+            )}
+          </div>
+
+          {/* Post Content */}
+          <div className="prose-content mb-20">
+            <ClientMDXRenderer html={html} />
+          </div>
+
+          {/* Author Section */}
+          <div className="mt-16 pt-8 border-t border-border/20">
+            <Author
+              name={validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
+              image="/img/profile.png"
+              bio={dict.blog.authorBio}
+              socialLinks={{
+                github: "https://github.com/itsmawja",
+                twitter: "https://x.com/itsmawja",
+                linkedin: "https://linkedin.com/in/itsmawja",
+                website: "https://itsmawja.com",
+              }}
+            />
+          </div>
+
+          {/* Next/Previous Navigation */}
+          <PostNavigation currentSlug={resolvedParams.slug} locale={validLocale} dict={dict} />
+
+          <RelatedPosts
+            currentSlug={resolvedParams.slug}
+            category={frontmatter.category}
+            locale={validLocale}
+            dict={dict}
+          />
         </main>
       </div>
     );

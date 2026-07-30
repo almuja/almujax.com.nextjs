@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Send, Code2, ExternalLink, Camera, LinkIcon } from "lucide-react";
+import { Mail, Send, Code2, Link2, Camera, Globe } from "lucide-react";
 import { submitContactForm } from "../../actions/contact";
 
 interface ContactFormProps {
@@ -13,6 +13,7 @@ interface ContactFormProps {
     formName: string; formEmail: string; formSubject: string; formMessage: string;
     formNamePlaceholder: string; formEmailPlaceholder: string; formSubjectPlaceholder: string; formMessagePlaceholder: string;
     sending: string; sendMessage: string; networkError: string;
+    badge: string; links: readonly { label: string; desc: string }[];
   };
 }
 
@@ -35,55 +36,123 @@ export default function ContactForm({ locale, t }: ContactFormProps) {
   }
 
   return (
-    <div className="pt-24 pb-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12" dir={dir}>
-          <h1 className="text-4xl font-bold text-[var(--color-foreground)] mb-4">{t.heading}</h1>
-          <p className="text-xl text-[var(--color-foreground)]/60 max-w-2xl mx-auto">{t.subtitle}</p>
+    <div className="min-h-screen" dir={dir}>
+      {/* Hero Header */}
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[350px] rounded-full bg-[var(--color-wave-1)] opacity-[0.04] blur-[140px] animate-pulse-slow" />
+          <div className="absolute bottom-0 right-[5%] w-[350px] h-[250px] rounded-full bg-[var(--color-wave-3)] opacity-[0.03] blur-[100px] animate-pulse-slow animation-delay-2000" />
         </div>
-        <div className="grid lg:grid-cols-2 gap-12" dir={dir}>
-          <div>
-            <h2 className="text-2xl font-bold text-[var(--color-foreground)] mb-6">{t.startConversation}</h2>
-            <p className="text-[var(--color-foreground)]/60 mb-8">{t.startConversationDesc}</p>
-            <div className="space-y-6">
-              {[
-                { icon: Mail, color: "primary", title: "Email", desc: t.emailResponseTime, link: "hello@itsmawja.com", href: "mailto:hello@itsmawja.com" },
-                { icon: Code2, color: "secondary", title: "GitHub", desc: t.githubDesc, link: "github.com/itsmawja", href: "https://github.com/itsmawja" },
-                { icon: LinkIcon, color: "primary", title: "LinkedIn", desc: t.linkedinDesc, link: "@itsmawja", href: "https://linkedin.com/in/itsmawja" },
-                { icon: Camera, color: "accent", title: "Instagram", desc: t.instagramDesc, link: "@itsmawja", href: "https://instagram.com/itsmawja" },
-                { icon: ExternalLink, color: "accent", title: "Website", desc: t.websiteDesc, link: "itsmawja.com", href: "https://itsmawja.com" },
-              ].map((item) => (
-                <div key={item.title} className="flex items-center backdrop-blur-sm bg-glass border border-glass-border rounded-2xl p-4 hover:scale-105 transition-all duration-300">
-                  <div className={`p-3 bg-[var(--color-${item.color})]/20 rounded-lg mr-4`}>
-                    <item.icon className={`w-6 h-6 text-[var(--color-${item.color})]`} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[var(--color-foreground)]">{item.title}</h3>
-                    <p className="text-[var(--color-foreground)]/60">{item.desc}</p>
-                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--color-primary)] font-medium">{item.link}</a>
-                  </div>
-                </div>
-              ))}
-            </div>
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <div className="hero-enter inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/60 mb-8">
+            <Mail className="w-3 h-3" /> {t.badge}
           </div>
-          <div className="backdrop-blur-sm bg-glass border border-glass-border rounded-2xl p-8">
-            {msg && <div className={`mb-6 p-4 rounded-lg ${msg.ok ? "bg-green-500/10 border border-green-500/20 text-green-600" : "bg-red-500/10 border border-red-500/20 text-red-600"}`}>{msg.text}</div>}
-            <form action={handleSubmit} className="space-y-6">
-              <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
-              <div className="grid md:grid-cols-2 gap-6">
-                <div><label htmlFor="name" className="block text-sm font-medium text-[var(--color-foreground)] mb-2">{t.formName}</label><input type="text" id="name" name="name" required className="w-full px-4 py-3 border border-[var(--color-glass-border)] rounded-2xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent backdrop-blur-sm bg-[var(--color-glass)] text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40" placeholder={t.formNamePlaceholder} /></div>
-                <div><label htmlFor="email" className="block text-sm font-medium text-[var(--color-foreground)] mb-2">{t.formEmail}</label><input type="email" id="email" name="email" required className="w-full px-4 py-3 border border-[var(--color-glass-border)] rounded-2xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent backdrop-blur-sm bg-[var(--color-glass)] text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40" placeholder={t.formEmailPlaceholder} /></div>
+          <h1 className="hero-enter text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">
+            <span className="wave-gradient-text">{t.heading}</span>
+          </h1>
+          <p className="hero-enter text-sm sm:text-base text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
+            {t.subtitle}
+          </p>
+          <div className="hero-enter mt-10 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
+        </div>
+      </section>
+
+      {/* Content */}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-24">
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Left — Info + Links */}
+          <div>
+            <p className="text-sm text-foreground/40 mb-10 leading-relaxed">{t.startConversationDesc}</p>
+
+            {(() => {
+              const contactItems = [
+                { icon: Code2, href: "https://github.com/itsmawja", value: "github.com/itsmawja" },
+                { icon: Link2, href: "https://x.com/itsmawja", value: "@itsmawja" },
+                { icon: Link2, href: "https://linkedin.com/in/itsmawja", value: "@itsmawja" },
+                { icon: Camera, href: "https://instagram.com/itsmawja", value: "@itsmawja" },
+                { icon: Globe, href: "https://youtube.com/@itsmawja", value: "@itsmawja" },
+                { icon: Globe, href: "https://open.spotify.com/user/itsmawja", value: "itsmawja" },
+                { icon: Globe, href: "https://music.apple.com/profile/itsmawja", value: "itsmawja" },
+                { icon: Mail, href: "mailto:hello@itsmawja.com", value: "hello@itsmawja.com", isEmail: true },
+              ];
+              return t.links.map((link, i) => {
+                const c = contactItems[i];
+                const isEmail = "isEmail" in c;
+                return (
+                  <a
+                    key={link.label}
+                    href={c.href}
+                    target={!isEmail ? "_blank" : undefined}
+                    rel={!isEmail ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-4 p-4 rounded-xl border border-border/30 hover:border-primary/20 hover:bg-primary/[0.02] transition-all duration-300 mb-3 group"
+                  >
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary/50 group-hover:text-primary group-hover:bg-primary/10 transition-all duration-300">
+                      <c.icon className="w-4 h-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-foreground">{link.label}</p>
+                      <p className="text-xs text-foreground/30">{link.desc}</p>
+                    </div>
+                    <span className="ml-auto text-[11px] text-foreground/20 font-mono hidden sm:inline">{c.value}</span>
+                  </a>
+                );
+              });
+            })()}
+          </div>
+
+          {/* Right — Form */}
+          <div className="rounded-2xl border border-border/40 bg-card/30 p-6 sm:p-8">
+            {msg && (
+              <div className={`mb-8 p-4 rounded-xl text-sm font-medium ${msg.ok ? "bg-emerald-500/10 border border-emerald-500/20 text-emerald-600" : "bg-red-500/10 border border-red-500/20 text-red-600"}`}>
+                {msg.text}
               </div>
-              <div><label htmlFor="subject_line" className="block text-sm font-medium text-[var(--color-foreground)] mb-2">{t.formSubject}</label><input type="text" id="subject_line" name="subject_line" required className="w-full px-4 py-3 border border-[var(--color-glass-border)] rounded-2xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent backdrop-blur-sm bg-[var(--color-glass)] text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40" placeholder={t.formSubjectPlaceholder} /></div>
-              <div><label htmlFor="message" className="block text-sm font-medium text-[var(--color-foreground)] mb-2">{t.formMessage}</label><textarea id="message" name="message" required rows={5} className="w-full px-4 py-3 border border-[var(--color-glass-border)] rounded-2xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent backdrop-blur-sm bg-[var(--color-glass)] text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40" placeholder={t.formMessagePlaceholder} /></div>
-              <button type="submit" disabled={pending} className="w-full flex flex-col items-center justify-center px-8 py-8 backdrop-blur-sm bg-glass border border-glass-border text-white rounded-2xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed group">
-                {pending ? <div className="flex flex-col items-center space-y-3"><div className="w-6 h-6 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin" /><span>{t.sending}</span></div>
-                : <div className="flex flex-col items-center space-y-3"><Send className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 text-[var(--color-primary)]" /><span>{t.sendMessage}</span></div>}
+            )}
+            <form action={handleSubmit} className="space-y-5">
+              <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="name" className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-foreground/30 mb-2">{t.formName}</label>
+                  <input type="text" id="name" name="name" required className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm text-foreground placeholder:text-foreground/15 focus:outline-none focus:border-primary/30 focus:ring-2 focus:ring-primary/5 transition-all" placeholder={t.formNamePlaceholder} />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-foreground/30 mb-2">{t.formEmail}</label>
+                  <input type="email" id="email" name="email" required className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm text-foreground placeholder:text-foreground/15 focus:outline-none focus:border-primary/30 focus:ring-2 focus:ring-primary/5 transition-all" placeholder={t.formEmailPlaceholder} />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="subject_line" className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-foreground/30 mb-2">{t.formSubject}</label>
+                <input type="text" id="subject_line" name="subject_line" required className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm text-foreground placeholder:text-foreground/15 focus:outline-none focus:border-primary/30 focus:ring-2 focus:ring-primary/5 transition-all" placeholder={t.formSubjectPlaceholder} />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-foreground/30 mb-2">{t.formMessage}</label>
+                <textarea id="message" name="message" required rows={5} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm text-foreground placeholder:text-foreground/15 focus:outline-none focus:border-primary/30 focus:ring-2 focus:ring-primary/5 transition-all resize-none" placeholder={t.formMessagePlaceholder} />
+              </div>
+
+              <button
+                type="submit"
+                disabled={pending}
+                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-foreground text-background rounded-xl text-sm font-semibold hover:opacity-90 hover:scale-[1.01] transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+              >
+                {pending ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+                    {t.sending}
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    {t.sendMessage}
+                  </>
+                )}
               </button>
             </form>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

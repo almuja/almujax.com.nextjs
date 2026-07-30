@@ -12,7 +12,8 @@ import LocaleSwitcher from "./LocaleSwitcher";
 
 interface HeaderProps {
   locale: string;
-    nav: {
+  dict: { blog: { authorBio: string } };
+  nav: {
     projects: string;
     blog: string;
     music: string;
@@ -24,14 +25,14 @@ interface HeaderProps {
   };
 }
 
-export default function Header({ locale, nav }: HeaderProps) {
+export default function Header({ locale, dict, nav }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigationItems = [
+    { href: `/${locale}/about`, label: nav.about },
     { href: `/${locale}/projects`, label: nav.projects },
     { href: `/${locale}/blog`, label: nav.blog },
     { href: `/${locale}/music`, label: nav.music },
-    { href: `/${locale}/about`, label: nav.about },
     { href: `/${locale}/now`, label: nav.now },
     { href: `/${locale}/contact`, label: nav.contact },
   ];
@@ -45,7 +46,7 @@ export default function Header({ locale, nav }: HeaderProps) {
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-primary/30 shadow-md">
                 <Image
                   src="/img/profile.png"
-                  alt="Mujahid Siyam"
+                  alt={locale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
                   width={48}
                   height={48}
                   className="w-full h-full object-cover"
@@ -86,7 +87,7 @@ export default function Header({ locale, nav }: HeaderProps) {
         </div>
       </header>
 
-      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} navigationItems={navigationItems} locale={locale} menuLabel={nav.menu} authorName={locale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"} authorBio={locale === "ar" ? "مهندس برمجيات" : "Software Engineer"} />
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} navigationItems={navigationItems} locale={locale} menuLabel={nav.menu} authorName={locale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"} authorBio={dict.blog.authorBio} />
     </>
   );
 }

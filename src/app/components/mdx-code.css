@@ -1,9 +1,86 @@
-/* Code block container */
-.prose-content pre {
-  padding: 1.25rem 1.5rem;
+/* ─── Typography ─── */
+.prose-content {
+  color: var(--color-foreground);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  word-break: break-word;
+}
+
+.prose-content h1, .prose-content h2, .prose-content h3, .prose-content h4 {
+  color: var(--color-foreground);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.prose-content h1 { font-size: 2rem; }
+.prose-content h2 { font-size: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); }
+.prose-content h3 { font-size: 1.25rem; }
+.prose-content h4 { font-size: 1.1rem; }
+
+.prose-content p {
+  margin-bottom: 1.5rem;
+  color: var(--color-foreground);
+  opacity: 0.7;
+}
+
+.prose-content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.prose-content a:hover {
+  color: var(--color-primary-hover);
+  text-decoration-thickness: 2px;
+}
+
+.prose-content strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}
+
+.prose-content blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding: 1rem 0 1rem 1.5rem;
   margin: 2rem 0;
-  border-radius: 0.75rem;
-  border: 1px solid hsl(var(--border));
+  font-style: italic;
+  color: var(--color-foreground);
+  opacity: 0.6;
+  background: var(--color-muted);
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.prose-content blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.prose-content img {
+  border-radius: 1rem;
+  margin: 2rem auto;
+  display: block;
+  max-width: 100%;
+}
+
+.prose-content figcaption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-foreground);
+  opacity: 0.4;
+  margin-top: 0.5rem;
+}
+
+/* ─── Code Blocks ─── */
+.prose-content pre {
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
   overflow-x: auto;
   background: #0d1117 !important;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
@@ -20,64 +97,116 @@
   color: #e6edf3;
 }
 
-/* Inline code */
+/* ─── Inline Code ─── */
 .prose-content :not(pre) > code {
-  background: hsl(var(--muted) / 0.5);
-  padding: 0.2em 0.4em;
-  border-radius: 0.25rem;
+  background: var(--color-muted);
+  padding: 0.2em 0.45em;
+  border-radius: 0.35rem;
   font-size: 0.875em;
   font-weight: 500;
-  border: 1px solid hsl(var(--border) / 0.5);
-  color: hsl(var(--foreground));
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
 }
 
-/* Override highlight.js background */
+.prose-content :not(pre) > code::before,
+.prose-content :not(pre) > code::after {
+  display: none;
+}
+
+/* ─── Highlight.js Override ─── */
 .prose-content .hljs {
   background: transparent !important;
 }
 
-/* Tables */
+/* ─── Tables ─── */
 .prose-content table {
   width: 100%;
   border-collapse: collapse;
   margin: 2rem 0;
+  font-size: 0.9rem;
 }
 
 .prose-content th {
-  background: hsl(var(--muted) / 0.5);
+  background: var(--color-muted);
   font-weight: 600;
   text-align: left;
+  color: var(--color-foreground);
 }
 
-.prose-content td,
-.prose-content th {
+.prose-content td, .prose-content th {
   padding: 0.75rem 1rem;
-  border: 1px solid hsl(var(--border));
+  border: 1px solid var(--color-border);
 }
 
 .prose-content tr:nth-child(even) {
-  background: hsl(var(--muted) / 0.2);
+  background: var(--color-muted);
+  opacity: 0.6;
 }
 
-/* Lists */
-.prose-content ul,
-.prose-content ol {
+/* ─── Lists ─── */
+.prose-content ul, .prose-content ol {
   padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--color-foreground);
+  opacity: 0.7;
 }
 
 .prose-content li {
   margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
 }
 
-.prose-content li > ul,
-.prose-content li > ol {
+.prose-content li::marker {
+  color: var(--color-primary);
+  opacity: 0.5;
+}
+
+.prose-content li > ul, .prose-content li > ol {
   margin-top: 0.5rem;
   margin-bottom: 0;
 }
 
-/* Horizontal rule */
+/* ─── Horizontal Rule ─── */
 .prose-content hr {
   border: none;
-  border-top: 1px solid hsl(var(--border) / 0.5);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
   margin: 3rem 0;
+}
+
+/* ─── Videos ─── */
+.prose-content video {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  display: block;
+  border: 1px solid var(--color-border);
+}
+
+.prose-content iframe {
+  width: 100%;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--color-border);
+}
+
+.prose-content .video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 2rem 0;
+  border: 1px solid var(--color-border);
+}
+
+.prose-content .video-wrapper video,
+.prose-content .video-wrapper iframe {
+  width: 100%;
+  display: block;
+  margin: 0;
+  border: none;
+  border-radius: 0;
 }

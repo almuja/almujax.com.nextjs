@@ -1,18 +1,9 @@
 import Link from "next/link";
-import {
-  ExternalLink,
-  Code2,
-  Star,
-  GitFork,
-  Eye,
-  Calendar,
-  ArrowRight,
-} from "lucide-react";
+import { ExternalLink, Code2, GitFork, Calendar, ArrowRight, Pin } from "lucide-react";
 import { join } from "path";
 import { promises as fs } from "fs";
-import { Hero } from "../../components/Hero";
 import type { Metadata } from "next";
-import { getDictionary } from "@/i18n/get-dictionary";
+import { getDictionary, type Dictionary } from "@/i18n/get-dictionary";
 import { locales, type Locale } from "@/i18n/config";
 
 export async function generateMetadata({
@@ -28,9 +19,7 @@ export async function generateMetadata({
     title: t.projects.title,
     description: t.projects.description,
     keywords: [...t.seo.keywords],
-    alternates: {
-      canonical: `https://itsmawja.com/${validLocale}/projects`,
-    },
+    alternates: { canonical: `https://itsmawja.com/${validLocale}/projects` },
     openGraph: {
       title: t.projects.title,
       description: t.projects.description,
@@ -52,144 +41,54 @@ interface Project {
   featured?: boolean;
   language?: string;
   languageColor?: string;
-  stars?: number;
   forks?: number;
-  watchers?: number;
   image?: string;
 }
 
-// Revalidate every minute for ISR to ensure new content is indexed quickly
 export const revalidate = 60;
 
 async function getProjects(): Promise<Project[]> {
   const projectsDirectory = join(process.cwd(), "src", "content", "projects");
-
   try {
     const files = await fs.readdir(projectsDirectory, { recursive: true });
     const projects = await Promise.all(
       files
-        .filter((file) => typeof file === "string" && file.endsWith(".mdx"))
+        .filter((f) => typeof f === "string" && f.endsWith(".mdx"))
         .map(async (file) => {
           try {
-            // Use the filename without extension as the slug
-            const slug = file
-              .split("/")
-              .pop()!
-              .replace(/\.mdx$/, "");
-            const filePath = join(projectsDirectory, file);
-            const fileContent = await fs.readFile(filePath, "utf8");
+            const slug = file.split("/").pop()!.replace(/\.mdx$/, "");
+            const fileContent = await fs.readFile(join(projectsDirectory, file), "utf8");
+            const fmMatch = fileContent.match(/^---\n([\s\S]*?)\n---/);
+            if (!fmMatch) return null;
 
-            // Extract frontmatter
-            const frontmatterMatch = fileContent.match(/^---\n([\s\S]*?)\n---/);
-            if (!frontmatterMatch) {
-              console.warn(`No frontmatter found for project: ${file}`);
-              return null;
-            }
-
-            const frontmatter = frontmatterMatch[1];
-            const project: Project = {
-              slug,
-              title: "",
-              description: "",
-              date: "",
-            };
-
-            // Parse frontmatter
-            frontmatter.split("\n").forEach((line) => {
-              const [key, ...valueParts] = line.split(":");
-              if (key && valueParts.length) {
-                const value = valueParts
-                  .join(":")
-                  .trim()
-                  .replace(/^['"](.*)['"]$/, "$1");
-                switch (key.trim()) {
-                  case "title":
-                    project.title = value;
-                    break;
-                  case "description":
-                    project.description = value;
-                    break;
-                  case "date":
-                    project.date = value;
-                    break;
-                  case "category":
-                    project.category = value;
-                    break;
-                  case "tags":
-                    try {
-                      // Handle array syntax
-                      if (value.startsWith("[") && value.endsWith("]")) {
-                        project.tags = JSON.parse(value);
-                      } else {
-                        project.tags = value
-                          .split(",")
-                          .map((tag) => tag.trim());
-                      }
-                    } catch (error) {
-                      console.warn(`Failed to parse tags for ${file}:`, error);
-                      project.tags = value.split(",").map((tag) => tag.trim());
-                    }
-                    break;
-                  case "githubUrl":
-                    project.githubUrl = value;
-                    break;
-                  case "liveUrl":
-                    project.liveUrl = value;
-                    break;
-                  case "featured":
-                    project.featured = value === "true";
-                    break;
-                  case "language":
-                    project.language = value;
-                    break;
-                  case "languageColor":
-                    project.languageColor = value;
-                    break;
-                  case "stars":
-                    project.stars = parseInt(value) || 0;
-                    break;
-                  case "forks":
-                    project.forks = parseInt(value) || 0;
-                    break;
-                  case "watchers":
-                    project.watchers = parseInt(value) || 0;
-                    break;
-                  case "image":
-                    project.image = value;
-                    break;
-                }
+            const project: Project = { slug, title: "", description: "", date: "" };
+            fmMatch[1].split("\n").forEach((line) => {
+              const [key, ...vp] = line.split(":");
+              const value = vp.join(":").trim().replace(/^['"](.*)['"]$/, "$1");
+              if (!key || !vp.length) return;
+              switch (key.trim()) {
+                case "title": project.title = value; break;
+                case "description": project.description = value; break;
+                case "date": project.date = value; break;
+                case "category": project.category = value; break;
+                case "tags": try { project.tags = value.startsWith("[") ? JSON.parse(value) : value.split(",").map((t) => t.trim()); } catch { project.tags = [value]; } break;
+                case "githubUrl": project.githubUrl = value; break;
+                case "liveUrl": project.liveUrl = value; break;
+                case "featured": project.featured = value === "true"; break;
+                case "language": project.language = value; break;
+                case "languageColor": project.languageColor = value; break;
+                case "forks": project.forks = parseInt(value) || 0; break;
+                case "image": project.image = value; break;
               }
             });
-
             return project;
-          } catch (error) {
-            console.error(`Error processing project file ${file}:`, error);
-            return null;
-          }
+          } catch { return null; }
         }),
     );
-
     return projects
-      .filter((project): project is Project => project !== null)
+      .filter((p): p is Project => p !== null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  } catch (error) {
-    console.error("Error reading projects:", error);
-    return [];
-  }
-}
-
-function formatRelativeTime(dateString: string): string {
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffInMs = now.getTime() - date.getTime();
-  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-
-  if (diffInDays === 0) return "today";
-  if (diffInDays === 1) return "yesterday";
-  if (diffInDays < 7) return `${diffInDays} days ago`;
-  if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} weeks ago`;
-  if (diffInDays < 365) return `${Math.floor(diffInDays / 30)} months ago`;
-  return `${Math.floor(diffInDays / 365)} years ago`;
+  } catch { return []; }
 }
 
 export default async function ProjectsPage({
@@ -202,176 +101,167 @@ export default async function ProjectsPage({
   const t = getDictionary(validLocale);
   const projects = await getProjects();
 
-  function formatRelativeTime(dateString: string): string {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffInMs = now.getTime() - date.getTime();
-    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-
-    if (diffInDays === 0) return t.projects.today;
-    if (diffInDays === 1) return t.projects.yesterday;
-    if (diffInDays < 7) return `${diffInDays} ${t.projects.daysAgo}`;
-    if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} ${t.projects.weeksAgo}`;
-    if (diffInDays < 365) return `${Math.floor(diffInDays / 30)} ${t.projects.monthsAgo}`;
-    return `${Math.floor(diffInDays / 365)} ${t.projects.yearsAgo}`;
-  }
+  const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
+  const regularProjects = projects.filter((p) => !p.featured);
 
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <Hero
-          title={t.projects.heroTitle}
-          subtitle={t.projects.heroSubtitle}
-          description={t.projects.heroDescription}
-        />
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-16">
-          {projects.map((project) => (
-            <div
-              key={project.slug}
-              className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--color-card)] to-[var(--color-card)]/80 border border-[var(--color-border)] hover:border-[var(--color-primary)]/30 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] flex flex-col h-full"
-            >
-              {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-secondary)]/20 flex items-center justify-center">
-                    <div className="text-4xl font-bold text-[var(--color-primary)]/60">
-                      {project.title
-                        .split(" ")
-                        .map((word) => word[0])
-                        .join("")
-                        .toUpperCase()}
-                    </div>
-                  </div>
-                )}
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-card)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* External links */}
-                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-[var(--color-card)]/90 backdrop-blur-sm text-[var(--color-foreground)] hover:text-[var(--color-primary)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-all duration-300"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-[var(--color-card)]/90 backdrop-blur-sm text-[var(--color-foreground)] hover:text-[var(--color-primary)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-all duration-300"
-                    >
-                      <Code2 className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex-1 flex flex-col">
-                {/* Title and Description */}
-                <div className="flex-1">
-                  <Link href={`/${validLocale}/projects/${project.slug}`} className="block">
-                    <h3 className="text-xl font-bold text-[var(--color-foreground)] group-hover:text-[var(--color-primary)] transition-colors duration-300 mb-3 line-clamp-2">
-                      {project.title}
-                    </h3>
-                  </Link>
-                  <p className="text-[var(--color-muted-foreground)] text-sm leading-relaxed mb-4 line-clamp-3">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Stats and Metadata */}
-                <div className="space-y-4">
-                  {/* GitHub stats */}
-                  {(project.language || project.stars || project.forks) && (
-                    <div className="flex items-center gap-4 text-xs text-[var(--color-muted-foreground)]">
-                      {project.language && (
-                        <div className="flex items-center gap-1">
-                          <span
-                            className="w-2 h-2 rounded-full"
-                            style={{
-                              backgroundColor:
-                                project.languageColor || "var(--color-primary)",
-                            }}
-                          ></span>
-                          <span>{project.language}</span>
-                        </div>
-                      )}
-                      {project.stars && project.stars > 0 && (
-                        <div className="flex items-center gap-1">
-                          <Star className="w-3 h-3" />
-                          <span>{project.stars}</span>
-                        </div>
-                      )}
-                      {project.forks && project.forks > 0 && (
-                        <div className="flex items-center gap-1">
-                          <GitFork className="w-3 h-3" />
-                          <span>{project.forks}</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Tags */}
-                  {project.tags && project.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1">
-                      {project.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 text-xs bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full border border-[var(--color-primary)]/20"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                      {project.tags.length > 3 && (
-                        <span className="px-2 py-1 text-xs bg-[var(--color-muted)] text-[var(--color-muted-foreground)] rounded-full">
-                          +{project.tags.length - 3}
-                        </span>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-[var(--color-border)]">
-                    <div className="flex items-center gap-1 text-xs text-[var(--color-muted-foreground)]">
-                      <Calendar className="w-3 h-3" />
-                      <span>{formatRelativeTime(project.date)}</span>
-                    </div>
-                    <Link
-                      href={`/${validLocale}/projects/${project.slug}`}
-                      className="flex items-center gap-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] font-medium transition-colors text-sm group/link"
-                    >
-                      {t.projects.viewProject}
-                      <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform duration-300" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+    <div className="min-h-screen" dir={validLocale === "ar" ? "rtl" : "ltr"}>
+      {/* Hero Header */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[var(--color-wave-1)] opacity-[0.04] blur-[140px] animate-pulse-slow" />
+          <div className="absolute top-[30%] right-[5%] w-[350px] h-[300px] rounded-full bg-[var(--color-wave-3)] opacity-[0.03] blur-[100px] animate-pulse-slow animation-delay-2000" />
         </div>
 
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <div className="hero-enter inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/60 mb-8">
+            {t.projects.work}
+          </div>
+          <h1 className="hero-enter text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">
+            <span className="wave-gradient-text">
+              {t.projects.heroTitle}
+            </span>
+          </h1>
+          <p className="hero-enter text-sm sm:text-base text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
+            {t.projects.heroDescription}
+          </p>
+          <div className="hero-enter mt-10 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
+        </div>
+      </section>
+
+      {/* Content */}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-24">
+        {/* Pinned Projects */}
+        {featuredProjects.length > 0 && (
+          <section className="mb-20">
+            <div className="flex items-center gap-2 mb-8">
+              <Pin className="w-3.5 h-3.5 text-primary/40" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">
+                {t.projects.pinned}
+              </span>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredProjects.map((project) => (
+                <ProjectCard key={project.slug} project={project} locale={validLocale} t={t} featured />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* All Projects */}
+        {regularProjects.length > 0 && (
+          <section>
+            {featuredProjects.length > 0 && (
+              <div className="flex items-center gap-2 mb-8">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">
+                  {t.projects.allProjects}
+                </span>
+              </div>
+            )}
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {regularProjects.map((project) => (
+                <ProjectCard key={project.slug} project={project} locale={validLocale} t={t} />
+              ))}
+            </div>
+          </section>
+        )}
+
         {projects.length === 0 && (
-          <div className="text-center py-20">
-            <div className="text-6xl mb-4">🚧</div>
-            <p className="text-[var(--color-muted-foreground)] text-lg">
-              {t.projects.noProjects}
-            </p>
+          <div className="text-center py-24">
+            <p className="text-sm text-foreground/20 font-light">{t.projects.noProjects}</p>
           </div>
         )}
       </main>
     </div>
+  );
+}
+
+function ProjectCard({ project, locale, t, featured }: { project: Project; locale: string; t: Dictionary; featured?: boolean }) {
+  return (
+    <Link href={`/${locale}/projects/${project.slug}`} className="group block">
+      <article className={`relative h-full overflow-hidden border transition-all duration-500 flex flex-col ${
+        featured
+          ? "rounded-2xl border-border/50 bg-background hover:border-primary/15 hover:shadow-2xl hover:shadow-primary/[0.04]"
+          : "rounded-xl border-border/40 bg-background hover:border-primary/10 hover:shadow-lg hover:shadow-primary/[0.03]"
+      }`}>
+        {/* Image or gradient placeholder */}
+        <div className="relative aspect-[16/10] overflow-hidden bg-muted/20">
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 flex items-center justify-center">
+              <span className="text-3xl font-black text-primary/20 tracking-tighter">
+                {project.title.split(" ").map((w) => w[0]).join("").slice(0, 3)}
+              </span>
+            </div>
+          )}
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        </div>
+
+        <div className={`flex flex-col flex-1 ${featured ? "p-6" : "p-5"}`}>
+          {/* Meta row */}
+          <div className="flex items-center gap-2 mb-3">
+            {project.language && (
+              <span className="flex items-center gap-1.5 text-[10px] text-foreground/30">
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: project.languageColor || "var(--color-primary)" }} />
+                {project.language}
+              </span>
+            )}
+            {project.category && (
+              <>
+                <span className="text-foreground/10">·</span>
+                <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-primary/40">{project.category}</span>
+              </>
+            )}
+            {project.forks !== undefined && project.forks > 0 && (
+              <span className="ml-auto flex items-center gap-1 text-[10px] text-foreground/25">
+                <GitFork className="w-3 h-3" /> {project.forks}
+              </span>
+            )}
+          </div>
+
+          {/* Title */}
+          <h2 className={`font-bold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-1 mb-2 leading-snug ${featured ? "text-base" : "text-sm"}`}>
+            {project.title}
+          </h2>
+
+          {/* Description */}
+          <p className="text-xs text-foreground/30 leading-relaxed line-clamp-2 flex-1">
+            {project.description}
+          </p>
+
+          {/* Tags + Footer */}
+          <div className="mt-4 pt-4 border-t border-border/20">
+            {project.tags && project.tags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mb-3">
+                {project.tags.slice(0, 3).map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 text-[10px] bg-muted text-foreground/40 rounded-md">
+                    {tag}
+                  </span>
+                ))}
+                {project.tags.length > 3 && (
+                  <span className="px-2 py-0.5 text-[10px] text-foreground/20">+{project.tags.length - 3}</span>
+                )}
+              </div>
+            )}
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] text-foreground/20 tabular-nums">
+                {project.date ? new Date(project.date).toLocaleDateString(locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US", { month: "short", year: "numeric" }) : ""}
+              </span>
+              <span className="flex items-center gap-1 text-[11px] text-foreground/15 font-medium group-hover:text-primary transition-all duration-300">
+                {t.projects.view}
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-300" />
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </Link>
   );
 }
