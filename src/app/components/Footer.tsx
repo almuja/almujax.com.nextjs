@@ -62,7 +62,7 @@ export default function Footer({ footer: t, authorBio, authorName }: FooterProps
             <h3 className="font-bold text-foreground mb-6 text-lg tracking-wide">{t.connect}</h3>
             <p className="text-muted-foreground mb-6 text-base leading-relaxed">{t.connectDescription}</p>
             <Button variant="outline" size="lg" asChild className="w-full md:w-auto border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 px-8 py-6 mx-auto md:mx-0 h-auto">
-              <a href="mailto:contact@bymuja.com" className="inline-flex items-center gap-3 text-base font-medium">
+              <a href="mailto:hello@itsmawja.com" className="inline-flex items-center gap-3 text-base font-medium">
                 {t.getInTouch}
                 <ExternalLink className="w-4 h-4" />
               </a>
@@ -81,9 +81,9 @@ export default function Footer({ footer: t, authorBio, authorName }: FooterProps
               <p className="text-muted-foreground max-w-sm text-base leading-relaxed mb-6">{t.tagline}</p>
               <div className="flex gap-4 justify-center">
                 {[
-                  { name: "GitHub", icon: Code2, url: "https://github.com/bymuja" },
-                  { name: "LinkedIn", icon: LinkIcon, url: "https://linkedin.com/in/bymuja" },
-                  { name: "Email", icon: Mail, url: "mailto:contact@bymuja.com" },
+                  { name: "GitHub", icon: Code2, url: "https://github.com/itsmawja" },
+                  { name: "LinkedIn", icon: LinkIcon, url: "https://linkedin.com/in/itsmawja" },
+                  { name: "Email", icon: Mail, url: "mailto:hello@itsmawja.com" },
                 ].map((social) => (
                   <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="p-3 text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-white/10 rounded-xl backdrop-blur-sm" aria-label={social.name}>
                     <social.icon className="w-5 h-5" />

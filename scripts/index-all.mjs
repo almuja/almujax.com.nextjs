@@ -5,7 +5,7 @@
  * Run after deployment: node scripts/index-all.mjs
  */
 
-const BASE_URL = "https://bymuja.com";
+const BASE_URL = "https://itsmawja.com";
 const INDEXNOW_KEY = "b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0";
 
 const urls = [
@@ -97,7 +97,7 @@ async function main() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            host: "bymuja.com",
+            host: "itsmawja.com",
             key: INDEXNOW_KEY,
             keyLocation: `${BASE_URL}/${INDEXNOW_KEY}.txt`,
             urlList: batch,

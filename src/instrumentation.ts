@@ -1,14 +1,14 @@
 export async function register() {
   if (process.env.NEXT_RUNTIME === "nodejs" && process.env.NODE_ENV === "production") {
     const urls = [
-      "https://bymuja.com/sitemap.xml",
-      "https://bymuja.com/feed.xml",
-      "https://bymuja.com/atom.xml",
-      "https://bymuja.com/llms.txt",
+      "https://itsmawja.com/sitemap.xml",
+      "https://itsmawja.com/feed.xml",
+      "https://itsmawja.com/atom.xml",
+      "https://itsmawja.com/llms.txt",
     ];
 
     const pings = [
-      { name: "Google", url: `https://www.google.com/ping?sitemap=${encodeURIComponent("https://bymuja.com/sitemap.xml")}` },
+      { name: "Google", url: `https://www.google.com/ping?sitemap=${encodeURIComponent("https://itsmawja.com/sitemap.xml")}` },
       { name: "Bing", url: "https://www.bing.com/indexnow" },
       { name: "Yandex", url: "https://indexnow.yandex.com/indexnow" },
     ];
@@ -22,9 +22,9 @@ export async function register() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              host: "bymuja.com",
+              host: "itsmawja.com",
               key: "b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0",
-              keyLocation: "https://bymuja.com/b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0.txt",
+              keyLocation: "https://itsmawja.com/b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0.txt",
               urlList: urls,
             }),
             signal: AbortSignal.timeout(5000),

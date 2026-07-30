@@ -12,7 +12,7 @@ import LocaleSwitcher from "./LocaleSwitcher";
 
 interface HeaderProps {
   locale: string;
-  nav: {
+    nav: {
     projects: string;
     blog: string;
     music: string;
@@ -20,6 +20,7 @@ interface HeaderProps {
     contact: string;
     search: string;
     menu: string;
+    now: string;
   };
 }
 
@@ -31,6 +32,7 @@ export default function Header({ locale, nav }: HeaderProps) {
     { href: `/${locale}/blog`, label: nav.blog },
     { href: `/${locale}/music`, label: nav.music },
     { href: `/${locale}/about`, label: nav.about },
+    { href: `/${locale}/now`, label: nav.now },
     { href: `/${locale}/contact`, label: nav.contact },
   ];
 

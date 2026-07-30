@@ -3,7 +3,7 @@ import { join } from "path";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 
-const baseUrl = "https://bymuja.com";
+const baseUrl = "https://itsmawja.com";
 const defaultLocale = "en";
 
 function toAbsoluteImage(image: string | undefined): string | undefined {
@@ -99,6 +99,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/en/about`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/en/projects`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: `${baseUrl}/en/blog`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    { url: `${baseUrl}/en/now`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/en/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${baseUrl}/en/music`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
   ];

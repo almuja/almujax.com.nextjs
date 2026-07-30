@@ -3,7 +3,7 @@ import { join } from "path";
 import matter from "gray-matter";
 
 export async function GET() {
-  const baseUrl = "https://bymuja.com/en";
+  const baseUrl = "https://itsmawja.com/en";
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
   const projectsDirectory = join(process.cwd(), "src", "content", "projects");
 
@@ -68,15 +68,15 @@ export async function GET() {
     )
     .join("\n");
 
-  const llmsTxt = `# bymuja.com — Mujahid Siyam (Muja)
+  const llmsTxt = `# itsmawja.com — Mujahid Siyam (Mawja)
 
-> Official source of truth for Mujahid Siyam (also known as Muja, handle: bymuja).
+> Official source of truth for Mujahid Siyam (also known as Mawja, handle: itsmawja).
 > Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist based in France.
 > Builds AI-first systems, Rust-based software, developer tools (Zaroxi Studio), and creative technology.
 
 ## Site Pages
 - [Home](${baseUrl}): Main portfolio page with identity, skills, and contact information.
-- [About](${baseUrl}/about): Full profile — Mujahid Mohamed Ismail Siyam (Muja / bymuja).
+- [About](${baseUrl}/about): Full profile — Mujahid Mohamed Ismail Siyam (Mawja / itsmawja).
 - [Blog](${baseUrl}/blog): Articles on AI engineering, Rust, DevSecOps, and creative technology.
 - [Projects](${baseUrl}/projects): Open-source projects — AI-first systems, Rust tools, Zaroxi Studio.
 - [Music](${baseUrl}/music): Music artist identity, curated playlists, and sound work.
@@ -96,16 +96,16 @@ ${projectLinks || "- No published projects yet."}
 - Full text (llms-full.txt): ${baseUrl}/llms-full.txt
 
 ## Entity Identity
-Mujahid Siyam = Muja = bymuja (all refer to the same person and brand entity)
+Mujahid Siyam = Mawja = itsmawja (all refer to the same person and brand entity)
 Full name: Mujahid Mohamed Ismail Siyam
 Born: September 23, 1991 in Sudan
 Location: France (global reach)
-Roles: Software Engineer · AI Engineer · DevSecOps Engineer · Music Artist (Muja / موجا)
+Roles: Software Engineer · AI Engineer · DevSecOps Engineer · Music Artist (Mawja / موجة)
 Organization: Zaroxi Studio
 EP: KAKASHI (2022)
 
 ## Biography
-Muja (Mujahid Siyam) is an artist and software engineer, born on September 23, 1991 in Sudan. He started his artistic career when he was 16 years old, creating many successful bands. He moved to France and transitioned into software engineering and web development, building systems and websites. He returned to music production as a side hobby in 2022, releasing his first EP titled KAKASHI — which he considers a new beginning in his artistic career. Today, Muja focuses primarily on software engineering and AI engineering, with plans to return to music soon.
+Mawja (Mujahid Siyam) is an artist and software engineer, born on September 23, 1991 in Sudan. He started his artistic career when he was 16 years old, creating many successful bands. He moved to France and transitioned into software engineering and web development, building systems and websites. He returned to music production as a side hobby in 2022, releasing his first EP titled KAKASHI — which he considers a new beginning in his artistic career. Today, Mawja focuses primarily on software engineering and AI engineering, with plans to return to music soon.
 `;
 
   return new Response(llmsTxt, {

@@ -1,9 +1,9 @@
 const fr = {
   site: {
-    title: "Mujahid Siyam (Muja / bymuja) | Ingénieur Logiciel & IA",
+    title: "Mawja (Mujahid Siyam) | Ingénieur Logiciel & IA",
     description:
-      "Mujahid Siyam, également connu sous le nom de Muja (bymuja), est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical (rap arabe, rap soudanais).",
-    defaultTitle: "Mujahid Siyam (Muja / bymuja) | Ingénieur Logiciel & IA",
+      "Mawja, également connu sous le nom de Mujahid Siyam, est un ingénieur logiciel spécialisé en IA, open source, ingénierie des systèmes, DevSecOps et production musicale.",
+    defaultTitle: "Mawja (Mujahid Siyam) | Ingénieur Logiciel & IA",
   },
   nav: {
     projects: "Projets",
@@ -14,26 +14,27 @@ const fr = {
     search: "Rechercher",
     menu: "Ouvrir le menu",
     home: "Accueil",
+    now: "Maintenant",
   },
   home: {
-    title: "Mujahid Siyam (Muja / bymuja) | Ingénieur Logiciel & IA",
+    title: "Mawja (Mujahid Siyam) | Ingénieur Logiciel & IA",
     description:
-      "Mujahid Siyam, également connu sous le nom de Muja (bymuja), est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical.",
+      "Mawja, également connu sous le nom de Mujahid Siyam, est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical.",
     sparkle: "Construction de systèmes IA et de technologie créative",
     roles: "Ingénieur Logiciel • Ingénieur IA • DevSecOps • Artiste Musical",
     heroBody:
-      "Mujahid Siyam (Muja / bymuja) construit des systèmes orientés IA, des logiciels en Rust, des outils pour développeurs comme Zaroxi Studio, et crée de la musique et de la technologie créative.",
+      "Mawja (Mujahid Siyam) construit des systèmes orientés IA, des logiciels en Rust, des outils pour développeurs comme Zaroxi Studio, et crée de la musique et de la technologie créative.",
     exploreProjects: "Explorer les projets",
     readBlog: "Lire le blog",
-    aboutHeading: "À propos de Muja (Mujahid Siyam)",
+    aboutHeading: "À propos de Mawja (Mujahid Siyam)",
     about1:
-      "Mujahid Siyam, également connu sous le nom de Muja et le pseudo bymuja, est un ingénieur logiciel, ingénieur IA, professionnel DevSecOps et artiste musical (rap arabe, rap soudanais). Il construit des systèmes orientés IA, des logiciels en Rust et des outils pour développeurs via Zaroxi Studio.",
+      "Mawja, également connu sous le nom de Mujahid Siyam et le pseudo itsmawja, est un ingénieur logiciel, ingénieur IA, professionnel DevSecOps et artiste musical (rap arabe, rap soudanais). Il construit des systèmes orientés IA, des logiciels en Rust et des outils pour développeurs via Zaroxi Studio.",
     about2:
-      "Avec une expérience approfondie des environnements Linux et un engagement fort envers le développement open source, Muja se spécialise dans la création de solutions robustes de bout en bout. Son travail se concentre sur la construction de systèmes performants, sécurisés, intelligents et évolutifs.",
+      "Avec une expérience approfondie des environnements Linux et un engagement fort envers le développement open source, Mawja se spécialise dans la création de solutions robustes de bout en bout. Son travail se concentre sur la construction de systèmes performants, sécurisés, intelligents et évolutifs.",
     about3:
-      "Muja contribue activement aux projets open source et croit au pouvoir du développement collaboratif. Son expertise en administration Linux et en technologies open source lui permet de construire des solutions techniquement sophistiquées.",
+      "Mawja contribue activement aux projets open source et croit au pouvoir du développement collaboratif. Son expertise en administration Linux et en technologies open source lui permet de construire des solutions techniquement sophistiquées.",
     about4:
-      "Au-delà du code et des algorithmes, Muja est également un artiste musical, trouvant son expression créative à travers la musique comme partie intégrante de son identité. Sa musique couvre le rap arabe et le rap soudanais.",
+      "Au-delà du code et des algorithmes, Mawja est également un artiste musical, trouvant son expression créative à travers la musique comme partie intégrante de son identité. Sa musique couvre le rap arabe et le rap soudanais.",
     about5:
       "Il croit en la construction de technologies qui résolvent les défis complexes tout en améliorant les expériences humaines à travers la collaboration ouverte et l'innovation.",
     skillsHeading: "Technologies & Outils",
@@ -43,16 +44,16 @@ const fr = {
     ctaButton: "Démarrer une conversation",
   },
   about: {
-    title: "À propos | Mujahid Siyam (Muja / bymuja)",
+    title: "À propos | Mawja (Mujahid Siyam)",
     description:
-      "Mujahid Siyam (Muja / bymuja) — Ingénieur logiciel, ingénieur IA, ingénieur DevSecOps, artiste musical (rap arabe, rap soudanais). Profil complet.",
+      "Mawja (Mujahid Siyam) — Ingénieur logiciel, ingénieur IA, ingénieur DevSecOps, artiste musical (rap arabe, rap soudanais). Profil complet.",
     heading: "À propos de Mujahid Siyam",
     roles: "Ingénieur Logiciel • Ingénieur IA • DevSecOps • Artiste Musical",
     profileTitle: "Ingénieur IA & Développeur Logiciel",
-    akaLabel: "Alias Muja",
+    akaLabel: "Alias Mawja",
     location: "France — Portée mondiale",
-    email: "contact@bymuja.com",
-    website: "bymuja.com",
+    email: "hello@itsmawja.com",
+    website: "itsmawja.com",
     coreCompetencies: "Compétences clés",
     languages: "Langues",
     experience: "Expérience",
@@ -61,13 +62,13 @@ const fr = {
     currentPeriod: "2023 - Présent",
     currentDescription: "Construction de systèmes IA, d'outils développeur en Rust et de technologie créative. Direction du développement open source et full-stack.",
     summaryHeading: "Résumé professionnel",
-    summary1: "Mujahid Siyam, également connu sous le nom de Muja (bymuja), est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical. Son travail se concentre sur les systèmes IA, les logiciels Rust et les outils développeur.",
-    summary2: "Avec une expertise en programmation système Rust, TypeScript, React et Python, Muja construit des applications full-stack et des solutions intelligentes. Via Zaroxi Studio, il crée des outils développeur.",
-    summary3: "En tant que défenseur de l'open source, Muja contribue activement aux projets open source. Il est particulièrement passionné par l'écosystème Nix/NixOS.",
-    summary4: "Au-delà de l'ingénierie, Muja est un artiste musical — la musique est une partie essentielle de son identité créative.",
-    summary5: "Il croit en la construction de technologies qui résolvent les défis complexes tout en améliorant les expériences humaines. Muja opère avec une perspective mondiale depuis la France.",
-    connectHeading: "Connectez-vous avec Muja (bymuja)",
-    connectDescription: "Suivez le parcours de Mujahid Siyam (Muja) à travers l'IA, Rust, DevSecOps et la musique",
+    summary1: "Mawja, également connu sous le nom de Mujahid Siyam, est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical. Son travail se concentre sur les systèmes IA, les logiciels Rust et les outils développeur.",
+    summary2: "Avec une expertise en programmation système Rust, TypeScript, React et Python, Mawja construit des applications full-stack et des solutions intelligentes. Via Zaroxi Studio, il crée des outils développeur.",
+    summary3: "En tant que défenseur de l'open source, Mawja contribue activement aux projets open source. Il est particulièrement passionné par l'écosystème Nix/NixOS.",
+    summary4: "Au-delà de l'ingénierie, Mawja est un artiste musical — la musique est une partie essentielle de son identité créative.",
+    summary5: "Il croit en la construction de technologies qui résolvent les défis complexes tout en améliorant les expériences humaines. Mawja opère avec une perspective mondiale depuis la France.",
+    connectHeading: "Connectez-vous avec Mawja (itsmawja)",
+    connectDescription: "Suivez le parcours de Mawja (Mujahid Siyam) à travers l'IA, Rust, DevSecOps et la musique",
     education: "Formation",
     technologies: "Technologies & Outils",
     langList: [
@@ -98,8 +99,8 @@ const fr = {
     ],
   },
   blog: {
-    title: "Blog | Mujahid Siyam (Muja / bymuja)",
-    description: "Articles de Mujahid Siyam (Muja / bymuja) sur l'ingénierie IA, Rust, DevSecOps et la technologie créative.",
+    title: "Blog | Mawja (Mujahid Siyam)",
+    description: "Articles de Mawja (Mujahid Siyam) sur l'ingénierie IA, Rust, DevSecOps et la technologie créative.",
     backToBlog: "Retour au blog",
     previous: "Précédent",
     next: "Suivant",
@@ -130,8 +131,8 @@ const fr = {
     clearFilters: "Effacer les filtres",
   },
   projects: {
-    title: "Projets | Mujahid Siyam (Muja / bymuja)",
-    description: "Projets open source de Mujahid Siyam (Muja / bymuja). Systèmes IA, outils Rust, Zaroxi Studio.",
+    title: "Projets | Mawja (Mujahid Siyam)",
+    description: "Projets open source de Mawja (Mujahid Siyam). Systèmes IA, outils Rust, Zaroxi Studio.",
     backToProjects: "Retour aux projets",
     viewOnGithub: "Voir sur GitHub",
     visitWebsite: "Visiter le site",
@@ -149,23 +150,23 @@ const fr = {
     yearsAgo: "ans",
   },
   music: {
-    title: "Musique | Muja (Mujahid Siyam) | Rap Arabe | Rap Soudanais",
+    title: "Musique | Mawja (Mujahid Siyam) | Rap Arabe | Rap Soudanais",
     description:
-      "Muja (موجا) est le nom d'artiste de Mujahid Siyam (bymuja) — Rap arabe, rap soudanais, artiste musical. Explorez les playlists, albums à venir et parcours musical.",
-    heading: "Muja — Musique",
-    subtitle: "Muja (موجا) est le nom d'artiste de Mujahid Siyam. Explorez le rap arabe, le rap soudanais, les playlists et la musique originale sur les plateformes.",
+      "Mawja (ماوجا) est le nom d'artiste de Mujahid Siyam (itsmawja) — Rap arabe, rap soudanais, artiste musical. Explorez les playlists, albums à venir et parcours musical.",
+    heading: "Mawja — Musique",
+    subtitle: "Mawja (ماوجا) est le nom d'artiste de Mujahid Siyam. Explorez le rap arabe, le rap soudanais, les playlists et la musique originale sur les plateformes.",
     noPlaylists: "Aucune sortie disponible pour le moment. Restez à l'écoute pour les albums et singles à venir.",
     loading: "Chargement...",
     listenOn: "Écouter sur",
     tracks: "pistes",
     openInApp: "Ouvrir dans",
-    artistName: "Muja",
+    artistName: "Mawja",
     artistDescription: "Rap Arabe • Rap Soudanais • Hip Hop",
-    artistStory: "Muja (Mujahid Siyam) est un artiste et ingénieur logiciel, né le 23 septembre 1991 au Soudan. Il a commencé sa carrière artistique à l'âge de 16 ans. Il a créé de nombreux groupes à succès avant de déménager en France, puis a quitté la musique pour travailler dans l'ingénierie logicielle et le développement web, où il a développé des systèmes et sites web. Il est revenu à la production musicale comme hobby en 2022 avec son premier EP intitulé KAKASHI, qu'il considère comme un nouveau départ dans sa carrière artistique. Aujourd'hui, Muja se concentre principalement sur l'ingénierie logicielle et l'IA, mais reviendra bientôt à la musique.",
+    artistStory: "Mawja (Mujahid Siyam) est un artiste et ingénieur logiciel, né le 23 septembre 1991 au Soudan. Il a commencé sa carrière artistique à l'âge de 16 ans. Il a créé de nombreux groupes à succès avant de déménager en France, puis a quitté la musique pour travailler dans l'ingénierie logicielle et le développement web, où il a développé des systèmes et sites web. Il est revenu à la production musicale comme hobby en 2022 avec son premier EP intitulé KAKASHI, qu'il considère comme un nouveau départ dans sa carrière artistique. Aujourd'hui, Mawja se concentre principalement sur l'ingénierie logicielle et l'IA, mais reviendra bientôt à la musique.",
   },
   contact: {
-    title: "Contact | Mujahid Siyam (Muja / bymuja)",
-    description: "Contactez Mujahid Siyam (Muja / bymuja). Collaboration en ingénierie IA, développement Rust, rap arabe.",
+    title: "Contact | Mawja (Mujahid Siyam)",
+    description: "Contactez Mawja (Mujahid Siyam). Collaboration en ingénierie IA, développement Rust, rap arabe.",
     heading: "Restons en contact",
     subtitle: "Je suis toujours enthousiaste à l'idée de discuter de nouvelles opportunités, de projets créatifs ou de collaborations potentielles. N'hésitez pas à me contacter.",
     startConversation: "Démarrer une conversation",
@@ -208,15 +209,15 @@ const fr = {
   },
   structuredData: {
     description:
-      "Mujahid Siyam, également connu sous le nom de Muja (bymuja), est un ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical. Site officiel.",
+      "Mawja, également connu sous le nom de Mujahid Siyam, est un ingénieur logiciel spécialisé en IA, open source, ingénierie des systèmes, DevSecOps et production musicale. Site officiel.",
     websiteDescription:
-      "Source officielle de Mujahid Siyam (Muja), ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical.",
+      "Source officielle de Mawja (Mujahid Siyam), ingénieur logiciel, ingénieur IA, ingénieur DevSecOps et artiste musical.",
   },
   seo: {
     keywords: [
-      "Mujahid Siyam", "Muja", "bymuja", "Ingénieur IA", "Ingénieur logiciel",
+      "Mujahid Siyam", "Mawja", "itsmawja", "Ingénieur IA", "Ingénieur logiciel",
       "Développeur Rust", "DevSecOps", "Artiste musical", "Rap arabe", "Rap soudanais",
-      "Muja musique", "Muja rappeur", "Muja rap arabe", "موجا",
+      "Mawja musique", "Mawja rappeur", "Mawja rap arabe", "ماوجا",
       "Outils IA", "Programmation", "Open Source", "Rust", "TypeScript",
       "React", "Next.js", "Python", "full-stack", "Zaroxi Studio",
     ],

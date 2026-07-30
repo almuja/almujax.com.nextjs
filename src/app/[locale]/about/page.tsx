@@ -16,17 +16,17 @@ export async function generateMetadata({
     description: t.about.description,
     keywords: [...t.seo.keywords],
     alternates: {
-      canonical: `https://bymuja.com/${validLocale}/about`,
+      canonical: `https://itsmawja.com/${validLocale}/about`,
     },
     openGraph: {
       title: t.about.title,
       description: t.about.description,
       type: "profile",
-      url: `https://bymuja.com/${validLocale}/about`,
-      images: ["https://bymuja.com/img/profile.png"],
+      url: `https://itsmawja.com/${validLocale}/about`,
+      images: ["https://itsmawja.com/img/profile.png"],
       firstName: "Mujahid",
       lastName: "Siyam",
-      username: "bymuja",
+      username: "itsmawja",
     },
   };
 }
@@ -63,7 +63,7 @@ export default async function AboutPage({
                 <div className="w-32 h-32 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center border-4 border-[var(--color-primary)]/20 overflow-hidden mb-4">
                   <img
                     src="/img/profile.png"
-                    alt="Mujahid Siyam (Muja / bymuja)"
+                    alt="Mawja (Mujahid Siyam)"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -254,37 +254,37 @@ export default async function AboutPage({
                 {[
                   {
                     name: "GitHub",
-                    url: "https://github.com/bymuja",
+                    url: "https://github.com/itsmawja",
                     color: "hover:bg-gray-800 hover:text-white",
                     icon: "💻",
                   },
                   {
                     name: "LinkedIn",
-                    url: "https://linkedin.com/in/bymuja",
+                    url: "https://linkedin.com/in/itsmawja",
                     color: "hover:bg-blue-600 hover:text-white",
                     icon: "💼",
                   },
                   {
                     name: "Twitter",
-                    url: "https://twitter.com/bymuja",
+                    url: "https://x.com/itsmawja",
                     color: "hover:bg-blue-400 hover:text-white",
                     icon: "🐦",
                   },
                   {
                     name: "Spotify",
-                    url: "https://open.spotify.com/user/bymuja",
+                    url: "https://open.spotify.com/user/itsmawja",
                     color: "hover:bg-green-500 hover:text-white",
                     icon: "🎵",
                   },
                   {
                     name: "YouTube",
-                    url: "https://youtube.com/@bymuja",
+                    url: "https://youtube.com/@itsmawja",
                     color: "hover:bg-red-600 hover:text-white",
                     icon: "🎥",
                   },
                   {
                     name: "Email",
-                    url: "mailto:contact@bymuja.com",
+                    url: "mailto:hello@itsmawja.com",
                     color: "hover:bg-primary hover:text-white",
                     icon: "📧",
                   },

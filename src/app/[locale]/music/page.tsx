@@ -19,28 +19,28 @@ export async function generateMetadata({
     description: t.music.description,
     keywords: [...t.seo.keywords, "album", "single", "release", "streaming", "playlist"],
     alternates: {
-      canonical: `https://bymuja.com/${validLocale}/music`,
+      canonical: `https://itsmawja.com/${validLocale}/music`,
       languages: {
-        en: "https://bymuja.com/en/music",
-        ar: "https://bymuja.com/ar/music",
-        fr: "https://bymuja.com/fr/music",
+        en: "https://itsmawja.com/en/music",
+        ar: "https://itsmawja.com/ar/music",
+        fr: "https://itsmawja.com/fr/music",
       },
     },
     openGraph: {
       title: t.music.title,
       description: t.music.description,
-      url: `https://bymuja.com/${validLocale}/music`,
+      url: `https://itsmawja.com/${validLocale}/music`,
       type: "music.playlist",
-      images: ["https://bymuja.com/img/profile.png"],
-      siteName: "bymuja.com",
+      images: ["https://itsmawja.com/img/profile.png"],
+      siteName: "itsmawja.com",
     },
     twitter: {
       card: "summary_large_image",
       title: t.music.title,
       description: t.music.description,
-      images: ["https://bymuja.com/img/profile.png"],
-      site: "@bymuja",
-      creator: "@bymuja",
+      images: ["https://itsmawja.com/img/profile.png"],
+      site: "@itsmawja",
+      creator: "@itsmawja",
     },
     other: {
       "geo.region": "FR",
@@ -68,8 +68,8 @@ export default async function MusicPage({
       <MusicArtistStructuredData />
       <BreadcrumbStructuredData
         items={[
-          { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://bymuja.com/${validLocale}` },
-          { name: dict.music.heading, url: `https://bymuja.com/${validLocale}/music` },
+          { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://itsmawja.com/${validLocale}` },
+          { name: dict.music.heading, url: `https://itsmawja.com/${validLocale}/music` },
         ]}
       />
       <MusicContent locale={validLocale} t={dict.music} />

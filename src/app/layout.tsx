@@ -7,7 +7,7 @@ import {
 } from "./components/StructuredData";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bymuja.com"),
+  metadataBase: new URL("https://itsmawja.com"),
   manifest: "/manifest.json",
   icons: {
     icon: "/img/favicon.ico",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     languages: {
-      en: "https://bymuja.com/en",
-      ar: "https://bymuja.com/ar",
-      fr: "https://bymuja.com/fr",
+      en: "https://itsmawja.com/en",
+      ar: "https://itsmawja.com/ar",
+      fr: "https://itsmawja.com/fr",
     },
   },
 };
@@ -65,13 +65,13 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="bymuja.com RSS Feed"
+          title="itsmawja.com RSS Feed"
           href="/feed.xml"
         />
         <link
           rel="alternate"
           type="application/atom+xml"
-          title="bymuja.com Atom Feed"
+          title="itsmawja.com Atom Feed"
           href="/atom.xml"
         />
         <link rel="llm" type="text/plain" title="LLMs.txt" href="/llms.txt" />

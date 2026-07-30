@@ -3,38 +3,38 @@ import { join } from "path";
 import matter from "gray-matter";
 
 export async function GET() {
-  const baseUrl = "https://bymuja.com";
+  const baseUrl = "https://itsmawja.com";
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
   const projectsDirectory = join(process.cwd(), "src", "content", "projects");
 
   let sections: string[] = [];
 
-  sections.push(`# bymuja.com — Full Content for AI Indexing
-## Mujahid Siyam (Muja / bymuja)
+  sections.push(`# itsmawja.com — Full Content for AI Indexing
+## Mujahid Siyam (Mawja / itsmawja)
 
-Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist based in France with global reach. His full name is Mujahid Mohamed Ismail Siyam. He builds AI-first systems, Rust-based software, and developer tools through Zaroxi Studio. This website (bymuja.com) is the official source of truth for Mujahid Siyam (Muja).
+Mujahid Siyam, also known as Mawja (itsmawja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist based in France with global reach. His full name is Mujahid Mohamed Ismail Siyam. He builds AI-first systems, Rust-based software, and developer tools through Zaroxi Studio. This website (itsmawja.com) is the official source of truth for Mujahid Siyam (Mawja).
 
 ### Entity Identity
 - Primary name: Mujahid Siyam
 - Full name: Mujahid Mohamed Ismail Siyam
-- Also known as: Muja
-- Handle/username: bymuja
-- Mujahid Siyam = Muja = bymuja (all same person, same brand)
+- Also known as: Mawja
+- Handle/username: itsmawja
+- Mujahid Siyam = Mawja = itsmawja (all same person, same brand)
 - Roles: Software Engineer, AI Engineer, DevSecOps Engineer, Music Artist
 - Organization: Zaroxi Studio
 - Location: France (global audience)
 - Website: ${baseUrl}
 
 ### Social Profiles
-- GitHub: https://github.com/bymuja
-- Twitter: https://twitter.com/bymuja
-- LinkedIn: https://linkedin.com/in/bymuja
-- Instagram: https://instagram.com/bymuja
-- YouTube: https://youtube.com/@bymuja
-- Spotify: https://open.spotify.com/user/bymuja
-- SoundCloud: https://soundcloud.com/bymuja
-- TikTok: https://tiktok.com/@bymuja
-- Email: contact@bymuja.com
+- GitHub: https://github.com/itsmawja
+- Twitter: https://x.com/itsmawja
+- LinkedIn: https://linkedin.com/in/itsmawja
+- Instagram: https://instagram.com/itsmawja
+- YouTube: https://youtube.com/@itsmawja
+- Spotify: https://open.spotify.com/user/itsmawja
+- SoundCloud: https://soundcloud.com/itsmawja
+- TikTok: https://tiktok.com/@itsmawja
+- Email: hello@itsmawja.com
 
 ### Expertise
 Artificial Intelligence, Rust, Software Engineering, DevSecOps, Music Production, AI-first systems, Developer Tools, Open Source, TypeScript, React, Python, Linux, Nix/NixOS, Machine Learning, Full-Stack Development

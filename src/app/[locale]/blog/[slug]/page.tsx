@@ -110,36 +110,36 @@ export async function generateMetadata({
 
     const title = data.title || slug;
     const description = data.description || "";
-    const image = data.image || "https://bymuja.com/img/profile.png";
+    const image = data.image || "https://itsmawja.com/img/profile.png";
     const publishedTime = data.date;
 
     return {
-      title: `${title} | Mujahid Siyam (Muja / bymuja)`,
+      title: `${title} | Mawja (Mujahid Siyam)`,
       description,
       keywords: [
         ...(data.tags || []),
         data.category,
         "Mujahid Siyam",
-        "Muja",
-        "bymuja",
+        "Mawja",
+        "itsmawja",
         "AI Engineer",
         "Software Engineer",
         "DevSecOps",
         "blog",
       ].filter(Boolean),
       alternates: {
-        canonical: `https://bymuja.com/${validLocale}/blog/${slug}`,
+        canonical: `https://itsmawja.com/${validLocale}/blog/${slug}`,
         languages: {
-          en: `https://bymuja.com/en/blog/${slug}`,
-          ar: `https://bymuja.com/ar/blog/${slug}`,
-          fr: `https://bymuja.com/fr/blog/${slug}`,
+          en: `https://itsmawja.com/en/blog/${slug}`,
+          ar: `https://itsmawja.com/ar/blog/${slug}`,
+          fr: `https://itsmawja.com/fr/blog/${slug}`,
         },
       },
       openGraph: {
-        title: `${title} | Mujahid Siyam (Muja / bymuja)`,
+        title: `${title} | Mawja (Mujahid Siyam)`,
         description,
         type: "article",
-        url: `https://bymuja.com/${validLocale}/blog/${slug}`,
+        url: `https://itsmawja.com/${validLocale}/blog/${slug}`,
         images: [{ url: image, width: 1200, height: 630, alt: title }],
         publishedTime,
         modifiedTime: publishedTime,
@@ -151,8 +151,8 @@ export async function generateMetadata({
         title: `${title} | Mujahid Siyam`,
         description,
         images: [image],
-        site: "@bymuja",
-        creator: "@bymuja",
+        site: "@itsmawja",
+        creator: "@itsmawja",
       },
       category: data.category || undefined,
       other: {
@@ -173,7 +173,7 @@ export async function generateMetadata({
     return {
       title: slug,
       alternates: {
-        canonical: `https://bymuja.com/${validLocale}/blog/${slug}`,
+        canonical: `https://itsmawja.com/${validLocale}/blog/${slug}`,
       },
     };
   }
@@ -228,15 +228,15 @@ export default async function BlogPostPage({
               : new Date().toISOString()
           }
           image={frontmatter.image || ""}
-          url={`https://bymuja.com/${validLocale}/blog/${resolvedParams.slug}`}
+          url={`https://itsmawja.com/${validLocale}/blog/${resolvedParams.slug}`}
           authorName="Mujahid Siyam"
-          authorUrl="https://bymuja.com"
+          authorUrl="https://itsmawja.com"
         />
         <BreadcrumbStructuredData
           items={[
-            { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://bymuja.com/${validLocale}` },
-            { name: dict.blog.title.replace(" | Mujahid Siyam (Muja / bymuja)", "").replace(/^Blog \| /, ""), url: `https://bymuja.com/${validLocale}/blog` },
-            { name: title, url: `https://bymuja.com/${validLocale}/blog/${resolvedParams.slug}` },
+            { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://itsmawja.com/${validLocale}` },
+            { name: dict.blog.title.replace(" | Mawja (Mujahid Siyam)", "").replace(/^Blog \| /, ""), url: `https://itsmawja.com/${validLocale}/blog` },
+            { name: title, url: `https://itsmawja.com/${validLocale}/blog/${resolvedParams.slug}` },
           ]}
         />
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -354,10 +354,10 @@ export default async function BlogPostPage({
                   image="/img/profile.png"
                   bio={dict.blog.authorBio}
                   socialLinks={{
-                    github: "https://github.com/bymuja",
-                    twitter: "https://twitter.com/bymuja",
-                    linkedin: "https://linkedin.com/in/bymuja",
-                    website: "https://bymuja.com",
+                    github: "https://github.com/itsmawja",
+                    twitter: "https://x.com/itsmawja",
+                    linkedin: "https://linkedin.com/in/itsmawja",
+                    website: "https://itsmawja.com",
                   }}
                 />
               </div>

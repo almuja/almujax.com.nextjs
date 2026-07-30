@@ -1,7 +1,7 @@
 {
-  "name": "bymuja.com — Mujahid Siyam (Muja)",
-  "short_name": "bymuja.com",
-  "description": "Official source of truth for Mujahid Siyam (Muja / bymuja) — Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
+  "name": "Mawja — Mujahid Siyam | itsmawja.com",
+  "short_name": "itsmawja.com",
+  "description": "Official source of truth for Mujahid Siyam (Mawja (Mujahid Siyam)) — Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

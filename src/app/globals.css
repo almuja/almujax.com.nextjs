@@ -3,21 +3,25 @@
 :root, 
 :root.light,
 :root.system:not(.dark) {
-  /* Modern Elegant Light Theme */
-  --color-background: #fafcff;
-  --color-foreground: #1a1d29;
-  --color-primary: #6366f1;
-  --color-primary-hover: #4f46e5;
-  --color-secondary: #8b5cf6;
+  /* Wave-Inspired Light Theme */
+  --color-background: #f5f8ff;
+  --color-foreground: #0f172a;
+  --color-primary: #5b5fff;
+  --color-primary-hover: #4347d9;
+  --color-secondary: #7c3aed;
   --color-accent: #06b6d4;
-  --color-muted: #f8fafc;
+  --color-wave-1: #5b5fff;
+  --color-wave-2: #7c3aed;
+  --color-wave-3: #06b6d4;
+  --color-wave-4: #0ea5e9;
+  --color-muted: #f1f5f9;
   --color-muted-foreground: #64748b;
   --color-border: #e2e8f0;
-  --color-card: rgba(255, 255, 255, 0.9);
-  --color-card-foreground: #1a1d29;
-  --color-glass: rgba(255, 255, 255, 0.25);
-  --color-glass-border: rgba(255, 255, 255, 0.18);
-  --color-glass-dark: rgba(255, 255, 255, 0.35);
+  --color-card: rgba(255, 255, 255, 0.85);
+  --color-card-foreground: #0f172a;
+  --color-glass: rgba(255, 255, 255, 0.3);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-glass-dark: rgba(255, 255, 255, 0.4);
   
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -67,22 +71,26 @@
 
 :root.dark,
 :root.system.dark {
-  /* Modern Elegant Dark Theme */
-  --color-background: #0a0f1c;
+  /* Wave-Inspired Dark Theme */
+  --color-background: #030712;
   --color-foreground: #f1f5f9;
   --color-primary: #818cf8;
   --color-primary-hover: #a5b4fc;
   --color-secondary: #c084fc;
   --color-accent: #22d3ee;
-  --color-muted: #1e293b;
+  --color-wave-1: #818cf8;
+  --color-wave-2: #c084fc;
+  --color-wave-3: #22d3ee;
+  --color-wave-4: #38bdf8;
+  --color-muted: #0f172a;
   --color-muted-foreground: #94a3b8;
-  --color-border: #334155;
-  --color-card: rgba(30, 41, 59, 0.4);
+  --color-border: #1e293b;
+  --color-card: rgba(15, 23, 42, 0.6);
   --color-card-foreground: #f1f5f9;
-  --color-glass: rgba(30, 41, 59, 0.3);
-  --color-glass-border: rgba(255, 255, 255, 0.1);
-  --color-glass-dark: rgba(15, 23, 42, 0.6);
-  --shadow-glow: 0 0 40px rgba(129, 140, 248, 0.15);
+  --color-glass: rgba(15, 23, 42, 0.5);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-dark: rgba(3, 7, 18, 0.8);
+  --shadow-glow: 0 0 60px rgba(129, 140, 248, 0.2);
 }
 
 /* Remove the @theme inline block and use direct CSS variable references */
@@ -1258,4 +1266,259 @@ pre [data-line] {
 .dark .token.important,
 .dark .token.variable {
   @apply text-orange-400;
+}
+
+/* ═══════════════════════════════════════
+   WAVE-INSPIRED ANIMATIONS & PREMIUM UTILITIES
+   ═══════════════════════════════════════ */
+
+@keyframes wave-drift {
+  0% { transform: translateX(-5%) translateY(0) rotate(0deg); }
+  25% { transform: translateX(0%) translateY(-8px) rotate(0.5deg); }
+  50% { transform: translateX(5%) translateY(0) rotate(0deg); }
+  75% { transform: translateX(0%) translateY(8px) rotate(-0.5deg); }
+  100% { transform: translateX(-5%) translateY(0) rotate(0deg); }
+}
+
+@keyframes wave-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.15); }
+}
+
+@keyframes brand-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes soft-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(129, 140, 248, 0.2); }
+  50% { border-color: rgba(129, 140, 248, 0.5); }
+}
+
+/* Wave brand gradient - the signature gradient of Mawja */
+.wave-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-wave-1),
+    var(--color-wave-2),
+    var(--color-wave-3),
+    var(--color-wave-4)
+  );
+  background-size: 300% 300%;
+  animation: brand-gradient 8s ease infinite;
+}
+
+.wave-gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-wave-1),
+    var(--color-wave-2),
+    var(--color-wave-3),
+    var(--color-wave-4)
+  );
+  background-size: 300% 300%;
+  animation: brand-gradient 6s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Shimmer text effect for hero */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-foreground) 0%,
+    var(--color-primary) 25%,
+    var(--color-accent) 50%,
+    var(--color-secondary) 75%,
+    var(--color-foreground) 100%
+  );
+  background-size: 200% auto;
+  animation: text-shimmer 4s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Wave background pattern */
+.wave-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(91, 95, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+  animation: wave-drift 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Animated wave orbs (glowing background blobs) */
+.wave-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: wave-glow 6s ease-in-out infinite;
+}
+
+.wave-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--color-wave-1);
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.wave-orb-2 {
+  width: 350px;
+  height: 350px;
+  background: var(--color-wave-2);
+  top: 50%;
+  right: 15%;
+  animation-delay: -2s;
+}
+
+.wave-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-wave-3);
+  bottom: 10%;
+  left: 40%;
+  animation-delay: -4s;
+}
+
+/* Hero animations */
+.hero-enter {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-enter:nth-child(1) { animation-delay: 0.1s; }
+.hero-enter:nth-child(2) { animation-delay: 0.2s; }
+.hero-enter:nth-child(3) { animation-delay: 0.3s; }
+.hero-enter:nth-child(4) { animation-delay: 0.4s; }
+.hero-enter:nth-child(5) { animation-delay: 0.5s; }
+
+/* Premium card elevation */
+.card-premium {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.card-premium:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(129, 140, 248, 0.1);
+  border-color: rgba(129, 140, 248, 0.3);
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+.dark .card-premium {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark .card-premium:hover {
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(129, 140, 248, 0.15),
+    0 0 60px rgba(129, 140, 248, 0.05);
+}
+
+/* Section dividers */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border),
+    var(--color-primary),
+    var(--color-border),
+    transparent
+  );
+  border: none;
+  margin: 80px 0;
+}
+
+/* Soft floating animation for decorative elements */
+.soft-float {
+  animation: soft-float 5s ease-in-out infinite;
+}
+
+.soft-float-delayed {
+  animation: soft-float 6s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+/* Highlight badge */
+.badge-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(192, 132, 252, 0.1));
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+/* Animated dot indicator */
+.dot-pulse {
+  position: relative;
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+}
+
+.dot-pulse::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+.dot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.15;
+  animation: pulse-slow 2s ease-in-out infinite;
+  animation-delay: 0.5s;
 }

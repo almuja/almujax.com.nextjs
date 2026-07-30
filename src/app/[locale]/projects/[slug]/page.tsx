@@ -58,11 +58,11 @@ export async function generateMetadata({
     return {
       title: slug,
       alternates: {
-        canonical: `https://bymuja.com/${validLocale}/projects/${slug}`,
+        canonical: `https://itsmawja.com/${validLocale}/projects/${slug}`,
         languages: {
-          en: `https://bymuja.com/en/projects/${slug}`,
-          ar: `https://bymuja.com/ar/projects/${slug}`,
-          fr: `https://bymuja.com/fr/projects/${slug}`,
+          en: `https://itsmawja.com/en/projects/${slug}`,
+          ar: `https://itsmawja.com/ar/projects/${slug}`,
+          fr: `https://itsmawja.com/fr/projects/${slug}`,
         },
       },
     };
@@ -77,32 +77,32 @@ export async function generateMetadata({
       data.description || "Open-source project by Mujahid Siyam";
 
     return {
-      title: `${title} | Mujahid Siyam (Muja / bymuja)`,
+      title: `${title} | Mawja (Mujahid Siyam)`,
       description,
       keywords: [
         ...(data.tags || []),
         data.category,
         "Mujahid Siyam",
-        "Muja",
-        "bymuja",
+        "Mawja",
+        "itsmawja",
         "AI Engineer",
         "open source",
         "project",
         "Rust",
       ].filter(Boolean),
       alternates: {
-        canonical: `https://bymuja.com/${validLocale}/projects/${slug}`,
+        canonical: `https://itsmawja.com/${validLocale}/projects/${slug}`,
         languages: {
-          en: `https://bymuja.com/en/projects/${slug}`,
-          ar: `https://bymuja.com/ar/projects/${slug}`,
-          fr: `https://bymuja.com/fr/projects/${slug}`,
+          en: `https://itsmawja.com/en/projects/${slug}`,
+          ar: `https://itsmawja.com/ar/projects/${slug}`,
+          fr: `https://itsmawja.com/fr/projects/${slug}`,
         },
       },
       openGraph: {
-        title: `${title} | Mujahid Siyam (Muja / bymuja)`,
+        title: `${title} | Mawja (Mujahid Siyam)`,
         description,
         type: "article",
-        url: `https://bymuja.com/${validLocale}/projects/${slug}`,
+        url: `https://itsmawja.com/${validLocale}/projects/${slug}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -122,7 +122,7 @@ export async function generateMetadata({
     return {
       title: slug,
       alternates: {
-        canonical: `https://bymuja.com/${validLocale}/projects/${slug}`,
+        canonical: `https://itsmawja.com/${validLocale}/projects/${slug}`,
       },
     };
   }
@@ -174,16 +174,16 @@ export default async function ProjectPage({
         <SoftwareSourceCodeStructuredData
           name={project.title}
           description={project.description}
-          url={`https://bymuja.com/${validLocale}/projects/${slug}`}
+          url={`https://itsmawja.com/${validLocale}/projects/${slug}`}
           codeRepository={project.githubUrl}
           dateCreated={project.date}
           programmingLanguage={project.tags}
         />
         <BreadcrumbStructuredData
           items={[
-            { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://bymuja.com/${validLocale}` },
-            { name: validLocale === "ar" ? "المشاريع" : "Projects", url: `https://bymuja.com/${validLocale}/projects` },
-            { name: project.title, url: `https://bymuja.com/${validLocale}/projects/${slug}` },
+            { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://itsmawja.com/${validLocale}` },
+            { name: validLocale === "ar" ? "المشاريع" : "Projects", url: `https://itsmawja.com/${validLocale}/projects` },
+            { name: project.title, url: `https://itsmawja.com/${validLocale}/projects/${slug}` },
           ]}
         />
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">

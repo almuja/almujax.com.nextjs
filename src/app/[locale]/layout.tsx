@@ -18,28 +18,28 @@ export async function generateMetadata({
   return {
     title: {
       template: validLocale === "ar"
-        ? `%s | مجاهد صيام (موجا / bymuja)`
-        : `%s | Mujahid Siyam (Muja / bymuja)`,
+        ? `%s | مجاهد صيام (موجا / itsmawja)`
+        : `%s | Mawja (Mujahid Siyam)`,
       default: dict.site.defaultTitle,
     },
     description: dict.site.description,
     keywords: [...dict.seo.keywords],
-    authors: [{ name: "Mujahid Siyam", url: "https://bymuja.com" }],
+    authors: [{ name: "Mujahid Siyam", url: "https://itsmawja.com" }],
     alternates: {
-      canonical: `https://bymuja.com/${validLocale}`,
+      canonical: `https://itsmawja.com/${validLocale}`,
     },
     openGraph: {
       title: dict.site.defaultTitle,
       description: dict.site.description,
       type: "website",
       locale: validLocale === "ar" ? "ar_SA" : validLocale === "fr" ? "fr_FR" : "en_US",
-      siteName: "bymuja.com",
+      siteName: "itsmawja.com",
       images: [
         {
-          url: "https://bymuja.com/img/profile.png",
+          url: "https://itsmawja.com/img/profile.png",
           width: 1200,
           height: 630,
-          alt: "Mujahid Siyam (Muja / bymuja)",
+          alt: "Mawja (Mujahid Siyam)",
         },
       ],
     },
@@ -47,9 +47,9 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: dict.site.defaultTitle,
       description: dict.site.description,
-      images: ["https://bymuja.com/img/profile.png"],
-      site: "@bymuja",
-      creator: "@bymuja",
+      images: ["https://itsmawja.com/img/profile.png"],
+      site: "@itsmawja",
+      creator: "@itsmawja",
     },
     category: "technology",
     creator: "Mujahid Siyam",

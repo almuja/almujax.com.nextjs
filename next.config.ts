@@ -13,10 +13,10 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: "host",
-            value: "www.bymuja.com",
+            value: "www.itsmawja.com",
           },
         ],
-        destination: "https://bymuja.com/:path*",
+        destination: "https://itsmawja.com/:path*",
         permanent: true,
       },
     ];

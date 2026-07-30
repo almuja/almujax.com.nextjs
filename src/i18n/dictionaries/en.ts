@@ -1,9 +1,9 @@
 const en = {
   site: {
-    title: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
+    title: "Mawja (Mujahid Siyam) | Software & AI Engineer",
     description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist (Arabic Rap, Sudanese Rap) building AI-first systems and creative technology.",
-    defaultTitle: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
+      "Mawja, also known as Mujahid Siyam, is a software engineer specializing in AI, open source, systems engineering, DevSecOps, and music production.",
+    defaultTitle: "Mawja (Mujahid Siyam) | Software & AI Engineer",
   },
   nav: {
     projects: "Projects",
@@ -14,26 +14,27 @@ const en = {
     search: "Search",
     menu: "Open menu",
     home: "Home",
+    now: "Now",
   },
   home: {
-    title: "Mujahid Siyam (Muja / bymuja) | Software & AI Engineer",
+    title: "Mawja (Mujahid Siyam) | Software & AI Engineer",
     description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist.",
+      "Mawja, also known as Mujahid Siyam, is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist.",
     sparkle: "Building AI-first systems and creative technology",
     roles: "Software Engineer • AI Engineer • DevSecOps • Music Artist",
     heroBody:
-      "Mujahid Siyam (Muja / bymuja) builds AI-first systems, Rust-based software, developer tools like Zaroxi Studio, and creates music and creative technology. Crafting elegant solutions at the intersection of software engineering, artificial intelligence, and secure development practices.",
+      "Mawja (Mujahid Siyam) builds AI-first systems, Rust-based software, developer tools like Zaroxi Studio, and creates music and creative technology. Crafting elegant solutions at the intersection of software engineering, artificial intelligence, and secure development practices.",
     exploreProjects: "Explore Projects",
     readBlog: "Read Blog",
-    aboutHeading: "About Muja (Mujahid Siyam)",
+    aboutHeading: "About Mawja (Mujahid Siyam)",
     about1:
-      "Mujahid Siyam, also known as Muja and by the handle bymuja, is a passionate Software Engineer, AI Engineer, DevSecOps professional, and Music Artist with expertise spanning from systems programming to modern AI-first application development. He builds AI-first systems, Rust-based software, and developer tools through Zaroxi Studio.",
+      "Mawja, also known as Mujahid Siyam and by the handle itsmawja, is a passionate Software Engineer, AI Engineer, DevSecOps professional, and Music Artist with expertise spanning from systems programming to modern AI-first application development. He builds AI-first systems, Rust-based software, and developer tools through Zaroxi Studio.",
     about2:
-      "With deep experience in Linux environments and a strong commitment to open-source development, Muja specializes in creating robust, end-to-end solutions that leverage the full spectrum of modern technology. His work focuses on building systems that are not only performant and secure but also intelligent, scalable, and user-centric.",
+      "With deep experience in Linux environments and a strong commitment to open-source development, Mawja specializes in creating robust, end-to-end solutions that leverage the full spectrum of modern technology. His work focuses on building systems that are not only performant and secure but also intelligent, scalable, and user-centric.",
     about3:
-      "Muja actively contributes to open-source projects and believes in the power of collaborative development to drive innovation. His expertise in Linux systems administration and open-source technologies enables him to build solutions that are both technically sophisticated and community-driven.",
+      "Mawja actively contributes to open-source projects and believes in the power of collaborative development to drive innovation. His expertise in Linux systems administration and open-source technologies enables him to build solutions that are both technically sophisticated and community-driven.",
     about4:
-      "Beyond the world of code and algorithms, Muja is also a Music Artist, finding creative expression through music as a core part of his identity. His music spans Arabic Rap and Sudanese Rap. This artistic pursuit complements his technical work, bringing balance and inspiration to his problem-solving approach.",
+      "Beyond the world of code and algorithms, Mawja is also a Music Artist, finding creative expression through music as a core part of his identity. His music spans Arabic Rap and Sudanese Rap. This artistic pursuit complements his technical work, bringing balance and inspiration to his problem-solving approach.",
     about5:
       "He believes in building technology that not only solves complex challenges but also enhances human experiences and creates meaningful impact across different domains through open collaboration and innovative thinking.",
     skillsHeading: "Technologies & Tools",
@@ -43,16 +44,16 @@ const en = {
     ctaButton: "Start a Conversation",
   },
   about: {
-    title: "About | Mujahid Siyam (Muja / bymuja)",
+    title: "About | Mawja (Mujahid Siyam)",
     description:
-      "Mujahid Siyam (Muja / bymuja) — Software Engineer, AI Engineer, DevSecOps Engineer, Music Artist (Arabic Rap, Sudanese Rap). Full profile. Official source of truth.",
+      "Mawja (Mujahid Siyam) — Software Engineer, AI Engineer, DevSecOps Engineer, Music Artist (Arabic Rap, Sudanese Rap). Full profile. Official source of truth.",
     heading: "About Mujahid Siyam",
     roles: "Software Engineer • AI Engineer • DevSecOps • Music Artist",
     profileTitle: "AI Engineer & Software Developer",
-    akaLabel: "AKA Muja",
+    akaLabel: "AKA Mawja",
     location: "France — Global Reach",
-    email: "contact@bymuja.com",
-    website: "bymuja.com",
+    email: "hello@itsmawja.com",
+    website: "itsmawja.com",
     coreCompetencies: "Core Competencies",
     languages: "Languages",
     experience: "Experience",
@@ -63,17 +64,17 @@ const en = {
       "Building AI-first systems, Rust-based developer tools, and creative technology. Leading development of open-source projects and full-stack applications with modern tooling.",
     summaryHeading: "Professional Summary",
     summary1:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist. His work centers on building AI-first systems, Rust-based software, and developer tools that push the boundaries of modern technology.",
+      "Mawja, also known as Mujahid Siyam, is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist. His work centers on building AI-first systems, Rust-based software, and developer tools that push the boundaries of modern technology.",
     summary2:
-      "With expertise spanning Rust systems programming, TypeScript, React, and Python, Muja builds full-stack applications and intelligent solutions. Through Zaroxi Studio, he creates developer tools and creative technology that serve a global audience.",
+      "With expertise spanning Rust systems programming, TypeScript, React, and Python, Mawja builds full-stack applications and intelligent solutions. Through Zaroxi Studio, he creates developer tools and creative technology that serve a global audience.",
     summary3:
-      "As a dedicated Open Source Advocate, Muja actively contributes to and promotes open-source projects, believing that collaborative development drives innovation and accessibility in technology. He is particularly passionate about the Nix/NixOS ecosystem, reproducible builds, and declarative system configurations.",
+      "As a dedicated Open Source Advocate, Mawja actively contributes to and promotes open-source projects, believing that collaborative development drives innovation and accessibility in technology. He is particularly passionate about the Nix/NixOS ecosystem, reproducible builds, and declarative system configurations.",
     summary4:
-      "Beyond engineering, Muja is a Music Artist — music is not just a hobby but a core part of his creative identity. This artistic dimension informs his approach to building creative technology and shapes his perspective as a well-rounded technologist.",
+      "Beyond engineering, Mawja is a Music Artist — music is not just a hobby but a core part of his creative identity. This artistic dimension informs his approach to building creative technology and shapes his perspective as a well-rounded technologist.",
     summary5:
-      "He believes in building technology that solves complex challenges, enhances human experiences, and creates meaningful impact through open collaboration and innovation. Muja operates with a global perspective from France, targeting a worldwide audience.",
-    connectHeading: "Connect with Muja (bymuja)",
-    connectDescription: "Follow the journey of Mujahid Siyam (Muja) through AI, Rust, DevSecOps, and music",
+      "He believes in building technology that solves complex challenges, enhances human experiences, and creates meaningful impact through open collaboration and innovation. Mawja operates with a global perspective from France, targeting a worldwide audience.",
+    connectHeading: "Connect with Mawja (itsmawja)",
+    connectDescription: "Follow the journey of Mawja (Mujahid Siyam) through AI, Rust, DevSecOps, and music",
     education: "Education",
     technologies: "Technologies & Tools",
     langList: [
@@ -104,9 +105,9 @@ const en = {
     ],
   },
   blog: {
-    title: "Blog | Mujahid Siyam (Muja / bymuja)",
+    title: "Blog | Mawja (Mujahid Siyam)",
     description:
-      "Articles by Mujahid Siyam (Muja / bymuja) on AI engineering, Rust development, DevSecOps, software engineering, and creative technology.",
+      "Articles by Mawja (Mujahid Siyam) on AI engineering, Rust development, DevSecOps, software engineering, and creative technology.",
     backToBlog: "Back to Blog",
     previous: "Previous",
     next: "Next",
@@ -137,9 +138,9 @@ const en = {
     clearFilters: "Clear Filters",
   },
   projects: {
-    title: "Projects | Mujahid Siyam (Muja / bymuja)",
+    title: "Projects | Mawja (Mujahid Siyam)",
     description:
-      "Open-source projects and contributions by Mujahid Siyam (Muja / bymuja). AI-first systems, Rust-based developer tools, Zaroxi Studio, and creative technology.",
+      "Open-source projects and contributions by Mawja (Mujahid Siyam). AI-first systems, Rust-based developer tools, Zaroxi Studio, and creative technology.",
     backToProjects: "Back to Projects",
     viewOnGithub: "View on GitHub",
     visitWebsite: "Visit Website",
@@ -157,23 +158,23 @@ const en = {
     yearsAgo: "years ago",
   },
   music: {
-    title: "Music | Muja (Mujahid Siyam) | Arabic Rap | Sudanese Rap",
+    title: "Music | Mawja (Mujahid Siyam) | Arabic Rap | Sudanese Rap",
     description:
-      "Muja (موجا) is the music artist name of Mujahid Siyam (bymuja). Arabic Rap, Sudanese Rap, Music Artist. Explore curated playlists, upcoming albums, and musical journey.",
-    heading: "Muja — Music",
-    subtitle: "Muja (موجا) is the artist name of Mujahid Siyam. Explore Arabic Rap, Sudanese Rap, curated playlists, and original music across platforms.",
+      "Mawja (ماوجا) is the music artist name of Mujahid Siyam (itsmawja). Arabic Rap, Sudanese Rap, Music Artist. Explore curated playlists, upcoming albums, and musical journey.",
+    heading: "Mawja — Music",
+    subtitle: "Mawja (ماوجا) is the artist name of Mujahid Siyam. Explore Arabic Rap, Sudanese Rap, curated playlists, and original music across platforms.",
     noPlaylists: "No releases available at the moment. Stay tuned for upcoming albums and singles.",
     loading: "Loading...",
     listenOn: "Listen on",
     tracks: "tracks",
     openInApp: "Open in",
-    artistName: "Muja",
+    artistName: "Mawja",
     artistDescription: "Arabic Rap • Sudanese Rap • Hip Hop",
-    artistStory: 'Muja (Mujahid Siyam) is an artist and software engineer, born on September 23, 1991 in Sudan. He started his artistic career when he was 16 years old. He created a lot of successful bands until he moved to France and then left the music field to work in software engineering and web development, where he developed systems and websites. He returned to music production as a side hobby in 2022 by producing his first EP under the title KAKASHI — which he considers a new beginning in his artistic career. Today, Muja focuses primarily on software engineering and AI engineering, but will be back to music soon.',
+    artistStory: 'Mawja (Mujahid Siyam) is an artist and software engineer, born on September 23, 1991 in Sudan. He started his artistic career when he was 16 years old. He created a lot of successful bands until he moved to France and then left the music field to work in software engineering and web development, where he developed systems and websites. He returned to music production as a side hobby in 2022 by producing his first EP under the title KAKASHI — which he considers a new beginning in his artistic career. Today, Mawja focuses primarily on software engineering and AI engineering, but will be back to music soon.',
   },
   contact: {
-    title: "Contact | Mujahid Siyam (Muja / bymuja)",
-    description: "Get in touch with Mujahid Siyam (Muja / bymuja). AI engineering, Rust development, Arabic Rap, Sudanese Rap collaborations.",
+    title: "Contact | Mawja (Mujahid Siyam)",
+    description: "Get in touch with Mawja (Mujahid Siyam). AI engineering, Rust development, Arabic Rap, Sudanese Rap collaborations.",
     heading: "Let's Connect",
     subtitle: "I'm always excited to discuss new opportunities, creative projects, or potential collaborations. Feel free to reach out—I'd be delighted to hear from you.",
     startConversation: "Start a Conversation",
@@ -216,15 +217,15 @@ const en = {
   },
   structuredData: {
     description:
-      "Mujahid Siyam, also known as Muja (bymuja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology. Official source of truth for Mujahid Mohamed Ismail Siyam.",
+      "Mawja, also known as Mujahid Siyam, is a software engineer specializing in AI, open source, systems engineering, DevSecOps, and music production. Official source of truth for Mujahid Mohamed Ismail Siyam.",
     websiteDescription:
-      "Official source of truth for Mujahid Siyam (Muja), a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
+      "Official source of truth for Mawja (Mujahid Siyam), a software engineer specializing in AI, open source, systems engineering, DevSecOps, and music production.",
   },
   seo: {
     keywords: [
-      "Mujahid Siyam", "Muja", "bymuja", "AI Engineer", "Software Engineer",
+      "Mujahid Siyam", "Mawja", "itsmawja", "AI Engineer", "Software Engineer",
       "Rust Developer", "DevSecOps", "Music Artist", "Arabic Rap", "Sudanese Rap",
-      "Muja music", "Muja rapper", "Muja arabic rap", "موجا", "راب عربي",
+      "Mawja music", "Mawja rapper", "Mawja arabic rap", "ماوجا", "راب عربي",
       "AI Tools", "Programming", "Open Source", "Rust", "TypeScript", "React",
       "Next.js", "Python", "full-stack developer", "Zaroxi Studio",
     ],

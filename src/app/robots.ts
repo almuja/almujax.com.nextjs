@@ -70,9 +70,9 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: [
-      "https://bymuja.com/sitemap.xml",
-      "https://bymuja.com/geo.kml",
+      "https://itsmawja.com/sitemap.xml",
+      "https://itsmawja.com/geo.kml",
     ],
-    host: "https://bymuja.com",
+    host: "https://itsmawja.com",
   };
 }

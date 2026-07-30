@@ -47,11 +47,11 @@ export default function ContactForm({ locale, t }: ContactFormProps) {
             <p className="text-[var(--color-foreground)]/60 mb-8">{t.startConversationDesc}</p>
             <div className="space-y-6">
               {[
-                { icon: Mail, color: "primary", title: "Email", desc: t.emailResponseTime, link: "contact@bymuja.com", href: "mailto:contact@bymuja.com" },
-                { icon: Code2, color: "secondary", title: "GitHub", desc: t.githubDesc, link: "github.com/bymuja", href: "https://github.com/bymuja" },
-                { icon: LinkIcon, color: "primary", title: "LinkedIn", desc: t.linkedinDesc, link: "@bymuja", href: "https://linkedin.com/in/bymuja" },
-                { icon: Camera, color: "accent", title: "Instagram", desc: t.instagramDesc, link: "@bymuja", href: "https://instagram.com/bymuja" },
-                { icon: ExternalLink, color: "accent", title: "Website", desc: t.websiteDesc, link: "bymuja.com", href: "https://bymuja.com" },
+                { icon: Mail, color: "primary", title: "Email", desc: t.emailResponseTime, link: "hello@itsmawja.com", href: "mailto:hello@itsmawja.com" },
+                { icon: Code2, color: "secondary", title: "GitHub", desc: t.githubDesc, link: "github.com/itsmawja", href: "https://github.com/itsmawja" },
+                { icon: LinkIcon, color: "primary", title: "LinkedIn", desc: t.linkedinDesc, link: "@itsmawja", href: "https://linkedin.com/in/itsmawja" },
+                { icon: Camera, color: "accent", title: "Instagram", desc: t.instagramDesc, link: "@itsmawja", href: "https://instagram.com/itsmawja" },
+                { icon: ExternalLink, color: "accent", title: "Website", desc: t.websiteDesc, link: "itsmawja.com", href: "https://itsmawja.com" },
               ].map((item) => (
                 <div key={item.title} className="flex items-center backdrop-blur-sm bg-glass border border-glass-border rounded-2xl p-4 hover:scale-105 transition-all duration-300">
                   <div className={`p-3 bg-[var(--color-${item.color})]/20 rounded-lg mr-4`}>

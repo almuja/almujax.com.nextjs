@@ -41,10 +41,10 @@ interface MusicContentProps {
 }
 
 const streamingPlatforms = [
-  { name: "Spotify", icon: SpotifyIcon, url: "https://open.spotify.com/user/bymuja", color: "#1DB954" },
-  { name: "YouTube", icon: YouTubeIcon, url: "https://www.youtube.com/@bymuja", color: "#FF0000" },
-  { name: "SoundCloud", icon: SoundCloudIcon, url: "https://soundcloud.com/bymuja", color: "#FF5500" },
-  { name: "Apple Music", icon: AppleMusicIcon, url: "https://music.apple.com/profile/bymuja", color: "#FC3C44" },
+  { name: "Spotify", icon: SpotifyIcon, url: "https://open.spotify.com/user/itsmawja", color: "#1DB954" },
+  { name: "YouTube", icon: YouTubeIcon, url: "https://www.youtube.com/@itsmawja", color: "#FF0000" },
+  { name: "SoundCloud", icon: SoundCloudIcon, url: "https://soundcloud.com/itsmawja", color: "#FF5500" },
+  { name: "Apple Music", icon: AppleMusicIcon, url: "https://music.apple.com/profile/itsmawja", color: "#FC3C44" },
   { name: "Tidal", icon: TidalIcon, url: "https://tidal.com/browse/artist/", color: "#00FFFF" },
   { name: "Amazon", icon: AmazonMusicIcon, url: "https://music.amazon.com/", color: "#00A8E1" },
   { name: "Pandora", icon: PandoraIcon, url: "https://www.pandora.com/", color: "#3668FF" },
@@ -157,13 +157,13 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-3">KAKASHI</h2>
                 <p className="text-foreground/40 text-sm mb-6 max-w-sm">
-                  {locale === "ar" ? "أول EP لموجا — بداية جديدة" : locale === "fr" ? "Premier EP de Muja — un nouveau départ" : "Muja's debut EP — a new beginning"}
+                  {locale === "ar" ? "أول EP لموجا — بداية جديدة" : locale === "fr" ? "Premier EP de Mawja — un nouveau départ" : "Mawja's debut EP — a new beginning"}
                 </p>
                 <div className="flex flex-wrap gap-2.5">
                   {[
                     { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@MujaOfficiel", icon: YouTubeIcon, primary: true },
-                    { label: "SoundCloud", url: "https://soundcloud.com/bymuja", icon: SoundCloudIcon, primary: false },
-                    { label: "Spotify", url: "https://open.spotify.com/user/bymuja", icon: SpotifyIcon, primary: false },
+                    { label: "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon, primary: false },
+                    { label: "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, primary: false },
                   ].map((b) => (
                     <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
                       className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs transition-all duration-300 hover:scale-105 ${
