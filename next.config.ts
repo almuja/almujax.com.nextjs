@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // Security headers
+  // Security headers + AI agent discovery
   async headers() {
     return [
       {
@@ -30,6 +30,10 @@ const nextConfig: NextConfig = {
           {
             key: "X-DNS-Prefetch-Control",
             value: "on",
+          },
+          {
+            key: "Link",
+            value: '</llms.txt>; rel="alternate"; type="text/plain"; title="AI agent context"',
           },
           {
             key: "Strict-Transport-Security",
@@ -60,12 +64,12 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: `
               default-src 'self';
-              script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com vercel.live open.spotify.com www.youtube.com;
+              script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com vercel.live open.spotify.com www.youtube.com embed.music.apple.com js-cdn.music.apple.com;
               style-src 'self' 'unsafe-inline' fonts.googleapis.com;
               img-src 'self' data: blob: https:;
               font-src 'self' fonts.gstatic.com;
-              connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com;
-              frame-src 'self' open.spotify.com www.youtube.com *.youtube.com;
+              connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com *.music.apple.com;
+              frame-src 'self' open.spotify.com www.youtube.com *.youtube.com embed.music.apple.com;
               object-src 'none';
               base-uri 'self';
               form-action 'self';

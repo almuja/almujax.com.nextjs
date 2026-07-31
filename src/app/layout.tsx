@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import {
   PersonStructuredData,
+  OrganizationStructuredData,
   WebSiteStructuredData,
 } from "./components/StructuredData";
 
@@ -58,6 +59,7 @@ export default function RootLayout({
           }}
         />
         <PersonStructuredData />
+        <OrganizationStructuredData />
         <WebSiteStructuredData />
         <meta name="geo.region" content="FR" />
         <meta name="geo.placename" content="France" />
@@ -77,8 +79,22 @@ export default function RootLayout({
           title="itsmawja.com Atom Feed"
           href="/atom.xml"
         />
-        <link rel="llm" type="text/plain" title="LLMs.txt" href="/llms.txt" />
-        <link rel="llm-full" type="text/plain" title="Full content" href="/llms-full.txt" />
+        <link
+          rel="alternate"
+          type="text/plain"
+          title="LLMs.txt — Context for AI systems"
+          href="/llms.txt"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          title="Full content for AI indexing"
+          href="/llms-full.txt"
+        />
+        <link rel="me" href="https://github.com/itsmawja" />
+        <link rel="me" href="https://linkedin.com/in/itsmawja" />
+        <link rel="me" href="https://x.com/itsmawja" />
+        <link rel="me" href="https://instagram.com/itsmawja" />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>

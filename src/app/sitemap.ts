@@ -4,7 +4,7 @@ import { promises as fs } from "fs";
 import matter from "gray-matter";
 
 const baseUrl = "https://itsmawja.com";
-const defaultLocale = "en";
+const locales = ["en", "ar", "fr"];
 
 function toAbsoluteImage(image: string | undefined): string | undefined {
   if (!image) return undefined;
@@ -40,7 +40,7 @@ async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
           const image = isValidImage(data.image) ? toAbsoluteImage(data.image) : undefined;
 
           return {
-            url: `${baseUrl}/${defaultLocale}/blog/${slug}`,
+            url: `${baseUrl}/en/blog/${slug}`,
             lastModified: postDate > stats.mtime ? postDate : stats.mtime,
             changeFrequency: "daily" as const,
             priority: 0.9,
@@ -76,7 +76,7 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
           const image = isValidImage(data.image) ? toAbsoluteImage(data.image) : undefined;
 
           return {
-            url: `${baseUrl}/${defaultLocale}/projects/${slug}`,
+            url: `${baseUrl}/en/projects/${slug}`,
             lastModified: projDate > stats.mtime ? projDate : stats.mtime,
             changeFrequency: "daily" as const,
             priority: 0.9,
@@ -94,15 +94,27 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
-  const staticPages: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}/en`, lastModified: now, changeFrequency: "daily", priority: 1 },
-    { url: `${baseUrl}/en/about`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/en/projects`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
-    { url: `${baseUrl}/en/blog`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
-    { url: `${baseUrl}/en/now`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/en/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${baseUrl}/en/music`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
+  const pageRoutes = [
+    { slug: "", priority: 1, changeFrequency: "daily" as const },
+    { slug: "about", priority: 0.8, changeFrequency: "weekly" as const },
+    { slug: "projects", priority: 0.8, changeFrequency: "daily" as const },
+    { slug: "blog", priority: 0.8, changeFrequency: "daily" as const },
+    { slug: "now", priority: 0.7, changeFrequency: "weekly" as const },
+    { slug: "contact", priority: 0.5, changeFrequency: "monthly" as const },
+    { slug: "music", priority: 0.6, changeFrequency: "weekly" as const },
   ];
+
+  const staticPages: MetadataRoute.Sitemap = [];
+  for (const route of pageRoutes) {
+    for (const locale of locales) {
+      staticPages.push({
+        url: route.slug ? `${baseUrl}/${locale}/${route.slug}` : `${baseUrl}/${locale}`,
+        lastModified: now,
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
+      });
+    }
+  }
 
   const blogPosts = await getBlogPosts();
   const projects = await getProjects();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink, Disc3, ChevronDown, ChevronUp, Music2 } from "lucide-react";
+import { ExternalLink, Disc3, ChevronDown, ChevronUp, Music2, Play, Sparkles } from "lucide-react";
 
 const SpotifyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-2-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -24,11 +24,11 @@ const TidalIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
 );
 
 const AmazonMusicIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm-1 4h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg>
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-10h2v4h-2zm0 6h2v2h-2z"/></svg>
 );
 
 const PandoraIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M6 3h8c3.31 0 6 2.69 6 6s-2.69 6-6 6h-4v6H6V3zm4 8h4c1.1 0 2-.9 2-2s-.9-2-2-2h-4v4z"/></svg>
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M1.882 0v24H16.33a7.67 7.67 0 0 0 0-15.34V7.5H7.672v-7.5H1.882zm5.79 12.5h5.79v-1.5h-5.79v1.5z"/></svg>
 );
 
 interface MusicContentProps {
@@ -61,6 +61,7 @@ const musicVideos = [
 
 export function MusicContent({ locale, t }: MusicContentProps) {
   const [showStory, setShowStory] = useState(true);
+  const [activeTab, setActiveTab] = useState<"kakashi" | "rockstar">("kakashi");
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
@@ -76,7 +77,6 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
         {/* ===== HERO ===== */}
         <div className="text-center mb-20">
-          {/* Artist badge */}
           <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-purple-500/20 bg-purple-500/5 backdrop-blur-xl mb-8">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -85,19 +85,16 @@ export function MusicContent({ locale, t }: MusicContentProps) {
             <span className="text-xs font-bold uppercase tracking-[0.15em] text-primary">{t.artistName}</span>
           </div>
 
-          {/* Name */}
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-none mb-6">
             <span className="bg-gradient-to-r from-primary via-purple-400 to-secondary bg-clip-text text-transparent">
               {t.heading}
             </span>
           </h1>
 
-          {/* Description */}
           <p className="text-lg text-foreground/40 max-w-md mx-auto mb-12 font-light leading-relaxed">
             {t.artistDescription}
           </p>
 
-          {/* Streaming Platforms Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 max-w-3xl mx-auto mb-16">
             {streamingPlatforms.map((p, i) => (
               <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
@@ -128,53 +125,211 @@ export function MusicContent({ locale, t }: MusicContentProps) {
             </button>
             {showStory && (
               <div className="mt-4 p-6 rounded-2xl bg-card/5 border border-border/10 backdrop-blur-sm">
-                <p className="text-foreground/50 leading-relaxed text-sm">{t.artistStory}</p>
+                <p className="text-foreground/50 leading-relaxed text-sm whitespace-pre-line">{t.artistStory}</p>
               </div>
             )}
           </div>
         )}
 
-        {/* ===== FEATURED RELEASE ===== */}
+        {/* ===== STREAMING EMBEDS ===== */}
         <div className="mb-16">
-          <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-primary/10 bg-gradient-to-br from-primary/10 via-purple-500/5 to-transparent">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-[2px] flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
+            <h2 className="text-2xl font-bold text-foreground whitespace-nowrap flex items-center gap-2">
+              <Play className="w-5 h-5 text-primary/50" />
+              {locale === "ar" ? "استمع الآن" : locale === "fr" ? "Écouter" : "Listen Now"}
+            </h2>
+            <div className="h-[2px] flex-1 bg-gradient-to-l from-primary/30 to-transparent" />
+          </div>
 
-            <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
-              {/* Album Art */}
-              <div className="relative flex-shrink-0">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary to-purple-600 blur-2xl opacity-30 animate-pulse-slow"></div>
-                <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-3xl bg-gradient-to-br from-primary via-purple-500 to-secondary p-[2px]">
-                  <div className="w-full h-full rounded-3xl bg-gray-900 flex items-center justify-center overflow-hidden">
-                    <Disc3 className="w-20 h-20 text-white/60 animate-spin-slow" />
+          {/* Spotify Embed */}
+          <div className="rounded-2xl border border-[#1DB954]/10 bg-[#1DB954]/[0.03] p-6 mb-6 hover:border-[#1DB954]/20 transition-all duration-500">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 rounded-lg bg-[#1DB954]/10">
+                <SpotifyIcon className="w-5 h-5 text-[#1DB954]" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-foreground">Spotify</h3>
+                <p className="text-[11px] text-foreground/30">@itsmawja</p>
+              </div>
+              <a href="https://open.spotify.com/user/itsmawja" target="_blank" rel="noopener noreferrer"
+                className="ml-auto flex items-center gap-1 text-xs text-[#1DB954] hover:underline font-medium">
+                {locale === "ar" ? "افتح في سبوتيفاي" : locale === "fr" ? "Ouvrir Spotify" : "Open in Spotify"} <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+            <div className="rounded-xl overflow-hidden">
+              <iframe
+                src="https://open.spotify.com/embed/artist/6ON7p79Y2e0QqLaxkYXHA?utm_source=generator"
+                width="100%"
+                height="352"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                className="rounded-xl"
+                title="Spotify Player"
+              />
+            </div>
+          </div>
+
+          {/* Apple Music Embed */}
+          <div className="rounded-2xl border border-[#FC3C44]/10 bg-[#FC3C44]/[0.03] p-6 hover:border-[#FC3C44]/20 transition-all duration-500">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 rounded-lg bg-[#FC3C44]/10">
+                <AppleMusicIcon className="w-5 h-5 text-[#FC3C44]" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-foreground">Apple Music</h3>
+                <p className="text-[11px] text-foreground/30">@itsmawja</p>
+              </div>
+              <a href="https://music.apple.com/profile/itsmawja" target="_blank" rel="noopener noreferrer"
+                className="ml-auto flex items-center gap-1 text-xs text-[#FC3C44] hover:underline font-medium">
+                {locale === "ar" ? "افتح في أبل ميوزك" : locale === "fr" ? "Ouvrir Apple Music" : "Open in Apple Music"} <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+            <div className="rounded-xl overflow-hidden">
+              <iframe
+                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                frameBorder="0"
+                height="450"
+                style={{ width: "100%", maxWidth: "660px", overflow: "hidden", borderRadius: "12px" }}
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                src="https://embed.music.apple.com/us/playlist/mawja/pl.u-yZyVEWNi1GbY6dD"
+                title="Apple Music Player"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* ===== FEATURED RELEASES TABS ===== */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-[2px] flex-1 bg-gradient-to-r from-purple-500/30 to-transparent" />
+            <h2 className="text-2xl font-bold text-foreground whitespace-nowrap flex items-center gap-2">
+              <Disc3 className="w-5 h-5 text-purple-500/60" />
+              {locale === "ar" ? "الإصدارات" : locale === "fr" ? "Sorties" : "Releases"}
+            </h2>
+            <div className="h-[2px] flex-1 bg-gradient-to-l from-purple-500/30 to-transparent" />
+          </div>
+
+          <div className="flex gap-2 mb-6">
+            <button
+              onClick={() => setActiveTab("kakashi")}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                activeTab === "kakashi"
+                  ? "bg-primary/10 border border-primary/20 text-primary shadow-lg shadow-primary/5"
+                  : "border border-border/20 bg-card/10 text-foreground/40 hover:text-foreground/60"
+              }`}
+            >
+              <Disc3 className="w-4 h-4" /> KAKASHI <span className="text-[10px] opacity-50">2022</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("rockstar")}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                activeTab === "rockstar"
+                  ? "bg-purple-500/10 border border-purple-500/20 text-purple-400 shadow-lg shadow-purple-500/5"
+                  : "border border-border/20 bg-card/10 text-foreground/40 hover:text-foreground/60"
+              }`}
+            >
+              <Sparkles className="w-4 h-4" /> Rockstar <span className="text-[10px] opacity-50">2026</span>
+            </button>
+          </div>
+
+          {/* KAKASHI */}
+          {activeTab === "kakashi" && (
+            <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-primary/10 bg-gradient-to-br from-primary/10 via-purple-500/5 to-transparent">
+              <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                <div className="relative flex-shrink-0">
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary to-purple-600 blur-2xl opacity-30 animate-pulse-slow"></div>
+                  <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-3xl bg-gradient-to-br from-primary via-purple-500 to-secondary p-[2px]">
+                    <div className="w-full h-full rounded-3xl bg-gray-900 flex items-center justify-center overflow-hidden">
+                      <Disc3 className="w-20 h-20 text-white/60 animate-spin-slow" />
+                    </div>
+                  </div>
+                </div>
+                <div className="text-center md:text-left flex-1">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 text-primary text-[10px] font-bold uppercase tracking-widest mb-4 border border-primary/20">
+                    <Disc3 className="w-3 h-3" /> EP · 2022
+                  </span>
+                  <h3 className="text-3xl sm:text-4xl font-black text-foreground mb-3">KAKASHI</h3>
+                  <p className="text-foreground/40 text-sm mb-6 max-w-sm">
+                    {locale === "ar" ? "أول EP لموجا — بداية جديدة في مسيرته الفنية" : locale === "fr" ? "Premier EP de Mawja — un nouveau départ artistique" : "Mawja's debut EP — marking the beginning of his return to music"}
+                  </p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {[
+                      { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@itsmawja", icon: YouTubeIcon, primary: true },
+                      { label: locale === "ar" ? "ساوند كلاود" : "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon, primary: false },
+                      { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, primary: false },
+                    ].map((b) => (
+                      <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs transition-all duration-300 hover:scale-105 ${
+                          b.primary ? "bg-red-600 text-white shadow-lg shadow-red-600/20 hover:bg-red-500" : "border border-border/30 bg-card/30 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-primary/30"}`}>
+                        <b.icon /> {b.label}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
+            </div>
+          )}
 
-              <div className="text-center md:text-left flex-1">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 text-primary text-[10px] font-bold uppercase tracking-widest mb-4 border border-primary/20">
-                  <Disc3 className="w-3 h-3" /> EP · 2022
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-3">KAKASHI</h2>
-                <p className="text-foreground/40 text-sm mb-6 max-w-sm">
-                  {locale === "ar" ? "أول EP لموجا — بداية جديدة" : locale === "fr" ? "Premier EP de Mawja — un nouveau départ" : "Mawja's debut EP — a new beginning"}
-                </p>
-                <div className="flex flex-wrap gap-2.5">
-                  {[
-                    { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@MujaOfficiel", icon: YouTubeIcon, primary: true },
-                    { label: locale === "ar" ? "ساوند كلاود" : "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon, primary: false },
-                    { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, primary: false },
-                  ].map((b) => (
-                    <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs transition-all duration-300 hover:scale-105 ${
-                        b.primary ? "bg-red-600 text-white shadow-lg shadow-red-600/20 hover:bg-red-500" : "border border-border/30 bg-card/30 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-primary/30"}`}>
-                      <b.icon /> {b.label}
-                    </a>
-                  ))}
+          {/* ROCKSTAR */}
+          {activeTab === "rockstar" && (
+            <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-purple-500/15 bg-gradient-to-br from-purple-500/10 via-violet-500/5 to-transparent">
+              <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4"></div>
+              <div className="absolute bottom-0 right-0 w-56 h-56 bg-violet-500/10 rounded-full blur-3xl translate-y-1/2 translate-x-1/4"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-pink-500/5 rounded-full blur-2xl animate-pulse-slow"></div>
+
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                <div className="relative flex-shrink-0">
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-500 via-violet-500 to-pink-500 blur-2xl opacity-30 animate-pulse-slow"></div>
+                  <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-3xl bg-gradient-to-br from-purple-500 via-violet-500 to-pink-500 p-[2px]">
+                    <div className="w-full h-full rounded-3xl bg-gray-900 flex items-center justify-center overflow-hidden">
+                      <Sparkles className="w-16 h-16 text-purple-400/60" />
+                    </div>
+                  </div>
+                  <span className="absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-40"></span>
+                    <span className="relative inline-flex rounded-full h-6 w-6 bg-purple-500"></span>
+                  </span>
+                </div>
+                <div className="text-center md:text-left flex-1">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/15 text-purple-400 text-[10px] font-bold uppercase tracking-widest mb-4 border border-purple-500/20">
+                    <Disc3 className="w-3 h-3" /> EP · 2026
+                  </span>
+                  <h3 className="text-3xl sm:text-4xl font-black text-foreground mb-3">Rockstar</h3>
+                  <p className="text-foreground/40 text-sm mb-6 max-w-sm">
+                    {locale === "ar"
+                      ? "EP الثاني لموجا — فصل جديد، صوت أكبر، تعبير أعمق. يصدر قريباً."
+                      : locale === "fr"
+                        ? "Le deuxième EP de Mawja — un nouveau chapitre, un son plus grand, une expression plus profonde. Sortie prochaine."
+                        : "Mawja's second EP — the next chapter. Bigger sound, deeper expression. Releasing soon."}
+                  </p>
+                  <div className="flex flex-wrap gap-2.5 mb-4">
+                    {[
+                      { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon },
+                      { label: locale === "ar" ? "أبل ميوزك" : "Apple Music", url: "https://music.apple.com/profile/itsmawja", icon: AppleMusicIcon },
+                      { label: locale === "ar" ? "ساوند كلاود" : "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon },
+                      { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@itsmawja", icon: YouTubeIcon },
+                    ].map((b) => (
+                      <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/20 backdrop-blur-sm text-foreground/45 hover:text-foreground hover:border-purple-500/30 font-medium text-xs transition-all duration-300 hover:scale-105">
+                        <b.icon className="w-3.5 h-3.5" /> {b.label}
+                      </a>
+                    ))}
+                  </div>
+                  <p className="text-[11px] text-foreground/25 font-light italic">
+                    {locale === "ar"
+                      ? "* الروابط سيتم تحديثها عند إصدار EP"
+                      : locale === "fr"
+                        ? "* Les liens seront mis à jour à la sortie de l'EP"
+                        : "* Links will be updated when the EP drops"}
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* ===== VIDEOS GRID ===== */}
@@ -186,10 +341,10 @@ export function MusicContent({ locale, t }: MusicContentProps) {
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-foreground">{locale === "ar" ? "الفيديوهات" : locale === "fr" ? "Vidéos" : "Videos"}</h2>
-                <p className="text-sm text-foreground/40">@MujaOfficiel</p>
+                <p className="text-sm text-foreground/40">@itsmawja</p>
               </div>
             </div>
-            <a href="https://www.youtube.com/@MujaOfficiel" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.youtube.com/@itsmawja" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-xs text-red-400 hover:text-red-300 font-medium transition-colors">
               {locale === "ar" ? "القناة" : locale === "fr" ? "Chaîne" : "Channel"} <ExternalLink className="w-3 h-3" />
             </a>
@@ -219,7 +374,9 @@ export function MusicContent({ locale, t }: MusicContentProps) {
         {/* ===== FOOTER PLATFORMS ===== */}
         <div className="text-center py-12 rounded-3xl border border-primary/5 bg-gradient-to-b from-primary/[0.03] to-transparent">
           <Music2 className="w-8 h-8 text-primary/15 mx-auto mb-4" />
-          <p className="text-sm text-foreground/30 mb-6">{locale === "ar" ? "قريباً على جميع المنصات" : locale === "fr" ? "Bientôt sur toutes les plateformes" : "Coming to All Platforms"}</p>
+          <p className="text-sm text-foreground/30 mb-6">
+            {locale === "ar" ? "استمع على جميع المنصات — قريباً" : locale === "fr" ? "Écoutez sur toutes les plateformes — bientôt" : "Listen on all platforms — coming soon"}
+          </p>
           <div className="flex flex-wrap justify-center gap-2">
             {streamingPlatforms.map((p) => (
               <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"

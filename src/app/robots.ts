@@ -49,6 +49,11 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
       {
+        userAgent: "Claude-Search",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
         userAgent: "anthropic-ai",
         allow: "/",
         disallow: ["/api/"],
@@ -65,6 +70,51 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "cohere-ai",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Amazonbot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Applebot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "DuckAssistBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "YouBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "DuckDuckBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "YandexBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Baiduspider",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Twitterbot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "FacebookBot",
         allow: "/",
         disallow: ["/api/"],
       },

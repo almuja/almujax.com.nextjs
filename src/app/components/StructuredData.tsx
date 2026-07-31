@@ -8,6 +8,7 @@ export function PersonStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://itsmawja.com/#person",
     name: "Mujahid Siyam",
     alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
     birthDate: "1991-09-23",
@@ -15,13 +16,29 @@ export function PersonStructuredData() {
       "@type": "Place",
       name: "Sudan",
     },
+    homeLocation: {
+      "@type": "Place",
+      name: "France",
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 46.603354,
+        longitude: 1.888334,
+      },
+    },
     description:
       "Mujahid Siyam (Mawja / itsmawja / موجا) is a Software Engineer, AI Engineer, Network Engineer, Cloud Architect, DevSecOps professional, Linux & Windows Systems Administrator, and Music Artist, born September 23, 1991 in Sudan. He started music at age 16, building successful bands before relocating to France. He then transitioned into software engineering, AI engineering, cloud architecture, and systems administration, building production systems and managing infrastructure with technologies like Rust, TypeScript, Python, Terraform, Ansible, Docker, Kubernetes, AWS, PostgreSQL, MySQL, NixOS, and more. In 2022, he returned to music production, releasing his debut EP 'KAKASHI' under the name Mawja. His next EP 'Rockstar' is set for release in August 2026. Today, Mawja bridges both worlds — engineering and music — through Zaroxi Studio while based in France, working globally. " +
       enMusicDescription +
       " " +
       arDescription,
     url: "https://itsmawja.com",
-    image: "https://itsmawja.com/img/profile.png",
+    image: {
+      "@type": "ImageObject",
+      "@id": "https://itsmawja.com/#person-image",
+      url: "https://itsmawja.com/img/profile.png",
+      caption: "Mujahid Siyam (Mawja)",
+      width: 1200,
+      height: 630,
+    },
     email: "hello@itsmawja.com",
     sameAs: [
       "https://github.com/itsmawja",
@@ -40,6 +57,7 @@ export function PersonStructuredData() {
       "AI Engineer",
       "DevSecOps Engineer",
       "Network Engineer",
+      "Cloud Architect",
       "Systems Administrator",
       "Music Artist",
       "مهندس برمجيات",
@@ -55,6 +73,7 @@ export function PersonStructuredData() {
     ],
     worksFor: {
       "@type": "Organization",
+      "@id": "https://itsmawja.com/#org",
       name: "Zaroxi Studio",
       url: "https://itsmawja.com",
     },
@@ -103,13 +122,45 @@ export function PersonStructuredData() {
       "راب عربي",
       "راب سوداني",
       "هيب هوب سوداني",
-      "Music Production",
     ],
-    knowsLanguage: ["Arabic", "English", "French", "العربية", "English", "français"],
+    knowsLanguage: ["Arabic", "English", "French"],
     nationality: {
       "@type": "Country",
-      name: "France",
+      name: "Sudan",
     },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function OrganizationStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://itsmawja.com/#org",
+    name: "Zaroxi Studio",
+    url: "https://itsmawja.com",
+    description:
+      "Zaroxi Studio is the software development and creative technology company founded by Mujahid Siyam (Mawja). Building AI-first systems, developer tools, and creative technology solutions.",
+    logo: "https://itsmawja.com/img/profile.png",
+    image: "https://itsmawja.com/img/profile.png",
+    email: "hello@itsmawja.com",
+    foundingDate: "2023",
+    founder: {
+      "@type": "Person",
+      "@id": "https://itsmawja.com/#person",
+      name: "Mujahid Siyam",
+      url: "https://itsmawja.com",
+    },
+    sameAs: [
+      "https://github.com/itsmawja",
+      "https://linkedin.com/in/itsmawja",
+    ],
   };
 
   return (
@@ -124,15 +175,23 @@ export function WebSiteStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://itsmawja.com/#website",
     name: "Mawja — Mujahid Siyam | itsmawja.com",
     url: "https://itsmawja.com",
     description:
-      "Official source of truth for Mujahid Siyam (Mawja), a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist (Arabic Rap, Sudanese Rap) building AI-first systems and creative technology. الموقع الرسمي لمجاهد سيام.",
+      "Official website of Mujahid Siyam (Mawja). Software Engineer, AI Engineer, Network Engineer, Cloud Architect, DevSecOps professional, Systems Administrator, and Music Artist. Projects, technical writing, and original music. Rockstar EP coming August 2026.",
     inLanguage: ["en", "ar", "fr"],
     about: {
       "@type": "Person",
+      "@id": "https://itsmawja.com/#person",
       name: "Mujahid Siyam",
       alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
+      url: "https://itsmawja.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": "https://itsmawja.com/#org",
+      name: "Zaroxi Studio",
       url: "https://itsmawja.com",
     },
     potentialAction: {
@@ -160,8 +219,6 @@ export function ArticleStructuredData({
   dateModified,
   image,
   url,
-  authorName,
-  authorUrl,
 }: {
   title: string;
   description: string;
@@ -175,6 +232,7 @@ export function ArticleStructuredData({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${url}#article`,
     headline: title,
     description: description,
     datePublished: datePublished,
@@ -182,15 +240,18 @@ export function ArticleStructuredData({
     image: image || "https://itsmawja.com/img/profile.png",
     url: url,
     inLanguage: "en",
+    isAccessibleForFree: true,
     author: {
       "@type": "Person",
+      "@id": "https://itsmawja.com/#person",
       name: "Mujahid Siyam",
       alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
       url: "https://itsmawja.com",
     },
     publisher: {
-      "@type": "Person",
-      name: "Mujahid Siyam",
+      "@type": "Organization",
+      "@id": "https://itsmawja.com/#org",
+      name: "Zaroxi Studio",
       url: "https://itsmawja.com",
     },
     mainEntityOfPage: {
@@ -225,9 +286,17 @@ export function SoftwareSourceCodeStructuredData({
   const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
+    "@id": `${url}#code`,
     name,
     description,
     url,
+    author: {
+      "@type": "Person",
+      "@id": "https://itsmawja.com/#person",
+      name: "Mujahid Siyam",
+      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
+      url: "https://itsmawja.com",
+    },
   };
 
   if (codeRepository) {
@@ -242,13 +311,6 @@ export function SoftwareSourceCodeStructuredData({
     structuredData.programmingLanguage = programmingLanguage;
   }
 
-  structuredData.author = {
-    "@type": "Person",
-    name: "Mujahid Siyam",
-    alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
-    url: "https://itsmawja.com",
-  };
-
   return (
     <script
       type="application/ld+json"
@@ -261,10 +323,11 @@ export function MusicArtistStructuredData() {
   const musicSchema = {
     "@context": "https://schema.org",
     "@type": "MusicGroup",
+    "@id": "https://itsmawja.com/music#artist",
     name: "Mawja",
     alternateName: ["Mawja", "موجة", "itsmawja"],
     description:
-      "Mawja (موجة) is the music artist name of Mujahid Siyam — born September 23, 1991 in Sudan. He started music at age 16, created successful bands, then moved to France. After a break for software engineering, he returned to music in 2022 with his debut EP 'KAKASHI'. His next EP 'Rockstar' is scheduled for release in August 2026. Arabic Rap and Sudanese Rap artist. He bridges both technology and music, working as a software and AI engineer while continuing his artistic journey.",
+      "Mawja (موجة) is the music artist name of Mujahid Siyam — born September 23, 1991 in Sudan. He started music at age 16, created successful bands, then moved to France. After a break for software engineering, he returned to music in 2022 with his debut EP 'KAKASHI'. His next EP 'Rockstar' is scheduled for release in August 2026. Arabic Rap and Sudanese Rap artist.",
     url: "https://itsmawja.com/music",
     image: "https://itsmawja.com/img/profile.png",
     foundingDate: "2022",
@@ -272,15 +335,19 @@ export function MusicArtistStructuredData() {
     album: [
       {
         "@type": "MusicAlbum",
+        "@id": "https://itsmawja.com/music#kakashi",
         name: "KAKASHI",
         datePublished: "2022",
         albumProductionType: "https://schema.org/EP",
+        url: "https://itsmawja.com/music",
       },
       {
         "@type": "MusicAlbum",
+        "@id": "https://itsmawja.com/music#rockstar",
         name: "Rockstar",
         datePublished: "2026-08",
         albumProductionType: "https://schema.org/EP",
+        url: "https://itsmawja.com/music",
       },
     ],
     sameAs: [
@@ -294,6 +361,7 @@ export function MusicArtistStructuredData() {
     ],
     founder: {
       "@type": "Person",
+      "@id": "https://itsmawja.com/#person",
       name: "Mujahid Siyam",
       alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
       url: "https://itsmawja.com",

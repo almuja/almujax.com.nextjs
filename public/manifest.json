@@ -1,21 +1,63 @@
 {
   "name": "Mawja — Mujahid Siyam | itsmawja.com",
-  "short_name": "itsmawja.com",
-  "description": "Official source of truth for Mujahid Siyam (Mawja (Mujahid Siyam)) — Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology.",
+  "short_name": "Mawja",
+  "description": "Official website of Mujahid Siyam (Mawja). Software Engineer, AI Engineer, Cloud Architect, DevSecOps, and Music Artist. Projects, writing, and original music.",
   "start_url": "/",
+  "scope": "/",
+  "id": "itsmawja-pwa",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0a0a0a",
+  "orientation": "any",
+  "lang": "en",
+  "dir": "ltr",
+  "background_color": "#fafafa",
+  "theme_color": "#09090b",
+  "categories": ["technology", "music", "portfolio", "software"],
   "icons": [
     {
       "src": "/img/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/img/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/img/profile.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Homepage of itsmawja.com"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Read articles",
+      "url": "/en/blog",
+      "icons": [{ "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "View open source projects",
+      "url": "/en/projects",
+      "icons": [{ "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Music",
+      "short_name": "Music",
+      "description": "Listen to music",
+      "url": "/en/music",
+      "icons": [{ "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
