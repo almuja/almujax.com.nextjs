@@ -1411,6 +1411,23 @@ pre [data-line] {
   box-shadow: 
     0 1px 3px rgba(0, 0, 0, 0.04),
     0 4px 12px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-premium::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  transition: transform 0.8s ease-out;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.card-premium:hover::after {
+  transform: translateX(100%);
 }
 
 .card-premium:hover {

@@ -94,9 +94,8 @@ export default async function BlogPage({
 
   return (
     <div className="min-h-screen" dir={validLocale === "ar" ? "rtl" : "ltr"}>
-      {/* Hero Header with background */}
+      {/* Hero Header */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Animated background orbs */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full bg-[var(--color-wave-1)] opacity-[0.04] blur-[140px] animate-pulse-slow" />
           <div className="absolute top-[20%] right-[10%] w-[400px] h-[300px] rounded-full bg-[var(--color-wave-3)] opacity-[0.03] blur-[100px] animate-pulse-slow animation-delay-2000" />
@@ -104,24 +103,20 @@ export default async function BlogPage({
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 text-center">
-          {/* Subtle label */}
-          <div className="hero-enter inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/60 mb-8">
-            Blog
+          <div className="hero-enter inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/5 border border-amber-500/10 text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-500/60 mb-8">
+            {dict.blog.heroSubtitle}
           </div>
 
-          {/* Main title - gradient */}
           <h1 className="hero-enter text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">
             <span className="wave-gradient-text">
               {dict.blog.heroTitle}
             </span>
           </h1>
 
-          {/* Description */}
-          <p className="hero-enter text-sm sm:text-base text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
+          <p className="hero-enter text-base sm:text-lg text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
             {dict.blog.heroDescription}
           </p>
 
-          {/* Decorative line */}
           <div className="hero-enter mt-10 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
         </div>
       </section>

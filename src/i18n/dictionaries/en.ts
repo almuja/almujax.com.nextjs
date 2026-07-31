@@ -305,6 +305,7 @@ const en = {
       "Underground Rap", "Rap Artist", "Music Producer",
       "Infrastructure as Code", "Cloud Infrastructure",
       "Network Architecture", "Systems Programming",
+      "Zaroxi", "Zaroxi Studio", "Zaroxi IDE", "GPU rendering", "wgpu", "AI-first editor",
     ],
     dcSubject:
       "Software Engineering, Artificial Intelligence, AI Engineer, Rust Developer, Network Engineer, Systems Administrator, Linux, Windows Server, DevSecOps, Music Artist, Arabic Rap, Sudanese Rap, Sudanese Rapper, Sudanese Hip Hop, Arabic Hip Hop, Underground Rap, Rap Artist, Music Producer, Sound Engineer, Programming, Terraform, Ansible, PostgreSQL, MySQL, NixOS",

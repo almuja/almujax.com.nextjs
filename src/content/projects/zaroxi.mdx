@@ -1,0 +1,105 @@
+---
+title: "Zaroxi Studio - AI-First Rust IDE"
+description: "An AI-first, pure-Rust editor and IDE platform with a native GPU-rendered desktop shell. No Electron, no web view — 145 crates of layered architecture built from scratch."
+image: /projects/zaroxi/zaroxi.png
+date: "2026-07-31"
+category: "Developer Tools"
+tags: ["rust", "editor", "gpu", "wgpu", "ai", "ide", "open-source", "vello", "tree-sitter", "systems-programming"]
+githubUrl: "https://github.com/ZaroxiHQ/zaroxi"
+featured: true
+language: "Rust"
+languageColor: "#dea584"
+---
+
+# Zaroxi Studio — AI-First Rust IDE
+
+<div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap">
+  <img src="https://github.com/ZaroxiHQ/zaroxi/actions/workflows/linux.yml/badge.svg" alt="Linux" />
+  <img src="https://github.com/ZaroxiHQ/zaroxi/actions/workflows/macos.yml/badge.svg" alt="macOS" />
+  <img src="https://github.com/ZaroxiHQ/zaroxi/actions/workflows/windows.yml/badge.svg" alt="Windows" />
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT" />
+  <img src="https://img.shields.io/github/stars/ZaroxiHQ/zaroxi?style=flat" alt="Stars" />
+  <img src="https://img.shields.io/github/last-commit/ZaroxiHQ/zaroxi" alt="Last commit" />
+</div>
+
+<div style="display: flex; justify-content: center; gap: 8px; margin-top: 8px; flex-wrap: wrap">
+  <img src="https://img.shields.io/badge/Rust-unsafe_forbidden-orange.svg" alt="unsafe forbidden" />
+  <img src="https://img.shields.io/badge/rendering-GPU%20native-blue.svg" alt="GPU native" />
+  <img src="https://img.shields.io/badge/crates-145%2B-purple.svg" alt="crates" />
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" />
+</div>
+
+![Zaroxi Studio](/projects/zaroxi/zaroxi.png)
+
+*GPU-rendered from scratch — no Electron, no web view.*
+
+Most AI editors wrap a chatbot around VS Code's Electron shell. **Zaroxi renders every pixel itself** — the editor, the AI cockpit, and the layered 145-crate architecture are built for AI-native workflows from the kernel up, not bolted on afterward.
+
+## What it is
+
+Zaroxi Studio is a native code editor built as a layered Rust workspace — drawn end to end on the GPU using **winit**, **wgpu**, **vello**, and **cosmic-text**. A dedicated intelligence layer and application-owned AI service ports sit alongside the editor engine, so AI is part of the architecture rather than an add-on.
+
+## Why it matters
+
+- **AI-first by design** — a dedicated intelligence layer (agents, planning, context, memory, tools, safety) and application-owned AI service ports with inline-AI primitives in the editor core.
+- **Native, not a web wrapper** — the desktop shell renders entirely through Rust GPU crates. No web view, no JavaScript runtime, no embedded browser.
+- **Crate-first and layered** — strict `Kernel → Core → Domain → Application → Interface` boundaries keep the engine, orchestration, and UI independently testable.
+- **Real editor foundations** — GPU text rendering, transactional buffers, piece-table backend for large files, and Tree-sitter highlighting from pinned grammars.
+- **Engineered for trust** — `unsafe` is forbidden by policy (`forbid(unsafe_code)`), cross-platform CI, and `cargo-audit` / `cargo-deny` / CodeQL in the pipeline.
+
+## How it compares
+
+| | Zaroxi Studio | VS Code + Copilot | Cursor | Zed |
+|---|---|---|---|---|
+| **Rendering** | Native GPU (wgpu) | Electron / Chromium | Electron / Chromium | Native GPU |
+| **Language** | Rust (unsafe-forbidden) | TypeScript + native | TypeScript + native | Rust |
+| **AI approach** | First-class intelligence layer | Extension (Copilot) | Built-in (closed) | Built-in |
+| **Open source** | Yes (MIT) | Partial | No | Yes (GPL) |
+
+## Current status
+
+| Feature | Status |
+|---|---|
+| Core text editing | Working — GPU rendering, buffers, undo |
+| Large file support | Working — piece-table for files ≥ 1 MB |
+| Syntax highlighting | Working — Tree-sitter (Rust, TOML, Markdown, Nix) |
+| Git integration | In progress — line-level diff engine |
+| AI cockpit | In progress — panel and context building |
+| LSP support | Planned |
+| Extensions / plugins | Planned |
+
+## Architecture
+
+```text
+apps/                    # runnable binaries (desktop harness)
+crates/
+  zaroxi-kernel-*        # IDs, traits, primitives
+  zaroxi-core-*          # editor, engine, and rendering
+  zaroxi-domain-*        # value objects and models
+  zaroxi-application-*   # orchestration and use cases
+  zaroxi-interface-*     # desktop shell, GPU draw, layout
+  zaroxi-intelligence-*  # agents, planning, context, memory, tools
+```
+
+## Quick start
+
+```bash
+git clone https://github.com/ZaroxiHQ/zaroxi.git
+cd zaroxi
+cargo run -p zaroxi-interface-desktop --bin gui_shell
+```
+
+The first build compiles the workspace dependency graph and takes a few minutes. Subsequent builds are incremental and fast.
+
+## Built with
+
+- [**wgpu**](https://github.com/gfx-rs/wgpu) — cross-platform GPU access
+- [**vello**](https://github.com/linebender/vello) — GPU 2D vector rendering
+- [**winit**](https://github.com/rust-windowing/winit) — windowing
+- [**cosmic-text**](https://github.com/pop-os/cosmic-text) — text shaping and layout
+- [**tree-sitter**](https://github.com/tree-sitter/tree-sitter) — incremental parsing
+- [**tokio**](https://github.com/tokio-rs/tokio) — async runtime
+
+---
+
+I'm building Zaroxi Studio through **[Zaroxi Studio](https://zaroxistudio.com)** — my company for software development, AI engineering, and developer tools. If you're interested in Rust systems programming, GPU rendering, or AI-native developer tools, star the repo to follow progress. Forks and PRs are welcome.

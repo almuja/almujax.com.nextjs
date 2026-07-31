@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExternalLink, Code2, GitFork, Calendar, ArrowRight, Pin } from "lucide-react";
+import { ExternalLink, Code2, GitFork, Calendar, ArrowRight, Pin, Sparkles } from "lucide-react";
 import { join } from "path";
 import { promises as fs } from "fs";
 import type { Metadata } from "next";
@@ -114,15 +114,16 @@ export default async function ProjectsPage({
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 text-center">
-          <div className="hero-enter inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/60 mb-8">
-            {t.projects.work}
+          <div className="hero-enter inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/5 border border-sky-500/10 text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-500/60 mb-8">
+            <Sparkles className="w-3 h-3" />
+            {t.projects.heroSubtitle}
           </div>
           <h1 className="hero-enter text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">
             <span className="wave-gradient-text">
               {t.projects.heroTitle}
             </span>
           </h1>
-          <p className="hero-enter text-sm sm:text-base text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
+          <p className="hero-enter text-base sm:text-lg text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
             {t.projects.heroDescription}
           </p>
           <div className="hero-enter mt-10 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
@@ -134,11 +135,14 @@ export default async function ProjectsPage({
         {/* Pinned Projects */}
         {featuredProjects.length > 0 && (
           <section className="mb-20">
-            <div className="flex items-center gap-2 mb-8">
-              <Pin className="w-3.5 h-3.5 text-primary/40" />
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">
-                {t.projects.pinned}
-              </span>
+            <div className="flex items-center gap-3 mb-10">
+              <div className="p-2 rounded-xl bg-amber-500/5 border border-amber-500/10">
+                <Pin className="w-3.5 h-3.5 text-amber-500/50" />
+              </div>
+              <div>
+                <span className="text-sm font-bold text-foreground">{t.projects.pinned}</span>
+              </div>
+              <div className="flex-1 h-px bg-gradient-to-r from-amber-500/10 to-transparent" />
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -153,10 +157,14 @@ export default async function ProjectsPage({
         {regularProjects.length > 0 && (
           <section>
             {featuredProjects.length > 0 && (
-              <div className="flex items-center gap-2 mb-8">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">
+              <div className="flex items-center gap-3 mb-10">
+                <div className="p-2 rounded-xl bg-sky-500/5 border border-sky-500/10">
+                  <Code2 className="w-3.5 h-3.5 text-sky-500/50" />
+                </div>
+                <span className="text-sm font-bold text-foreground">
                   {t.projects.allProjects}
                 </span>
+                <div className="flex-1 h-px bg-gradient-to-r from-sky-500/10 to-transparent" />
               </div>
             )}
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -180,13 +188,15 @@ export default async function ProjectsPage({
 function ProjectCard({ project, locale, t, featured }: { project: Project; locale: string; t: Dictionary; featured?: boolean }) {
   return (
     <Link href={`/${locale}/projects/${project.slug}`} className="group block">
-      <article className={`relative h-full overflow-hidden border transition-all duration-500 flex flex-col ${
+      <article className={`relative h-full overflow-hidden border transition-all duration-700 group flex flex-col hover:-translate-y-1 ${
         featured
-          ? "rounded-2xl border-border/50 bg-background hover:border-primary/15 hover:shadow-2xl hover:shadow-primary/[0.04]"
-          : "rounded-xl border-border/40 bg-background hover:border-primary/10 hover:shadow-lg hover:shadow-primary/[0.03]"
+          ? "rounded-2xl border-border/20 bg-card/10 backdrop-blur-sm hover:border-primary/25 hover:shadow-2xl hover:shadow-primary/[0.04]"
+          : "rounded-xl border-border/15 bg-card/5 backdrop-blur-sm hover:border-primary/15 hover:shadow-lg hover:shadow-primary/[0.03]"
       }`}>
+        {/* Shine sweep */}
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none z-20" />
         {/* Image or gradient placeholder */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-muted/20">
+        <div className="relative aspect-[16/10] overflow-hidden">
           {project.image ? (
             <img
               src={project.image}
@@ -194,14 +204,17 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 flex items-center justify-center">
-              <span className="text-3xl font-black text-primary/20 tracking-tighter">
-                {project.title.split(" ").map((w) => w[0]).join("").slice(0, 3)}
-              </span>
+            <div className="relative w-full h-full bg-gradient-to-br from-muted/40 via-muted/20 to-muted/10 flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/[0.05] via-transparent to-secondary/[0.05] opacity-50" />
+              <div className="relative">
+                <span className="text-4xl font-black text-foreground/10 tracking-tighter select-none">
+                  {project.title.split("").slice(0, 3).join("")}
+                </span>
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+              </div>
             </div>
           )}
-          {/* Hover overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
 
         <div className={`flex flex-col flex-1 ${featured ? "p-6" : "p-5"}`}>
@@ -216,7 +229,7 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
             {project.category && (
               <>
                 <span className="text-foreground/10">·</span>
-                <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-primary/40">{project.category}</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-primary/50">{project.category}</span>
               </>
             )}
             {project.forks !== undefined && project.forks > 0 && (
@@ -226,35 +239,32 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
             )}
           </div>
 
-          {/* Title */}
-          <h2 className={`font-bold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-1 mb-2 leading-snug ${featured ? "text-base" : "text-sm"}`}>
+          <h2 className={`font-bold text-foreground group-hover:text-primary/80 transition-colors duration-300 line-clamp-1 mb-2 leading-snug ${featured ? "text-base" : "text-sm"}`}>
             {project.title}
           </h2>
 
-          {/* Description */}
           <p className="text-xs text-foreground/30 leading-relaxed line-clamp-2 flex-1">
             {project.description}
           </p>
 
-          {/* Tags + Footer */}
-          <div className="mt-4 pt-4 border-t border-border/20">
+          <div className="mt-4 pt-4 border-t border-border/10">
             {project.tags && project.tags.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-3">
-                {project.tags.slice(0, 3).map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 text-[10px] bg-muted text-foreground/40 rounded-md">
+                {project.tags.slice(0, 4).map((tag) => (
+                  <span key={tag} className="px-2.5 py-1 text-[10px] bg-muted/30 text-foreground/35 border border-border/10 rounded-lg font-medium">
                     {tag}
                   </span>
                 ))}
-                {project.tags.length > 3 && (
-                  <span className="px-2 py-0.5 text-[10px] text-foreground/20">+{project.tags.length - 3}</span>
+                {project.tags.length > 4 && (
+                  <span className="px-2.5 py-1 text-[10px] text-foreground/20 border border-border/10 rounded-lg">+{project.tags.length - 4}</span>
                 )}
               </div>
             )}
             <div className="flex items-center justify-between">
-              <span className="text-[11px] text-foreground/20 tabular-nums">
+              <span className="text-[10px] text-foreground/20 tabular-nums font-medium">
                 {project.date ? new Date(project.date).toLocaleDateString(locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US", { month: "short", year: "numeric" }) : ""}
               </span>
-              <span className="flex items-center gap-1 text-[11px] text-foreground/15 font-medium group-hover:text-primary transition-all duration-300">
+              <span className="flex items-center gap-1.5 text-[10px] text-foreground/15 font-semibold group-hover:text-primary/60 transition-all duration-300">
                 {t.projects.view}
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-300" />
               </span>
