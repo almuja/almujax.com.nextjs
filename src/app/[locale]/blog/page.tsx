@@ -113,7 +113,7 @@ export default async function BlogPage({
             </span>
           </h1>
 
-          <p className="hero-enter text-base sm:text-lg text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
+          <p className="hero-enter text-base sm:text-lg text-foreground/45 font-light leading-relaxed max-w-lg mx-auto">
             {dict.blog.heroDescription}
           </p>
 

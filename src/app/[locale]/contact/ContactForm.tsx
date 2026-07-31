@@ -87,7 +87,7 @@ export default function ContactForm({ locale, t }: ContactFormProps) {
           <h1 className="hero-enter text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">
             <span className="wave-gradient-text">{t.heading}</span>
           </h1>
-          <p className="hero-enter text-base sm:text-lg text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
+          <p className="hero-enter text-base sm:text-lg text-foreground/45 font-light leading-relaxed max-w-lg mx-auto">
             {t.subtitle}
           </p>
           <div className="hero-enter mt-10 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
@@ -128,9 +128,9 @@ export default function ContactForm({ locale, t }: ContactFormProps) {
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground transition-colors duration-300">{l.label}</span>
-                          <ArrowUpRight className="w-3 h-3 text-foreground/15 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0" />
+                          <ArrowUpRight className="w-3 h-3 text-foreground/25 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0" />
                         </div>
-                        <span className="block text-[11px] text-foreground/25 font-mono mt-0.5">{l.handle}</span>
+                        <span className="block text-[11px] text-foreground/35 font-mono mt-0.5">{l.handle}</span>
                       </div>
                     </a>
                   );
@@ -160,30 +160,30 @@ export default function ContactForm({ locale, t }: ContactFormProps) {
 
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="name" className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/30 mb-2.5">{t.formName}</label>
+                      <label htmlFor="name" className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/40 mb-2.5">{t.formName}</label>
                       <input type="text" id="name" name="name" required
-                        className="w-full px-5 py-3.5 bg-background/80 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/12 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] focus:bg-background transition-all duration-300"
+                        className="w-full px-5 py-3.5 bg-background/80 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] focus:bg-background transition-all duration-300"
                         placeholder={t.formNamePlaceholder} />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/30 mb-2.5">{t.formEmail}</label>
+                      <label htmlFor="email" className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/40 mb-2.5">{t.formEmail}</label>
                       <input type="email" id="email" name="email" required
-                        className="w-full px-5 py-3.5 bg-background/80 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/12 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] focus:bg-background transition-all duration-300"
+                        className="w-full px-5 py-3.5 bg-background/80 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] focus:bg-background transition-all duration-300"
                         placeholder={t.formEmailPlaceholder} />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject_line" className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/30 mb-2.5">{t.formSubject}</label>
+                    <label htmlFor="subject_line" className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/40 mb-2.5">{t.formSubject}</label>
                     <input type="text" id="subject_line" name="subject_line" required
-                      className="w-full px-5 py-3.5 bg-background/80 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/12 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] focus:bg-background transition-all duration-300"
+                      className="w-full px-5 py-3.5 bg-background/80 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] focus:bg-background transition-all duration-300"
                       placeholder={t.formSubjectPlaceholder} />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/30 mb-2.5">{t.formMessage}</label>
+                    <label htmlFor="message" className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/40 mb-2.5">{t.formMessage}</label>
                     <textarea id="message" name="message" required rows={6}
-                      className="w-full px-5 py-3.5 bg-background/80 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/12 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] focus:bg-background transition-all duration-300 resize-none"
+                      className="w-full px-5 py-3.5 bg-background/80 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] focus:bg-background transition-all duration-300 resize-none"
                       placeholder={t.formMessagePlaceholder} />
                   </div>
 

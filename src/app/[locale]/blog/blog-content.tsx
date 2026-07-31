@@ -74,18 +74,18 @@ export default function BlogContent({
       <div className="mb-20 space-y-8">
         <div className="max-w-md mx-auto">
           <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/15 group-focus-within:text-primary/40 transition-colors duration-300" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/25 group-focus-within:text-primary/40 transition-colors duration-300" />
             <input
               type="text"
               placeholder={dict.searchPlaceholder}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-11 py-3.5 bg-background/50 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/15 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] transition-all duration-300"
+              className="w-full pl-11 pr-11 py-3.5 bg-background/50 border border-border/40 rounded-2xl text-sm text-foreground placeholder:text-foreground/25 focus:outline-none focus:border-primary/30 focus:ring-4 focus:ring-primary/[0.04] transition-all duration-300"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg hover:bg-muted text-foreground/20 hover:text-foreground transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg hover:bg-muted text-foreground/30 hover:text-foreground transition-colors"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -124,7 +124,7 @@ export default function BlogContent({
           <div className="text-center">
             <button
               onClick={() => { setSearchQuery(""); setActiveCategory(null); }}
-              className="text-xs text-foreground/30 hover:text-foreground/60 transition-colors"
+              className="text-xs text-foreground/40 hover:text-foreground/60 transition-colors"
             >
               {dict.clearFilters}
             </button>
@@ -170,7 +170,7 @@ export default function BlogContent({
                       <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-amber-500/60 bg-amber-500/5 px-2.5 py-1 rounded-full border border-amber-500/10">
                         {post.category}
                       </span>
-                      <span className="ml-auto text-[10px] text-foreground/25 flex items-center gap-1">
+                      <span className="ml-auto text-[10px] text-foreground/35 flex items-center gap-1">
                         <Clock className="w-3 h-3" />
                         {post.readingTime}
                       </span>
@@ -178,16 +178,16 @@ export default function BlogContent({
                     <h2 className="text-base font-bold text-foreground group-hover:text-amber-500/80 transition-colors duration-300 line-clamp-2 mb-3 leading-snug">
                       {post.title}
                     </h2>
-                    <p className="text-[13px] text-foreground/35 leading-relaxed line-clamp-2 flex-1">
+                    <p className="text-[13px] text-foreground/45 leading-relaxed line-clamp-2 flex-1">
                       {post.description}
                     </p>
-                    <div className="mt-5 pt-4 border-t border-border/15 flex items-center justify-between">
-                      <span className="text-[11px] text-foreground/20 tabular-nums">
+                    <div className="mt-5 pt-4 border-t border-border/25 flex items-center justify-between">
+                      <span className="text-[11px] text-foreground/30 tabular-nums">
                         {new Date(post.date).toLocaleDateString(
                           locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US",
                           { month: "long", day: "numeric", year: "numeric" })}
                       </span>
-                      <span className="flex items-center gap-1 text-[11px] text-foreground/15 font-medium group-hover:text-amber-500/60 transition-all duration-300">
+                      <span className="flex items-center gap-1 text-[11px] text-foreground/25 font-medium group-hover:text-amber-500/60 transition-all duration-300">
                         {dict.read}
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-300" />
                       </span>
@@ -239,7 +239,7 @@ export default function BlogContent({
                       <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-primary/40">
                         {post.category}
                       </span>
-                      <span className="ml-auto text-[10px] text-foreground/20 flex items-center gap-1">
+                      <span className="ml-auto text-[10px] text-foreground/30 flex items-center gap-1">
                         <Clock className="w-3 h-3" />
                         {post.readingTime}
                       </span>
@@ -247,11 +247,11 @@ export default function BlogContent({
                     <h3 className="text-sm font-semibold text-foreground group-hover:text-primary/80 transition-colors duration-300 line-clamp-2 mb-2 leading-snug">
                       {post.title}
                     </h3>
-                    <p className="text-xs text-foreground/30 leading-relaxed line-clamp-2 flex-1">
+                    <p className="text-xs text-foreground/40 leading-relaxed line-clamp-2 flex-1">
                       {post.description}
                     </p>
-                    <div className="mt-4 pt-3 border-t border-border/10">
-                      <span className="text-[11px] text-foreground/20 tabular-nums">
+                    <div className="mt-4 pt-3 border-t border-border/20">
+                      <span className="text-[11px] text-foreground/30 tabular-nums">
                         {new Date(post.date).toLocaleDateString(
                           locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US",
                           { month: "short", day: "numeric", year: "numeric" })}
@@ -265,7 +265,7 @@ export default function BlogContent({
         </>
       ) : (
         <div className="text-center py-24">
-          <p className="text-sm text-foreground/20 font-light">{dict.noPostsFound}</p>
+          <p className="text-sm text-foreground/30 font-light">{dict.noPostsFound}</p>
         </div>
       )}
     </>

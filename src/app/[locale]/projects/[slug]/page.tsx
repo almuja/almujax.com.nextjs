@@ -113,7 +113,7 @@ export default async function ProjectPage({
             <div className="hero-enter mb-10">
               <Link
                 href={`/${validLocale}/projects`}
-                className="inline-flex items-center gap-2 text-xs text-foreground/30 hover:text-foreground/60 transition-colors group"
+                className="inline-flex items-center gap-2 text-xs text-foreground/40 hover:text-foreground/60 transition-colors group"
               >
                 <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
                 {dict.projects.backToProjects}
@@ -128,7 +128,7 @@ export default async function ProjectPage({
                 </span>
               )}
               {project.date && (
-                <span className="flex items-center gap-1.5 text-[10px] text-foreground/25">
+                <span className="flex items-center gap-1.5 text-[10px] text-foreground/35">
                   <Clock className="w-3 h-3" />
                   {new Date(project.date).toLocaleDateString(validLocale === "ar" ? "ar-SA" : validLocale === "fr" ? "fr-FR" : "en-US", { month: "long", day: "numeric", year: "numeric" })}
                 </span>
@@ -141,7 +141,7 @@ export default async function ProjectPage({
             </h1>
 
             {/* Description */}
-            <p className="hero-enter text-sm sm:text-base text-foreground/35 font-light leading-relaxed max-w-2xl mb-10">
+            <p className="hero-enter text-sm sm:text-base text-foreground/45 font-light leading-relaxed max-w-2xl mb-10">
               {project.description}
             </p>
 
@@ -178,8 +178,8 @@ export default async function ProjectPage({
           {project.tags && project.tags.length > 0 && (
             <div className="mt-16 pt-8 border-t border-border/20">
               <div className="flex items-center gap-2 mb-5">
-                <Tag className="w-3.5 h-3.5 text-foreground/20" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">{dict.projects.technologiesUsed}</span>
+                <Tag className="w-3.5 h-3.5 text-foreground/30" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{dict.projects.technologiesUsed}</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (

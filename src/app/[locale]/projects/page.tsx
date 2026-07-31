@@ -123,7 +123,7 @@ export default async function ProjectsPage({
               {t.projects.heroTitle}
             </span>
           </h1>
-          <p className="hero-enter text-base sm:text-lg text-foreground/35 font-light leading-relaxed max-w-lg mx-auto">
+          <p className="hero-enter text-base sm:text-lg text-foreground/45 font-light leading-relaxed max-w-lg mx-auto">
             {t.projects.heroDescription}
           </p>
           <div className="hero-enter mt-10 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
@@ -177,7 +177,7 @@ export default async function ProjectsPage({
 
         {projects.length === 0 && (
           <div className="text-center py-24">
-            <p className="text-sm text-foreground/20 font-light">{t.projects.noProjects}</p>
+            <p className="text-sm text-foreground/30 font-light">{t.projects.noProjects}</p>
           </div>
         )}
       </main>
@@ -191,7 +191,7 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
       <article className={`relative h-full overflow-hidden border transition-all duration-700 group flex flex-col hover:-translate-y-1 ${
         featured
           ? "rounded-2xl border-border/20 bg-card/10 backdrop-blur-sm hover:border-primary/25 hover:shadow-2xl hover:shadow-primary/[0.04]"
-          : "rounded-xl border-border/15 bg-card/5 backdrop-blur-sm hover:border-primary/15 hover:shadow-lg hover:shadow-primary/[0.03]"
+          : "rounded-xl border-border/25 bg-card/5 backdrop-blur-sm hover:border-primary/15 hover:shadow-lg hover:shadow-primary/[0.03]"
       }`}>
         {/* Shine sweep */}
         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none z-20" />
@@ -221,7 +221,7 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
           {/* Meta row */}
           <div className="flex items-center gap-2 mb-3">
             {project.language && (
-              <span className="flex items-center gap-1.5 text-[10px] text-foreground/30">
+              <span className="flex items-center gap-1.5 text-[10px] text-foreground/40">
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: project.languageColor || "var(--color-primary)" }} />
                 {project.language}
               </span>
@@ -233,7 +233,7 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
               </>
             )}
             {project.forks !== undefined && project.forks > 0 && (
-              <span className="ml-auto flex items-center gap-1 text-[10px] text-foreground/25">
+              <span className="ml-auto flex items-center gap-1 text-[10px] text-foreground/35">
                 <GitFork className="w-3 h-3" /> {project.forks}
               </span>
             )}
@@ -243,28 +243,28 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
             {project.title}
           </h2>
 
-          <p className="text-xs text-foreground/30 leading-relaxed line-clamp-2 flex-1">
+          <p className="text-xs text-foreground/40 leading-relaxed line-clamp-2 flex-1">
             {project.description}
           </p>
 
-          <div className="mt-4 pt-4 border-t border-border/10">
+          <div className="mt-4 pt-4 border-t border-border/20">
             {project.tags && project.tags.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {project.tags.slice(0, 4).map((tag) => (
-                  <span key={tag} className="px-2.5 py-1 text-[10px] bg-muted/30 text-foreground/35 border border-border/10 rounded-lg font-medium">
+                  <span key={tag} className="px-2.5 py-1 text-[10px] bg-muted/30 text-foreground/45 border border-border/20 rounded-lg font-medium">
                     {tag}
                   </span>
                 ))}
                 {project.tags.length > 4 && (
-                  <span className="px-2.5 py-1 text-[10px] text-foreground/20 border border-border/10 rounded-lg">+{project.tags.length - 4}</span>
+                  <span className="px-2.5 py-1 text-[10px] text-foreground/30 border border-border/20 rounded-lg">+{project.tags.length - 4}</span>
                 )}
               </div>
             )}
             <div className="flex items-center justify-between">
-              <span className="text-[10px] text-foreground/20 tabular-nums font-medium">
+              <span className="text-[10px] text-foreground/30 tabular-nums font-medium">
                 {project.date ? new Date(project.date).toLocaleDateString(locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US", { month: "short", year: "numeric" }) : ""}
               </span>
-              <span className="flex items-center gap-1.5 text-[10px] text-foreground/15 font-semibold group-hover:text-primary/60 transition-all duration-300">
+              <span className="flex items-center gap-1.5 text-[10px] text-foreground/25 font-semibold group-hover:text-primary/60 transition-all duration-300">
                 {t.projects.view}
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-300" />
               </span>

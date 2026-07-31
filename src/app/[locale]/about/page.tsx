@@ -79,7 +79,7 @@ export default async function AboutPage({
           <h1 className="hero-enter text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">
             <span className="wave-gradient-text">{t.about.heading}</span>
           </h1>
-          <p className="hero-enter text-base sm:text-lg text-foreground/35 font-light max-w-2xl mx-auto">{t.about.roles}</p>
+          <p className="hero-enter text-base sm:text-lg text-foreground/45 font-light max-w-2xl mx-auto">{t.about.roles}</p>
           <div className="hero-enter mt-10 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
         </div>
       </section>
@@ -110,16 +110,16 @@ export default async function AboutPage({
               <p className="text-sm text-foreground/40 mb-6">{t.about.profileTitle}</p>
 
               <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted/30 border border-border/10">
-                  <MapPin className="w-4 h-4 text-foreground/30" />
+                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted/30 border border-border/20">
+                  <MapPin className="w-4 h-4 text-foreground/40" />
                   <span className="text-xs text-foreground/45">{t.about.location}</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted/30 border border-border/10">
-                  <Mail className="w-4 h-4 text-foreground/30" />
+                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted/30 border border-border/20">
+                  <Mail className="w-4 h-4 text-foreground/40" />
                   <span className="text-xs text-foreground/45">{t.about.email}</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted/30 border border-border/10">
-                  <Globe className="w-4 h-4 text-foreground/30" />
+                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted/30 border border-border/20">
+                  <Globe className="w-4 h-4 text-foreground/40" />
                   <span className="text-xs text-foreground/45">{t.about.website}</span>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default async function AboutPage({
                   <BookOpen className="w-4 h-4 text-primary/50" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20 mb-0.5">{t.about.summaryHeading}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30 mb-0.5">{t.about.summaryHeading}</p>
                   <div className="w-12 h-[2px] bg-gradient-to-r from-primary/30 to-transparent rounded-full" />
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default async function AboutPage({
                   <div className="p-1.5 rounded-lg bg-primary/5 border border-primary/10">
                     <Medal className="w-3.5 h-3.5 text-primary/50" />
                   </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">{t.about.experience}</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{t.about.experience}</span>
                 </div>
                 <div className="space-y-0">
                   {(t.about as any).expItems?.map((exp: any, i: number) => (
@@ -180,7 +180,7 @@ export default async function AboutPage({
                         <span className="text-xs text-foreground/40">{exp.company}</span>
                         <span className="text-[10px] font-medium bg-primary/[0.06] text-primary/50 px-2 py-0.5 rounded-full">{exp.period}</span>
                       </div>
-                      <p className="text-xs text-foreground/35 leading-relaxed">{exp.description}</p>
+                      <p className="text-xs text-foreground/45 leading-relaxed">{exp.description}</p>
                     </div>
                   ))}
                 </div>
@@ -195,17 +195,17 @@ export default async function AboutPage({
                   <div className="p-1.5 rounded-lg bg-primary/5 border border-primary/10">
                     <BookOpen className="w-3.5 h-3.5 text-primary/50" />
                   </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">{t.about.education}</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{t.about.education}</span>
                 </div>
                 <div className="space-y-5">
                   {(t.about as any).eduItems?.map((edu: any, i: number) => (
-                    <div key={i} className="p-4 rounded-2xl bg-muted/10 border border-border/10 hover:border-primary/10 hover:bg-muted/20 transition-all duration-300">
+                    <div key={i} className="p-4 rounded-2xl bg-muted/10 border border-border/20 hover:border-primary/10 hover:bg-muted/20 transition-all duration-300">
                       <div className="flex justify-between items-start gap-4 mb-1">
                         <h4 className="text-sm font-bold text-foreground">{edu.degree}</h4>
                         <span className="text-[10px] font-medium bg-primary/[0.06] text-primary/50 px-2.5 py-1 rounded-full shrink-0">{edu.period}</span>
                       </div>
                       <p className="text-xs text-foreground/40">{edu.school}</p>
-                      <p className="text-xs text-foreground/25 mt-1">{edu.description}</p>
+                      <p className="text-xs text-foreground/35 mt-1">{edu.description}</p>
                     </div>
                   ))}
                 </div>
@@ -221,7 +221,7 @@ export default async function AboutPage({
                 <div className="p-1.5 rounded-lg bg-primary/5 border border-primary/10">
                   <Sparkles className="w-3.5 h-3.5 text-primary/50" />
                 </div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">{t.about.coreCompetencies}</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{t.about.coreCompetencies}</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                 {t.about.skills.map((skill: string, i: number) => (
@@ -243,14 +243,14 @@ export default async function AboutPage({
                 <div className="p-1.5 rounded-lg bg-primary/5 border border-primary/10">
                   <Sparkles className="w-3.5 h-3.5 text-primary/50" />
                 </div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">{t.about.principlesHeading}</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{t.about.principlesHeading}</span>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {t.about.principles.map((v, i) => (
-                  <div key={v.title} className="p-5 rounded-2xl bg-muted/10 border border-border/10 hover:border-primary/15 hover:bg-muted/20 transition-all duration-300">
+                  <div key={v.title} className="p-5 rounded-2xl bg-muted/10 border border-border/20 hover:border-primary/15 hover:bg-muted/20 transition-all duration-300">
                     <span className="text-lg mb-3 block opacity-30">{["①","②","③","④"][i]}</span>
                     <h4 className="text-sm font-bold text-foreground mb-2">{v.title}</h4>
-                    <p className="text-[11px] text-foreground/35 leading-relaxed">{v.description}</p>
+                    <p className="text-[11px] text-foreground/45 leading-relaxed">{v.description}</p>
                   </div>
                 ))}
               </div>
@@ -263,12 +263,12 @@ export default async function AboutPage({
             <div className="relative">
               <div className="text-center mb-8">
                 <h3 className="text-lg font-bold text-foreground mb-1">{t.about.connectHeading}</h3>
-                <p className="text-xs text-foreground/30">{t.about.connectDescription}</p>
+                <p className="text-xs text-foreground/40">{t.about.connectDescription}</p>
               </div>
               <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                 {socialLinks.map((s) => (
                   <a key={s.n} href={s.h} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border/20 bg-muted/10 text-foreground/25 hover:text-foreground hover:border-primary/20 hover:bg-primary/[0.04] hover:scale-[1.05] transition-all duration-300 group/social">
+                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border/20 bg-muted/10 text-foreground/35 hover:text-foreground hover:border-primary/20 hover:bg-primary/[0.04] hover:scale-[1.05] transition-all duration-300 group/social">
                     {s.i("w-4 h-4 group-hover/social:text-primary transition-colors duration-300")}
                     <span className="text-[11px] font-medium">{s.n}</span>
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/social:opacity-100 transition-all duration-300" />

@@ -121,10 +121,10 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   {locale === "ar" ? "القصة" : locale === "fr" ? "L'histoire" : "The Story"}
                 </span>
               </div>
-              {showStory ? <ChevronUp className="w-4 h-4 text-foreground/30" /> : <ChevronDown className="w-4 h-4 text-foreground/30" />}
+              {showStory ? <ChevronUp className="w-4 h-4 text-foreground/40" /> : <ChevronDown className="w-4 h-4 text-foreground/40" />}
             </button>
             {showStory && (
-              <div className="mt-4 p-6 rounded-2xl bg-card/5 border border-border/10 backdrop-blur-sm">
+              <div className="mt-4 p-6 rounded-2xl bg-card/5 border border-border/20 backdrop-blur-sm">
                 <p className="text-foreground/50 leading-relaxed text-sm whitespace-pre-line">{t.artistStory}</p>
               </div>
             )}
@@ -150,7 +150,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-foreground">Spotify</h3>
-                <p className="text-[11px] text-foreground/30">@itsmawja</p>
+                <p className="text-[11px] text-foreground/40">@itsmawja</p>
               </div>
               <a href="https://open.spotify.com/user/itsmawja" target="_blank" rel="noopener noreferrer"
                 className="ml-auto flex items-center gap-1 text-xs text-[#1DB954] hover:underline font-medium">
@@ -178,7 +178,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-foreground">Apple Music</h3>
-                <p className="text-[11px] text-foreground/30">@itsmawja</p>
+                <p className="text-[11px] text-foreground/40">@itsmawja</p>
               </div>
               <a href="https://music.apple.com/profile/itsmawja" target="_blank" rel="noopener noreferrer"
                 className="ml-auto flex items-center gap-1 text-xs text-[#FC3C44] hover:underline font-medium">
@@ -319,7 +319,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                       </a>
                     ))}
                   </div>
-                  <p className="text-[11px] text-foreground/25 font-light italic">
+                  <p className="text-[11px] text-foreground/35 font-light italic">
                     {locale === "ar"
                       ? "* الروابط سيتم تحديثها عند إصدار EP"
                       : locale === "fr"
@@ -352,7 +352,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {musicVideos.map((video, i) => (
-              <div key={video.id} className="group rounded-2xl overflow-hidden border border-border/15 bg-card/10 backdrop-blur-sm hover:border-red-500/30 hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-500 hover:-translate-y-1">
+              <div key={video.id} className="group rounded-2xl overflow-hidden border border-border/25 bg-card/10 backdrop-blur-sm hover:border-red-500/30 hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-500 hover:-translate-y-1">
                 <div className="aspect-video w-full bg-black">
                   <iframe src={`https://www.youtube.com/embed/${video.id}`} width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen loading="lazy" className="w-full h-full" title={video.title} />
                 </div>
@@ -362,7 +362,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                     <span className="text-sm font-medium text-foreground/50 group-hover:text-foreground/80 transition-colors truncate">{video.title}</span>
                   </div>
                   <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-xs text-foreground/20 group-hover:text-red-400 transition-colors flex-shrink-0 ml-2">
+                    className="flex items-center gap-1 text-xs text-foreground/30 group-hover:text-red-400 transition-colors flex-shrink-0 ml-2">
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
@@ -374,13 +374,13 @@ export function MusicContent({ locale, t }: MusicContentProps) {
         {/* ===== FOOTER PLATFORMS ===== */}
         <div className="text-center py-12 rounded-3xl border border-primary/5 bg-gradient-to-b from-primary/[0.03] to-transparent">
           <Music2 className="w-8 h-8 text-primary/15 mx-auto mb-4" />
-          <p className="text-sm text-foreground/30 mb-6">
+          <p className="text-sm text-foreground/40 mb-6">
             {locale === "ar" ? "استمع على جميع المنصات — قريباً" : locale === "fr" ? "Écoutez sur toutes les plateformes — bientôt" : "Listen on all platforms — coming soon"}
           </p>
           <div className="flex flex-wrap justify-center gap-2">
             {streamingPlatforms.map((p) => (
               <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/10 bg-card/5 text-foreground/20 hover:text-foreground/50 hover:border-border/30 transition-all duration-300">
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/5 text-foreground/30 hover:text-foreground/50 hover:border-border/30 transition-all duration-300">
                 <p.icon className="w-3.5 h-3.5" /> <span className="text-[10px] font-medium">{p.name}</span>
               </a>
             ))}

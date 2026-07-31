@@ -3,7 +3,7 @@
 :root, 
 :root.light,
 :root.system:not(.dark) {
-  /* Elegant Light Theme */
+  /* Elegant Light Theme — clean, readable, elegant */
   --color-background: #fafafa;
   --color-foreground: #18181b;
   --color-primary: #6366f1;
@@ -14,14 +14,14 @@
   --color-wave-2: #a855f7;
   --color-wave-3: #06b6d4;
   --color-wave-4: #0ea5e9;
-  --color-muted: #f4f4f5;
-  --color-muted-foreground: #71717a;
-  --color-border: #e4e4e7;
-  --color-card: rgba(255, 255, 255, 0.8);
+  --color-muted: #d4d4d8;
+  --color-muted-foreground: #52525b;
+  --color-border: #d4d4d8;
+  --color-card: #ffffff;
   --color-card-foreground: #18181b;
-  --color-glass: rgba(255, 255, 255, 0.3);
-  --color-glass-border: rgba(255, 255, 255, 0.2);
-  --color-glass-dark: rgba(255, 255, 255, 0.4);
+  --color-glass: rgba(255, 255, 255, 0.6);
+  --color-glass-border: rgba(0, 0, 0, 0.08);
+  --color-glass-dark: rgba(255, 255, 255, 0.85);
   
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -101,17 +101,13 @@
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(0, 0, 0, 0.01) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1),
-    0 10px 15px -3px rgba(0, 0, 0, 0.05),
-    0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    0 4px 16px 0 rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
 }
 

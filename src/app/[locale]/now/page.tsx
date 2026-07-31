@@ -367,7 +367,7 @@ export default async function NowPage({
               </section>
 
               <div className="text-center pt-8">
-                <p className="text-xs text-foreground/30 font-mono">
+                <p className="text-xs text-foreground/40 font-mono">
                   {isAr
                     ? "آخر تحديث: يوليو ٢٠٢٦"
                     : isFr

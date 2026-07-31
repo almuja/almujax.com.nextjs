@@ -128,7 +128,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </span>
           </h1>
 
-          <p className="hero-enter mt-6 text-sm text-foreground/30 font-light italic">
+          <p className="hero-enter mt-6 text-sm text-foreground/40 font-light italic">
             {waveSubtitles[validLocale] ?? "Mawja (موجة) — the wave, the flow, the signal"}
           </p>
 
@@ -171,7 +171,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="hero-enter mt-8">
             <a
               href="mailto:hello@itsmawja.com"
-              className="inline-flex items-center gap-2 text-xs text-foreground/25 hover:text-primary transition-colors duration-300 font-mono"
+              className="inline-flex items-center gap-2 text-xs text-foreground/35 hover:text-primary transition-colors duration-300 font-mono"
             >
               hello@itsmawja.com
               <ArrowRight className="w-3 h-3" />
@@ -189,7 +189,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
         <div className="relative max-w-3xl mx-auto">
           <div className="flex items-center gap-4 mb-3">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">
               {sectionLabels[validLocale] ?? "About"}
             </span>
             <span className="flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
@@ -199,7 +199,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <span className="wave-gradient-text">{t.home.aboutHeading}</span>
           </h2>
 
-          <p className="text-sm text-foreground/30 font-light italic mb-6 leading-relaxed max-w-xl">
+          <p className="text-sm text-foreground/40 font-light italic mb-6 leading-relaxed max-w-xl">
             {waveSubtitles[validLocale] ?? "Mawja (موجة) — the wave, the flow, the signal"}
           </p>
 
@@ -215,7 +215,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
           <div className="mt-10 flex items-center gap-3">
             <div className="flex-1 h-px bg-gradient-to-r from-transparent to-foreground/10" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/15">{availabilityBadge[validLocale] ?? "Available"}</span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/25">{availabilityBadge[validLocale] ?? "Available"}</span>
             <span className="relative flex h-1.5 w-1.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
@@ -235,7 +235,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-border/30 bg-card/30 backdrop-blur-sm mb-6">
               <Sparkles className="w-3.5 h-3.5 text-primary/40" />
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{t.home.whatIDo}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/40">{t.home.whatIDo}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
               <span className="wave-gradient-text">{t.home.whatIDo}</span>
@@ -259,7 +259,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                       <span className={`w-2 h-2 rounded-full ${c.dot} group-hover:scale-125 transition-all duration-500`} />
                     </div>
                     <h3 className="text-sm font-bold text-foreground mb-2 group-hover:text-foreground/90 transition-colors duration-300">{item.title}</h3>
-                    <p className="text-xs text-foreground/35 leading-relaxed group-hover:text-foreground/45 transition-colors duration-300">{item.description}</p>
+                    <p className="text-xs text-foreground/45 leading-relaxed group-hover:text-foreground/45 transition-colors duration-300">{item.description}</p>
                   </div>
                 </div>
               );
@@ -278,12 +278,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-border/30 bg-card/30 backdrop-blur-sm mb-6">
               <Sparkles className="w-3.5 h-3.5 text-primary/40" />
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{t.home.skillsHeading}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/40">{t.home.skillsHeading}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
               <span className="wave-gradient-text">{t.home.skillsHeading}</span>
             </h2>
-            <p className="text-sm text-foreground/25 font-light max-w-md mx-auto">{t.home.skillsDescription}</p>
+            <p className="text-sm text-foreground/35 font-light max-w-md mx-auto">{t.home.skillsDescription}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -293,13 +293,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 <div className={`absolute inset-0 rounded-2xl ${glow} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
                 <div className="relative z-10">
-                  <div className={`w-10 h-10 rounded-xl ${glow} border ${border.split(" ")[0]} flex items-center justify-center mb-5 text-lg font-light text-foreground/25 group-hover:text-foreground/50 group-hover:scale-110 transition-all duration-500`}>
+                  <div className={`w-10 h-10 rounded-xl ${glow} border ${border.split(" ")[0]} flex items-center justify-center mb-5 text-lg font-light text-foreground/35 group-hover:text-foreground/50 group-hover:scale-110 transition-all duration-500`}>
                     {icon}
                   </div>
-                  <span className="block text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/20 group-hover:text-foreground/35 transition-colors duration-500 mb-4">{group}</span>
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/30 group-hover:text-foreground/45 transition-colors duration-500 mb-4">{group}</span>
                   <div className="flex flex-wrap gap-2">
                     {items.map((tech: string) => (
-                      <span key={tech} className="relative px-3 py-1.5 rounded-lg bg-background/60 border border-border/10 text-[11px] font-medium text-foreground/30 group-hover:text-foreground/50 group-hover:border-border/20 group-hover:bg-background/80 transition-all duration-500 cursor-default flex items-center gap-1.5">
+                      <span key={tech} className="relative px-3 py-1.5 rounded-lg bg-background/60 border border-border/20 text-[11px] font-medium text-foreground/40 group-hover:text-foreground/50 group-hover:border-border/20 group-hover:bg-background/80 transition-all duration-500 cursor-default flex items-center gap-1.5">
                         <span className={`w-1 h-1 rounded-full ${dot} group-hover:scale-125 transition-all duration-500`} />
                         {tech}
                       </span>
@@ -323,7 +323,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-border/30 bg-card/30 backdrop-blur-sm mb-6">
               <Sparkles className="w-3.5 h-3.5 text-primary/40" />
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{t.home.latest.heading}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/40">{t.home.latest.heading}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
               <span className="wave-gradient-text">{t.home.latest.heading}</span>
@@ -348,13 +348,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-5">
                     <span className={`w-2 h-2 rounded-full ${dot} group-hover:scale-125 transition-all duration-500`} />
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/25 group-hover:text-foreground/40 transition-colors duration-500">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/35 group-hover:text-foreground/40 transition-colors duration-500">
                       {l.label}
                     </span>
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-foreground/90 transition-colors duration-300">{l.title}</h3>
-                  <p className="text-xs text-foreground/30 leading-relaxed group-hover:text-foreground/40 transition-colors duration-300">{l.description}</p>
-                  <div className="mt-6 flex items-center gap-2 text-xs text-foreground/20 group-hover:text-primary transition-colors duration-300">
+                  <p className="text-xs text-foreground/40 leading-relaxed group-hover:text-foreground/40 transition-colors duration-300">{l.description}</p>
+                  <div className="mt-6 flex items-center gap-2 text-xs text-foreground/30 group-hover:text-primary transition-colors duration-300">
                     {l.cta} <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </div>
@@ -372,14 +372,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <div className="relative max-w-2xl mx-auto text-center">
           <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-border/30 bg-card/30 backdrop-blur-sm mb-8">
             <Sparkles className="w-3.5 h-3.5 text-primary/40" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/40">
               {availabilityBadge[validLocale] ?? "Available"}
             </span>
           </div>
           <h3 className="text-3xl sm:text-4xl font-black tracking-tighter mb-4">
             <span className="wave-gradient-text">{t.home.ctaHeading}</span>
           </h3>
-          <p className="text-sm sm:text-base text-foreground/35 font-light leading-relaxed max-w-md mx-auto mb-10">
+          <p className="text-sm sm:text-base text-foreground/45 font-light leading-relaxed max-w-md mx-auto mb-10">
             {t.home.ctaDescription}
           </p>
           <Link

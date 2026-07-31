@@ -258,7 +258,7 @@ export default async function BlogPostPage({
             <div className="hero-enter mb-12">
               <Link
                 href={`/${validLocale}/blog`}
-                className="inline-flex items-center gap-2 text-xs text-foreground/30 hover:text-foreground/60 transition-colors group"
+                className="inline-flex items-center gap-2 text-xs text-foreground/40 hover:text-foreground/60 transition-colors group"
               >
                 <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
                 {dict.blog.backToBlog}
@@ -271,7 +271,7 @@ export default async function BlogPostPage({
                 {frontmatter.category || dict.blog.uncategorized}
               </span>
               {frontmatter.tags?.slice(0, 3).map((tag: string) => (
-                <span key={tag} className="px-2.5 py-0.5 rounded-full bg-muted/50 text-[10px] text-foreground/30 border border-border/30">
+                <span key={tag} className="px-2.5 py-0.5 rounded-full bg-muted/50 text-[10px] text-foreground/40 border border-border/30">
                   {tag}
                 </span>
               ))}
@@ -283,7 +283,7 @@ export default async function BlogPostPage({
             </h1>
 
             {/* Description — set under the title */}
-            <p className="hero-enter text-base sm:text-lg text-foreground/35 font-light leading-relaxed max-w-3xl">
+            <p className="hero-enter text-base sm:text-lg text-foreground/45 font-light leading-relaxed max-w-3xl">
               {frontmatter.description}
             </p>
           </div>
@@ -307,7 +307,7 @@ export default async function BlogPostPage({
           )}
 
           {/* Post details — date + reading time before content */}
-          <div className="flex items-center gap-3 mb-12 text-xs text-foreground/25">
+          <div className="flex items-center gap-3 mb-12 text-xs text-foreground/35">
             {date !== "Unknown date" && (
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5" />
