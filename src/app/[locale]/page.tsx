@@ -109,6 +109,18 @@ const socials = [
   { href: "https://music.apple.com/profile/itsmawja", icon: AppleMusicIcon, label: "Apple Music" },
 ];
 
+function waveMeaning(locale: string): string {
+  if (locale === "ar") return "موجا (موجة) — التدفق، الإشارة، التغيّر";
+  if (locale === "fr") return "Mawja (موجة) — la vague, le flux, le signal";
+  return "Mawja (موجة) — the wave, the flow, the signal";
+}
+
+function badgeText(locale: string): string {
+  if (locale === "ar") return "متاح للعمل";
+  if (locale === "fr") return "Disponible";
+  return "Open to work";
+}
+
 export default async function Home({
   params,
 }: {
@@ -121,9 +133,8 @@ export default async function Home({
 
   return (
     <>
-      {/* Fullscreen Hero */}
+      {/* Hero */}
       <section dir={dir} className="relative min-h-screen flex items-center justify-center px-6 pt-20 pb-32">
-        {/* Background orbs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#818cf8] opacity-[0.06] blur-[120px] animate-pulse-slow" />
           <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#22d3ee] opacity-[0.05] blur-[100px] animate-pulse-slow animation-delay-2000" />
@@ -131,40 +142,31 @@ export default async function Home({
         </div>
 
         <div className="relative max-w-2xl w-full text-center">
-          {/* Subtle badge */}
           <div className="hero-enter inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-12">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            {validLocale === "ar" ? "متاح للعمل" : validLocale === "fr" ? "Disponible" : "Open to work"}
+            {badgeText(validLocale)}
           </div>
 
-          {/* Brand Name */}
           <h1 className="hero-enter select-none">
             <span className="block text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-[1.1] wave-gradient-text mb-3">
-              {validLocale === "ar" ? "موجا" : "Mawja"}
+              Mawja
             </span>
             <span className="block text-lg sm:text-xl text-foreground/40 font-light tracking-wide">
-              {validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
+              Mujahid Siyam
             </span>
           </h1>
 
-          {/* Wave meaning subtitle */}
           <p className="hero-enter mt-6 text-sm text-foreground/30 font-light italic">
-            {validLocale === "ar"
-              ? "موجا (موجة) — التدفق، الإشارة، التغيّر"
-              : validLocale === "fr"
-              ? "Mawja (موجة) — la vague, le flux, le signal"
-              : "Mawja (موجة) — the wave, the flow, the signal"}
+            {waveMeaning(validLocale)}
           </p>
 
-          {/* Description */}
           <p className="hero-enter mt-8 text-base sm:text-lg text-foreground/50 leading-relaxed max-w-lg mx-auto">
             {t.home.heroBody}
           </p>
 
-          {/* CTA Buttons */}
           <div className="hero-enter mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href={`/${validLocale}/projects`}
@@ -182,7 +184,6 @@ export default async function Home({
             </Link>
           </div>
 
-          {/* Big Social Icons */}
           <div className="hero-enter mt-14 flex justify-center gap-5">
             {socials.map(({ href, icon: Icon, label }) => (
               <a
@@ -198,7 +199,6 @@ export default async function Home({
             ))}
           </div>
 
-          {/* Email link */}
           <div className="hero-enter mt-8">
             <a
               href="mailto:hello@itsmawja.com"
@@ -211,7 +211,7 @@ export default async function Home({
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Snippet */}
       <section dir={dir} className="relative py-24 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute bottom-[10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-[var(--color-wave-2)] opacity-[0.03] blur-[120px] animate-pulse-slow animation-delay-3000" />
@@ -235,7 +235,7 @@ export default async function Home({
         </div>
       </section>
 
-      {/* What I Do — Capabilities */}
+      {/* What I Do */}
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -260,7 +260,7 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Technologies — elegant cloud */}
+      {/* Technologies */}
       <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight mb-12">{t.home.skillsHeading}</h2>
@@ -283,7 +283,7 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Latest — Blog + Projects + Music */}
+      {/* Latest */}
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">

@@ -60,9 +60,9 @@ export default async function AboutPage({
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* ── LEFT COLUMN ── */}
+          {/* LEFT COLUMN */}
           <div className="lg:col-span-1 space-y-6">
-            {/* Profile */}
+            {/* Profile Card */}
             <div className="relative rounded-2xl border border-border/30 bg-card/30 p-8 text-center overflow-hidden group hover:border-primary/15 hover:shadow-xl hover:shadow-primary/[0.03] transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
@@ -119,7 +119,7 @@ export default async function AboutPage({
               </div>
             </div>
 
-            {/* Connect */}
+            {/* Connect / Social */}
             <div className="rounded-2xl border border-border/30 bg-card/30 p-6 hover:border-primary/10 transition-all duration-400">
               <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20 mb-4">{t.about.connectHeading}</h3>
               <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
@@ -144,9 +144,9 @@ export default async function AboutPage({
             </div>
           </div>
 
-          {/* ── RIGHT COLUMN ── */}
+          {/* RIGHT COLUMN */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Summary */}
+            {/* Story */}
             <div className="rounded-2xl border border-border/30 bg-card/30 p-8 hover:border-primary/10 hover:shadow-lg transition-all duration-400">
               <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20 mb-6">{t.about.summaryHeading}</h3>
               <div className="space-y-4 text-sm text-foreground/50 leading-relaxed">
@@ -158,7 +158,7 @@ export default async function AboutPage({
               </div>
             </div>
 
-            {/* Experience Timeline */}
+            {/* Experience */}
             <div className="rounded-2xl border border-border/30 bg-card/30 p-8 hover:border-primary/10 hover:shadow-lg transition-all duration-400">
               <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20 mb-8">{t.about.experience}</h3>
               <div className="space-y-0">
@@ -194,7 +194,7 @@ export default async function AboutPage({
               </div>
             </div>
 
-            {/* Technologies Grid */}
+            {/* Technologies */}
             <div className="rounded-2xl border border-border/30 bg-card/30 p-8 hover:border-primary/10 hover:shadow-lg transition-all duration-400">
               <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20 mb-6">{t.about.technologies}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
@@ -206,21 +206,16 @@ export default async function AboutPage({
               </div>
             </div>
 
-            {/* Philosophy / Values */}
+            {/* Principles */}
             <div className="rounded-2xl border border-border/30 bg-card/30 p-8 hover:border-primary/10 hover:shadow-lg transition-all duration-400">
               <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/20 mb-6">
-                {validLocale === "ar" ? "المبادئ" : validLocale === "fr" ? "Principes" : "Principles"}
+                {t.about.principlesHeading}
               </h3>
               <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { t: validLocale === "ar" ? "مفتوح المصدر أولاً" : validLocale === "fr" ? "Open Source d'abord" : "Open Source First", d: validLocale === "ar" ? "بناء ومشاركة البرمجيات بحرية" : validLocale === "fr" ? "Construire et partager librement" : "Building and sharing software freely" },
-                  { t: validLocale === "ar" ? "الأمن أساسي" : validLocale === "fr" ? "Sécurité fondamentale" : "Security First", d: validLocale === "ar" ? "الحماية مدمجة وليست مضافة" : validLocale === "fr" ? "La sécurité est intégrée, pas ajoutée" : "Security is built-in, not bolted on" },
-                  { t: validLocale === "ar" ? " الإبداع يغذي الابتكار" : validLocale === "fr" ? "La créativité nourrit l'innovation" : "Creativity Fuels Innovation", d: validLocale === "ar" ? "الموسيقى والفن يوجهان نهجي التقني" : validLocale === "fr" ? "La musique et l'art guident mon approche technique" : "Music and art inform my technical approach" },
-                  { t: validLocale === "ar" ? "أتمتة كل شيء" : validLocale === "fr" ? "Automatiser tout" : "Automate Everything", d: validLocale === "ar" ? "أنظمة قابلة للتكرار وبنيات تحتية كبرمجيات" : validLocale === "fr" ? "Systèmes reproductibles, infrastructure comme code" : "Reproducible systems, infrastructure as code" },
-                ].map((v) => (
-                  <div key={v.t} className="p-4 rounded-xl bg-muted/20 border border-border/10 hover:border-primary/10 hover:bg-muted/30 transition-all duration-300">
-                    <h4 className="text-xs font-bold text-foreground mb-1.5">{v.t}</h4>
-                    <p className="text-[11px] text-foreground/35 leading-relaxed">{v.d}</p>
+                {t.about.principles.map((v) => (
+                  <div key={v.title} className="p-4 rounded-xl bg-muted/20 border border-border/10 hover:border-primary/10 hover:bg-muted/30 transition-all duration-300">
+                    <h4 className="text-xs font-bold text-foreground mb-1.5">{v.title}</h4>
+                    <p className="text-[11px] text-foreground/35 leading-relaxed">{v.description}</p>
                   </div>
                 ))}
               </div>

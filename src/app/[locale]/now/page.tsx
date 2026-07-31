@@ -12,14 +12,14 @@ export async function generateMetadata({
   const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
 
   return {
-    title: validLocale === "ar" ? "الآن | موجا (مجاهد صيام)" : "Now | Mawja (Mujahid Siyam)",
+    title: validLocale === "ar" ? "الآن | موجا (موجة) — مجاهد صيام" : "Now | Mawja (Mujahid Siyam)",
     description:
       validLocale === "ar"
-        ? "ما الذي يركز عليه موجا (مجاهد صيام) حالياً — العمل، التعلم، والاهتمامات الحالية."
-        : "What Mawja (Mujahid Siyam) is focused on right now — work, learning, and current interests.",
+        ? "ما يركز عليه موجا (موجة) — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
+        : "What Mujahid Siyam (Mawja) is focused on right now — work, learning, and current interests.",
     keywords:
       validLocale === "ar"
-        ? ["الآن", "موجا", "مجاهد صيام", "تركيز", "تعلم", "مشاريع"]
+        ? ["الآن", "موجا", "موجة", "مجاهد صيام", "تركيز", "تعلم", "مشاريع"]
         : ["now", "Mawja", "Mujahid Siyam", "focus", "learning", "projects"],
     alternates: {
       canonical: `https://itsmawja.com/${validLocale}/now`,
@@ -32,12 +32,12 @@ export async function generateMetadata({
     openGraph: {
       title:
         validLocale === "ar"
-          ? "الآن | موجا (مجاهد صيام)"
+          ? "الآن | موجا (موجة) — مجاهد صيام"
           : "Now | Mawja (Mujahid Siyam)",
       description:
         validLocale === "ar"
-          ? "ما الذي يركز عليه موجا (مجاهد صيام) حالياً."
-          : "What Mawja (Mujahid Siyam) is focused on right now.",
+          ? "ما يركز عليه موجا (موجة) — مجاهد صيام حالياً."
+          : "What Mujahid Siyam (Mawja) is focused on right now.",
       url: `https://itsmawja.com/${validLocale}/now`,
       type: "website",
       images: ["https://itsmawja.com/img/profile.png"],
@@ -47,12 +47,12 @@ export async function generateMetadata({
       card: "summary_large_image",
       title:
         validLocale === "ar"
-          ? "الآن | موجا (مجاهد صيام)"
+          ? "الآن | موجا (موجة) — مجاهد صيام"
           : "Now | Mawja (Mujahid Siyam)",
       description:
         validLocale === "ar"
-          ? "ما الذي يركز عليه موجا (مجاهد صيام) حالياً."
-          : "What Mawja (Mujahid Siyam) is focused on right now.",
+          ? "ما يركز عليه موجا (موجة) — مجاهد صيام حالياً."
+          : "What Mujahid Siyam (Mawja) is focused on right now.",
       images: ["https://itsmawja.com/img/profile.png"],
       site: "@itsmawja",
       creator: "@itsmawja",
@@ -74,53 +74,53 @@ export async function generateMetadata({
 const workItems = [
   {
     en: {
-      title: "AI-First Systems",
+      title: "Software & AI at Zaroxi Studio",
       description:
-        "Building intelligent, scalable AI-first applications and developer tools through Zaroxi Studio. Exploring the frontier of LLM-powered systems and agentic architectures.",
+        "Building tools and systems. Working on AI integrations, developer utilities, and infrastructure. Most of my day-to-day involves writing Rust, TypeScript, or Python — whichever makes the most sense for the problem.",
     },
     ar: {
-      title: "أنظمة الذكاء الاصطناعي",
+      title: "البرمجيات والذكاء الاصطناعي في Zaroxi Studio",
       description:
-        "بناء تطبيقات وأدوات مطورين ذكية وقابلة للتطوير تعتمد على الذكاء الاصطناعي من خلال Zaroxi Studio. استكشاف أحدث أنظمة النماذج اللغوية والمعماريات الوكيلة.",
+        "بناء أدوات وأنظمة. العمل على تكاملات الذكاء الاصطناعي وأدوات المطورين والبنية التحتية. معظم يومي أكتب Rust أو TypeScript أو Python — اللي يناسب المشكلة.",
     },
     fr: {
-      title: "Systèmes IA-First",
+      title: "Logiciels & IA chez Zaroxi Studio",
       description:
-        "Construction d'applications et d'outils développeur intelligents et évolutifs basés sur l'IA via Zaroxi Studio. Exploration des systèmes LLM et des architectures agentiques.",
+        "Construction d'outils et de systèmes. Travail sur les intégrations IA, les utilitaires développeur et l'infrastructure. La majeure partie de mon quotidien consiste à écrire du Rust, du TypeScript ou du Python — selon ce qui convient le mieux au problème.",
     },
   },
   {
     en: {
-      title: "Open Source Contributions",
+      title: "Open source maintenance",
       description:
-        "Actively contributing to open-source projects in the Rust ecosystem, Nix/NixOS tooling, and developer productivity tools. Sharing knowledge and building in public.",
+        "Maintaining a few projects, mostly around NixOS productivity tools. Contributing where I can. I'm not trying to be everywhere — just trying to keep my own things working and help out when something breaks.",
     },
     ar: {
-      title: "المساهمات مفتوحة المصدر",
+      title: "صيانة المصادر المفتوحة",
       description:
-        "المساهمة بنشاط في المشاريع مفتوحة المصدر في نظام رست وأدوات Nix/NixOS وأدوات إنتاجية المطورين. مشاركة المعرفة والبناء بشكل علني.",
+        "صيانة بعض المشاريع، غالباً حول أدوات NixOS. المساهمة حيث أقدر. مو شغلي أني أكون في كل مكان — بس أحاول أخلي أشيائي تشتغل وأساعد لما ينكسر شيء.",
     },
     fr: {
-      title: "Contributions Open Source",
+      title: "Maintenance open source",
       description:
-        "Contribution active aux projets open source dans l'écosystème Rust, les outils Nix/NixOS et les outils de productivité pour développeurs. Partage de connaissances et construction en public.",
+        "Maintenance de quelques projets, principalement autour des outils de productivité NixOS. Contribution là où je peux. Je n'essaie pas d'être partout — juste de faire fonctionner mes propres projets et d'aider quand quelque chose casse.",
     },
   },
   {
     en: {
-      title: "Music Production — KAKASHI Follow-up",
+      title: "Music — Rockstar EP",
       description:
-        "Working on the follow-up to the KAKASHI EP. Experimenting with new sounds, Arabic Rap, and Sudanese Rap fusion. Music remains a core creative outlet alongside engineering.",
+        "Working on my second EP, Rockstar, set for release in August 2026. It's the next chapter after KAKASHI — bigger, more focused, and a deeper expression of where I am now. Recording, producing, mixing. Making music isn't a side project — it's part of who I am, and I'm taking my time to get this one right.",
     },
     ar: {
-      title: "الإنتاج الموسيقي — متابعة KAKASHI",
+      title: "الموسيقى — Rockstar EP",
       description:
-        "العمل على الألبوم التالي لـ KAKASHI EP. تجربة أصوات جديدة ودمج الراب العربي والراب السوداني. تبقى الموسيقى منفذاً إبداعياً أساسياً إلى جانب الهندسة.",
+        "أشتغل على EP الثاني، Rockstar، المقرر إصداره في أغسطس ٢٠٢٦. هو الفصل التالي بعد KAKASHI — أكبر وأكثر تركيزاً وتعبير أعمق عن مكاني الحالي. تسجيل وإنتاج ومكساج. الموسيقى مو مشروع جانبي — هي جزء من هويتي، وآخذ وقتي عشان أوصل هذي صح.",
     },
     fr: {
-      title: "Production Musicale — Suite de KAKASHI",
+      title: "Musique — EP Rockstar",
       description:
-        "Travail sur la suite de l'EP KAKASHI. Expérimentation de nouveaux sons, fusion de rap arabe et rap soudanais. La musique reste un exutoire créatif essentiel aux côtés de l'ingénierie.",
+        "Travail sur mon deuxième EP, Rockstar, prévu pour août 2026. C'est le chapitre suivant après KAKASHI — plus grand, plus concentré, une expression plus profonde de là où j'en suis. Enregistrement, production, mixage. La musique n'est pas un projet secondaire — elle fait partie de qui je suis, et je prends mon temps pour bien faire celui-ci.",
     },
   },
 ];
@@ -128,53 +128,53 @@ const workItems = [
 const learnItems = [
   {
     en: {
-      title: "Advanced Rust Patterns",
+      title: "Rust — going deeper",
       description:
-        "Deep-diving into async Rust, tokio internals, zero-cost abstractions, and embedded systems programming with Rust.",
+        "I've been using Rust for a while, but there's always more to learn. Currently exploring async internals, embedded development, and performance optimization patterns.",
     },
     ar: {
-      title: "أنماط رست المتقدمة",
+      title: "Rust — أعمق",
       description:
-        "الغوص العميق في رست غير المتزامنة وأعمال tokio الداخلية والتجريدات عديمة التكلفة وبرمجة الأنظمة المدمجة باستخدام رست.",
+        "لي فترة أستخدم Rust، لكن دايم فيه شيء جديد أتعلمه. حالياً أستكشف الأعمال الداخلية للـ async والأنظمة المدمجة وأنماط تحسين الأداء.",
     },
     fr: {
-      title: "Patterns Rust Avancés",
+      title: "Rust — aller plus loin",
       description:
-        "Plongée approfondie dans Rust asynchrone, les internes de tokio, les abstractions à coût nul et la programmation de systèmes embarqués avec Rust.",
+        "J'utilise Rust depuis un moment, mais il y a toujours plus à apprendre. En ce moment, j'explore les internes de l'async, le développement embarqué et les patterns d'optimisation.",
     },
   },
   {
     en: {
-      title: "Distributed Systems",
+      title: "How LLMs actually work",
       description:
-        "Studying consensus algorithms, CAP theorem trade-offs, and building resilient distributed architectures. Applying patterns from research papers to production systems.",
+        "Not just using them — understanding the architecture, training dynamics, and what happens under the hood. Reading papers, running experiments, trying to build intuition.",
+    },
+    ar: {
+      title: "كيف تشتغل النماذج اللغوية فعلاً",
+      description:
+        "مو بس استخدامها — فهم المعمارية وديناميكيات التدريب وإيش يصير تحت الغطاء. أقرأ أوراق بحثية وأجري تجارب وأحاول أبني فهم حدسي.",
+    },
+    fr: {
+      title: "Comment fonctionnent vraiment les LLMs",
+      description:
+        "Pas seulement les utiliser — comprendre l'architecture, la dynamique d'entraînement et ce qui se passe sous le capot. Je lis des articles, je fais des expériences, j'essaie de construire une intuition.",
+    },
+  },
+  {
+    en: {
+      title: "Distributed systems",
+      description:
+        "Consensus, fault tolerance, consistency models. The kind of problems where you can't just add more servers and hope for the best. Reading papers and building small experiments.",
     },
     ar: {
       title: "الأنظمة الموزعة",
       description:
-        "دراسة خوارزميات الإجماع ومقايضات نظرية CAP وبناء معماريات موزعة مرنة. تطبيق أنماط من الأوراق البحثية على أنظمة الإنتاج.",
+        "الإجماع، تحمل الأخطاء، نماذج الاتساق. النوع من المشاكل اللي ما تقدر بس تضيف خوادم وتأمل الأفضل. أقرأ أوراق وأبني تجارب صغيرة.",
     },
     fr: {
-      title: "Systèmes Distribués",
+      title: "Systèmes distribués",
       description:
-        "Étude des algorithmes de consensus, des compromis du théorème CAP et construction d'architectures distribuées résilientes. Application des patterns issus de la recherche aux systèmes de production.",
-    },
-  },
-  {
-    en: {
-      title: "LLM Architecture & Training",
-      description:
-        "Understanding transformer architectures, fine-tuning strategies, RAG systems, and the emerging field of AI agents and multi-agent coordination.",
-    },
-    ar: {
-      title: "معمارية وتدريب النماذج اللغوية",
-      description:
-        "فهم معماريات المحولات واستراتيجيات الضبط الدقيق وأنظمة RAG والمجال الناشئ لوكلاء الذكاء الاصطناعي والتنسيق متعدد الوكلاء.",
-    },
-    fr: {
-      title: "Architecture et Entraînement des LLM",
-      description:
-        "Compréhension des architectures de transformeurs, des stratégies de fine-tuning, des systèmes RAG et du domaine émergent des agents IA et de la coordination multi-agents.",
+        "Consensus, tolérance aux pannes, modèles de cohérence. Le genre de problèmes où on ne peut pas juste ajouter des serveurs et espérer que ça marche. Je lis des articles et construis de petites expériences.",
     },
   },
 ];
@@ -182,36 +182,36 @@ const learnItems = [
 const readingItems = [
   {
     en: {
-      title: "Technical Books",
+      title: "On my shelf right now",
       description:
-        "\"Designing Data-Intensive Applications\" by Martin Kleppmann, \"Zero to One\" by Peter Thiel, and the Rust Book.",
+        "Re-reading Designing Data-Intensive Applications. Also working through Crafting Interpreters and the Rust Performance Book.",
     },
     ar: {
-      title: "كتب تقنية",
+      title: "على رفي حالياً",
       description:
-        '"تصميم التطبيقات كثيفة البيانات" لمارتن كليبمان، "من الصفر إلى الواحد" لبيتر ثيل، وكتاب رست.',
+        "أعيد قراءة تصميم التطبيقات كثيفة البيانات. وأشتغل على صياغة المفسرات وكتاب أداء Rust.",
     },
     fr: {
-      title: "Livres Techniques",
+      title: "Sur mon étagère en ce moment",
       description:
-        '"Designing Data-Intensive Applications" de Martin Kleppmann, "Zero to One" de Peter Thiel, et le Livre Rust.',
+        "Je relis Designing Data-Intensive Applications. Je travaille aussi sur Crafting Interpreters et le Rust Performance Book.",
     },
   },
   {
     en: {
-      title: "Engineering Blogs & Papers",
+      title: "Blogs and papers",
       description:
-        "Following research from Anthropic, OpenAI, and DeepMind. Reading engineering blogs from Cloudflare, Figma, and Oxide Computer.",
+        "Engineering blogs from Cloudflare, Oxide Computer, and Figma. Research from Anthropic and DeepMind when I have the energy for it.",
     },
     ar: {
-      title: "مدونات وأوراق هندسية",
+      title: "مدونات وأوراق",
       description:
-        "متابعة أبحاث من Anthropic وOpenAI وDeepMind. قراءة المدونات الهندسية من Cloudflare وFigma وOxide Computer.",
+        "مدونات هندسية من Cloudflare وOxide Computer وFigma. أبحاث من Anthropic وDeepMind لما يكون عندي طاقة لها.",
     },
     fr: {
-      title: "Blogs d'Ingénierie et Articles",
+      title: "Blogs et articles",
       description:
-        "Suivi des recherches d'Anthropic, OpenAI et DeepMind. Lecture des blogs d'ingénierie de Cloudflare, Figma et Oxide Computer.",
+        "Blogs d'ingénierie de Cloudflare, Oxide Computer et Figma. Recherches d'Anthropic et DeepMind quand j'ai l'énergie pour ça.",
     },
   },
 ];
@@ -252,10 +252,9 @@ export default async function NowPage({
 
       <div dir={dir} className="min-h-screen pt-20 pb-20">
         <div className="relative">
-          <div className="wave-gradient absolute inset-0 opacity-5" />
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center mb-16">
-              <p className="inline-block wave-gradient text-white text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-6">
+              <p className="inline-block text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-6 border border-primary/10 bg-primary/5 text-primary/60">
                 {sectionTitle}
               </p>
               <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
@@ -267,7 +266,7 @@ export default async function NowPage({
             </div>
 
             <div className="space-y-16">
-              {/* What I'm Working On */}
+              {/* Working On */}
               <section>
                 <div className="flex items-center gap-3 mb-8">
                   <div className="h-[2px] flex-1 bg-gradient-to-r from-[var(--color-primary)]/30 to-transparent" />
@@ -299,7 +298,7 @@ export default async function NowPage({
                 </div>
               </section>
 
-              {/* What I'm Learning */}
+              {/* Learning */}
               <section>
                 <div className="flex items-center gap-3 mb-8">
                   <div className="h-[2px] flex-1 bg-gradient-to-r from-[var(--color-secondary)]/30 to-transparent" />
@@ -331,16 +330,16 @@ export default async function NowPage({
                 </div>
               </section>
 
-              {/* What I'm Reading/Watching */}
+              {/* Reading */}
               <section>
                 <div className="flex items-center gap-3 mb-8">
                   <div className="h-[2px] flex-1 bg-gradient-to-r from-[var(--color-accent)]/30 to-transparent" />
                   <h2 className="text-2xl font-bold text-foreground whitespace-nowrap">
                     {isAr
-                      ? "ما أقرأه / أشاهده"
+                      ? "ما أقرأه"
                       : isFr
-                        ? "Ce que je lis / regarde"
-                        : "What I'm Reading / Watching"}
+                        ? "Ce que je lis"
+                        : "What I'm Reading"}
                   </h2>
                   <div className="h-[2px] flex-1 bg-gradient-to-l from-[var(--color-accent)]/30 to-transparent" />
                 </div>
@@ -367,11 +366,10 @@ export default async function NowPage({
                 </div>
               </section>
 
-              {/* Updated timestamp */}
               <div className="text-center pt-8">
                 <p className="text-xs text-foreground/30 font-mono">
                   {isAr
-                    ? "آخر تحديث: يوليو 2026"
+                    ? "آخر تحديث: يوليو ٢٠٢٦"
                     : isFr
                       ? "Dernière mise à jour : juillet 2026"
                       : "Last updated: July 2026"}
