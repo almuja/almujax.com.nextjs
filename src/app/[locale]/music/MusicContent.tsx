@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink, Disc3, ChevronDown, ChevronUp, Music2, Play, Sparkles } from "lucide-react";
+import { ExternalLink, Disc3, ChevronDown, ChevronUp, Play, Sparkles } from "lucide-react";
 
 const SpotifyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -117,7 +117,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 style={{ animationDelay: `${i * 80}ms` }}>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-gradient-to-br" style={{ backgroundImage: `linear-gradient(to bottom right, ${p.color}15, transparent)` }} />
                 <div className="relative z-10 p-3 rounded-xl transition-all duration-300 group-hover:shadow-lg" style={{ backgroundColor: `${p.color}15`, boxShadow: `0 0 20px ${p.color}10` }}>
-                  <span className="text-white/90" style={{ color: p.color }}><p.icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" /></span>
+                <span style={{ color: p.color }}><p.icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" /></span>
                 </div>
                 <span className="relative z-10 text-[11px] font-bold uppercase tracking-wider text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">{p.name}</span>
               </a>
@@ -158,17 +158,17 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           </div>
 
           {/* Spotify Embed */}
-          <div className="rounded-2xl border border-[#1DB954]/10 bg-[#1DB954]/[0.03] p-6 mb-6 hover:border-[#1DB954]/20 transition-all duration-500">
+          <div className="rounded-2xl border border-[#1ED760]/10 bg-[#1ED760]/[0.03] p-6 mb-6 hover:border-[#1ED760]/20 transition-all duration-500">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-[#1DB954]/10">
-                <SpotifyIcon className="w-5 h-5 text-[#1DB954]" />
+              <div className="p-2 rounded-lg bg-[#1ED760]/10">
+                <SpotifyIcon className="w-5 h-5 text-[#1ED760]" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-foreground">Spotify</h3>
                 <p className="text-[11px] text-foreground/40">@itsmawja</p>
               </div>
               <a href="https://open.spotify.com/user/itsmawja" target="_blank" rel="noopener noreferrer"
-                className="ml-auto flex items-center gap-1 text-xs text-[#1DB954] hover:underline font-medium">
+                className="ms-auto flex items-center gap-1 text-xs text-[#1ED760] hover:underline font-medium">
                 {locale === "ar" ? "افتح في سبوتيفاي" : locale === "fr" ? "Ouvrir Spotify" : "Open in Spotify"} <ExternalLink className="w-3 h-3" />
               </a>
             </div>
@@ -186,17 +186,17 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           </div>
 
           {/* Apple Music Embed */}
-          <div className="rounded-2xl border border-[#FC3C44]/10 bg-[#FC3C44]/[0.03] p-6 hover:border-[#FC3C44]/20 transition-all duration-500">
+          <div className="rounded-2xl border border-[#FA243C]/10 bg-[#FA243C]/[0.03] p-6 hover:border-[#FA243C]/20 transition-all duration-500">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-[#FC3C44]/10">
-                <AppleMusicIcon className="w-5 h-5 text-[#FC3C44]" />
+              <div className="p-2 rounded-lg bg-[#FA243C]/10">
+                <AppleMusicIcon className="w-5 h-5 text-[#FA243C]" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-foreground">Apple Music</h3>
                 <p className="text-[11px] text-foreground/40">@itsmawja</p>
               </div>
               <a href="https://music.apple.com/profile/itsmawja" target="_blank" rel="noopener noreferrer"
-                className="ml-auto flex items-center gap-1 text-xs text-[#FC3C44] hover:underline font-medium">
+                className="ms-auto flex items-center gap-1 text-xs text-[#FA243C] hover:underline font-medium">
                 {locale === "ar" ? "افتح في أبل ميوزك" : locale === "fr" ? "Ouvrir Apple Music" : "Open in Apple Music"} <ExternalLink className="w-3 h-3" />
               </a>
             </div>
@@ -273,14 +273,14 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   </p>
                   <div className="flex flex-wrap gap-2.5">
                     {[
-                      { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@itsmawja", icon: YouTubeIcon, primary: true },
-                      { label: locale === "ar" ? "ساوند كلاود" : "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon, primary: false },
-                      { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, primary: false },
+                      { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@itsmawja", icon: YouTubeIcon, color: "#FF0000" },
+                      { label: locale === "ar" ? "ساوند كلاود" : "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon, color: "#FF5500" },
+                      { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, color: "#1ED760" },
                     ].map((b) => (
                       <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs transition-all duration-300 hover:scale-105 ${
-                          b.primary ? "bg-red-600 text-white shadow-lg shadow-red-600/20 hover:bg-red-500" : "border border-border/30 bg-card/30 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-primary/30"}`}>
-                        <b.icon /> {b.label}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border/20 bg-card/40 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:scale-[1.03] font-medium text-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                        style={{ borderColor: `${b.color}30` }}>
+                        <span style={{ color: b.color }}><b.icon className="w-3.5 h-3.5" /></span> {b.label}
                       </a>
                     ))}
                   </div>
@@ -323,14 +323,15 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   </p>
                   <div className="flex flex-wrap gap-2.5 mb-4">
                     {[
-                      { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon },
-                      { label: locale === "ar" ? "أبل ميوزك" : "Apple Music", url: "https://music.apple.com/profile/itsmawja", icon: AppleMusicIcon },
-                      { label: locale === "ar" ? "ساوند كلاود" : "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon },
-                      { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@itsmawja", icon: YouTubeIcon },
+                      { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, color: "#1ED760" },
+                      { label: locale === "ar" ? "أبل ميوزك" : "Apple Music", url: "https://music.apple.com/profile/itsmawja", icon: AppleMusicIcon, color: "#FA243C" },
+                      { label: locale === "ar" ? "ساوند كلاود" : "SoundCloud", url: "https://soundcloud.com/itsmawja", icon: SoundCloudIcon, color: "#FF5500" },
+                      { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@itsmawja", icon: YouTubeIcon, color: "#FF0000" },
                     ].map((b) => (
                       <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/20 backdrop-blur-sm text-foreground/45 hover:text-foreground hover:border-purple-500/30 font-medium text-xs transition-all duration-300 hover:scale-105">
-                        <b.icon className="w-3.5 h-3.5" /> {b.label}
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/40 backdrop-blur-sm text-foreground/50 hover:text-foreground hover:scale-[1.03] font-medium text-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                        style={{ borderColor: `${b.color}30` }}>
+                        <span style={{ color: b.color }}><b.icon className="w-3.5 h-3.5" /></span> {b.label}
                       </a>
                     ))}
                   </div>
@@ -377,7 +378,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                     <span className="text-sm font-medium text-foreground/50 group-hover:text-foreground/80 transition-colors truncate">{video.title}</span>
                   </div>
                   <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-xs text-foreground/30 group-hover:text-red-400 transition-colors flex-shrink-0 ml-2">
+                    className="flex items-center gap-1 text-xs text-foreground/30 group-hover:text-red-400 transition-colors flex-shrink-0 ms-2">
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
@@ -386,21 +387,44 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           </div>
         </div>
 
-        {/* ===== FOOTER PLATFORMS ===== */}
-        <div className="text-center py-12 rounded-3xl border border-primary/5 bg-gradient-to-b from-primary/[0.03] to-transparent">
-          <Music2 className="w-8 h-8 text-primary/15 mx-auto mb-4" />
-          <p className="text-sm text-foreground/40 mb-6">
-            {locale === "ar" ? "استمع على جميع المنصات — قريباً" : locale === "fr" ? "Écoutez sur toutes les plateformes — bientôt" : "Listen on all platforms — coming soon"}
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
+        {/* ===== STREAM EVERYWHERE ===== */}
+        <section className="relative overflow-hidden rounded-3xl border border-border/20 bg-gradient-to-br from-card/60 via-card/30 to-transparent p-8 sm:p-12">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-56 h-56 bg-purple-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+
+          <div className="relative text-center mb-10">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-muted/40 border border-border/20 backdrop-blur-sm mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary/60">
+                {locale === "ar" ? "متاح على" : locale === "fr" ? "Disponible sur" : "Available on"}
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-foreground">
+              {locale === "ar" ? "جميع المنصات" : locale === "fr" ? "Toutes les plateformes" : "All Platforms"}
+            </h2>
+          </div>
+
+          <div className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
             {streamingPlatforms.map((p) => (
               <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/5 text-foreground/30 hover:text-foreground/50 hover:border-border/30 transition-all duration-300">
-                <p.icon className="w-3.5 h-3.5" /> <span className="text-[10px] font-medium">{p.name}</span>
+                className="group flex flex-col items-center gap-3 p-5 rounded-2xl border border-border/20 bg-card/40 backdrop-blur-sm hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                  style={{ backgroundColor: `${p.color}12` }}>
+                  <span style={{ color: p.color }}>
+                    <p.icon className="w-5 h-5" />
+                  </span>
+                </div>
+                <span className="text-[11px] font-semibold text-muted-foreground group-hover:text-foreground transition-colors">
+                  {p.name}
+                </span>
               </a>
             ))}
           </div>
-        </div>
+        </section>
 
       </div>
     </div>
