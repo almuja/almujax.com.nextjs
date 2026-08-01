@@ -336,6 +336,7 @@ export default async function BlogPostPage({
               name={validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
               image="/img/profile.png"
               bio={dict.blog.authorBio}
+              aboutLabel={dict.blog.aboutTheAuthor}
               socialLinks={{
                 github: "https://github.com/itsmawja",
                 twitter: "https://x.com/itsmawja",
@@ -373,41 +374,65 @@ async function PostNavigation({ currentSlug, locale, dict }: { currentSlug: stri
   const nextPost =
     currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
 
+  const isRtl = locale === "ar";
+
+  const CardArrow = ({ dir }: { dir: "prev" | "next" }) => {
+    const prevPath = isRtl ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7";
+    const nextPath = isRtl ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7";
+    const d = dir === "prev" ? prevPath : nextPath;
+    return (
+      <div className="flex-shrink-0 p-2 rounded-xl bg-muted/40 border border-border/30 group-hover:border-primary/20 group-hover:bg-primary/[0.06] transition-all duration-300">
+        <svg className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={d} />
+        </svg>
+      </div>
+    );
+  };
+
   return (
     <nav className="mt-16 pt-8 border-t border-border">
-      <div
-        className={`flex flex-col sm:flex-row justify-between gap-6 ${!previousPost || !nextPost ? "items-center" : ""}`}
-      >
+      <div className={`flex flex-col sm:flex-row justify-between gap-6 ${!previousPost || !nextPost ? "items-center" : ""}`}>
         {previousPost && (
-          <Link
-            href={`/${locale}/blog/${previousPost.slug}`}
-            className={`group flex-1 max-w-md ${!nextPost ? "sm:mx-auto" : ""}`}
-          >
-            <div className="flex items-start gap-4 p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300">
-              <div className="flex-shrink-0">
-                <svg className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-sm text-muted-foreground mb-1">{dict.blog.previous}</div>
-                <h4 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">{previousPost.title}</h4>
-                <p className="text-sm text-muted-foreground line-clamp-1 mt-1">{previousPost.description}</p>
+          <Link href={`/${locale}/blog/${previousPost.slug}`}
+            className={`group flex-1 max-w-md ${!nextPost ? "sm:mx-auto" : ""}`}>
+            <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-gradient-to-br from-card/80 via-card/60 to-transparent p-5 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/[0.04] hover:-translate-y-0.5 transition-all duration-400">
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/[0.04] to-transparent" />
+              <div className="relative flex items-start gap-4">
+                <CardArrow dir="prev" />
+                <div className="flex-1 min-w-0">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">{dict.blog.previous}</span>
+                  <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">{previousPost.title}</h4>
+                  <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">{previousPost.description}</p>
+                </div>
               </div>
             </div>
           </Link>
         )}
         {nextPost && (
-          <Link
-            href={`/${locale}/blog/${nextPost.slug}`}
-            className={`group flex-1 max-w-md ${!previousPost ? "sm:mx-auto" : "ml-auto"}`}
-          >
-            <div className="flex items-start gap-4 p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 text-right">
-              <div className="flex-1 min-w-0">
-                <div className="text-sm text-muted-foreground mb-1">{dict.blog.next}</div>
-                <h4 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">{nextPost.title}</h4>
-                <p className="text-sm text-muted-foreground line-clamp-1 mt-1">{nextPost.description}</p>
-              </div>
-              <div className="flex-shrink-0">
-                <svg className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          <Link href={`/${locale}/blog/${nextPost.slug}`}
+            className={`group flex-1 max-w-md ${!previousPost ? "sm:mx-auto" : "ms-auto"}`}>
+            <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-gradient-to-br from-card/80 via-card/60 to-transparent p-5 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/[0.04] hover:-translate-y-0.5 transition-all duration-400">
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/[0.04] to-transparent" />
+              <div className="relative flex items-start gap-4">
+                {isRtl ? (
+                  <>
+                    <CardArrow dir="next" />
+                    <div className="flex-1 min-w-0 text-start">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">{dict.blog.next}</span>
+                      <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">{nextPost.title}</h4>
+                      <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">{nextPost.description}</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex-1 min-w-0 text-end">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">{dict.blog.next}</span>
+                      <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">{nextPost.title}</h4>
+                      <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">{nextPost.description}</p>
+                    </div>
+                    <CardArrow dir="next" />
+                  </>
+                )}
               </div>
             </div>
           </Link>
@@ -437,26 +462,37 @@ async function RelatedPosts({
 
   return (
     <section className="mt-16 pt-8 border-t border-border">
-      <h3 className="text-2xl font-bold mb-6 text-card-foreground">
-        {dict.blog.relatedPosts}
-      </h3>
-      <div className="grid gap-6 md:grid-cols-4">
+      <div className="flex items-center gap-3 mb-8">
+        <div className="h-[2px] flex-1 bg-gradient-to-r from-primary/20 to-transparent" />
+        <h3 className="text-lg font-bold text-foreground whitespace-nowrap">
+          {dict.blog.relatedPosts}
+        </h3>
+        <div className="h-[2px] flex-1 bg-gradient-to-l from-primary/20 to-transparent" />
+      </div>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {relatedPosts.map((post) => (
           <Link
             key={post.slug}
             href={`/${locale}/blog/${post.slug}`}
-            className="group block"
+            className="group"
           >
-            <article className="backdrop-blur-sm bg-card border border-border rounded-lg p-4 hover:bg-primary/10 transition-colors">
-              <h4 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
-                {post.title}
-              </h4>
-              <p className="text-sm text-muted-foreground line-clamp-2">
-                {post.description}
-              </p>
-              <div className="flex items-center justify-between mt-3 text-xs text-muted-foreground">
-                <span>{new Date(post.date).toLocaleDateString()}</span>
-                <span>{post.readingTime}</span>
+            <article className="relative overflow-hidden rounded-2xl border border-border/25 bg-gradient-to-br from-card/70 via-card/50 to-transparent p-5 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/[0.03] hover:-translate-y-0.5 transition-all duration-400">
+              <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors duration-500" />
+              <div className="relative">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-primary/40 mb-2 block">
+                  {post.category}
+                </span>
+                <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm leading-snug mb-2">
+                  {post.title}
+                </h4>
+                <p className="text-xs text-foreground/40 line-clamp-2 mb-4">
+                  {post.description}
+                </p>
+                <div className="flex items-center gap-3 text-[10px] text-foreground/30 border-t border-border/20 pt-3">
+                  <span>{new Date(post.date).toLocaleDateString(locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US", { year: "numeric", month: "short", day: "numeric" })}</span>
+                  <span className="text-foreground/15">·</span>
+                  <span>{post.readingTime}</span>
+                </div>
               </div>
             </article>
           </Link>

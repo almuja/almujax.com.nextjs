@@ -23,7 +23,7 @@
 .prose-content p {
   margin-bottom: 1.5rem;
   color: var(--color-foreground);
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .prose-content a {
@@ -46,14 +46,24 @@
 }
 
 .prose-content blockquote {
-  border-left: 3px solid var(--color-primary);
-  padding: 1rem 0 1rem 1.5rem;
+  border-inline-start: 3px solid var(--color-primary);
+  padding-block: 1rem;
+  padding-inline-start: 1.5rem;
+  padding-inline-end: 0;
   margin: 2rem 0;
   font-style: italic;
   color: var(--color-foreground);
-  opacity: 0.6;
+  opacity: 0.75;
   background: var(--color-muted);
-  border-radius: 0 0.75rem 0.75rem 0;
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+[dir="rtl"] .prose-content blockquote {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
 }
 
 .prose-content blockquote p {
@@ -129,7 +139,7 @@
 .prose-content th {
   background: var(--color-muted);
   font-weight: 600;
-  text-align: left;
+  text-align: start;
   color: var(--color-foreground);
 }
 
@@ -145,15 +155,15 @@
 
 /* ─── Lists ─── */
 .prose-content ul, .prose-content ol {
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
   margin: 1.5rem 0;
   color: var(--color-foreground);
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .prose-content li {
   margin-bottom: 0.5rem;
-  padding-left: 0.25rem;
+  padding-inline-start: 0.25rem;
 }
 
 .prose-content li::marker {

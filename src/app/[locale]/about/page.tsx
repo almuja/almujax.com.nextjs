@@ -102,7 +102,7 @@ export default async function AboutPage({
             </div>
 
             {/* Identity */}
-            <div className="text-center sm:text-left flex-1">
+            <div className="text-center sm:text-start flex-1">
               <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-1 tracking-tight">
                 {validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
               </h2>

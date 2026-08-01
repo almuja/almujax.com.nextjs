@@ -233,7 +233,7 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
               </>
             )}
             {project.forks !== undefined && project.forks > 0 && (
-              <span className="ml-auto flex items-center gap-1 text-[10px] text-foreground/35">
+              <span className="ms-auto flex items-center gap-1 text-[10px] text-foreground/35">
                 <GitFork className="w-3 h-3" /> {project.forks}
               </span>
             )}

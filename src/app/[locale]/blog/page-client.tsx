@@ -68,10 +68,10 @@ export default function BlogPageClient({ posts, locale, t }: BlogPageProps) {
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center">
                   <h2 className="text-2xl font-bold text-foreground flex items-center">
-                    <Star className="w-5 h-5 text-yellow-500 mr-2" />
+                    <Star className="w-5 h-5 text-yellow-500 me-2" />
                     {t.featuredPosts}
                   </h2>
-                  <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full ml-3">
+                  <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full ms-3">
                     {featuredPosts.length} {featuredPosts.length !== 1 ? t.highlightsPlural : t.highlights}
                   </span>
                 </div>

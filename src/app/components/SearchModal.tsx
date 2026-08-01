@@ -168,7 +168,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     <button
                       key={index}
                       onClick={() => handleResultClick(result.href)}
-                      className="w-full text-left px-6 py-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 group"
+                      className="w-full text-start px-6 py-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 group"
                     >
                       <div className="flex items-center space-x-4">
                         <div
