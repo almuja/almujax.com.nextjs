@@ -92,7 +92,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
         {/* ===== HERO ===== */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-purple-500/20 bg-purple-500/5 backdrop-blur-xl mb-8">
+          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-purple-500/5 backdrop-blur-xl mb-8 ring-1 ring-purple-500/10">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
@@ -113,10 +113,10 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-10 gap-3 max-w-5xl mx-auto mb-16">
             {streamingPlatforms.map((p, i) => (
               <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
-                className="group relative flex flex-col items-center gap-3 p-5 rounded-2xl border border-border/20 bg-card/20 backdrop-blur-xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
+                className="group relative flex flex-col items-center gap-3 p-5 rounded-2xl bg-card/40 backdrop-blur-xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-xl"
                 style={{ animationDelay: `${i * 80}ms` }}>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-gradient-to-br" style={{ backgroundImage: `linear-gradient(to bottom right, ${p.color}15, transparent)` }} />
-                <div className="relative z-10 p-3 rounded-xl transition-all duration-300 group-hover:shadow-lg" style={{ backgroundColor: `${p.color}15`, boxShadow: `0 0 20px ${p.color}10` }}>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-gradient-to-br" style={{ backgroundImage: `linear-gradient(to bottom right, ${p.color}10, transparent)` }} />
+                <div className="relative z-10 p-3 rounded-xl transition-all duration-300 group-hover:shadow-lg" style={{ backgroundColor: `${p.color}12` }}>
                 <span style={{ color: p.color }}><p.icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" /></span>
                 </div>
                 <span className="relative z-10 text-[11px] font-bold uppercase tracking-wider text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">{p.name}</span>
@@ -129,7 +129,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
         {t.artistStory && (
           <div className="mb-16">
             <button onClick={() => setShowStory(!showStory)}
-              className="w-full flex items-center justify-between p-5 rounded-2xl border border-border/20 bg-card/10 backdrop-blur-sm hover:border-primary/20 transition-all duration-300 group">
+              className="w-full flex items-center justify-between p-5 rounded-2xl bg-card/30 backdrop-blur-sm hover:bg-card/50 hover:shadow-md transition-all duration-300 group">
               <div className="flex items-center gap-4">
                 <span className="w-6 h-0.5 bg-primary/40 rounded-full group-hover:w-10 group-hover:bg-primary transition-all duration-500"></span>
                 <span className="text-base font-semibold text-foreground/50 group-hover:text-foreground">
@@ -139,7 +139,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
               {showStory ? <ChevronUp className="w-4 h-4 text-foreground/40" /> : <ChevronDown className="w-4 h-4 text-foreground/40" />}
             </button>
             {showStory && (
-              <div className="mt-4 p-6 rounded-2xl bg-card/5 border border-border/20 backdrop-blur-sm">
+              <div className="mt-4 p-6 rounded-2xl bg-card/20 backdrop-blur-sm shadow-inner">
                 <p className="text-foreground/50 leading-relaxed text-sm whitespace-pre-line">{t.artistStory}</p>
               </div>
             )}
@@ -158,7 +158,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           </div>
 
           {/* Spotify Embed */}
-          <div className="rounded-2xl border border-[#1ED760]/10 bg-[#1ED760]/[0.03] p-6 mb-6 hover:border-[#1ED760]/20 transition-all duration-500">
+          <div className="rounded-2xl bg-[#1ED760]/[0.03] p-6 mb-6 shadow-sm hover:shadow-md transition-shadow duration-500">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-[#1ED760]/10">
                 <SpotifyIcon className="w-5 h-5 text-[#1ED760]" />
@@ -186,7 +186,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           </div>
 
           {/* Apple Music Embed */}
-          <div className="rounded-2xl border border-[#FA243C]/10 bg-[#FA243C]/[0.03] p-6 hover:border-[#FA243C]/20 transition-all duration-500">
+          <div className="rounded-2xl bg-[#FA243C]/[0.03] p-6 shadow-sm hover:shadow-md transition-shadow duration-500">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-[#FA243C]/10">
                 <AppleMusicIcon className="w-5 h-5 text-[#FA243C]" />
@@ -230,8 +230,8 @@ export function MusicContent({ locale, t }: MusicContentProps) {
               onClick={() => setActiveTab("kakashi")}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                 activeTab === "kakashi"
-                  ? "bg-primary/10 border border-primary/20 text-primary shadow-lg shadow-primary/5"
-                  : "border border-border/20 bg-card/10 text-foreground/40 hover:text-foreground/60"
+                  ? "bg-primary/15 text-primary shadow-lg shadow-primary/10"
+                  : "bg-card/30 text-foreground/40 hover:text-foreground/60 hover:bg-card/50"
               }`}
             >
               <Disc3 className="w-4 h-4" /> KAKASHI <span className="text-[10px] opacity-50">2022</span>
@@ -240,8 +240,8 @@ export function MusicContent({ locale, t }: MusicContentProps) {
               onClick={() => setActiveTab("rockstar")}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                 activeTab === "rockstar"
-                  ? "bg-purple-500/10 border border-purple-500/20 text-purple-400 shadow-lg shadow-purple-500/5"
-                  : "border border-border/20 bg-card/10 text-foreground/40 hover:text-foreground/60"
+                  ? "bg-purple-500/15 text-purple-400 shadow-lg shadow-purple-500/10"
+                  : "bg-card/30 text-foreground/40 hover:text-foreground/60 hover:bg-card/50"
               }`}
             >
               <Sparkles className="w-4 h-4" /> Rockstar <span className="text-[10px] opacity-50">2026</span>
@@ -250,7 +250,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
           {/* KAKASHI */}
           {activeTab === "kakashi" && (
-            <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-primary/10 bg-gradient-to-br from-primary/10 via-purple-500/5 to-transparent">
+            <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden bg-gradient-to-br from-primary/10 via-purple-500/5 to-transparent shadow-lg shadow-primary/5">
               <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 
@@ -264,7 +264,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   </div>
                 </div>
                 <div className="text-center md:text-start flex-1">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 text-primary text-[10px] font-bold uppercase tracking-widest mb-4 border border-primary/20">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 text-primary text-[10px] font-bold uppercase tracking-widest mb-4">
                     <Disc3 className="w-3 h-3" /> EP · 2022
                   </span>
                   <h3 className="text-3xl sm:text-4xl font-black text-foreground mb-3">KAKASHI</h3>
@@ -278,8 +278,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                       { label: locale === "ar" ? "سبوتيفاي" : "Spotify", url: "https://open.spotify.com/user/itsmawja", icon: SpotifyIcon, color: "#1ED760" },
                     ].map((b) => (
                       <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border/20 bg-card/40 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:scale-[1.03] font-medium text-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                        style={{ borderColor: `${b.color}30` }}>
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-card/50 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:scale-[1.03] font-medium text-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                         <span style={{ color: b.color }}><b.icon className="w-3.5 h-3.5" /></span> {b.label}
                       </a>
                     ))}
@@ -291,7 +290,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
           {/* ROCKSTAR */}
           {activeTab === "rockstar" && (
-            <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-purple-500/15 bg-gradient-to-br from-purple-500/10 via-violet-500/5 to-transparent">
+            <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden bg-gradient-to-br from-purple-500/10 via-violet-500/5 to-transparent shadow-lg shadow-purple-500/5">
               <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4"></div>
               <div className="absolute bottom-0 right-0 w-56 h-56 bg-violet-500/10 rounded-full blur-3xl translate-y-1/2 translate-x-1/4"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-pink-500/5 rounded-full blur-2xl animate-pulse-slow"></div>
@@ -310,7 +309,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   </span>
                 </div>
                 <div className="text-center md:text-start flex-1">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/15 text-purple-400 text-[10px] font-bold uppercase tracking-widest mb-4 border border-purple-500/20">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/15 text-purple-400 text-[10px] font-bold uppercase tracking-widest mb-4">
                     <Disc3 className="w-3 h-3" /> EP · 2026
                   </span>
                   <h3 className="text-3xl sm:text-4xl font-black text-foreground mb-3">Rockstar</h3>
@@ -329,8 +328,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                       { label: locale === "ar" ? "يوتيوب" : "YouTube", url: "https://www.youtube.com/@itsmawja", icon: YouTubeIcon, color: "#FF0000" },
                     ].map((b) => (
                       <a key={b.label} href={b.url} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/40 backdrop-blur-sm text-foreground/50 hover:text-foreground hover:scale-[1.03] font-medium text-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                        style={{ borderColor: `${b.color}30` }}>
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-card/50 backdrop-blur-sm text-foreground/50 hover:text-foreground hover:scale-[1.03] font-medium text-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                         <span style={{ color: b.color }}><b.icon className="w-3.5 h-3.5" /></span> {b.label}
                       </a>
                     ))}
@@ -352,7 +350,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-red-500/10 border border-red-500/20">
+              <div className="p-2.5 rounded-2xl bg-red-500/10 shadow-sm shadow-red-500/10">
                 <YouTubeIcon className="w-5 h-5 text-red-500" />
               </div>
               <div>
@@ -368,7 +366,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {musicVideos.map((video, i) => (
-              <div key={video.id} className="group rounded-2xl overflow-hidden border border-border/25 bg-card/10 backdrop-blur-sm hover:border-red-500/30 hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-500 hover:-translate-y-1">
+              <div key={video.id} className="group rounded-2xl overflow-hidden bg-card/30 backdrop-blur-sm hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-500 hover:-translate-y-1">
                 <div className="aspect-video w-full bg-black">
                   <iframe src={`https://www.youtube.com/embed/${video.id}`} width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen loading="lazy" className="w-full h-full" title={video.title} />
                 </div>
@@ -388,12 +386,12 @@ export function MusicContent({ locale, t }: MusicContentProps) {
         </div>
 
         {/* ===== STREAM EVERYWHERE ===== */}
-        <section className="relative overflow-hidden rounded-3xl border border-border/20 bg-gradient-to-br from-card/60 via-card/30 to-transparent p-8 sm:p-12">
+        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-card/60 via-card/30 to-transparent p-8 sm:p-12 shadow-xl shadow-black/[0.02]">
           <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-56 h-56 bg-purple-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
           <div className="relative text-center mb-10">
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-muted/40 border border-border/20 backdrop-blur-sm mb-6">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-muted/30 ring-1 ring-border/10 backdrop-blur-sm mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
@@ -410,7 +408,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           <div className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
             {streamingPlatforms.map((p) => (
               <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 p-5 rounded-2xl border border-border/20 bg-card/40 backdrop-blur-sm hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+                className="group flex flex-col items-center gap-3 p-5 rounded-2xl bg-card/50 backdrop-blur-sm hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
                   style={{ backgroundColor: `${p.color}12` }}>
