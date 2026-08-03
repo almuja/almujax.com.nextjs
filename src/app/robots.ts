@@ -54,6 +54,11 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
       {
+        userAgent: "ClaudeBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
         userAgent: "anthropic-ai",
         allow: "/",
         disallow: ["/api/"],
@@ -80,6 +85,11 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "Applebot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Applebot-Extended",
         allow: "/",
         disallow: ["/api/"],
       },

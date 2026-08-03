@@ -3,6 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import {
   PersonStructuredData,
+  PerformingArtistStructuredData,
+  SoftwareApplicationStructuredData,
   OrganizationStructuredData,
   WebSiteStructuredData,
 } from "./components/StructuredData";
@@ -59,6 +61,8 @@ export default function RootLayout({
           }}
         />
         <PersonStructuredData />
+        <PerformingArtistStructuredData />
+        <SoftwareApplicationStructuredData />
         <OrganizationStructuredData />
         <WebSiteStructuredData />
         <meta name="geo.region" content="FR" />
@@ -94,7 +98,10 @@ export default function RootLayout({
         <link rel="me" href="https://github.com/itsmawja" />
         <link rel="me" href="https://linkedin.com/in/itsmawja" />
         <link rel="me" href="https://x.com/itsmawja" />
+        <link rel="me" href="https://twitter.com/itsmawja" />
         <link rel="me" href="https://instagram.com/itsmawja" />
+        <link rel="me" href="https://dev.to/itsmawja" />
+        <link rel="me" href="https://reddit.com/user/itsmawja" />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>

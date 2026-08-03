@@ -364,6 +364,53 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
+      {/* ─────────── FAQ ─────────── */}
+      {(t as any).faq && (
+        <section className="relative py-32 px-6 overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute top-1/3 right-[-10%] w-[600px] h-[500px] rounded-full bg-[var(--color-wave-1)]/3 blur-[140px] animate-pulse-slow opacity-30" />
+            <div className="absolute bottom-[15%] left-[-8%] w-[450px] h-[400px] rounded-full bg-[var(--color-wave-2)]/2 blur-[120px] animate-pulse-slow opacity-25 animation-delay-2000" />
+            <div className="absolute top-[60%] left-[40%] w-[250px] h-[250px] rounded-full bg-[var(--color-wave-3)]/3 blur-[100px] animate-pulse-slow opacity-20 animation-delay-4000" />
+          </div>
+
+          <div className="relative max-w-5xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-border/30 bg-card/30 backdrop-blur-sm mb-6">
+                <Sparkles className="w-3.5 h-3.5 text-primary/40" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/40">{(t as any).faq.heading}</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
+                <span className="wave-gradient-text">{(t as any).faq.heading}</span>
+              </h2>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              {(t as any).faq.items.map((item: { q: string; a: string }, i: number) => {
+                const c = capColors[i % capColors.length];
+                return (
+                  <div key={item.q} className={`group relative p-6 sm:p-8 rounded-2xl border ${c.border} bg-card/20 backdrop-blur-sm transition-all duration-700 hover:-translate-y-1 hover:shadow-2xl overflow-hidden`}>
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none" />
+                    <div className={`absolute inset-0 rounded-2xl ${c.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${c.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                    <div className="relative z-10">
+                      <div className="flex items-start gap-4">
+                        <span className="text-lg font-light shrink-0 mt-0.5 text-foreground/20 group-hover:text-foreground/40 transition-colors duration-500">
+                          {["①","②","③","④"][i]}
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="text-sm font-bold text-foreground mb-3 group-hover:text-foreground/90 transition-colors duration-300">{item.q}</h3>
+                          <p className="text-xs text-foreground/45 leading-relaxed group-hover:text-foreground/50 transition-colors duration-300">{item.a}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─────────── CTA ─────────── */}
       <section className="relative py-32 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">

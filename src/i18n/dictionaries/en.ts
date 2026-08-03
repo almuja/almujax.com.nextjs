@@ -1,9 +1,9 @@
 const en = {
   site: {
-    title: "Mawja (Mujahid Siyam) — Software Engineer, AI Engineer & Music Artist",
+    title: "Mawja (Mujahid Siyam) — Software Engineer, Network Engineer, AI Cloud Architect, Data Scientist, System Administrator, Music Artist & Content Creator",
     description:
-      "Mujahid Siyam, known as Mawja, is a software engineer, AI engineer, network engineer, cloud architect, DevSecOps professional, Linux & Windows systems administrator, and music artist. Official website with projects, writing, and music.",
-    defaultTitle: "Mawja (Mujahid Siyam) — Software Engineer, AI Engineer & Music Artist",
+      "Mujahid Siyam, known as Mawja (itsmawja), is a software engineer, network engineer, AI cloud architect, data scientist, system administrator (Linux and Windows), rapper, music producer, and content creator based in Paris, France. Official website with projects, writing, and music.",
+    defaultTitle: "Mawja (Mujahid Siyam) — Software Engineer, Network Engineer, AI Cloud Architect, Data Scientist, System Administrator, Music Artist & Content Creator",
   },
   nav: {
     projects: "Projects",
@@ -18,11 +18,11 @@ const en = {
     blogBadge: "Blog",
   },
   home: {
-    title: "Mawja (Mujahid Siyam) — Software, AI & Network Engineer",
+    title: "Mawja (Mujahid Siyam) — Software, Network, AI & Systems Engineer | itsmawja",
     description:
-      "Mujahid Siyam is a software engineer, AI engineer, network engineer, cloud architect, DevSecOps professional, and music artist. He builds systems, writes code, manages infrastructure, and makes music.",
+      "Mujahid Siyam (itsmawja) is a software engineer, network engineer, AI cloud architect, data scientist, system administrator, and music artist born in Sudan and based in Paris, France. He builds systems, writes code, manages infrastructure, and makes music.",
     sparkle: "Building systems and making music",
-    roles: "Software Engineer · AI Engineer · Network Engineer · Cloud Architect · DevSecOps · SysAdmin (Linux & Windows) · Music Artist",
+    roles: "Software Engineer · Network Engineer · AI Cloud Architect · Data Scientist · System Administrator (Linux & Windows) · Rapper · Music Producer · Content Creator",
     heroBody:
       "I build software, design cloud infrastructure, manage Linux and Windows servers, secure deployments, and make music. Most days I'm deep in code — Rust, TypeScript, Python — architecting systems, automating infrastructure with Terraform and Ansible, managing databases like PostgreSQL and MySQL, or training AI models. Some days I'm in the studio recording. Both are the same thing to me: taking something from idea to reality, getting the details right, and not stopping until it works the way it should.",
     whatIDo: "What I Do",
@@ -57,7 +57,7 @@ const en = {
     readBlog: "Read Blog",
     aboutHeading: "About Mawja (Mujahid Siyam)",
     about1:
-      "Mawja (موجة) is the name I use online. It means \"wave\" in Arabic — the flow, the signal, the movement. My real name is Mujahid Siyam. I'm a Sudanese software engineer, AI engineer, network engineer, and music artist, currently based in France.",
+      "Mawja (موجة) is the name I use online. It means \"wave\" in Arabic — the flow, the signal, the movement. My real name is Mujahid Siyam, and my handle everywhere is itsmawja. I'm a Sudanese software engineer, network engineer, AI cloud architect, data scientist, rapper, and hip-hop producer, born in Sudan and currently based in Paris, France.",
     about2:
       "I started with music before I ever wrote a line of code. At 16, I was forming bands in Sudan, recording tracks, performing wherever I could. Music taught me how to build something from nothing — an idea becomes a sound, a sound becomes a performance, a performance connects with people. That creative instinct never left me. I carried it into engineering later on, where I found the same cycle: imagine, build, refine, ship.",
     about3:
@@ -73,14 +73,14 @@ const en = {
     ctaButton: "Get in touch",
   },
   about: {
-    title: "About | Mawja (Mujahid Siyam) — Software, AI & Network Engineer",
+    title: "About | Mujahid Siyam (Mawja / itsmawja) — Software Engineer & Music Artist",
     description:
-      "Mujahid Siyam (Mawja) is a software engineer, AI engineer, network engineer, cloud architect, DevSecOps professional, and music artist. Explore his professional profile, experience, skills, and story.",
+      "Mujahid Siyam (Mawja, handle: itsmawja) is a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer based in Paris, France. Explore his professional profile, experience, skills, and story.",
     heading: "About Mujahid Siyam",
-    roles: "Software Engineer · AI Engineer · Network Engineer · Cloud Architect · DevSecOps · SysAdmin (Linux & Windows) · Music Artist",
+    roles: "Software Engineer · Network Engineer · AI Cloud Architect · Data Scientist · System Administrator (Linux & Windows) · Rapper · Music Producer · Content Creator",
     profileTitle: "Software & AI Engineer · Music Artist",
     akaLabel: "AKA Mawja",
-    location: "France",
+    location: "Paris, France",
     email: "hello@itsmawja.com",
     website: "itsmawja.com",
     coreCompetencies: "Core Expertise",
@@ -212,24 +212,24 @@ const en = {
     liveSite: "Live",
   },
   music: {
-    title: "Music | Mawja | Arabic Rap | Sudanese Rap | Hip Hop",
+    title: "Music | Mawja | Arabic Rap | Sudanese Rap | Middle Eastern Hip Hop | African Rap",
     description:
-      "Mawja (موجا) is the artist name of Mujahid Siyam. Arabic rap, Sudanese rap, hip hop. Listen to KAKASHI EP (2022). Rockstar EP coming August 2026. Follow for upcoming releases.",
+      "Mawja (موجا) is the artist name of Mujahid Siyam (handle: itsmawja). Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap. Listen to KAKASHI EP (2022). Rockstar EP coming August 2026. Follow for upcoming releases.",
     heading: "Mawja — Music",
-    subtitle: "Music under the name Mawja. Arabic rap, Sudanese rap, and original productions. KAKASHI EP out now. Rockstar EP coming August 2026.",
+    subtitle: "Music under the name Mawja. Arabic, Middle Eastern, and African rap and hip-hop. Sudanese rap and original productions. KAKASHI EP out now. Rockstar EP coming August 2026.",
     noPlaylists: "No releases at the moment. Stay tuned for upcoming music.",
     loading: "Loading...",
     listenOn: "Listen on",
     tracks: "tracks",
     openInApp: "Open in",
     artistName: "Mawja",
-    artistDescription: "Arabic Rap · Sudanese Rap · Hip Hop",
+    artistDescription: "Arabic Rap · Middle Eastern Rap · Sudanese Rap · African Rap · Hip Hop",
     artistStory:
       "I started making music when I was 16, long before I wrote a line of code. Growing up in Sudan, music was everywhere — and I wanted to be part of it. I formed bands, wrote lyrics, recorded wherever I could, and performed in front of anyone who would listen. Music was my first language for building things: you start with an idea, you shape it, you refine it, and then you put it out there and see how people respond.\n\nWhen I moved to France, I stepped away from music to focus on software engineering. For years, code replaced everything. I built systems, managed infrastructure, worked on AI projects. It was demanding and rewarding, but something was missing. In 2022, after a long silence, I went back to the studio. I produced my first EP — KAKASHI — under the name Mawja. It was raw, honest, and exactly what I needed to make. It wasn't a comeback strategy. It was me remembering who I was before I became an engineer.\n\nNow I'm working on my next EP, Rockstar, set for release in August 2026. It's the next chapter — bigger, more focused, and a deeper expression of where I am now. Music is not a side project. It's part of my identity, the same way engineering is. If you've listened to KAKASHI, you already know the sound. If you haven't, now's a good time.\n\nI make Arabic rap and Sudanese rap, with hip hop production that draws from both my roots and my life in Europe. The music is personal. It's about identity, displacement, ambition, and the tension between who you were and who you're becoming. If that resonates with you, I think you'll like what's coming.",
   },
   contact: {
-    title: "Contact | Mawja (Mujahid Siyam) — Get in Touch",
-    description: "Get in touch with Mujahid Siyam (Mawja). Engineering collaboration, AI projects, infrastructure consulting, music inquiries, or just saying hello.",
+    title: "Contact | Mujahid Siyam (Mawja / itsmawja) — Get in Touch",
+    description: "Get in touch with Mujahid Siyam (Mawja, handle: itsmawja), a Sudanese software engineer, rapper, and hip-hop producer based in Paris, France. Engineering collaboration, AI projects, infrastructure consulting, music inquiries, or just saying hello.",
     heading: "Get in touch",
     subtitle: "Have a project, a question, or just want to connect? I read every message and reply to the real ones. Let's talk.",
     badge: "Contact",
@@ -279,38 +279,64 @@ const en = {
     and: "and",
     openSource: "Open Source",
     worldwide: "Worldwide",
-    tagline: "Building software, systems, and music. Based in France, working worldwide.",
+    tagline: "Building software, systems, and music. Based in Paris, France, working worldwide.",
     errorMessage: "Something went wrong. Please try again or email me at hello@itsmawja.com.",
   },
   structuredData: {
     description:
-      "Mujahid Siyam, known as Mawja (itsmawja), is a software engineer, AI engineer, network engineer, cloud architect, DevSecOps professional, Linux & Windows systems administrator, and music artist. He builds production software systems, manages infrastructure, designs CI/CD pipelines, administers servers, and produces Arabic rap and Sudanese rap music. Based in France, working globally via Zaroxi Studio.",
+      "Mujahid Siyam, known as Mawja (itsmawja), is a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator (Linux and Windows), rapper, music producer, and content creator based in Paris, France. He builds production software systems, manages infrastructure, administers servers, and produces Arabic, Middle Eastern, and African rap music. Founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust.",
     websiteDescription:
-      "Official website of Mujahid Siyam (Mawja) — software engineer, AI engineer, network engineer, cloud architect, DevSecOps, systems administrator, and music artist. Projects, technical writing, and original music. Rockstar EP coming August 2026.",
+      "Official website of Mujahid Siyam (Mawja / itsmawja) — software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and music artist. Projects, technical writing, and original Arabic, Middle Eastern, and African rap. Rockstar EP coming August 2026.",
   },
   seo: {
     keywords: [
       "Mujahid Siyam", "Mawja", "itsmawja",
-      "Software Engineer", "AI Engineer", "Network Engineer", "Cloud Architect",
-      "DevSecOps", "Systems Administrator", "Linux Administrator", "Windows Server",
+      "Mujahid Siyam rapper", "Mujahid Siyam music", "Mawja rapper", "Mawja music", "itsmawja rapper",
+      "Rapper", "Hip Hop Producer", "Rap Producer", "Hip Hop Artist", "Sudanese Rapper",
+      "Software Engineer", "Network Engineer", "AI Cloud Architect",
+      "Data Scientist", "System Administrator", "Linux Administrator", "Windows Server",
       "Rust Developer", "TypeScript Developer", "Python Developer",
       "Terraform", "Ansible", "Docker", "Kubernetes", "AWS",
       "PostgreSQL", "MySQL", "MongoDB", "Redis",
       "Nginx", "Apache", "Prometheus", "Grafana",
       "NixOS", "CI/CD", "GitHub Actions", "GitLab CI",
-      "Music Artist", "Arabic Rap", "Sudanese Rap", "Hip Hop",
-      "KAKASHI EP", "Rockstar EP", "Mawja music",
-      "موجا", "موجة", "راب عربي", "راب سوداني",
+      "Music Artist", "Music Producer", "Content Creator",
+      "Arabic Rap", "Middle Eastern Rap", "Sudanese Rap", "African Rap", "Hip Hop",
+      "KAKASHI EP", "Rockstar EP", "Mawja music", "Mawja hip hop",
+      "موجا", "موجة", "راب عربي", "راب سوداني", "رابر", "رابر سوداني", "مجاهد صيام",
+      "Rappeur", "Rappeur Soudanais", "Rap Arabe", "Rap Soudanais",
       "Open Source", "Rust", "TypeScript", "React",
-      "Next.js", "Python", "Full-stack Developer", "Zaroxi Studio",
+      "Next.js", "Python", "Full-stack Developer", "Zaroxi Studio", "zaroxi.com",
       "Sudanese Rapper", "Sudanese Hip Hop", "Arabic Hip Hop",
-      "Underground Rap", "Rap Artist", "Music Producer",
+      "Underground Rap", "Rap Artist",
       "Infrastructure as Code", "Cloud Infrastructure",
       "Network Architecture", "Systems Programming",
       "Zaroxi", "Zaroxi Studio", "Zaroxi IDE", "GPU rendering", "wgpu", "AI-first editor",
+      "Paris", "Sudan", "Sudanese", "Paris France",
     ],
     dcSubject:
-      "Software Engineering, Artificial Intelligence, AI Engineer, Rust Developer, Network Engineer, Systems Administrator, Linux, Windows Server, DevSecOps, Music Artist, Arabic Rap, Sudanese Rap, Sudanese Rapper, Sudanese Hip Hop, Arabic Hip Hop, Underground Rap, Rap Artist, Music Producer, Sound Engineer, Programming, Terraform, Ansible, PostgreSQL, MySQL, NixOS",
+      "Software Engineering, Artificial Intelligence, AI Engineer, Developer, Network Engineer, Systems Administrator, Linux, Windows Server, Data Scientist, Rapper, Hip Hop Producer, Rap Artist, Music Artist, Content Creator, Arabic Rap, Middle Eastern Rap, Sudanese Rap, Sudanese Rapper, African Rap, Sudanese Hip Hop, Arabic Hip Hop, Underground Rap, Music Producer, Sound Engineer, Programming, Terraform, Ansible, PostgreSQL, MySQL, NixOS",
+  },
+  faq: {
+    heading: "Frequently Asked Questions",
+    items: [
+      {
+        q: "Who is Mujahid Siyam?",
+        a: "Mujahid Siyam — also known as Mawja, with the handle itsmawja — is a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer based in Paris, France. He is the founder of Zaroxi Studio (zaroxi.com), a GPU-accelerated IDE written in Rust. His work spans infrastructure automation, AI systems, and creating Arabic, Middle Eastern, and African rap music.",
+      },
+      {
+        q: "Who is Mawja?",
+        a: "Mawja is the artist name and online alias of Mujahid Siyam (handle: itsmawja). Meaning \"wave\" in Arabic, Mawja represents his identity as a Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap. He released his debut EP KAKASHI in 2022, and his next EP Rockstar is set for release in August 2026.",
+      },
+      {
+        q: "What is itsmawja?",
+        a: "itsmawja is the universal online handle and brand of Mujahid Siyam (also known as Mawja). It is used across all platforms — GitHub, LinkedIn, Instagram, YouTube, X (Twitter), and this website — and unifies his identity as both a software engineer, network engineer, AI cloud architect and a rapper and music artist. The handle itsmawja refers to the same person as Mujahid Siyam and the rapper Mawja.",
+      },
+      {
+        q: "What is Zaroxi Studio?",
+        a: "Zaroxi Studio is an AI-first, GPU-accelerated IDE written in Rust, founded by Mujahid Siyam (Mawja / itsmawja). It is also the name of his software development company, through which he builds developer tools, manages infrastructure, and provides engineering consulting. Visit zaroxi.com for more information.",
+      },
+    ],
   },
 } as const;
 

@@ -17,7 +17,7 @@ export async function generateMetadata({
   return {
     title: t.music.title,
     description: t.music.description,
-    keywords: [...t.seo.keywords, "album", "single", "release", "streaming", "playlist"],
+    keywords: [...t.seo.keywords, "rapper", "mawja", "itsmawja", "album", "single", "release", "streaming", "playlist", "Mawja rapper", "Sudanese rapper", "Arabic rapper"],
     alternates: {
       canonical: `https://itsmawja.com/${validLocale}/music`,
       languages: {
@@ -48,8 +48,8 @@ export async function generateMetadata({
       "geo.position": "46.603354;1.888334",
       ICBM: "46.603354, 1.888334",
       "DC.creator": "Mujahid Siyam",
-      "DC.subject": "Music, Arabic Rap, Sudanese Rap, Playlists, Streaming",
-      music: "arabic rap, sudanese rap, hip hop",
+      "DC.subject": "Music, Rapper, Sudanese Rapper, Arabic Rap, Middle Eastern Rap, Sudanese Rap, African Rap, Hip Hop, Playlists, Streaming",
+      music: "rapper, arabic rap, middle eastern rap, sudanese rap, african rap, hip hop",
     },
   };
 }

@@ -1,132 +1,141 @@
-const arDescription =
-  "مجاهد صيام المعروف أيضاً باسم موجا (itsmawja)، مهندس برمجيات ومهندس ذكاء اصطناعي وفنان موسيقي باسم Mawja. راب عربي، راب سوداني، موسيقى وتكنولوجيا. الموقع الرسمي.";
-
-const enMusicDescription =
-  "Mawja is the music artist name of Mujahid Siyam (itsmawja) — Arabic Rap and Sudanese Rap artist.";
-
 export function PersonStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": "https://itsmawja.com/#person",
     name: "Mujahid Siyam",
-    alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
-    birthDate: "1991-09-23",
-    birthPlace: {
-      "@type": "Place",
-      name: "Sudan",
-    },
-    homeLocation: {
-      "@type": "Place",
-      name: "France",
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 46.603354,
-        longitude: 1.888334,
-      },
-    },
-    description:
-      "Mujahid Siyam (Mawja / itsmawja / موجا) is a Software Engineer, AI Engineer, Network Engineer, Cloud Architect, DevSecOps professional, Linux & Windows Systems Administrator, and Music Artist, born September 23, 1991 in Sudan. He started music at age 16, building successful bands before relocating to France. He then transitioned into software engineering, AI engineering, cloud architecture, and systems administration, building production systems and managing infrastructure with technologies like Rust, TypeScript, Python, Terraform, Ansible, Docker, Kubernetes, AWS, PostgreSQL, MySQL, NixOS, and more. In 2022, he returned to music production, releasing his debut EP 'KAKASHI' under the name Mawja. His next EP 'Rockstar' is set for release in August 2026. Today, Mawja bridges both worlds — engineering and music — through Zaroxi Studio while based in France, working globally. " +
-      enMusicDescription +
-      " " +
-      arDescription,
+    additionalName: "Mawja",
+    alternateName: ["itsmawja", "Mawja"],
     url: "https://itsmawja.com",
-    image: {
-      "@type": "ImageObject",
-      "@id": "https://itsmawja.com/#person-image",
-      url: "https://itsmawja.com/img/profile.png",
-      caption: "Mujahid Siyam (Mawja)",
-      width: 1200,
-      height: 630,
-    },
-    email: "hello@itsmawja.com",
-    sameAs: [
-      "https://github.com/itsmawja",
-      "https://x.com/itsmawja",
-      "https://linkedin.com/in/itsmawja",
-      "https://instagram.com/itsmawja",
-      "https://youtube.com/@itsmawja",
-      "https://open.spotify.com/user/itsmawja",
-      "https://soundcloud.com/itsmawja",
-      "https://tiktok.com/@itsmawja",
-      "https://music.youtube.com/@itsmawja",
-      "https://music.apple.com/profile/itsmawja",
-    ],
+    description:
+      "Sudanese software engineer, rapper, and hip-hop producer based in Paris, France. Known as Mawja, creating Arabic, Middle Eastern, and African rap and hip-hop. Founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust.",
+    birthPlace: { "@type": "Country", name: "Sudan" },
+    homeLocation: { "@type": "Place", name: "Paris, France" },
     jobTitle: [
       "Software Engineer",
-      "AI Engineer",
-      "DevSecOps Engineer",
       "Network Engineer",
-      "Cloud Architect",
-      "Systems Administrator",
+      "AI Cloud Architect",
+      "Data Scientist",
+      "System Administrator",
       "Music Artist",
-      "مهندس برمجيات",
-      "مهندس ذكاء اصطناعي",
-      "مهندس شبكات",
-      "مدير أنظمة",
-      "فنان موسيقي",
-      "Ingénieur logiciel",
-      "Ingénieur IA",
-      "Ingénieur Réseaux",
-      "Administrateur Systèmes",
-      "Artiste musical",
+      "Music Producer",
+      "Content Creator",
     ],
-    worksFor: {
-      "@type": "Organization",
-      "@id": "https://itsmawja.com/#org",
-      name: "Zaroxi Studio",
-      url: "https://itsmawja.com",
-    },
     knowsAbout: [
-      "Artificial Intelligence",
       "Software Engineering",
-      "DevSecOps",
       "Network Engineering",
-      "Systems Administration",
       "Cloud Architecture",
-      "Infrastructure as Code",
+      "Artificial Intelligence",
+      "Data Science",
       "Linux Administration",
       "Windows Server Administration",
-      "Rust",
-      "TypeScript",
-      "Python",
-      "React",
-      "Next.js",
-      "Nix & NixOS",
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "Terraform",
-      "Ansible",
-      "PostgreSQL",
-      "MySQL",
-      "MongoDB",
-      "Redis",
-      "Nginx",
-      "Apache",
-      "Prometheus",
-      "Grafana",
-      "CI/CD Pipelines",
-      "GitHub Actions",
-      "Machine Learning",
-      "LLM Architectures",
-      "Full-Stack Development",
-      "Developer Tools",
-      "Open Source",
+      "Rust Programming",
       "Music Production",
-      "Audio Engineering",
-      "Arabic Rap",
-      "Sudanese Rap",
-      "Sudanese Hip Hop",
-      "Arabic Hip Hop",
-      "راب عربي",
-      "راب سوداني",
-      "هيب هوب سوداني",
+      "Hip-Hop",
+      "Rap Music",
+      "Arabic Music",
+      "African Music",
     ],
-    knowsLanguage: ["Arabic", "English", "French"],
-    nationality: {
-      "@type": "Country",
-      name: "Sudan",
+    knowsLanguage: ["ar", "en", "fr"],
+    nationality: { "@type": "Country", name: "Sudan" },
+    worksFor: {
+      "@type": "Organization",
+      name: "Zaroxi Studio",
+      url: "https://zaroxi.com",
+    },
+    sameAs: [
+      "https://github.com/itsmawja",
+      "https://linkedin.com/in/itsmawja",
+      "https://dev.to/itsmawja",
+      "https://reddit.com/user/itsmawja",
+      "https://instagram.com/itsmawja",
+      "https://youtube.com/@itsmawja",
+      "https://twitter.com/itsmawja",
+      // Spotify, Apple Music, Anghami, Deezer, and Tidal artist profile URLs
+      // to be added here once those profiles exist after music release.
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function PerformingArtistStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://itsmawja.com/#person",
+    name: "Mujahid Siyam",
+    additionalName: "Mawja",
+    alternateName: ["itsmawja", "Mawja"],
+    url: "https://itsmawja.com",
+    description:
+      "Performing artist identity of Mujahid Siyam, known as Mawja. Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap.",
+    genre: ["Arabic Rap", "Sudanese Rap", "Hip Hop", "Middle Eastern", "African"],
+    sameAs: [
+      "https://instagram.com/itsmawja",
+      "https://youtube.com/@itsmawja",
+      "https://twitter.com/itsmawja",
+      // Spotify, Apple Music, Anghami, Deezer, and Tidal artist profile URLs
+      // to be added here once those profiles exist after music release.
+    ],
+    knowsAbout: ["Music Production", "Hip-Hop", "Rap Music", "Arabic Music", "African Music"],
+    album: [
+      {
+        "@type": "MusicAlbum",
+        name: "KAKASHI",
+        datePublished: "2022",
+        albumProductionType: "https://schema.org/EP",
+      },
+      {
+        "@type": "MusicAlbum",
+        name: "Rockstar",
+        datePublished: "2026-08",
+        albumProductionType: "https://schema.org/EP",
+      },
+    ],
+    subjectOf: {
+      "@type": "MusicGroup",
+      "@id": "https://itsmawja.com/music#artist",
+      name: "Mawja",
+      url: "https://itsmawja.com/music",
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function SoftwareApplicationStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://itsmawja.com/#zaroxi-app",
+    name: "Zaroxi Studio",
+    url: "https://zaroxi.com",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Linux, macOS, Windows",
+    description:
+      "Zaroxi Studio is a GPU-accelerated IDE written in Rust, built by Mujahid Siyam (Mawja). An AI-first developer environment with wgpu-powered rendering.",
+    programmingLanguage: "Rust",
+    author: {
+      "@type": "Person",
+      "@id": "https://itsmawja.com/#person",
+      name: "Mujahid Siyam",
+      url: "https://itsmawja.com",
+    },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
     },
   };
 
@@ -144,9 +153,9 @@ export function OrganizationStructuredData() {
     "@type": "Organization",
     "@id": "https://itsmawja.com/#org",
     name: "Zaroxi Studio",
-    url: "https://itsmawja.com",
+    url: "https://zaroxi.com",
     description:
-      "Zaroxi Studio is the software development and creative technology company founded by Mujahid Siyam (Mawja). Building AI-first systems, developer tools, and creative technology solutions.",
+      "Zaroxi Studio is the software development and creative technology company founded by Mujahid Siyam (Mawja). Building AI-first systems, developer tools, and creative technology solutions including a GPU-accelerated IDE written in Rust.",
     logo: "https://itsmawja.com/img/profile.png",
     image: "https://itsmawja.com/img/profile.png",
     email: "hello@itsmawja.com",
@@ -179,20 +188,20 @@ export function WebSiteStructuredData() {
     name: "Mawja — Mujahid Siyam | itsmawja.com",
     url: "https://itsmawja.com",
     description:
-      "Official website of Mujahid Siyam (Mawja). Software Engineer, AI Engineer, Network Engineer, Cloud Architect, DevSecOps professional, Systems Administrator, and Music Artist. Projects, technical writing, and original music. Rockstar EP coming August 2026.",
+      "Official website of Mujahid Siyam (Mawja / itsmawja). Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer based in Paris, France. Projects, technical writing, and Arabic, Middle Eastern, and African rap. Rockstar EP coming August 2026.",
     inLanguage: ["en", "ar", "fr"],
     about: {
       "@type": "Person",
       "@id": "https://itsmawja.com/#person",
       name: "Mujahid Siyam",
-      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
+      alternateName: ["Mawja", "itsmawja"],
       url: "https://itsmawja.com",
     },
     publisher: {
       "@type": "Organization",
       "@id": "https://itsmawja.com/#org",
       name: "Zaroxi Studio",
-      url: "https://itsmawja.com",
+      url: "https://zaroxi.com",
     },
     potentialAction: {
       "@type": "SearchAction",
@@ -245,14 +254,14 @@ export function ArticleStructuredData({
       "@type": "Person",
       "@id": "https://itsmawja.com/#person",
       name: "Mujahid Siyam",
-      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
+      alternateName: ["Mawja", "itsmawja"],
       url: "https://itsmawja.com",
     },
     publisher: {
       "@type": "Organization",
       "@id": "https://itsmawja.com/#org",
       name: "Zaroxi Studio",
-      url: "https://itsmawja.com",
+      url: "https://zaroxi.com",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -294,7 +303,7 @@ export function SoftwareSourceCodeStructuredData({
       "@type": "Person",
       "@id": "https://itsmawja.com/#person",
       name: "Mujahid Siyam",
-      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
+      alternateName: ["Mawja", "itsmawja"],
       url: "https://itsmawja.com",
     },
   };
@@ -325,13 +334,13 @@ export function MusicArtistStructuredData() {
     "@type": "MusicGroup",
     "@id": "https://itsmawja.com/music#artist",
     name: "Mawja",
-    alternateName: ["Mawja", "موجة", "itsmawja"],
+    alternateName: ["Mawja", "itsmawja", "موجة"],
     description:
-      "Mawja (موجة) is the music artist name of Mujahid Siyam — born September 23, 1991 in Sudan. He started music at age 16, created successful bands, then moved to France. After a break for software engineering, he returned to music in 2022 with his debut EP 'KAKASHI'. His next EP 'Rockstar' is scheduled for release in August 2026. Arabic Rap and Sudanese Rap artist.",
+      "Mawja (موجة) is the music artist name of Mujahid Siyam (itsmawja) — Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
     url: "https://itsmawja.com/music",
     image: "https://itsmawja.com/img/profile.png",
     foundingDate: "2022",
-    genre: ["Arabic Rap", "Sudanese Rap", "Hip Hop", "راب عربي", "راب سوداني"],
+    genre: ["Arabic Rap", "Middle Eastern Rap", "Sudanese Rap", "African Rap", "Hip Hop", "راب عربي", "راب سوداني"],
     album: [
       {
         "@type": "MusicAlbum",
@@ -363,7 +372,7 @@ export function MusicArtistStructuredData() {
       "@type": "Person",
       "@id": "https://itsmawja.com/#person",
       name: "Mujahid Siyam",
-      alternateName: ["Mawja", "itsmawja", "مجاهد صيام", "موجا", "موجة"],
+      alternateName: ["Mawja", "itsmawja"],
       url: "https://itsmawja.com",
     },
     inLanguage: ["en", "ar", "fr"],

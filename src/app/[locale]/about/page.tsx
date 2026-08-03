@@ -158,6 +158,53 @@ export default async function AboutPage({
             </div>
           </section>
 
+          {/* ── FAQ ── */}
+          <section className="relative rounded-3xl border border-border/20 bg-gradient-to-br from-card/30 via-card/20 to-transparent p-8 sm:p-12 overflow-hidden group hover:border-primary/15 hover:shadow-2xl hover:shadow-primary/[0.03] transition-all duration-700">
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none" />
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-10">
+                <div className="p-2 rounded-xl bg-primary/5 border border-primary/10">
+                  <Sparkles className="w-4 h-4 text-primary/50" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30 mb-0.5">{(t as any).faq?.heading || "Frequently Asked Questions"}</p>
+                  <div className="w-12 h-[2px] bg-gradient-to-r from-primary/30 to-transparent rounded-full" />
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {(t as any).faq?.items?.map((item: { q: string; a: string }, i: number) => {
+                  const accentColors = [
+                    "border-amber-500/10 hover:border-amber-500/25",
+                    "border-violet-500/10 hover:border-violet-500/25",
+                    "border-emerald-500/10 hover:border-emerald-500/25",
+                    "border-sky-500/10 hover:border-sky-500/25",
+                  ];
+                  const glowColors = [
+                    "bg-amber-500/5",
+                    "bg-violet-500/5",
+                    "bg-emerald-500/5",
+                    "bg-sky-500/5",
+                  ];
+                  return (
+                    <div key={item.q} className={`group/faq relative p-6 rounded-2xl border ${accentColors[i]} bg-muted/10 backdrop-blur-sm transition-all duration-700 hover:-translate-y-1 hover:shadow-xl overflow-hidden`}>
+                      <div className="absolute inset-0 -translate-x-full group-hover/faq:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none" />
+                      <div className={`absolute inset-0 rounded-2xl ${glowColors[i]} opacity-0 group-hover/faq:opacity-100 transition-opacity duration-700`} />
+                      <div className="relative z-10">
+                        <div className="flex items-start gap-3">
+                          <span className="text-lg font-light opacity-30 group-hover/faq:opacity-60 transition-opacity duration-500 shrink-0 mt-0.5">{["①","②","③","④"][i]}</span>
+                          <div className="min-w-0">
+                            <h4 className="text-sm font-bold text-foreground mb-2 group-hover/faq:text-foreground/90 transition-colors duration-300">{item.q}</h4>
+                            <p className="text-xs text-foreground/45 leading-relaxed group-hover/faq:text-foreground/50 transition-colors duration-300">{item.a}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
           {/* ── Experience + Education ── */}
           <div className="grid sm:grid-cols-2 gap-8">
             {/* Experience */}
