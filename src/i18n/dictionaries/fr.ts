@@ -309,7 +309,9 @@ const fr = {
       "Rap Underground", "Artiste Rap",
       "Infrastructure as Code", "Infrastructure Cloud",
       "Architecture Réseau", "Programmation Système",
-      "Paris", "Soudan", "Soudanais", "Paris France",
+      "Mujahid Siyam Paris", "Mujahid Siyam Soudan", "Mujahid Siyam France", "Mawja rappeur Paris",
+      "ingénieur soudanais Paris", "rappeur soudanais Paris", "développeur Rust Paris", "ingénieur IA",
+      "architecte cloud", "Mujahid Siyam portfolio", "Mujahid Siyam contact",
     ],
     dcSubject:
       "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS",
@@ -332,6 +334,22 @@ const fr = {
       {
         q: "Qu'est-ce que Zaroxi Studio ?",
         a: "Zaroxi Studio est un IDE accéléré par GPU, alimenté par l'IA et écrit en Rust, fondé par Mujahid Siyam (Mawja / itsmawja). C'est également le nom de son entreprise de développement logiciel, à travers laquelle il construit des outils pour développeurs, gère des infrastructures et fournit du conseil en ingénierie. Visitez zaroxi.com pour plus d'informations.",
+      },
+      {
+        q: "Quel genre de musique fait Mawja ?",
+        a: "Mawja (Mujahid Siyam / itsmawja) fait du rap arabe, du rap moyen-oriental, du rap soudanais et du rap africain avec une production hip-hop. Son son mélange ses racines soudanaises avec sa vie en Europe, créant une musique sur l'identité, le déplacement, l'ambition et la tension entre qui l'on était et qui l'on devient. Son premier EP KAKASHI est sorti en 2022, et son prochain EP Rockstar arrive en août 2026.",
+      },
+      {
+        q: "Où puis-je écouter la musique de Mawja ?",
+        a: "Vous pouvez écouter Mawja (Mujahid Siyam / itsmawja) sur Spotify, Apple Music, SoundCloud, YouTube, YouTube Music, Deezer, Anghami, Tidal et Bandcamp. Tous les liens de streaming sont disponibles sur itsmawja.com/music. Son premier EP KAKASHI (2022) est disponible, et l'EP Rockstar sort en août 2026.",
+      },
+      {
+        q: "Mujahid Siyam est-il disponible pour une embauche ou une collaboration ?",
+        a: "Oui — Mujahid Siyam (Mawja / itsmawja) est ouvert aux collaborations en ingénierie logicielle, architecture cloud, conseil en IA et production musicale. Contactez-le à hello@itsmawja.com pour des projets d'ingénierie, du conseil en infrastructure, des collaborations musicales ou des partenariats créatifs.",
+      },
+      {
+        q: "Où est basé Mujahid Siyam ?",
+        a: "Mujahid Siyam (Mawja / itsmawja) est né au Soudan et actuellement basé à Paris, France. Il travaille à l'échelle mondiale avec des clients et collaborateurs en Europe, au Moyen-Orient, en Afrique et au-delà, reliant l'ingénierie et la musique depuis Paris.",
       },
     ],
   },

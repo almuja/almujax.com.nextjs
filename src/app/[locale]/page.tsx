@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { locales, type Locale } from "@/i18n/config";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { FaqPageStructuredData } from "@/app/components/StructuredData";
 
 export async function generateMetadata({
   params,
@@ -367,6 +368,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ─────────── FAQ ─────────── */}
       {(t as any).faq && (
         <section className="relative py-32 px-6 overflow-hidden">
+          <FaqPageStructuredData
+            questions={(t as any).faq.items.map((item: { q: string; a: string }) => ({
+              question: item.q,
+              answer: item.a,
+            }))}
+          />
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div className="absolute top-1/3 right-[-10%] w-[600px] h-[500px] rounded-full bg-[var(--color-wave-1)]/3 blur-[140px] animate-pulse-slow opacity-30" />
             <div className="absolute bottom-[15%] left-[-8%] w-[450px] h-[400px] rounded-full bg-[var(--color-wave-2)]/2 blur-[120px] animate-pulse-slow opacity-25 animation-delay-2000" />

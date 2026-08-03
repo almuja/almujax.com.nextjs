@@ -3,8 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import {
   PersonStructuredData,
-  PerformingArtistStructuredData,
   SoftwareApplicationStructuredData,
+  MusicArtistStructuredData,
   OrganizationStructuredData,
   WebSiteStructuredData,
 } from "./components/StructuredData";
@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     shortcut: "/img/favicon.ico",
     apple: "/img/apple-touch-icon.png",
   },
-  verification: {},
+    verification: {
+      google: "ADD_YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN",
+      yandex: "ADD_YOUR_YANDEX_WEBMASTER_TOKEN",
+    },
   robots: {
     index: true,
     follow: true,
@@ -61,8 +64,8 @@ export default function RootLayout({
           }}
         />
         <PersonStructuredData />
-        <PerformingArtistStructuredData />
         <SoftwareApplicationStructuredData />
+        <MusicArtistStructuredData />
         <OrganizationStructuredData />
         <WebSiteStructuredData />
         <meta name="geo.region" content="FR" />
@@ -102,6 +105,18 @@ export default function RootLayout({
         <link rel="me" href="https://instagram.com/itsmawja" />
         <link rel="me" href="https://dev.to/itsmawja" />
         <link rel="me" href="https://reddit.com/user/itsmawja" />
+        <link rel="me" href="https://youtube.com/@itsmawja" />
+        <link rel="me" href="https://soundcloud.com/itsmawja" />
+        <link rel="me" href="https://tiktok.com/@itsmawja" />
+        <link rel="me" href="https://open.spotify.com/user/itsmawja" />
+        <link rel="me" href="https://music.apple.com/profile/itsmawja" />
+        <link rel="me" href="https://music.youtube.com/@itsmawja" />
+        <link rel="me" href="https://www.deezer.com/us/artist/itsmawja" />
+        <link rel="me" href="https://play.anghami.com/artist/itsmawja" />
+        <link rel="me" href="https://itsmawja.bandcamp.com" />
+        <link rel="me" href="https://tidal.com/browse/artist/itsmawja" />
+        <link rel="me" href="https://music.amazon.com/artist/itsmawja" />
+        <link rel="me" href="https://www.pandora.com/artist/itsmawja" />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>

@@ -16,7 +16,11 @@ last_updated: "${new Date().toISOString()}"
 site_url: "${baseUrl}"
 entity: "Mujahid Siyam"
 entity_aliases: ["Mawja", "itsmawja", "موجا", "موجة"]
+entity_type: ["Person", "MusicArtist", "SoftwareEngineer", "ContentCreator"]
+entity_nationality: "Sudanese"
+entity_location: "Paris, France"
 canonical: true
+schema_version: "1.0"
 ---
 
 # itsmawja.com — Full Content for AI Indexing
@@ -52,10 +56,16 @@ Mujahid Siyam, also known as Mawja (itsmawja / موجا), is a Sudanese software
 - dev.to: https://dev.to/itsmawja
 - Reddit: https://reddit.com/user/itsmawja
 - Spotify: https://open.spotify.com/user/itsmawja
-- SoundCloud: https://soundcloud.com/itsmawja
-- TikTok: https://tiktok.com/@itsmawja
 - Apple Music: https://music.apple.com/profile/itsmawja
 - YouTube Music: https://music.youtube.com/@itsmawja
+- SoundCloud: https://soundcloud.com/itsmawja
+- TikTok: https://tiktok.com/@itsmawja
+- Deezer: https://www.deezer.com/us/artist/itsmawja
+- Anghami: https://play.anghami.com/artist/itsmawja
+- Bandcamp: https://itsmawja.bandcamp.com
+- Tidal: https://tidal.com/browse/artist/itsmawja
+- Amazon Music: https://music.amazon.com/artist/itsmawja
+- Pandora: https://www.pandora.com/artist/itsmawja
 - Email: hello@itsmawja.com
 
 ### Expertise & Technologies

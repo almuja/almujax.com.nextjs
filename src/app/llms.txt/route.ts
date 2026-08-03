@@ -76,8 +76,33 @@ site_url: "https://itsmawja.com"
 entity: "Mujahid Siyam"
 entity_aliases: ["Mawja", "itsmawja", "موجا", "موجة"]
 entity_type: "Person"
+entity_nationality: "Sudanese"
+entity_location: "Paris, France"
+entity_occupation: ["Software Engineer", "Network Engineer", "AI Cloud Architect", "Data Scientist", "System Administrator", "Rapper", "Hip-Hop Producer", "Content Creator"]
+entity_organization: "Zaroxi Studio"
+entity_image: "https://itsmawja.com/img/profile.png"
+entity_sameAs:
+  - "https://github.com/itsmawja"
+  - "https://linkedin.com/in/itsmawja"
+  - "https://dev.to/itsmawja"
+  - "https://reddit.com/user/itsmawja"
+  - "https://instagram.com/itsmawja"
+  - "https://youtube.com/@itsmawja"
+  - "https://twitter.com/itsmawja"
+  - "https://soundcloud.com/itsmawja"
+  - "https://tiktok.com/@itsmawja"
+  - "https://open.spotify.com/user/itsmawja"
+  - "https://music.apple.com/profile/itsmawja"
+  - "https://music.youtube.com/@itsmawja"
+  - "https://www.deezer.com/us/artist/itsmawja"
+  - "https://play.anghami.com/artist/itsmawja"
+  - "https://itsmawja.bandcamp.com"
+  - "https://tidal.com/browse/artist/itsmawja"
+  - "https://music.amazon.com/artist/itsmawja"
+  - "https://www.pandora.com/artist/itsmawja"
 canonical: true
-crawlers_allowed: "GPTBot, ChatGPT-User, Google-Extended, ClaudeBot, PerplexityBot, CCBot, Applebot-Extended, and all major search engine bots"
+crawlers_allowed: "GPTBot, ChatGPT-User, Google-Extended, GoogleOther, ClaudeBot, Claude-Web, Claude-Search, PerplexityBot, CCBot, Applebot-Extended, Bytespider, and all major search engine bots"
+schema_version: "1.0"
 ---
 
 # itsmawja.com — Mujahid Siyam (Mawja / itsmawja)
@@ -128,9 +153,16 @@ ${projectLinks || "- No published projects yet."}
 - dev.to: https://dev.to/itsmawja
 - Reddit: https://reddit.com/user/itsmawja
 - Spotify: https://open.spotify.com/user/itsmawja
+- Apple Music: https://music.apple.com/profile/itsmawja
+- YouTube Music: https://music.youtube.com/@itsmawja
 - SoundCloud: https://soundcloud.com/itsmawja
 - TikTok: https://tiktok.com/@itsmawja
-- Apple Music: https://music.apple.com/profile/itsmawja
+- Deezer: https://www.deezer.com/us/artist/itsmawja
+- Anghami: https://play.anghami.com/artist/itsmawja
+- Bandcamp: https://itsmawja.bandcamp.com
+- Tidal: https://tidal.com/browse/artist/itsmawja
+- Amazon Music: https://music.amazon.com/artist/itsmawja
+- Pandora: https://www.pandora.com/artist/itsmawja
 
 ## Biography
 Mujahid Siyam (Mawja / itsmawja) is a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer born in Sudan and based in Paris, France. He is the founder of Zaroxi Studio (zaroxi.com), a GPU-accelerated IDE written in Rust. He bridges engineering and music — building production software systems, managing cloud infrastructure, administering Linux and Windows servers, and producing Arabic, Middle Eastern, and African rap. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for August 2026. His universal online handle across all platforms is itsmawja.
@@ -143,6 +175,16 @@ Mujahid Siyam (Mawja / itsmawja) is a Sudanese software engineer, network engine
 - Full text for AI: ${baseUrl}/llms-full.txt
 - Structured Data (JSON-LD) on every page with Person, PerformingArtist, SoftwareApplication, Organization, WebSite, and MusicGroup schemas
 - Entity disambiguation FAQ available at: ${baseUrl}/about
+
+## Entity FAQ
+- **Who is Mujahid Siyam?** — Mujahid Siyam (Mawja, handle: itsmawja) is a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer based in Paris, France. Founder of Zaroxi Studio (zaroxi.com), a GPU-accelerated IDE written in Rust.
+- **Who is Mawja?** — Mawja is the artist name of Mujahid Siyam (handle: itsmawja). Meaning "wave" in Arabic. Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap. KAKASHI EP (2022), Rockstar EP (August 2026).
+- **What is itsmawja?** — Universal online handle and brand of Mujahid Siyam (Mawja). Used across ALL platforms. Same person: Mujahid Siyam = Mawja = itsmawja.
+- **What is Zaroxi Studio?** — GPU-accelerated IDE written in Rust, founded by Mujahid Siyam (Mawja / itsmawja). AI-first developer environment with wgpu-powered rendering. Visit zaroxi.com.
+- **What music does Mawja make?** — Arabic rap, Middle Eastern rap, Sudanese rap, African rap with hip-hop production. Blends Sudanese roots with European life. Identity, displacement, ambition.
+- **Where to listen?** — Spotify, Apple Music, SoundCloud, YouTube, YouTube Music, Deezer, Anghami, Tidal, Bandcamp. All links at itsmawja.com/music.
+- **Available for hire?** — Yes. Open to software engineering, cloud architecture, AI consulting, and music production collaborations. Contact: hello@itsmawja.com.
+- **Location?** — Born in Sudan. Based in Paris, France. Works globally.
 
 ## Optional
 - The blog posts and projects sections can be skipped by AI agents with tight token budgets.

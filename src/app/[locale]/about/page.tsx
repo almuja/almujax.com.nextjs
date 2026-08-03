@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { locales, type Locale } from "@/i18n/config";
 import { MapPin, Mail, Globe, Medal, BookOpen, Sparkles, ArrowUpRight } from "lucide-react";
+import { FaqPageStructuredData } from "@/app/components/StructuredData";
 
 export async function generateMetadata({
   params,
@@ -160,6 +161,12 @@ export default async function AboutPage({
 
           {/* ── FAQ ── */}
           <section className="relative rounded-3xl border border-border/20 bg-gradient-to-br from-card/30 via-card/20 to-transparent p-8 sm:p-12 overflow-hidden group hover:border-primary/15 hover:shadow-2xl hover:shadow-primary/[0.03] transition-all duration-700">
+            <FaqPageStructuredData
+              questions={(t as any).faq.items.map((item: { q: string; a: string }) => ({
+                question: item.q,
+                answer: item.a,
+              }))}
+            />
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none" />
             <div className="relative">
               <div className="flex items-center gap-3 mb-10">

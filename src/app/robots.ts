@@ -94,6 +94,56 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
       {
+        userAgent: "GoogleOther",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "GoogleOther-Image",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "GoogleOther-Video",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Bytespider",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "PetalBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "MojeekBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "AhrefsBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "SemrushBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "DotBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Google-CloudVertexBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
         userAgent: "DuckAssistBot",
         allow: "/",
         disallow: ["/api/"],

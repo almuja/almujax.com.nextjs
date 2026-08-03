@@ -5,21 +5,77 @@ export function PersonStructuredData() {
     "@id": "https://itsmawja.com/#person",
     name: "Mujahid Siyam",
     additionalName: "Mawja",
-    alternateName: ["itsmawja", "Mawja"],
+    alternateName: ["itsmawja", "Mawja", "موجة", "موجا"],
+    additionalType: [
+      "https://schema.org/MusicArtist",
+      "https://schema.org/SoftwareEngineer",
+      "https://schema.org/ContentCreator",
+    ],
     url: "https://itsmawja.com",
-    description:
-      "Sudanese software engineer, rapper, and hip-hop producer based in Paris, France. Known as Mawja, creating Arabic, Middle Eastern, and African rap and hip-hop. Founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust.",
+    image: "https://itsmawja.com/img/profile.png",
+    description: {
+      "@language": "en",
+      "@value":
+        "Mujahid Siyam, known as Mawja (handle: itsmawja), is a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer born in Sudan and based in Paris, France. He started making music at age 16, forming bands and performing before transitioning into software engineering, cloud architecture, and AI. He returned to music in 2022 with his debut EP KAKASHI, and his next EP Rockstar is scheduled for August 2026. His music spans Arabic, Middle Eastern, and African rap and hip-hop. He is the founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust, and bridges both worlds — engineering and music. His universal handle across all platforms is itsmawja. Contact: hello@itsmawja.com.",
+    },
+    email: "hello@itsmawja.com",
     birthPlace: { "@type": "Country", name: "Sudan" },
     homeLocation: { "@type": "Place", name: "Paris, France" },
+    nationality: { "@type": "Country", name: "Sudan" },
     jobTitle: [
       "Software Engineer",
       "Network Engineer",
       "AI Cloud Architect",
       "Data Scientist",
       "System Administrator",
-      "Music Artist",
-      "Music Producer",
+      "Rapper",
+      "Hip-Hop Producer",
       "Content Creator",
+    ],
+    hasOccupation: [
+      {
+        "@type": "Occupation",
+        name: "Software Engineer",
+        occupationLocation: { "@type": "Place", name: "Paris, France" },
+      },
+      {
+        "@type": "Occupation",
+        name: "Network Engineer",
+        occupationLocation: { "@type": "Place", name: "Paris, France" },
+      },
+      {
+        "@type": "Occupation",
+        name: "Rapper",
+        occupationLocation: { "@type": "Place", name: "Paris, France" },
+      },
+      {
+        "@type": "Occupation",
+        name: "Hip-Hop Producer",
+        occupationLocation: { "@type": "Place", name: "Paris, France" },
+      },
+      {
+        "@type": "Occupation",
+        name: "Content Creator",
+        occupationLocation: { "@type": "Place", name: "Paris, France" },
+      },
+    ],
+    alumniOf: [
+      {
+        "@type": "CollegeOrUniversity",
+        name: "Sudan University of Science and Technology",
+      },
+    ],
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        name: "Bachelor of Science in Computer Science",
+        about: "Computer Science",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        name: "Master of Science in Information Technology",
+        about: "Information Technology",
+      },
     ],
     knowsAbout: [
       "Software Engineering",
@@ -31,18 +87,32 @@ export function PersonStructuredData() {
       "Windows Server Administration",
       "Rust Programming",
       "Music Production",
+      "Audio Engineering",
       "Hip-Hop",
       "Rap Music",
       "Arabic Music",
       "African Music",
     ],
-    knowsLanguage: ["ar", "en", "fr"],
-    nationality: { "@type": "Country", name: "Sudan" },
+    knowsLanguage: [{ "@type": "Language", name: "Arabic" }, { "@type": "Language", name: "English" }, { "@type": "Language", name: "French" }],
     worksFor: {
       "@type": "Organization",
       name: "Zaroxi Studio",
       url: "https://zaroxi.com",
     },
+    subjectOf: [
+      {
+        "@type": "MusicGroup",
+        "@id": "https://itsmawja.com/music#artist",
+        name: "Mawja",
+        url: "https://itsmawja.com/music",
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://itsmawja.com/#zaroxi-app",
+        name: "Zaroxi Studio",
+        url: "https://zaroxi.com",
+      },
+    ],
     sameAs: [
       "https://github.com/itsmawja",
       "https://linkedin.com/in/itsmawja",
@@ -51,9 +121,24 @@ export function PersonStructuredData() {
       "https://instagram.com/itsmawja",
       "https://youtube.com/@itsmawja",
       "https://twitter.com/itsmawja",
-      // Spotify, Apple Music, Anghami, Deezer, and Tidal artist profile URLs
-      // to be added here once those profiles exist after music release.
+      "https://soundcloud.com/itsmawja",
+      "https://tiktok.com/@itsmawja",
+      "https://open.spotify.com/user/itsmawja",
+      "https://music.apple.com/profile/itsmawja",
+      "https://music.youtube.com/@itsmawja",
+      "https://www.deezer.com/us/artist/itsmawja",
+      "https://play.anghami.com/artist/itsmawja",
+      "https://itsmawja.bandcamp.com",
+      "https://tidal.com/browse/artist/itsmawja",
+      "https://music.amazon.com/artist/itsmawja",
+      "https://www.pandora.com/artist/itsmawja",
+      // Spotify Artist, Apple Music Artist profile URLs to be updated
+      // once artist profiles exist after music release.
     ],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://itsmawja.com",
+    },
   };
 
   return (
@@ -64,46 +149,22 @@ export function PersonStructuredData() {
   );
 }
 
-export function PerformingArtistStructuredData() {
+export function FaqPageStructuredData({
+  questions,
+}: {
+  questions: { question: string; answer: string }[];
+}) {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://itsmawja.com/#person",
-    name: "Mujahid Siyam",
-    additionalName: "Mawja",
-    alternateName: ["itsmawja", "Mawja"],
-    url: "https://itsmawja.com",
-    description:
-      "Performing artist identity of Mujahid Siyam, known as Mawja. Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap.",
-    genre: ["Arabic Rap", "Sudanese Rap", "Hip Hop", "Middle Eastern", "African"],
-    sameAs: [
-      "https://instagram.com/itsmawja",
-      "https://youtube.com/@itsmawja",
-      "https://twitter.com/itsmawja",
-      // Spotify, Apple Music, Anghami, Deezer, and Tidal artist profile URLs
-      // to be added here once those profiles exist after music release.
-    ],
-    knowsAbout: ["Music Production", "Hip-Hop", "Rap Music", "Arabic Music", "African Music"],
-    album: [
-      {
-        "@type": "MusicAlbum",
-        name: "KAKASHI",
-        datePublished: "2022",
-        albumProductionType: "https://schema.org/EP",
+    "@type": "FAQPage",
+    mainEntity: questions.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: q.answer,
       },
-      {
-        "@type": "MusicAlbum",
-        name: "Rockstar",
-        datePublished: "2026-08",
-        albumProductionType: "https://schema.org/EP",
-      },
-    ],
-    subjectOf: {
-      "@type": "MusicGroup",
-      "@id": "https://itsmawja.com/music#artist",
-      name: "Mawja",
-      url: "https://itsmawja.com/music",
-    },
+    })),
   };
 
   return (
@@ -124,7 +185,7 @@ export function SoftwareApplicationStructuredData() {
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Linux, macOS, Windows",
     description:
-      "Zaroxi Studio is a GPU-accelerated IDE written in Rust, built by Mujahid Siyam (Mawja). An AI-first developer environment with wgpu-powered rendering.",
+      "Zaroxi Studio is a GPU-accelerated IDE written in Rust, built by Mujahid Siyam (Mawja). An AI-first developer environment with wgpu-powered rendering. It provides a native, fast code editing experience without web views or JavaScript runtimes.",
     programmingLanguage: "Rust",
     author: {
       "@type": "Person",
@@ -336,11 +397,19 @@ export function MusicArtistStructuredData() {
     name: "Mawja",
     alternateName: ["Mawja", "itsmawja", "موجة"],
     description:
-      "Mawja (موجة) is the music artist name of Mujahid Siyam (itsmawja) — Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
+      "Mawja (موجة) is the music artist name of Mujahid Siyam (itsmawja) — a Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
     url: "https://itsmawja.com/music",
     image: "https://itsmawja.com/img/profile.png",
     foundingDate: "2022",
-    genre: ["Arabic Rap", "Middle Eastern Rap", "Sudanese Rap", "African Rap", "Hip Hop", "راب عربي", "راب سوداني"],
+    genre: [
+      "Arabic Rap",
+      "Middle Eastern Rap",
+      "Sudanese Rap",
+      "African Rap",
+      "Hip Hop",
+      "راب عربي",
+      "راب سوداني",
+    ],
     album: [
       {
         "@type": "MusicAlbum",
@@ -361,12 +430,21 @@ export function MusicArtistStructuredData() {
     ],
     sameAs: [
       "https://open.spotify.com/user/itsmawja",
+      "https://music.apple.com/profile/itsmawja",
       "https://soundcloud.com/itsmawja",
       "https://youtube.com/@itsmawja",
       "https://youtube.com/@MujaOfficiel",
       "https://music.youtube.com/@itsmawja",
       "https://instagram.com/itsmawja",
       "https://tiktok.com/@itsmawja",
+      "https://www.deezer.com/us/artist/itsmawja",
+      "https://play.anghami.com/artist/itsmawja",
+      "https://itsmawja.bandcamp.com",
+      "https://tidal.com/browse/artist/itsmawja",
+      "https://music.amazon.com/artist/itsmawja",
+      "https://www.pandora.com/artist/itsmawja",
+      // Spotify Artist, Apple Music Artist profile URLs to be updated
+      // once artist profiles exist after music release.
     ],
     founder: {
       "@type": "Person",

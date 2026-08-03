@@ -292,9 +292,13 @@ const en = {
     keywords: [
       "Mujahid Siyam", "Mawja", "itsmawja",
       "Mujahid Siyam rapper", "Mujahid Siyam music", "Mawja rapper", "Mawja music", "itsmawja rapper",
+      "Mujahid Siyam Paris", "Mujahid Siyam Sudan", "Mujahid Siyam France", "Mujahid Siyam Sudanese",
+      "Mujahid Siyam portfolio", "Mujahid Siyam contact", "Mujahid Siyam blog",
+      "Mawja Paris rapper", "Sudanese engineer Paris", "Sudanese rapper France",
       "Rapper", "Hip Hop Producer", "Rap Producer", "Hip Hop Artist", "Sudanese Rapper",
       "Software Engineer", "Network Engineer", "AI Cloud Architect",
       "Data Scientist", "System Administrator", "Linux Administrator", "Windows Server",
+      "Software engineer Paris France", "AI engineer Paris", "Rust developer Paris",
       "Rust Developer", "TypeScript Developer", "Python Developer",
       "Terraform", "Ansible", "Docker", "Kubernetes", "AWS",
       "PostgreSQL", "MySQL", "MongoDB", "Redis",
@@ -303,6 +307,7 @@ const en = {
       "Music Artist", "Music Producer", "Content Creator",
       "Arabic Rap", "Middle Eastern Rap", "Sudanese Rap", "African Rap", "Hip Hop",
       "KAKASHI EP", "Rockstar EP", "Mawja music", "Mawja hip hop",
+      "Mawja Spotify", "Mawja SoundCloud", "Mawja Apple Music", "Mawja YouTube", "Mawja TikTok", "Mawja Deezer", "Mawja Anghami",
       "موجا", "موجة", "راب عربي", "راب سوداني", "رابر", "رابر سوداني", "مجاهد صيام",
       "Rappeur", "Rappeur Soudanais", "Rap Arabe", "Rap Soudanais",
       "Open Source", "Rust", "TypeScript", "React",
@@ -335,6 +340,22 @@ const en = {
       {
         q: "What is Zaroxi Studio?",
         a: "Zaroxi Studio is an AI-first, GPU-accelerated IDE written in Rust, founded by Mujahid Siyam (Mawja / itsmawja). It is also the name of his software development company, through which he builds developer tools, manages infrastructure, and provides engineering consulting. Visit zaroxi.com for more information.",
+      },
+      {
+        q: "What kind of music does Mawja make?",
+        a: "Mawja (Mujahid Siyam / itsmawja) makes Arabic rap, Middle Eastern rap, Sudanese rap, and African rap with hip-hop production. His sound blends his Sudanese roots with his life in Europe, creating music about identity, displacement, ambition, and the tension between who you were and who you are becoming. His debut EP KAKASHI dropped in 2022, and his next EP Rockstar is coming in August 2026.",
+      },
+      {
+        q: "Where can I listen to Mawja's music?",
+        a: "You can listen to Mawja (Mujahid Siyam / itsmawja) on Spotify, Apple Music, SoundCloud, YouTube, YouTube Music, Deezer, Anghami, Tidal, and Bandcamp. Find all streaming links at itsmawja.com/music. His debut EP KAKASHI (2022) is available now, and Rockstar EP drops August 2026.",
+      },
+      {
+        q: "Is Mujahid Siyam available for hire or collaboration?",
+        a: "Yes — Mujahid Siyam (Mawja / itsmawja) is open to software engineering, cloud architecture, AI consulting, and music production collaborations. Reach out at hello@itsmawja.com for engineering projects, infrastructure consulting, music features, or creative partnerships.",
+      },
+      {
+        q: "Where is Mujahid Siyam based?",
+        a: "Mujahid Siyam (Mawja / itsmawja) is born in Sudan and currently based in Paris, France. He works globally with clients and collaborators across Europe, the Middle East, Africa, and beyond, bridging both engineering and music from Paris.",
       },
     ],
   },
