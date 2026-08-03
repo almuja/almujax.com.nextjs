@@ -8,7 +8,7 @@ export function PersonStructuredData() {
     alternateName: ["itsmawja", "Mawja"],
     url: "https://itsmawja.com",
     description:
-      "Sudanese software engineer and hip-hop artist/producer based in Paris, France. Known as Mawja, creating Arabic, Middle Eastern, and African rap and hip-hop. Founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust.",
+      "Mujahid Siyam, known as Mawja (handle: itsmawja), is a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer born in Sudan and based in Paris, France. He started making music at age 16 in Sudan, forming bands and performing before ever touching a computer. After relocating to France, he transitioned into software engineering, AI engineering, cloud architecture, and systems administration, building production systems with Rust, TypeScript, Python and managing infrastructure with Terraform, Ansible, Docker, Kubernetes on AWS. He administers Linux and Windows servers and works with PostgreSQL, MySQL, MongoDB, and Redis. In 2022, after a long silence, he returned to music production and released his debut EP KAKASHI under the name Mawja — a raw, honest project marking the beginning of his return. His next EP Rockstar is scheduled for August 2026, representing a bigger, more focused chapter. His music spans Arabic, Middle Eastern, and African rap and hip-hop, blending his Sudanese roots with his life in Europe. He is the founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust, and the creator of MujaOS, a NixOS-based operating system. He bridges both worlds — engineering and music — from Paris. His universal handle across all platforms is itsmawja. Contact: hello@itsmawja.com.",
     birthPlace: { "@type": "Country", name: "Sudan" },
     homeLocation: {
       "@type": "Place",
@@ -233,7 +233,7 @@ export function WebSiteStructuredData() {
     name: "Mawja — Mujahid Siyam | itsmawja.com",
     url: "https://itsmawja.com",
     description:
-      "Official website of Mujahid Siyam (Mawja / itsmawja). Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, and hip-hop artist/producer based in Paris, France. Projects, technical writing, and Arabic, Middle Eastern, and African rap. Rockstar EP coming August 2026.",
+      "Official website of Mujahid Siyam, known as Mawja (handle: itsmawja) — a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer born in Sudan and based in Paris, France. He started music at 16, moved to France, built a career in software engineering and cloud infrastructure, then returned to music in 2022 with his debut EP KAKASHI. His next EP Rockstar drops August 2026. He founded Zaroxi Studio, a GPU-accelerated IDE written in Rust, and creates Arabic, Middle Eastern, and African rap and hip-hop. This site hosts his projects, technical writing, and music.",
     inLanguage: ["en", "ar", "fr"],
     about: {
       "@type": "Person",
