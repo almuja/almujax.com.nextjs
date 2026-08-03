@@ -10,7 +10,15 @@ export function PersonStructuredData() {
     description:
       "Sudanese software engineer and hip-hop artist/producer based in Paris, France. Known as Mawja, creating Arabic, Middle Eastern, and African rap and hip-hop. Founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust.",
     birthPlace: { "@type": "Country", name: "Sudan" },
-    homeLocation: { "@type": "Place", name: "Paris, France" },
+    homeLocation: {
+      "@type": "Place",
+      name: "Paris, France",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Paris",
+        addressCountry: "FR",
+      },
+    },
     jobTitle: [
       "Software Engineer",
       "Network Engineer",
@@ -188,6 +196,15 @@ export function OrganizationStructuredData() {
     image: "https://itsmawja.com/img/profile.png",
     email: "hello@itsmawja.com",
     foundingDate: "2023",
+    location: {
+      "@type": "Place",
+      name: "Paris, France",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Paris",
+        addressCountry: "FR",
+      },
+    },
     founder: {
       "@type": "Person",
       "@id": "https://itsmawja.com/#person",
