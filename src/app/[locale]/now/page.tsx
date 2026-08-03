@@ -12,14 +12,14 @@ export async function generateMetadata({
   const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
 
   return {
-    title: validLocale === "ar" ? "الآن | موجا (موجة) — مجاهد صيام" : "Now | Mawja (Mujahid Siyam)",
+    title: validLocale === "ar" ? "الآن | موجا — مجاهد صيام" : "Now | Mawja (Mujahid Siyam)",
     description:
       validLocale === "ar"
-        ? "ما يركز عليه موجا (موجة) — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
+        ? "ما يركز عليه موجا — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
         : "What Mujahid Siyam (Mawja) is focused on right now — work, learning, and current interests.",
     keywords:
       validLocale === "ar"
-        ? ["الآن", "موجا", "موجة", "مجاهد صيام", "تركيز", "تعلم", "مشاريع"]
+        ? ["الآن", "موجا", "مجاهد صيام", "تركيز", "تعلم", "مشاريع", "حاليا", "ما أعمل عليه"]
         : ["now", "Mawja", "Mujahid Siyam", "focus", "learning", "projects"],
     alternates: {
       canonical: `https://itsmawja.com/${validLocale}/now`,
@@ -32,11 +32,11 @@ export async function generateMetadata({
     openGraph: {
       title:
         validLocale === "ar"
-          ? "الآن | موجا (موجة) — مجاهد صيام"
+          ? "الآن | موجا — مجاهد صيام"
           : "Now | Mawja (Mujahid Siyam)",
       description:
         validLocale === "ar"
-          ? "ما يركز عليه موجا (موجة) — مجاهد صيام حالياً."
+          ? "ما يركز عليه موجا — مجاهد صيام حالياً."
           : "What Mujahid Siyam (Mawja) is focused on right now.",
       url: `https://itsmawja.com/${validLocale}/now`,
       type: "website",
@@ -47,11 +47,11 @@ export async function generateMetadata({
       card: "summary_large_image",
       title:
         validLocale === "ar"
-          ? "الآن | موجا (موجة) — مجاهد صيام"
+          ? "الآن | موجا — مجاهد صيام"
           : "Now | Mawja (Mujahid Siyam)",
       description:
         validLocale === "ar"
-          ? "ما يركز عليه موجا (موجة) — مجاهد صيام حالياً."
+          ? "ما يركز عليه موجا — مجاهد صيام حالياً."
           : "What Mujahid Siyam (Mawja) is focused on right now.",
       images: ["https://itsmawja.com/img/profile.png"],
       site: "@itsmawja",

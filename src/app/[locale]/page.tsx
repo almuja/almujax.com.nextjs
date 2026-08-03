@@ -57,8 +57,8 @@ const socials = [
 ];
 
 const waveSubtitles: Record<string, string> = {
-  ar: "موجا (موجة) — التدفق، الإشارة، التغيّر",
-  fr: "Mawja (موجة) — la vague, le flux, le signal",
+  ar: "موجا — التدفق، الإشارة، التغيّر",
+  fr: "Mawja (موجا) — la vague, le flux, le signal",
 };
 const availabilityBadge: Record<string, string> = {
   ar: "متاح للعمل",
@@ -130,7 +130,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </h1>
 
           <p className="hero-enter mt-6 text-sm text-foreground/40 font-light italic">
-            {waveSubtitles[validLocale] ?? "Mawja (موجة) — the wave, the flow, the signal"}
+            {waveSubtitles[validLocale] ?? "Mawja (موجا) — the wave, the flow, the signal"}
           </p>
 
           <p className="hero-enter mt-8 text-base sm:text-lg text-foreground/50 leading-relaxed max-w-lg mx-auto">
@@ -201,7 +201,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </h2>
 
           <p className="text-sm text-foreground/40 font-light italic mb-6 leading-relaxed max-w-xl">
-            {waveSubtitles[validLocale] ?? "Mawja (موجة) — the wave, the flow, the signal"}
+            {waveSubtitles[validLocale] ?? "Mawja (موجا) — the wave, the flow, the signal"}
           </p>
 
           <div className="mb-8 w-12 h-px bg-gradient-to-r from-foreground/20 to-transparent" />

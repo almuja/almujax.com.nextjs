@@ -57,7 +57,7 @@ const fr = {
     readBlog: "Lire le blog",
     aboutHeading: "À propos de Mawja (Mujahid Siyam)",
     about1:
-      "Mawja (موجة) est le nom que j'utilise en ligne. Cela signifie \"vague\" en arabe — le flux, le signal, le mouvement. Mon vrai nom est Mujahid Siyam, et mon pseudonyme partout est itsmawja. Je suis un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, rappeur et producteur de hip-hop soudanais, né au Soudan et actuellement basé à Paris, France.",
+      "Mawja (موجا) est le nom que j'utilise en ligne — court, chaleureux, facile à dire. Il vient du mot arabe pour \"vague\" — mouvement, signal, flux. Je l'ai choisi parce qu'il est simple, musical et mémorable. Mon vrai nom est Mujahid Siyam, et mon pseudonyme partout est itsmawja. Je suis un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, rappeur et producteur de hip-hop soudanais, né au Soudan et actuellement basé à Paris, France.",
     about2:
       "J'ai commencé par la musique avant d'écrire une seule ligne de code. À 16 ans, je formais des groupes au Soudan, j'enregistrais des morceaux, je me produisais partout où c'était possible. La musique m'a appris à construire quelque chose à partir de rien — une idée devient un son, un son devient une performance, une performance connecte avec les gens. Cet instinct créatif ne m'a jamais quitté. Je l'ai transporté dans l'ingénierie par la suite, où j'ai retrouvé le même cycle : imaginer, construire, affiner, livrer.",
     about3:
@@ -290,6 +290,11 @@ const fr = {
     keywords: [
       "Mujahid Siyam", "Mawja", "itsmawja",
       "Mujahid Siyam rappeur", "Mujahid Siyam musique", "Mawja rappeur", "Mawja musique", "itsmawja rappeur",
+      "Mawja ingénieur", "Mawja artiste", "Mawja créatif", "Mawja développeur",
+      "Mawja ingénieur et artiste", "Mawja logiciel et musique", "ingénieur et rappeur", "codeur et musicien",
+      "Mawja site officiel", "Mawja site personnel", "Mawja portfolio",
+      "Mawja du Soudan", "Mawja basé à Paris", "Mawja artiste soudanais", "talent soudanais France",
+      "Mawja nouvel EP", "Mawja musique 2026", "Mawja actualité",
       "Rappeur", "Producteur Hip Hop", "Producteur Rap", "Artiste Hip Hop", "Rappeur Soudanais",
       "Ingénieur Logiciel", "Ingénieur Réseaux", "Cloud Architect IA",
       "Data Scientist", "Administrateur Systèmes", "Administrateur Linux", "Windows Server",
@@ -304,7 +309,7 @@ const fr = {
       "Rap Arabe", "Rap Moyen-Oriental", "Rap Soudanais", "Rap Africain", "Hip Hop",
       "KAKASHI EP", "Rockstar EP", "Mawja musique", "Mawja hip hop",
       "Mawja musique électronique", "Mawja artiste rap", "artiste musical soudanais",
-      "موجا", "موجة", "راب عربي", "راب سوداني", "رابر", "رابر سوداني", "مجاهد صيام",
+      "موجا", "راب عربي", "راب سوداني", "رابر", "رابر سوداني", "مجاهد صيام",
       "Rapper", "Sudanese Rapper", "Rap Artist", "Mawja rapper",
       "Open Source", "Rust", "TypeScript", "React",
       "Next.js", "Python", "Développeur Full-stack", "Zaroxi Studio", "zaroxi.com",
@@ -315,9 +320,11 @@ const fr = {
       "Mujahid Siyam Paris", "Mujahid Siyam Soudan", "Mujahid Siyam France", "Mawja rappeur Paris",
       "ingénieur soudanais Paris", "rappeur soudanais Paris", "développeur Rust Paris", "ingénieur IA",
       "architecte cloud", "Mujahid Siyam portfolio", "Mujahid Siyam contact",
+      "Mawja GitHub", "Mawja LinkedIn", "Mawja blog", "Mawja projets",
+      "créatif soudanais", "ingénieur africain Paris", "talent tech MENA",
     ],
     dcSubject:
-      "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS",
+      "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS, Mawja, ingénieur et artiste",
   },
   faq: {
     heading: "Questions Fréquentes",
@@ -328,11 +335,11 @@ const fr = {
       },
       {
         q: "Qui est Mawja ?",
-        a: "Mawja est le nom d'artiste et le pseudonyme en ligne de Mujahid Siyam (pseudonyme : itsmawja). Signifiant « vague » en arabe, Mawja représente son identité en tant que rappeur et producteur de hip-hop soudanais créant du rap arabe, moyen-oriental et africain. Il a sorti son premier EP KAKASHI en 2022, et son prochain EP Rockstar est prévu pour août 2026.",
+        a: "Mawja est le nom d'artiste et le pseudonyme en ligne de Mujahid Siyam (pseudonyme : itsmawja). Court, musical, inspiré du mot arabe signifiant « vague » — représentant le mouvement, le flux et le signal. Mawja représente son identité en tant que rappeur et producteur de hip-hop soudanais créant du rap arabe, moyen-oriental et africain. Il a sorti son premier EP KAKASHI en 2022, et son prochain EP Rockstar est prévu pour août 2026.",
       },
       {
         q: "Qu'est-ce que itsmawja ?",
-        a: "itsmawja est le pseudonyme en ligne universel et la marque de Mujahid Siyam (également connu sous le nom de Mawja). Il est utilisé sur toutes les plateformes — GitHub, LinkedIn, Instagram, YouTube, X (Twitter) et ce site web — et unifie son identité en tant qu'ingénieur logiciel, réseaux et IA, ainsi que rappeur et artiste musical. Le pseudonyme itsmawja fait référence à la même personne que Mujahid Siyam et le rappeur Mawja.",
+        a: "itsmawja est le pseudonyme universel de Mujahid Siyam (également connu sous le nom de Mawja) — utilisé sur toutes les plateformes comme GitHub, LinkedIn, Instagram, YouTube et X (Twitter). C'est simplement un pseudonyme de compte, pas un nom. Le nom est Mawja, et le vrai nom est Mujahid Siyam.",
       },
       {
         q: "Qu'est-ce que Zaroxi Studio ?",

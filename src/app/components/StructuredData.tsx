@@ -379,9 +379,9 @@ export function MusicArtistStructuredData() {
     "@type": "MusicGroup",
     "@id": "https://itsmawja.com/music#artist",
     name: "Mawja",
-    alternateName: ["Mawja", "itsmawja", "موجة"],
+    alternateName: ["Mawja", "itsmawja", "موجا"],
     description:
-      "Mawja (موجة) is the music artist name of Mujahid Siyam (itsmawja) — Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
+      "Mawja (موجا) is the music artist name of Mujahid Siyam (handle: itsmawja) — Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
     url: "https://itsmawja.com/music",
     image: "https://itsmawja.com/img/profile.png",
     foundingDate: "2022",

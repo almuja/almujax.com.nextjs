@@ -57,7 +57,7 @@ const en = {
     readBlog: "Read Blog",
     aboutHeading: "About Mawja (Mujahid Siyam)",
     about1:
-      "Mawja (موجة) is the name I use online. It means \"wave\" in Arabic — the flow, the signal, the movement. My real name is Mujahid Siyam, and my handle everywhere is itsmawja. I'm a Sudanese software engineer, network engineer, AI cloud architect, data scientist, rapper, and hip-hop producer, born in Sudan and currently based in Paris, France.",
+      "Mawja (موجا) is the name I use online — short, warm, easy to say. It comes from the Arabic word for \"wave\" — movement, signal, flow. I chose it because it's simple, musical, and memorable. My real name is Mujahid Siyam, and my handle everywhere is itsmawja. I'm a Sudanese software engineer, network engineer, AI cloud architect, data scientist, rapper, and hip-hop producer, born in Sudan and currently based in Paris, France.",
     about2:
       "I started with music before I ever wrote a line of code. At 16, I was forming bands in Sudan, recording tracks, performing wherever I could. Music taught me how to build something from nothing — an idea becomes a sound, a sound becomes a performance, a performance connects with people. That creative instinct never left me. I carried it into engineering later on, where I found the same cycle: imagine, build, refine, ship.",
     about3:
@@ -295,6 +295,11 @@ const en = {
       "Mujahid Siyam Paris", "Mujahid Siyam Sudan", "Mujahid Siyam France", "Mujahid Siyam Sudanese",
       "Mujahid Siyam portfolio", "Mujahid Siyam contact", "Mujahid Siyam blog",
       "Mawja Paris rapper", "Sudanese engineer Paris", "Sudanese rapper France",
+      "Mawja engineer", "Mawja artist", "Mawja developer", "Mawja creative",
+      "Mawja engineer and artist", "Mawja software and music", "engineer who raps", "musician who codes",
+      "Mawja personal site", "Mawja official website", "Mawja portfolio site",
+      "Mawja from Sudan", "Mawja based in Paris", "Mawja Sudanese artist", "Sudanese talent France",
+      "Mawja new EP", "Mawja upcoming music", "Mawja 2026", "Mawja latest",
       "Rapper", "Hip Hop Producer", "Rap Producer", "Hip Hop Artist", "Sudanese Rapper",
       "Software Engineer", "Network Engineer", "AI Cloud Architect",
       "Data Scientist", "System Administrator", "Linux Administrator", "Windows Server",
@@ -311,7 +316,7 @@ const en = {
       "KAKASHI EP", "Rockstar EP", "Mawja music", "Mawja hip hop",
       "Mawja electronic music", "Mawja rap artist", "Sudanese music artist",
       "Mawja Spotify", "Mawja SoundCloud", "Mawja Apple Music", "Mawja YouTube", "Mawja TikTok", "Mawja Deezer", "Mawja Anghami",
-      "موجا", "موجة", "راب عربي", "راب سوداني", "رابر", "رابر سوداني", "مجاهد صيام",
+      "موجا", "راب عربي", "راب سوداني", "رابر", "رابر سوداني", "مجاهد صيام",
       "Rappeur", "Rappeur Soudanais", "Rap Arabe", "Rap Soudanais",
       "Open Source", "Rust", "TypeScript", "React",
       "Next.js", "Python", "Full-stack Developer", "Zaroxi Studio", "zaroxi.com",
@@ -321,9 +326,11 @@ const en = {
       "Network Architecture", "Systems Programming",
       "Zaroxi", "Zaroxi Studio", "Zaroxi IDE", "GPU rendering", "wgpu", "AI-first editor",
       "Paris", "Sudan", "Sudanese", "Paris France",
+      "Mawja GitHub", "Mawja LinkedIn", "Mawja blog", "Mawja projects",
+      "Sudanese creative", "African engineer Paris", "MENA tech talent",
     ],
     dcSubject:
-      "Software Engineering, Artificial Intelligence, AI Engineer, Developer, Network Engineer, Systems Administrator, Linux, Windows Server, Data Scientist, Rapper, Hip Hop Producer, Rap Artist, Music Artist, Content Creator, Arabic Rap, Middle Eastern Rap, Sudanese Rap, Sudanese Rapper, African Rap, Sudanese Hip Hop, Arabic Hip Hop, Underground Rap, Music Producer, Sound Engineer, Programming, Terraform, Ansible, PostgreSQL, MySQL, NixOS",
+      "Software Engineering, Artificial Intelligence, AI Engineer, Developer, Network Engineer, Systems Administrator, Linux, Windows Server, Data Scientist, Rapper, Hip Hop Producer, Rap Artist, Music Artist, Content Creator, Arabic Rap, Middle Eastern Rap, Sudanese Rap, Sudanese Rapper, African Rap, Sudanese Hip Hop, Arabic Hip Hop, Underground Rap, Music Producer, Sound Engineer, Programming, Terraform, Ansible, PostgreSQL, MySQL, NixOS, Mawja, engineer and artist",
   },
   faq: {
     heading: "Frequently Asked Questions",
@@ -334,11 +341,11 @@ const en = {
       },
       {
         q: "Who is Mawja?",
-        a: "Mawja is the artist name and online alias of Mujahid Siyam (handle: itsmawja). Meaning \"wave\" in Arabic, Mawja represents his identity as a Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap. He released his debut EP KAKASHI in 2022, and his next EP Rockstar is set for release in August 2026.",
+        a: "Mawja is the artist name and online alias of Mujahid Siyam (handle: itsmawja). Short, musical, and inspired by the Arabic word for \"wave\" — representing movement, flow, and signal. Mawja represents his identity as a Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap. He released his debut EP KAKASHI in 2022, and his next EP Rockstar is set for release in August 2026.",
       },
       {
         q: "What is itsmawja?",
-        a: "itsmawja is the universal online handle and brand of Mujahid Siyam (also known as Mawja). It is used across all platforms — GitHub, LinkedIn, Instagram, YouTube, X (Twitter), and this website — and unifies his identity as both a software engineer, network engineer, AI cloud architect and a rapper and music artist. The handle itsmawja refers to the same person as Mujahid Siyam and the rapper Mawja.",
+        a: "itsmawja is the universal handle of Mujahid Siyam (also known as Mawja) — used across all platforms like GitHub, LinkedIn, Instagram, YouTube, and X (Twitter). It's just an account handle, not a name. The name is Mawja, and the real name is Mujahid Siyam.",
       },
       {
         q: "What is Zaroxi Studio?",
