@@ -6,7 +6,7 @@
  */
 
 const BASE_URL = "https://iammawja.com";
-const INDEXNOW_KEY = "b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0";
+const INDEXNOW_KEY = "1dac02664f4d441084286ceca1a2640e";
 
 const urls = [
   `${BASE_URL}/en`,

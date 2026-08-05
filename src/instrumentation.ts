@@ -29,9 +29,9 @@ export async function register() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               host: "iammawja.com",
-              key: "b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0",
+              key: "1dac02664f4d441084286ceca1a2640e",
               keyLocation:
-                "https://iammawja.com/b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0.txt",
+                "https://iammawja.com/1dac02664f4d441084286ceca1a2640e.txt",
               urlList: urls,
             }),
             signal: AbortSignal.timeout(5000),
