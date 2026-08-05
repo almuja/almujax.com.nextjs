@@ -13,10 +13,10 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: "host",
-            value: "www.itsmawja.com",
+            value: "www.iammawja.com",
           },
         ],
-        destination: "https://itsmawja.com/:path*",
+        destination: "https://iammawja.com/:path*",
         permanent: true,
       },
     ];
@@ -33,7 +33,8 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Link",
-            value: '</llms.txt>; rel="alternate"; type="text/plain"; title="AI agent context"',
+            value:
+              '</llms.txt>; rel="alternate"; type="text/plain"; title="AI agent context"',
           },
           {
             key: "Strict-Transport-Security",

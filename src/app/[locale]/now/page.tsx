@@ -9,24 +9,38 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
 
   return {
-    title: validLocale === "ar" ? "الآن | موجا — مجاهد صيام" : "Now | Mawja (Mujahid Siyam)",
+    title:
+      validLocale === "ar"
+        ? "الآن | موجا — مجاهد صيام"
+        : "Now | Mawja (Mujahid Siyam)",
     description:
       validLocale === "ar"
         ? "ما يركز عليه موجا — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
         : "What Mujahid Siyam (Mawja) is focused on right now — work, learning, and current interests.",
     keywords:
       validLocale === "ar"
-        ? ["الآن", "موجا", "مجاهد صيام", "تركيز", "تعلم", "مشاريع", "حاليا", "ما أعمل عليه"]
+        ? [
+            "الآن",
+            "موجا",
+            "مجاهد صيام",
+            "تركيز",
+            "تعلم",
+            "مشاريع",
+            "حاليا",
+            "ما أعمل عليه",
+          ]
         : ["now", "Mawja", "Mujahid Siyam", "focus", "learning", "projects"],
     alternates: {
-      canonical: `https://itsmawja.com/${validLocale}/now`,
+      canonical: `https://iammawja.com/${validLocale}/now`,
       languages: {
-        en: "https://itsmawja.com/en/now",
-        ar: "https://itsmawja.com/ar/now",
-        fr: "https://itsmawja.com/fr/now",
+        en: "https://iammawja.com/en/now",
+        ar: "https://iammawja.com/ar/now",
+        fr: "https://iammawja.com/fr/now",
       },
     },
     openGraph: {
@@ -38,10 +52,10 @@ export async function generateMetadata({
         validLocale === "ar"
           ? "ما يركز عليه موجا — مجاهد صيام حالياً."
           : "What Mujahid Siyam (Mawja) is focused on right now.",
-      url: `https://itsmawja.com/${validLocale}/now`,
+      url: `https://iammawja.com/${validLocale}/now`,
       type: "website",
-      images: ["https://itsmawja.com/img/profile.png"],
-      siteName: "itsmawja.com",
+      images: ["https://iammawja.com/img/profile.png"],
+      siteName: "iammawja.com",
     },
     twitter: {
       card: "summary_large_image",
@@ -53,9 +67,9 @@ export async function generateMetadata({
         validLocale === "ar"
           ? "ما يركز عليه موجا — مجاهد صيام حالياً."
           : "What Mujahid Siyam (Mawja) is focused on right now.",
-      images: ["https://itsmawja.com/img/profile.png"],
-      site: "@itsmawja",
-      creator: "@itsmawja",
+      images: ["https://iammawja.com/img/profile.png"],
+      site: "@iammawja",
+      creator: "@iammawja",
     },
     other: {
       "geo.region": "FR",
@@ -222,13 +236,19 @@ export default async function NowPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
   const dir = validLocale === "ar" ? "rtl" : "ltr";
 
   const isAr = validLocale === "ar";
   const isFr = validLocale === "fr";
 
-  function t(item: { en: { title: string; description: string }; ar: { title: string; description: string }; fr: { title: string; description: string } }) {
+  function t(item: {
+    en: { title: string; description: string };
+    ar: { title: string; description: string };
+    fr: { title: string; description: string };
+  }) {
     if (isAr) return item.ar;
     if (isFr) return item.fr;
     return item.en;
@@ -245,8 +265,14 @@ export default async function NowPage({
     <>
       <BreadcrumbStructuredData
         items={[
-          { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://itsmawja.com/${validLocale}` },
-          { name: sectionTitle, url: `https://itsmawja.com/${validLocale}/now` },
+          {
+            name: validLocale === "ar" ? "الرئيسية" : "Home",
+            url: `https://iammawja.com/${validLocale}`,
+          },
+          {
+            name: sectionTitle,
+            url: `https://iammawja.com/${validLocale}/now`,
+          },
         ]}
       />
 
@@ -271,7 +297,11 @@ export default async function NowPage({
                 <div className="flex items-center gap-3 mb-8">
                   <div className="h-[2px] flex-1 bg-gradient-to-r from-[var(--color-primary)]/30 to-transparent" />
                   <h2 className="text-2xl font-bold text-foreground whitespace-nowrap">
-                    {isAr ? "ما أعمل عليه" : isFr ? "Sur quoi je travaille" : "What I'm Working On"}
+                    {isAr
+                      ? "ما أعمل عليه"
+                      : isFr
+                        ? "Sur quoi je travaille"
+                        : "What I'm Working On"}
                   </h2>
                   <div className="h-[2px] flex-1 bg-gradient-to-l from-[var(--color-primary)]/30 to-transparent" />
                 </div>
@@ -303,7 +333,11 @@ export default async function NowPage({
                 <div className="flex items-center gap-3 mb-8">
                   <div className="h-[2px] flex-1 bg-gradient-to-r from-[var(--color-secondary)]/30 to-transparent" />
                   <h2 className="text-2xl font-bold text-foreground whitespace-nowrap">
-                    {isAr ? "ما أتعلمه" : isFr ? "Ce que j'apprends" : "What I'm Learning"}
+                    {isAr
+                      ? "ما أتعلمه"
+                      : isFr
+                        ? "Ce que j'apprends"
+                        : "What I'm Learning"}
                   </h2>
                   <div className="h-[2px] flex-1 bg-gradient-to-l from-[var(--color-secondary)]/30 to-transparent" />
                 </div>

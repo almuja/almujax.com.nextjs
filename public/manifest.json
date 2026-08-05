@@ -1,10 +1,10 @@
 {
-  "name": "Mawja — Mujahid Siyam | itsmawja.com",
+  "name": "Mawja — Mujahid Siyam | iammawja.com",
   "short_name": "Mawja",
   "description": "Official website of Mujahid Siyam (Mawja). Software Engineer, AI Engineer, Cloud Architect, DevSecOps, and Music Artist. Projects, writing, and original music.",
   "start_url": "/",
   "scope": "/",
-  "id": "itsmawja-pwa",
+  "id": "iammawja-pwa",
   "display": "standalone",
   "orientation": "any",
   "lang": "en",
@@ -32,7 +32,7 @@
       "sizes": "1200x630",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Homepage of itsmawja.com"
+      "label": "Homepage of iammawja.com"
     }
   ],
   "shortcuts": [
@@ -41,21 +41,27 @@
       "short_name": "Blog",
       "description": "Read articles",
       "url": "/en/blog",
-      "icons": [{ "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }]
+      "icons": [
+        { "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }
+      ]
     },
     {
       "name": "Projects",
       "short_name": "Projects",
       "description": "View open source projects",
       "url": "/en/projects",
-      "icons": [{ "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }]
+      "icons": [
+        { "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }
+      ]
     },
     {
       "name": "Music",
       "short_name": "Music",
       "description": "Listen to music",
       "url": "/en/music",
-      "icons": [{ "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }]
+      "icons": [
+        { "src": "/img/android-chrome-192x192.png", "sizes": "192x192" }
+      ]
     }
   ],
   "related_applications": [],

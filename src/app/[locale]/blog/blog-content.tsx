@@ -18,15 +18,15 @@ interface BlogPost {
 }
 
 const categoryColors: Record<string, string> = {
-  "AI": "amber",
-  "Rust": "orange",
-  "DevSecOps": "emerald",
-  "Infrastructure": "sky",
-  "Systems": "teal",
-  "Networking": "violet",
+  AI: "amber",
+  Rust: "orange",
+  DevSecOps: "emerald",
+  Infrastructure: "sky",
+  Systems: "teal",
+  Networking: "violet",
   "Open Source": "rose",
-  "Tutorial": "blue",
-  "Thought": "fuchsia",
+  Tutorial: "blue",
+  Thought: "fuchsia",
 };
 
 export default function BlogContent({
@@ -51,14 +51,15 @@ export default function BlogContent({
 
   const filteredPosts = useMemo(() => {
     let result = posts;
-    if (activeCategory) result = result.filter((p) => p.category === activeCategory);
+    if (activeCategory)
+      result = result.filter((p) => p.category === activeCategory);
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       result = result.filter(
         (p) =>
           p.title.toLowerCase().includes(q) ||
           p.description.toLowerCase().includes(q) ||
-          (p.tags || []).some((t) => t.toLowerCase().includes(q))
+          (p.tags || []).some((t) => t.toLowerCase().includes(q)),
       );
     }
     return result;
@@ -107,7 +108,9 @@ export default function BlogContent({
           {categories.map(([cat, count]) => (
             <button
               key={cat}
-              onClick={() => setActiveCategory(activeCategory === cat ? null : cat)}
+              onClick={() =>
+                setActiveCategory(activeCategory === cat ? null : cat)
+              }
               className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 border ${
                 activeCategory === cat
                   ? "bg-foreground text-background shadow-lg shadow-foreground/10 border-transparent"
@@ -123,7 +126,10 @@ export default function BlogContent({
         {hasFilters && (
           <div className="text-center">
             <button
-              onClick={() => { setSearchQuery(""); setActiveCategory(null); }}
+              onClick={() => {
+                setSearchQuery("");
+                setActiveCategory(null);
+              }}
               className="text-xs text-foreground/40 hover:text-foreground/60 transition-colors"
             >
               {dict.clearFilters}
@@ -139,7 +145,9 @@ export default function BlogContent({
             <div className="p-2 rounded-xl bg-amber-500/5 border border-amber-500/10">
               <Pin className="w-3.5 h-3.5 text-amber-500/50" />
             </div>
-            <span className="text-sm font-bold text-foreground">{dict.pinned}</span>
+            <span className="text-sm font-bold text-foreground">
+              {dict.pinned}
+            </span>
             <div className="flex-1 h-px bg-gradient-to-r from-amber-500/10 to-transparent" />
           </div>
 
@@ -184,8 +192,13 @@ export default function BlogContent({
                     <div className="mt-5 pt-4 border-t border-border/25 flex items-center justify-between">
                       <span className="text-[11px] text-foreground/30 tabular-nums">
                         {new Date(post.date).toLocaleDateString(
-                          locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US",
-                          { month: "long", day: "numeric", year: "numeric" })}
+                          locale === "ar"
+                            ? "ar-SA"
+                            : locale === "fr"
+                              ? "fr-FR"
+                              : "en-US",
+                          { month: "long", day: "numeric", year: "numeric" },
+                        )}
                       </span>
                       <span className="flex items-center gap-1 text-[11px] text-foreground/25 font-medium group-hover:text-amber-500/60 transition-all duration-300">
                         {dict.read}
@@ -203,15 +216,19 @@ export default function BlogContent({
       {/* All Posts Grid */}
       {filteredPosts.length > 0 ? (
         <>
-          {!hasFilters && regularPosts.length > 0 && featuredPosts.length > 0 && (
-            <div className="flex items-center gap-3 mb-10">
-              <div className="p-2 rounded-xl bg-primary/5 border border-primary/10">
-                <Sparkles className="w-3.5 h-3.5 text-primary/40" />
+          {!hasFilters &&
+            regularPosts.length > 0 &&
+            featuredPosts.length > 0 && (
+              <div className="flex items-center gap-3 mb-10">
+                <div className="p-2 rounded-xl bg-primary/5 border border-primary/10">
+                  <Sparkles className="w-3.5 h-3.5 text-primary/40" />
+                </div>
+                <span className="text-sm font-bold text-foreground">
+                  {dict.allPostsLower}
+                </span>
+                <div className="flex-1 h-px bg-gradient-to-r from-primary/10 to-transparent" />
               </div>
-              <span className="text-sm font-bold text-foreground">{dict.allPostsLower}</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-primary/10 to-transparent" />
-            </div>
-          )}
+            )}
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {regularPosts.map((post) => (
@@ -253,8 +270,13 @@ export default function BlogContent({
                     <div className="mt-4 pt-3 border-t border-border/20">
                       <span className="text-[11px] text-foreground/30 tabular-nums">
                         {new Date(post.date).toLocaleDateString(
-                          locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US",
-                          { month: "short", day: "numeric", year: "numeric" })}
+                          locale === "ar"
+                            ? "ar-SA"
+                            : locale === "fr"
+                              ? "fr-FR"
+                              : "en-US",
+                          { month: "short", day: "numeric", year: "numeric" },
+                        )}
                       </span>
                     </div>
                   </div>
@@ -265,7 +287,9 @@ export default function BlogContent({
         </>
       ) : (
         <div className="text-center py-24">
-          <p className="text-sm text-foreground/30 font-light">{dict.noPostsFound}</p>
+          <p className="text-sm text-foreground/30 font-light">
+            {dict.noPostsFound}
+          </p>
         </div>
       )}
     </>

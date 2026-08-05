@@ -30,11 +30,15 @@ export default function MobileMenu({
   const dir = locale === "ar" ? "rtl" : "ltr";
   const isRTL = dir === "rtl";
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
-      const handleEscape = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+      };
       document.addEventListener("keydown", handleEscape);
       return () => document.removeEventListener("keydown", handleEscape);
     }
@@ -53,7 +57,9 @@ export default function MobileMenu({
       previousFocusRef.current.focus();
       previousFocusRef.current = null;
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen, mounted]);
 
   if (!mounted) return null;
@@ -65,18 +71,38 @@ export default function MobileMenu({
 
   const drawerTranslate = isOpen
     ? "translate-x-0"
-    : isRTL ? "-translate-x-full" : "translate-x-full";
+    : isRTL
+      ? "-translate-x-full"
+      : "translate-x-full";
 
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden animate-in fade-in duration-300" onClick={() => onClose()} aria-hidden="true" />
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden animate-in fade-in duration-300"
+          onClick={() => onClose()}
+          aria-hidden="true"
+        />
       )}
-      <div ref={menuRef} className={`${drawerPosition} ${drawerTranslate}`} role="dialog" aria-modal="true" aria-label={menuLabel}>
+      <div
+        ref={menuRef}
+        className={`${drawerPosition} ${drawerTranslate}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label={menuLabel}
+      >
         <div className="flex flex-col h-full bg-background/80 backdrop-blur-3xl border-l border-white/20 shadow-2xl shadow-black/30">
           <div className="flex items-center justify-between p-6 border-b border-white/10 bg-white/5">
-            <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{menuLabel}</h2>
-            <Button variant="ghost" size="sm" onClick={onClose} className="p-2 hover:bg-white/10 transition-all duration-200 rounded-xl border border-white/10 hover:border-white/20" aria-label="Close menu">
+            <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              {menuLabel}
+            </h2>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onClose}
+              className="p-2 hover:bg-white/10 transition-all duration-200 rounded-xl border border-white/10 hover:border-white/20"
+              aria-label="Close menu"
+            >
               <X className="w-5 h-5" />
             </Button>
           </div>
@@ -84,8 +110,19 @@ export default function MobileMenu({
             <ul className="space-y-3">
               {navigationItems.map((item) => (
                 <li key={item.href}>
-                  <Button variant="ghost" size="md" asChild className="w-full justify-center text-base font-semibold py-4 px-4 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 rounded-xl border border-transparent hover:border-white/10 hover:shadow-lg group" onClick={onClose}>
-                    <Link href={item.href} className="group-hover:text-primary transition-colors duration-300">{item.label}</Link>
+                  <Button
+                    variant="ghost"
+                    size="md"
+                    asChild
+                    className="w-full justify-center text-base font-semibold py-4 px-4 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 rounded-xl border border-transparent hover:border-white/10 hover:shadow-lg group"
+                    onClick={onClose}
+                  >
+                    <Link
+                      href={item.href}
+                      className="group-hover:text-primary transition-colors duration-300"
+                    >
+                      {item.label}
+                    </Link>
                   </Button>
                 </li>
               ))}

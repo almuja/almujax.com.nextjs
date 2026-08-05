@@ -4,7 +4,7 @@ import matter from "gray-matter";
 
 export async function GET() {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
-  const baseUrl = "https://itsmawja.com/en";
+  const baseUrl = "https://iammawja.com/en";
 
   let posts: Array<{
     slug: string;
@@ -63,14 +63,14 @@ export async function GET() {
 
   const atom = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
-  <title>itsmawja.com — Mujahid Siyam (Mawja) | راب عربي | Software & AI Engineer</title>
-  <subtitle>AI engineering, Rust, DevSecOps, Arabic Rap, Sudanese Rap, and technology insights by Mujahid Siyam (Mawja / itsmawja). مدونة تقنية.</subtitle>
+  <title>iammawja.com — Mujahid Siyam (Mawja) | راب عربي | Software & AI Engineer</title>
+  <subtitle>AI engineering, Rust, DevSecOps, Arabic Rap, Sudanese Rap, and technology insights by Mujahid Siyam (Mawja / iammawja). مدونة تقنية.</subtitle>
   <link href="${baseUrl}/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="${baseUrl}/blog" rel="alternate" type="text/html"/>
   <id>${baseUrl}/blog</id>
   <updated>${new Date().toISOString()}</updated>
   <author>
-    <name>Mujahid Siyam (Mawja / itsmawja)</name>
+    <name>Mujahid Siyam (Mawja / iammawja)</name>
     <uri>${baseUrl}</uri>
   </author>
   <geo:lat>46.603354</geo:lat>

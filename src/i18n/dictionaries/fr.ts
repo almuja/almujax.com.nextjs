@@ -1,9 +1,11 @@
 const fr = {
   site: {
-    title: "Mawja (Mujahid Siyam) | Ingénieur Logiciel, Réseaux, IA Cloud, Data Scientist & Artiste Musical | itsmawja",
+    title:
+      "Mawja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes · Rappeur · Producteur · Créateur de Contenu | iammawja",
     description:
-      "Mujahid Siyam, connu sous le nom de Mawja (itsmawja), est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu basé à Paris, France. Site officiel avec projets, écrits et musique.",
-    defaultTitle: "Mawja (Mujahid Siyam) | Ingénieur Logiciel, Réseaux, IA Cloud, Data Scientist & Artiste Musical | itsmawja",
+      "Mujahid Siyam, connu sous le nom de Mawja (موجا, aussi موجة/موجه) et pseudonyme iammawja, est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu basé à Paris, France. Site personnel avec projets, écrits et musique.",
+    defaultTitle:
+      "Mawja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes · Rappeur · Producteur · Créateur de Contenu | iammawja",
   },
   nav: {
     projects: "Projets",
@@ -18,24 +20,62 @@ const fr = {
     blogBadge: "Blog",
   },
   home: {
-    title: "Mawja (Mujahid Siyam) | Ingénieur Logiciel, Réseaux, IA & Systèmes | itsmawja",
+    title:
+      "Mawja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA & Systèmes | iammawja",
     description:
-      "Mujahid Siyam (itsmawja) est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes, rappeur et artiste musical né au Soudan et basé à Paris, France. Il construit des systèmes, écrit du code, gère des infrastructures et fait de la musique.",
+      "Mujahid Siyam (iammawja) est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il construit des systèmes, écrit du code, gère des infrastructures et fait de la musique.",
     sparkle: "Construire des systèmes et faire de la musique",
-    roles: "Ingénieur Logiciel · Ingénieur Réseaux · Cloud Architect IA · Data Scientist · Administrateur Systèmes (Linux & Windows) · Rappeur · Producteur Musical · Créateur de Contenu",
+    roles:
+      "Ingénieur Logiciel · Ingénieur Réseaux · Cloud Architect IA · Data Scientist · Administrateur Systèmes (Linux & Windows) · Rappeur · Producteur Musical · Créateur de Contenu",
     heroBody:
       "Je construis des logiciels, conçois des infrastructures cloud, gère des serveurs Linux et Windows, sécurise des déploiements et fais de la musique. La plupart du temps, je suis plongé dans le code — Rust, TypeScript, Python — à architecturer des systèmes, automatiser des infrastructures avec Terraform et Ansible, gérer des bases de données comme PostgreSQL et MySQL, ou entraîner des modèles d'IA. Parfois, je suis en studio. Pour moi, c'est la même chose : partir d'une idée, la transformer en réalité, soigner les détails et ne pas s'arrêter tant que ça ne fonctionne pas comme prévu.",
     whatIDo: "Ce que je fais",
     capabilities: [
-      { title: "Ingénierie logicielle", description: "Développement full-stack avec Rust, TypeScript, Python, React, Next.js et C/C++. Je construis des applications web, des APIs, des outils CLI et des utilitaires pour développeurs. Architecture propre, tests rigoureux et du code que d'autres peuvent réellement lire et maintenir." },
-      { title: "IA & Machine Learning", description: "Construction de systèmes d'IA en production avec LLMs, TensorFlow, PyTorch et des pipelines de modèles personnalisés. Je gère le cycle complet — préparation des données, entraînement des modèles, déploiement, monitoring — sans sur-ingénierie. Systèmes RAG, fine-tuning et architectures agentiques." },
-      { title: "Infrastructure & Cloud", description: "Architecture AWS, Docker, Kubernetes, Terraform, Ansible. Conception d'infrastructures scalables, monitoring avec Prometheus et Grafana, automatisation de tout ce qui peut l'être. Stratégies multi-cloud quand c'est pertinent, pragmatisme single-cloud quand ça ne l'est pas." },
-      { title: "Administration Systèmes", description: "Administration Linux (Ubuntu, Debian, Arch, NixOS) et Windows Server. Gestion de serveurs de production, configuration de Nginx et Apache, sécurisation des réseaux, optimisation des performances de bases de données et résolution des problèmes qui n'apparaissent qu'à 3h du matin sous charge." },
-      { title: "DevSecOps & Sécurité", description: "Pipelines CI/CD avec GitHub Actions et GitLab CI, analyse de sécurité des conteneurs, durcissement d'infrastructure, gestion des vulnérabilités. J'intègre la sécurité dès la première ligne de code — corriger en production coûte cher et fait mauvaise figure. Gestion des secrets, SAST, DAST, analyse des dépendances." },
-      { title: "Bases de données & Data Engineering", description: "PostgreSQL, MySQL, MongoDB, Redis. Optimisation de requêtes, stratégies d'indexation, configurations de réplication, sauvegarde et reprise après sinistre. J'ai passé assez de nuits à déboguer des requêtes lentes pour savoir que la conception de la base de données détermine le succès ou l'échec de la plupart des projets." },
-      { title: "Ingénierie Réseaux", description: "Architecture réseau, configuration de pare-feu, mise en place de VPN, répartition de charge, gestion DNS. Comprendre le modèle OSI n'est pas académique — c'est pratique quand vous débuguez pourquoi les paquets n'arrivent pas là où ils doivent aller. BGP, OSPF, VLANs, sous-réseaux." },
-      { title: "Outils Développeur & Open Source", description: "Construction d'outils de productivité pour développeurs via Zaroxi Studio. Configurations NixOS, environnements de développement reproductibles, utilitaires CLI. Je contribue à l'open source car utiliser des outils signifie comprendre comment ils cassent, ce qui signifie pouvoir les réparer." },
-      { title: "Production Musicale", description: "Je fais de la musique depuis l'âge de 16 ans. Rap arabe, rap soudanais, production hip hop. Mon EP KAKASHI est sorti en 2022, et un nouvel EP intitulé Rockstar sortira en août 2026. La musique et l'ingénierie se nourrissent mutuellement — les deux exigent discipline, itération et la patience de peaufiner les détails." },
+      {
+        title: "Ingénierie logicielle",
+        description:
+          "Développement full-stack avec Rust, TypeScript, Python, React, Next.js et C/C++. Je construis des applications web, des APIs, des outils CLI et des utilitaires pour développeurs. Architecture propre, tests rigoureux et du code que d'autres peuvent réellement lire et maintenir.",
+      },
+      {
+        title: "IA & Machine Learning",
+        description:
+          "Construction de systèmes d'IA en production avec LLMs, TensorFlow, PyTorch et des pipelines de modèles personnalisés. Je gère le cycle complet — préparation des données, entraînement des modèles, déploiement, monitoring — sans sur-ingénierie. Systèmes RAG, fine-tuning et architectures agentiques.",
+      },
+      {
+        title: "Infrastructure & Cloud",
+        description:
+          "Architecture AWS, Docker, Kubernetes, Terraform, Ansible. Conception d'infrastructures scalables, monitoring avec Prometheus et Grafana, automatisation de tout ce qui peut l'être. Stratégies multi-cloud quand c'est pertinent, pragmatisme single-cloud quand ça ne l'est pas.",
+      },
+      {
+        title: "Administration Systèmes",
+        description:
+          "Administration Linux (Ubuntu, Debian, Arch, NixOS) et Windows Server. Gestion de serveurs de production, configuration de Nginx et Apache, sécurisation des réseaux, optimisation des performances de bases de données et résolution des problèmes qui n'apparaissent qu'à 3h du matin sous charge.",
+      },
+      {
+        title: "DevSecOps & Sécurité",
+        description:
+          "Pipelines CI/CD avec GitHub Actions et GitLab CI, analyse de sécurité des conteneurs, durcissement d'infrastructure, gestion des vulnérabilités. J'intègre la sécurité dès la première ligne de code — corriger en production coûte cher et fait mauvaise figure. Gestion des secrets, SAST, DAST, analyse des dépendances.",
+      },
+      {
+        title: "Bases de données & Data Engineering",
+        description:
+          "PostgreSQL, MySQL, MongoDB, Redis. Optimisation de requêtes, stratégies d'indexation, configurations de réplication, sauvegarde et reprise après sinistre. J'ai passé assez de nuits à déboguer des requêtes lentes pour savoir que la conception de la base de données détermine le succès ou l'échec de la plupart des projets.",
+      },
+      {
+        title: "Ingénierie Réseaux",
+        description:
+          "Architecture réseau, configuration de pare-feu, mise en place de VPN, répartition de charge, gestion DNS. Comprendre le modèle OSI n'est pas académique — c'est pratique quand vous débuguez pourquoi les paquets n'arrivent pas là où ils doivent aller. BGP, OSPF, VLANs, sous-réseaux.",
+      },
+      {
+        title: "Outils Développeur & Open Source",
+        description:
+          "Construction d'outils de productivité pour développeurs via Zaroxi Studio. Configurations NixOS, environnements de développement reproductibles, utilitaires CLI. Je contribue à l'open source car utiliser des outils signifie comprendre comment ils cassent, ce qui signifie pouvoir les réparer.",
+      },
+      {
+        title: "Production Musicale",
+        description:
+          "Je fais de la musique depuis l'âge de 16 ans. Rap arabe, rap soudanais, production hip hop. Mon EP KAKASHI est sorti en 2022, et un nouvel EP intitulé Rockstar sortira en août 2026. La musique et l'ingénierie se nourrissent mutuellement — les deux exigent discipline, itération et la patience de peaufiner les détails.",
+      },
     ],
     techGroups: {
       languages: "Langages",
@@ -49,15 +89,33 @@ const fr = {
     },
     latest: {
       heading: "Récents",
-      blog: { label: "Blog", title: "Lire mes articles", description: "Écrits sur le logiciel, les systèmes, l'IA, l'infrastructure et les leçons tirées de la construction en production. Du vrai contenu, pas du SEO.", cta: "Parcourir" },
-      projects: { label: "Projets", title: "Voir mon travail", description: "Outils open source, configurations NixOS, utilitaires IA, outils de productivité développeur et automatisation d'infrastructure.", cta: "Voir les projets" },
-      music: { label: "Musique", title: "Écouter ma musique", description: "Rap arabe, rap soudanais, hip hop. EP KAKASHI (2022) disponible. EP Rockstar à venir en août 2026.", cta: "Découvrir" },
+      blog: {
+        label: "Blog",
+        title: "Lire mes articles",
+        description:
+          "Écrits sur le logiciel, les systèmes, l'IA, l'infrastructure et les leçons tirées de la construction en production. Du vrai contenu, pas du SEO.",
+        cta: "Parcourir",
+      },
+      projects: {
+        label: "Projets",
+        title: "Voir mon travail",
+        description:
+          "Outils open source, configurations NixOS, utilitaires IA, outils de productivité développeur et automatisation d'infrastructure.",
+        cta: "Voir les projets",
+      },
+      music: {
+        label: "Musique",
+        title: "Écouter ma musique",
+        description:
+          "Rap arabe, rap soudanais, hip hop. EP KAKASHI (2022) disponible. EP Rockstar à venir en août 2026.",
+        cta: "Découvrir",
+      },
     },
     exploreProjects: "Explorer les projets",
     readBlog: "Lire le blog",
     aboutHeading: "À propos de Mawja (Mujahid Siyam)",
     about1:
-      "Mawja (موجا) est le nom que j'utilise en ligne — court, chaleureux, facile à dire. Il vient du mot arabe pour \"vague\" — mouvement, signal, flux. Je l'ai choisi parce qu'il est simple, musical et mémorable. Mon vrai nom est Mujahid Siyam, et mon pseudonyme partout est itsmawja. Je suis un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, rappeur et producteur de hip-hop soudanais, né au Soudan et actuellement basé à Paris, France.",
+      "Mawja (موجا) est le nom que j'utilise en ligne — court, chaleureux, facile à dire. Il vient du mot arabe pour \"vague\" — mouvement, signal, flux. Je l'ai choisi parce qu'il est simple, musical et mémorable. Mon vrai nom est Mujahid Siyam, et mon pseudonyme partout est iammawja. Je suis un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, rappeur et producteur de hip-hop soudanais, né au Soudan et actuellement basé à Paris, France.",
     about2:
       "J'ai commencé par la musique avant d'écrire une seule ligne de code. À 16 ans, je formais des groupes au Soudan, j'enregistrais des morceaux, je me produisais partout où c'était possible. La musique m'a appris à construire quelque chose à partir de rien — une idée devient un son, un son devient une performance, une performance connecte avec les gens. Cet instinct créatif ne m'a jamais quitté. Je l'ai transporté dans l'ingénierie par la suite, où j'ai retrouvé le même cycle : imaginer, construire, affiner, livrer.",
     about3:
@@ -67,22 +125,26 @@ const fr = {
     about5:
       "Si vous cherchez quelqu'un pour construire quelque chose de solide, résoudre un problème technique complexe, ou simplement parler de musique, d'ingénierie, ou de comment faire vivre les deux mondes — contactez-moi. Je prends mon travail au sérieux sans me prendre trop au sérieux, et je crois que les meilleurs projets naissent quand on travaille avec des personnes compétentes, honnêtes et qui se soucient réellement de ce qu'elles construisent.",
     skillsHeading: "Technologies & Outils",
-    skillsDescription: "La stack avec laquelle je travaille régulièrement — de l'infrastructure à l'IA en passant par les bases de données",
+    skillsDescription:
+      "La stack avec laquelle je travaille régulièrement — de l'infrastructure à l'IA en passant par les bases de données",
     ctaHeading: "Travaillons ensemble",
-    ctaDescription: "Que ce soit pour de l'ingénierie, de l'IA, de l'infrastructure ou de la musique — je suis ouvert aux conversations intéressantes et aux projets qui ont du sens.",
+    ctaDescription:
+      "Que ce soit pour de l'ingénierie, de l'IA, de l'infrastructure ou de la musique — je suis ouvert aux conversations intéressantes et aux projets qui ont du sens.",
     ctaButton: "Me contacter",
   },
   about: {
-    title: "À propos | Mujahid Siyam (Mawja / itsmawja) — Ingénieur Logiciel & Artiste Musical",
+    title:
+      "À propos | Mujahid Siyam (Mawja / iammawja) — Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes & Artiste Musical",
     description:
-      "Mujahid Siyam (Mawja, pseudonyme: itsmawja) est un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes, rappeur et producteur de hip-hop soudanais basé à Paris, France. Découvrez son profil professionnel, son expérience, ses compétences et son parcours.",
+      "Mujahid Siyam (Mawja / موجة, pseudonyme: iammawja) est un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur et producteur de hip-hop soudanais basé à Paris, France. Découvrez son profil professionnel, son expérience, ses compétences et son parcours.",
     heading: "À propos de Mujahid Siyam",
-    roles: "Ingénieur Logiciel · Ingénieur Réseaux · Cloud Architect IA · Data Scientist · Administrateur Systèmes (Linux & Windows) · Rappeur · Producteur Musical · Créateur de Contenu",
+    roles:
+      "Ingénieur Logiciel · Ingénieur Réseaux · Cloud Architect IA · Data Scientist · Administrateur Systèmes (Linux & Windows) · Rappeur · Producteur Musical · Créateur de Contenu",
     profileTitle: "Ingénieur Logiciel & IA · Artiste Musical",
-    akaLabel: "Alias Mawja",
+    akaLabel: "Alias Mawja (موجا / موجة)",
     location: "Paris, France",
-    email: "hello@itsmawja.com",
-    website: "itsmawja.com",
+    email: "hello@iammawja.com",
+    website: "iammawja.com",
     coreCompetencies: "Expertise principale",
     languages: "Langues",
     experience: "Expérience professionnelle",
@@ -103,15 +165,32 @@ const fr = {
     summary5:
       "J'opère actuellement via Zaroxi Studio — mon entreprise de développement logiciel, ingénierie IA, outils développeur et consulting. Je suis ouvert aux missions en contrat, aux collaborations sur des projets intéressants et aux opportunités où une expertise technique approfondie rencontre un impact concret. Si vous avez besoin de quelqu'un qui peut architecturer un système, écrire le code, sécuriser le déploiement et déboguer l'incident de production à 3h du matin — le tout sans rendre les choses plus compliquées que nécessaire — nous devrions parler.",
     connectHeading: "Retrouvez Mawja en ligne",
-    connectDescription: "GitHub, réseaux sociaux, plateformes de streaming — comme vous préférez",
+    connectDescription:
+      "GitHub, réseaux sociaux, plateformes de streaming — comme vous préférez",
     education: "Formation",
     technologies: "Technologies & Outils",
     principlesHeading: "Ma façon de travailler",
     principles: [
-      { title: "Open Source d'abord", description: "Je construis en public quand c'est possible et je partage ce que j'apprends. La plupart de mes outils et configurations sont publics." },
-      { title: "Sécurité by Design", description: "La sécurité n'est pas une checklist à cocher avant le lancement. Elle fait partie de la conception, de la construction et du déploiement dès le premier commit." },
-      { title: "Simplicité avant complexité", description: "La complexité doit se justifier. Si vous ne pouvez pas expliquer votre architecture à un autre ingénieur en cinq minutes, elle est probablement trop compliquée." },
-      { title: "Automatiser tout ce qui est répétable", description: "Si je fais quelque chose deux fois, je l'automatise la troisième. Infrastructure as code, pipelines CI/CD, builds reproductibles — ce ne sont pas des luxes, c'est ainsi qu'on livre sans casser des choses." },
+      {
+        title: "Open Source d'abord",
+        description:
+          "Je construis en public quand c'est possible et je partage ce que j'apprends. La plupart de mes outils et configurations sont publics.",
+      },
+      {
+        title: "Sécurité by Design",
+        description:
+          "La sécurité n'est pas une checklist à cocher avant le lancement. Elle fait partie de la conception, de la construction et du déploiement dès le premier commit.",
+      },
+      {
+        title: "Simplicité avant complexité",
+        description:
+          "La complexité doit se justifier. Si vous ne pouvez pas expliquer votre architecture à un autre ingénieur en cinq minutes, elle est probablement trop compliquée.",
+      },
+      {
+        title: "Automatiser tout ce qui est répétable",
+        description:
+          "Si je fais quelque chose deux fois, je l'automatise la troisième. Infrastructure as code, pipelines CI/CD, builds reproductibles — ce ne sont pas des luxes, c'est ainsi qu'on livre sans casser des choses.",
+      },
     ],
     langList: [
       { language: "Arabe", level: "Natif" },
@@ -119,13 +198,43 @@ const fr = {
       { language: "Français", level: "Intermédiaire" },
     ],
     expItems: [
-      { title: "Ingénieur Logiciel & IA", company: "Zaroxi Studio", period: "2023 – Présent", description: "Construction de systèmes logiciels en production et d'intégrations IA. Gestion d'infrastructure cloud sur AWS avec Terraform, Docker et Kubernetes. Administration de serveurs Linux et Windows. Développement d'outils open source pour développeurs. Travail avec Rust, TypeScript, Python, NixOS, PostgreSQL et architectures LLM. Pilotage de projets de bout en bout, de l'architecture au déploiement." },
-      { title: "Ingénieur IA/ML", company: "Data Science Labs", period: "2020 – 2022", description: "Construction et déploiement de modèles de machine learning pour l'analyse prédictive en production. Mise en place et gestion de l'infrastructure AWS, incluant EC2, S3, RDS et EKS. Administration de serveurs Linux et configuration d'infrastructure réseau. Construction de pipelines de données et de systèmes de monitoring." },
-      { title: "Développeur & Admin Systèmes", company: "Startup Ventures", period: "2018 – 2020", description: "Développement d'applications web et mobiles full-stack. Administration d'environnements serveurs Linux et Windows. Configuration d'infrastructure réseau incluant pare-feu, VPN et répartiteurs de charge. Mise en place de pipelines CI/CD et automatisation des déploiements. Travail en équipes agiles et pluridisciplinaires." },
+      {
+        title: "Ingénieur Logiciel & IA",
+        company: "Zaroxi Studio",
+        period: "2023 – Présent",
+        description:
+          "Construction de systèmes logiciels en production et d'intégrations IA. Gestion d'infrastructure cloud sur AWS avec Terraform, Docker et Kubernetes. Administration de serveurs Linux et Windows. Développement d'outils open source pour développeurs. Travail avec Rust, TypeScript, Python, NixOS, PostgreSQL et architectures LLM. Pilotage de projets de bout en bout, de l'architecture au déploiement.",
+      },
+      {
+        title: "Ingénieur IA/ML",
+        company: "Data Science Labs",
+        period: "2020 – 2022",
+        description:
+          "Construction et déploiement de modèles de machine learning pour l'analyse prédictive en production. Mise en place et gestion de l'infrastructure AWS, incluant EC2, S3, RDS et EKS. Administration de serveurs Linux et configuration d'infrastructure réseau. Construction de pipelines de données et de systèmes de monitoring.",
+      },
+      {
+        title: "Développeur & Admin Systèmes",
+        company: "Startup Ventures",
+        period: "2018 – 2020",
+        description:
+          "Développement d'applications web et mobiles full-stack. Administration d'environnements serveurs Linux et Windows. Configuration d'infrastructure réseau incluant pare-feu, VPN et répartiteurs de charge. Mise en place de pipelines CI/CD et automatisation des déploiements. Travail en équipes agiles et pluridisciplinaires.",
+      },
     ],
     eduItems: [
-      { degree: "Master en Informatique", school: "Université de Technologie", period: "2016 – 2018", description: "Spécialisation en intelligence artificielle et machine learning. Mémoire sur les architectures de réseaux de neurones pour le traitement du langage naturel." },
-      { degree: "Licence en Génie Logiciel", school: "Tech University", period: "2012 – 2016", description: "Focus sur les systèmes distribués, l'architecture réseau, les systèmes d'exploitation et la programmation système. Diplômé avec mention." },
+      {
+        degree: "Master en Informatique",
+        school: "Université de Technologie",
+        period: "2016 – 2018",
+        description:
+          "Spécialisation en intelligence artificielle et machine learning. Mémoire sur les architectures de réseaux de neurones pour le traitement du langage naturel.",
+      },
+      {
+        degree: "Licence en Génie Logiciel",
+        school: "Tech University",
+        period: "2012 – 2016",
+        description:
+          "Focus sur les systèmes distribués, l'architecture réseau, les systèmes d'exploitation et la programmation système. Diplômé avec mention.",
+      },
     ],
     skills: [
       "Ingénierie Logicielle (Rust, TypeScript, Python, C/C++)",
@@ -148,19 +257,23 @@ const fr = {
   },
   blog: {
     title: "Blog | Mawja (Mujahid Siyam) — Logiciel, IA & Ingénierie Systèmes",
-    description: "Articles de Mujahid Siyam (Mawja) sur l'ingénierie logicielle, l'IA, Rust, le DevSecOps, l'infrastructure cloud, les réseaux, l'administration systèmes et la technologie créative. De vrais écrits, pas du contenu SEO.",
+    description:
+      "Articles de Mujahid Siyam (Mawja) sur l'ingénierie logicielle, l'IA, Rust, le DevSecOps, l'infrastructure cloud, les réseaux, l'administration systèmes et la technologie créative. De vrais écrits, pas du contenu SEO.",
     backToBlog: "Retour au blog",
     previous: "Précédent",
     next: "Suivant",
     relatedPosts: "Articles connexes",
     aboutTheAuthor: "À propos de l'auteur",
-    authorBio: "Ingénieur Logiciel · Ingénieur IA · Ingénieur Réseaux · Cloud Architect · DevSecOps · Admin Systèmes · Artiste Musical",
+    authorBio:
+      "Ingénieur Logiciel · Ingénieur Réseaux · Cloud Architect IA · Data Scientist · Admin Systèmes (Linux & Windows) · Rappeur · Producteur Musical · Créateur de Contenu",
     heroTitle: "Blog",
     heroSubtitle: "Réflexions à voix haute",
-    heroDescription: "Ce sur quoi je travaille, ce à quoi je pense ou ce que j'essaie de mieux comprendre — écrit comme une vraie personne, pas comme un calendrier éditorial",
+    heroDescription:
+      "Ce sur quoi je travaille, ce à quoi je pense ou ce que j'essaie de mieux comprendre — écrit comme une vraie personne, pas comme un calendrier éditorial",
     heroTitleAlt: "Blog",
     heroSubtitleAlt: "Articles & Notes",
-    heroDescriptionAlt: "Écrits sur le logiciel, les systèmes, l'IA, l'infrastructure et tout ce que j'explore",
+    heroDescriptionAlt:
+      "Écrits sur le logiciel, les systèmes, l'IA, l'infrastructure et tout ce que j'explore",
     minRead: "min de lecture",
     noDescription: "Pas de description.",
     uncategorized: "Non catégorisé",
@@ -187,14 +300,16 @@ const fr = {
   },
   projects: {
     title: "Projets | Mawja (Mujahid Siyam) — Open Source & Outils Développeur",
-    description: "Projets open source et contributions de Mujahid Siyam (Mawja). Outils développeur, configurations NixOS, utilitaires IA, automatisation d'infrastructure et expérimentations créatives.",
+    description:
+      "Projets open source et contributions de Mujahid Siyam (Mawja). Outils développeur, configurations NixOS, utilitaires IA, automatisation d'infrastructure et expérimentations créatives.",
     backToProjects: "Retour aux projets",
     viewOnGithub: "Voir sur GitHub",
     visitWebsite: "Visiter le site",
     technologiesUsed: "Technologies",
     heroTitle: "Projets",
     heroSubtitle: "Ce que j'ai construit",
-    heroDescription: "Outils open source, configurations d'infrastructure, expérimentations IA et utilitaires développeur que je maintiens et auxquels je contribue",
+    heroDescription:
+      "Outils open source, configurations d'infrastructure, expérimentations IA et utilitaires développeur que je maintiens et auxquels je contribue",
     viewProject: "Voir le projet",
     noProjects: "Les projets sont en préparation. Revenez bientôt.",
     today: "aujourd'hui",
@@ -210,11 +325,13 @@ const fr = {
     liveSite: "En ligne",
   },
   music: {
-    title: "Musique | Mawja | Rap Arabe | Rap Soudanais | Hip Hop Moyen-Oriental | Rap Africain",
+    title:
+      "Musique | Mawja | Rap Arabe | Rap Soudanais | Hip Hop Moyen-Oriental | Rap Africain",
     description:
-      "Mawja (موجا) est le nom d'artiste de Mujahid Siyam (pseudonyme: itsmawja). Rappeur soudanais et producteur de hip-hop créant du rap arabe, moyen-oriental et africain. Écoutez l'EP KAKASHI (2022). EP Rockstar à venir en août 2026. Suivez les prochaines sorties.",
+      "Mawja (موجا) est le nom d'artiste de Mujahid Siyam (pseudonyme: iammawja). Rappeur soudanais et producteur de hip-hop créant du rap arabe, moyen-oriental et africain. Écoutez l'EP KAKASHI (2022). EP Rockstar à venir en août 2026. Suivez les prochaines sorties.",
     heading: "Mawja — Musique",
-    subtitle: "Musique sous le nom Mawja. Rap arabe, moyen-oriental et africain, hip-hop. Rap soudanais et productions originales. EP KAKASHI disponible. EP Rockstar à venir en août 2026.",
+    subtitle:
+      "Musique sous le nom Mawja. Rap arabe, moyen-oriental et africain, hip-hop. Rap soudanais et productions originales. EP KAKASHI disponible. EP Rockstar à venir en août 2026.",
     noPlaylists: "Aucune sortie pour le moment. Restez à l'écoute.",
     loading: "Chargement...",
     listenOn: "Écouter sur",
@@ -225,14 +342,17 @@ const fr = {
     artistStory:
       "J'ai commencé la musique à 16 ans, bien avant d'écrire une seule ligne de code. En grandissant au Soudan, la musique était partout — et je voulais en faire partie. J'ai formé des groupes, écrit des paroles, enregistré partout où je pouvais et joué devant quiconque voulait bien écouter. La musique était mon premier langage pour construire des choses : on part d'une idée, on la façonne, on l'affine, puis on la présente et on voit comment les gens réagissent.\n\nQuand j'ai déménagé en France, j'ai mis la musique de côté pour me concentrer sur l'ingénierie logicielle. Pendant des années, le code a tout remplacé. J'ai construit des systèmes, géré des infrastructures, travaillé sur des projets d'IA. C'était exigeant et gratifiant, mais quelque chose manquait. En 2022, après un long silence, je suis retourné en studio. J'ai produit mon premier EP — KAKASHI — sous le nom Mawja. C'était brut, honnête et exactement ce que j'avais besoin de faire. Ce n'était pas une stratégie de comeback. C'était moi qui me souvenais de qui j'étais avant de devenir ingénieur.\n\nMaintenant, je travaille sur mon prochain EP, Rockstar, prévu pour août 2026. C'est le chapitre suivant — plus grand, plus concentré, une expression plus profonde de là où j'en suis. La musique n'est pas un projet secondaire. Elle fait partie de mon identité, tout comme l'ingénierie. Si vous avez écouté KAKASHI, vous connaissez le son. Si ce n'est pas le cas, c'est le bon moment.\n\nJe fais du rap arabe et du rap soudanais, avec une production hip hop qui puise dans mes racines et ma vie en Europe. La musique est personnelle. Elle parle d'identité, de déplacement, d'ambition et de la tension entre qui l'on était et qui l'on devient. Si cela vous parle, je pense que vous aimerez ce qui arrive.",
   },
-    contact: {
-    title: "Contact | Mujahid Siyam (Mawja / itsmawja) — Prendre contact",
-    description: "Contactez Mujahid Siyam (Mawja, pseudonyme: itsmawja), un ingénieur logiciel soudanais, rappeur et producteur de hip-hop basé à Paris, France. Collaboration en ingénierie, projets IA, consulting en infrastructure, demandes musicales, ou simplement pour dire bonjour.",
+  contact: {
+    title: "Contact | Mujahid Siyam (Mawja / iammawja) — Prendre contact",
+    description:
+      "Contactez Mujahid Siyam (Mawja, pseudonyme: iammawja), un ingénieur logiciel soudanais, rappeur et producteur de hip-hop basé à Paris, France. Collaboration en ingénierie, projets IA, consulting en infrastructure, demandes musicales, ou simplement pour dire bonjour.",
     heading: "Me contacter",
-    subtitle: "Un projet, une question ou simplement envie de se connecter ? Je lis chaque message et je réponds aux vrais. Parlons-en.",
+    subtitle:
+      "Un projet, une question ou simplement envie de se connecter ? Je lis chaque message et je réponds aux vrais. Parlons-en.",
     badge: "Contact",
     startConversation: "Parlons-en",
-    startConversationDesc: "Que vous ayez besoin d'un ingénieur pour un projet, envie de collaborer sur quelque chose d'intéressant, une demande liée à la musique, ou simplement envie de dire bonjour — envoyez-moi un message. Je réponds à chaque email authentique, généralement en quelques heures. Soyez précis sur ce que vous recherchez — cela m'aide à vous donner une meilleure réponse.",
+    startConversationDesc:
+      "Que vous ayez besoin d'un ingénieur pour un projet, envie de collaborer sur quelque chose d'intéressant, une demande liée à la musique, ou simplement envie de dire bonjour — envoyez-moi un message. Je réponds à chaque email authentique, généralement en quelques heures. Soyez précis sur ce que vous recherchez — cela m'aide à vous donner une meilleure réponse.",
     emailResponseTime: "Je réponds généralement en quelques heures",
     githubDesc: "Voir ce que je construis",
     linkedinDesc: "Profil professionnel",
@@ -259,11 +379,13 @@ const fr = {
     formMessagePlaceholder: "Dites-moi ce que vous recherchez...",
     sending: "Envoi en cours...",
     sendMessage: "Envoyer",
-    networkError: "Quelque chose s'est mal passé. Veuillez réessayer ou m'envoyer un email directement à hello@itsmawja.com.",
+    networkError:
+      "Quelque chose s'est mal passé. Veuillez réessayer ou m'envoyer un email directement à hello@iammawja.com.",
   },
   footer: {
     connect: "Restons en contact",
-    connectDescription: "Un projet en tête, une idée de collaboration, ou simplement envie de parler ? Je suis ouvert aux conversations intéressantes.",
+    connectDescription:
+      "Un projet en tête, une idée de collaboration, ou simplement envie de parler ? Je suis ouvert aux conversations intéressantes.",
     getInTouch: "Me contacter",
     quickMessage: "Message rapide",
     namePlaceholder: "Votre nom",
@@ -277,89 +399,199 @@ const fr = {
     and: "et",
     openSource: "Open Source",
     worldwide: "International",
-    tagline: "Construire des logiciels, des systèmes et de la musique. Basé à Paris, France, travaillant dans le monde entier.",
-    errorMessage: "Quelque chose s'est mal passé. Veuillez réessayer ou m'envoyer un email à hello@itsmawja.com.",
+    tagline:
+      "Construire des logiciels, des systèmes et de la musique. Basé à Paris, France, travaillant dans le monde entier.",
+    errorMessage:
+      "Quelque chose s'est mal passé. Veuillez réessayer ou m'envoyer un email à hello@iammawja.com.",
   },
   structuredData: {
     description:
-      "Mujahid Siyam, connu sous le nom de Mawja (itsmawja), est un ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il a commencé la musique à 16 ans, formant des groupes et se produisant avant de se tourner vers l'ingénierie logicielle, le cloud et l'IA. Il construit des systèmes avec Rust, TypeScript et Python, gère des infrastructures avec Terraform, Ansible, Docker et Kubernetes sur AWS, et administre des serveurs Linux et Windows. En 2022 il est revenu à la musique, sortant son premier EP KAKASHI sous le nom Mawja. Son prochain EP Rockstar est prévu pour août 2026. Sa musique couvre le rap arabe, moyen-oriental et africain, mêlant ses racines soudanaises à sa vie européenne. Il est le fondateur de Zaroxi Studio, un IDE accéléré par GPU écrit en Rust, et le créateur de MujaOS. Il relie l'ingénierie et la musique depuis Paris, France. Contact : hello@itsmawja.com.",
+      "Mujahid Siyam, connu sous le nom de Mawja (موجا, aussi épelé موجة / موجه — vague en arabe) avec le pseudonyme iammawja, est un ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il a commencé la musique à 16 ans, formant des groupes et se produisant avant de se tourner vers l'ingénierie logicielle, le cloud et l'IA. Il construit des systèmes avec Rust, TypeScript et Python, gère des infrastructures avec Terraform, Ansible, Docker et Kubernetes sur AWS, et administre des serveurs Linux et Windows. En 2022 il est revenu à la musique, sortant son premier EP KAKASHI sous le nom Mawja. Son prochain EP Rockstar est prévu pour août 2026. Sa musique couvre le rap arabe, moyen-oriental et africain, mêlant ses racines soudanaises à sa vie européenne. Il est le fondateur de Zaroxi Studio, un IDE accéléré par GPU écrit en Rust, et le créateur de MujaOS. Il relie l'ingénierie et la musique depuis Paris, France. Contact : hello@iammawja.com.",
     websiteDescription:
-      "Site officiel de Mujahid Siyam (Mawja / itsmawja) — ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes, rappeur et artiste musical né au Soudan, basé à Paris, France. A commencé la musique à 16 ans, a construit une carrière en ingénierie et infrastructure cloud, est revenu à la musique en 2022 avec l'EP KAKASHI. EP Rockstar à venir en août 2026. Fondateur de Zaroxi Studio (zaroxi.com). Projets, écrits techniques et rap original arabe, moyen-oriental et africain.",
+      "Site personnel officiel de Mujahid Siyam (Mawja / iammawja) — ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur et artiste musical né au Soudan, basé à Paris, France. A commencé la musique à 16 ans, a construit une carrière en ingénierie et infrastructure cloud, est revenu à la musique en 2022 avec l'EP KAKASHI. EP Rockstar à venir en août 2026. Fondateur de Zaroxi Studio (zaroxi.com). Projets, écrits techniques et rap original arabe, moyen-oriental et africain.",
   },
   seo: {
     keywords: [
-      "Mujahid Siyam", "Mawja", "itsmawja",
-      "Mujahid Siyam rappeur", "Mujahid Siyam musique", "Mawja rappeur", "Mawja musique", "itsmawja rappeur",
-      "Mawja ingénieur", "Mawja artiste", "Mawja créatif", "Mawja développeur",
-      "Mawja ingénieur et artiste", "Mawja logiciel et musique", "ingénieur et rappeur", "codeur et musicien",
-      "Mawja site officiel", "Mawja site personnel", "Mawja portfolio",
-      "Mawja du Soudan", "Mawja basé à Paris", "Mawja artiste soudanais", "talent soudanais France",
-      "Mawja nouvel EP", "Mawja musique 2026", "Mawja actualité",
-      "Rappeur", "Producteur Hip Hop", "Producteur Rap", "Artiste Hip Hop", "Rappeur Soudanais",
-      "Ingénieur Logiciel", "Ingénieur Réseaux", "Cloud Architect IA",
-      "Data Scientist", "Administrateur Systèmes", "Administrateur Linux", "Windows Server",
-      "Développeur Rust", "Développeur TypeScript", "Développeur Python",
-      "Ingénieur Rust", "Développeur NixOS", "Ingénieur DevSecOps", "Ingénieur DevOps",
-      "Ingénieur Full-stack", "Ingénieur IA", "Développeur Backend",
-      "Terraform", "Ansible", "Docker", "Kubernetes", "AWS",
-      "PostgreSQL", "MySQL", "MongoDB", "Redis",
-      "Nginx", "Apache", "Prometheus", "Grafana",
-      "NixOS", "CI/CD", "GitHub Actions", "GitLab CI",
-      "Artiste Musical", "Producteur Musical", "Créateur de Contenu",
-      "Rap Arabe", "Rap Moyen-Oriental", "Rap Soudanais", "Rap Africain", "Hip Hop",
-      "KAKASHI EP", "Rockstar EP", "Mawja musique", "Mawja hip hop",
-      "Mawja musique électronique", "Mawja artiste rap", "artiste musical soudanais",
-      "موجا", "راب عربي", "راب سوداني", "رابر", "رابر سوداني", "مجاهد صيام",
-      "Rapper", "Sudanese Rapper", "Rap Artist", "Mawja rapper",
-      "Open Source", "Rust", "TypeScript", "React",
-      "Next.js", "Python", "Développeur Full-stack", "Zaroxi Studio", "zaroxi.com",
-      "Rappeur Soudanais", "Hip Hop Soudanais", "Hip Hop Arabe",
-      "Rap Underground", "Artiste Rap",
-      "Infrastructure as Code", "Infrastructure Cloud",
-      "Architecture Réseau", "Programmation Système",
-      "Mujahid Siyam Paris", "Mujahid Siyam Soudan", "Mujahid Siyam France", "Mawja rappeur Paris",
-      "ingénieur soudanais Paris", "rappeur soudanais Paris", "développeur Rust Paris", "ingénieur IA",
-      "architecte cloud", "Mujahid Siyam portfolio", "Mujahid Siyam contact",
-      "Mawja GitHub", "Mawja LinkedIn", "Mawja blog", "Mawja projets",
-      "créatif soudanais", "ingénieur africain Paris", "talent tech MENA",
+      "Mujahid Siyam",
+      "Mawja",
+      "iammawja",
+      "موجا",
+      "موجة",
+      "موجه",
+      "Mujahid Siyam rappeur",
+      "Mujahid Siyam musique",
+      "Mawja rappeur",
+      "Mawja musique",
+      "iammawja rappeur",
+      "Mawja ingénieur",
+      "Mawja artiste",
+      "Mawja créatif",
+      "Mawja développeur",
+      "Mawja ingénieur et artiste",
+      "Mawja logiciel et musique",
+      "ingénieur et rappeur",
+      "codeur et musicien",
+      "Mawja site officiel",
+      "Mawja site personnel",
+      "Mawja portfolio",
+      "Mawja du Soudan",
+      "Mawja basé à Paris",
+      "Mawja artiste soudanais",
+      "talent soudanais France",
+      "Mawja nouvel EP",
+      "Mawja musique 2026",
+      "Mawja actualité",
+      "Rappeur",
+      "Producteur Hip Hop",
+      "Producteur Rap",
+      "Artiste Hip Hop",
+      "Rappeur Soudanais",
+      "Ingénieur Logiciel",
+      "Ingénieur Réseaux",
+      "Cloud Architect IA",
+      "Data Scientist",
+      "Data Analyst",
+      "Administrateur Systèmes",
+      "Administrateur Linux",
+      "Windows Server",
+      "Développeur Rust",
+      "Développeur TypeScript",
+      "Développeur Python",
+      "Ingénieur Rust",
+      "Développeur NixOS",
+      "Ingénieur DevSecOps",
+      "Ingénieur DevOps",
+      "Ingénieur Full-stack",
+      "Ingénieur IA",
+      "Développeur Backend",
+      "Terraform",
+      "Ansible",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "Nginx",
+      "Apache",
+      "Prometheus",
+      "Grafana",
+      "NixOS",
+      "CI/CD",
+      "GitHub Actions",
+      "GitLab CI",
+      "Artiste Musical",
+      "Producteur Musical",
+      "Créateur de Contenu",
+      "Rap Arabe",
+      "Rap Moyen-Oriental",
+      "Rap Soudanais",
+      "Rap Africain",
+      "Hip Hop",
+      "KAKASHI EP",
+      "Rockstar EP",
+      "Mawja musique",
+      "Mawja hip hop",
+      "Mawja musique électronique",
+      "Mawja artiste rap",
+      "artiste musical soudanais",
+      "موجا",
+      "موجة",
+      "موجه",
+      "راب عربي",
+      "راب سوداني",
+      "رابر",
+      "رابر سوداني",
+      "مجاهد صيام",
+      "Rapper",
+      "Sudanese Rapper",
+      "Rap Artist",
+      "Mawja rapper",
+      "Open Source",
+      "Rust",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Python",
+      "Développeur Full-stack",
+      "Zaroxi Studio",
+      "zaroxi.com",
+      "Rappeur Soudanais",
+      "Hip Hop Soudanais",
+      "Hip Hop Arabe",
+      "Rap Underground",
+      "Artiste Rap",
+      "Infrastructure as Code",
+      "Infrastructure Cloud",
+      "Architecture Réseau",
+      "Programmation Système",
+      "Mujahid Siyam Paris",
+      "Mujahid Siyam Soudan",
+      "Mujahid Siyam France",
+      "Mawja rappeur Paris",
+      "ingénieur soudanais Paris",
+      "rappeur soudanais Paris",
+      "développeur Rust Paris",
+      "ingénieur IA",
+      "architecte cloud",
+      "Mujahid Siyam portfolio",
+      "Mujahid Siyam contact",
+      "Mawja GitHub",
+      "Mawja LinkedIn",
+      "Mawja blog",
+      "Mawja projets",
+      "créatif soudanais",
+      "ingénieur africain Paris",
+      "talent tech MENA",
+      "iammawja",
+      "iammawja.com",
+      "iam mawja",
+      "i am mawja",
+      "ingénieur logiciel rappeur",
+      "développeur et musicien",
+      "ingénieur musique Paris",
+      "diaspora soudanaise",
+      "artiste diaspora",
+      "ingénieur diaspora",
     ],
     dcSubject:
-      "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS, Mawja, ingénieur et artiste",
+      "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Data Analyst, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS, Mawja, موجة, موجه, ingénieur et artiste, iammawja",
   },
   faq: {
     heading: "Questions Fréquentes",
     items: [
       {
         q: "Qui est Mujahid Siyam ?",
-        a: "Mujahid Siyam — également connu sous le nom de Mawja, avec le pseudonyme itsmawja — est un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes, rappeur et producteur de hip-hop soudanais basé à Paris, France. Il est le fondateur de Zaroxi Studio (zaroxi.com), un IDE accéléré par GPU écrit en Rust. Son travail couvre l'automatisation d'infrastructure, les systèmes d'IA et la création de rap arabe, moyen-oriental et africain.",
+        a: "Mujahid Siyam — également connu sous le nom de Mawja, avec le pseudonyme iammawja — est un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes, rappeur et producteur de hip-hop soudanais basé à Paris, France. Il est le fondateur de Zaroxi Studio (zaroxi.com), un IDE accéléré par GPU écrit en Rust. Son travail couvre l'automatisation d'infrastructure, les systèmes d'IA et la création de rap arabe, moyen-oriental et africain.",
       },
       {
         q: "Qui est Mawja ?",
-        a: "Mawja est le nom d'artiste et le pseudonyme en ligne de Mujahid Siyam (pseudonyme : itsmawja). Court, musical, inspiré du mot arabe signifiant « vague » — représentant le mouvement, le flux et le signal. Mawja représente son identité en tant que rappeur et producteur de hip-hop soudanais créant du rap arabe, moyen-oriental et africain. Il a sorti son premier EP KAKASHI en 2022, et son prochain EP Rockstar est prévu pour août 2026.",
+        a: "Mawja (موجا, aussi épelé موجة / موجه) est le nom d'artiste et le pseudonyme en ligne de Mujahid Siyam (pseudonyme : iammawja). Court, musical, inspiré du mot arabe signifiant « vague » — représentant le mouvement, le flux et le signal. Mawja représente son identité en tant que rappeur et producteur de hip-hop soudanais créant du rap arabe, moyen-oriental et africain. Il a sorti son premier EP KAKASHI en 2022, et son prochain EP Rockstar est prévu pour août 2026.",
       },
       {
-        q: "Qu'est-ce que itsmawja ?",
-        a: "itsmawja est le pseudonyme universel de Mujahid Siyam (également connu sous le nom de Mawja) — utilisé sur toutes les plateformes comme GitHub, LinkedIn, Instagram, YouTube et X (Twitter). C'est simplement un pseudonyme de compte, pas un nom. Le nom est Mawja, et le vrai nom est Mujahid Siyam.",
+        q: "Qu'est-ce que iammawja ?",
+        a: "iammawja est le pseudonyme universel de Mujahid Siyam (également connu sous le nom de Mawja / موجة) — utilisé sur toutes les plateformes comme GitHub, LinkedIn, Instagram, YouTube et X (Twitter). Il se prononce « I am Mawja » — un pseudonyme personnel et déclaratif. Le nom est Mawja, et le vrai nom est Mujahid Siyam.",
       },
       {
         q: "Qu'est-ce que Zaroxi Studio ?",
-        a: "Zaroxi Studio est un IDE accéléré par GPU, alimenté par l'IA et écrit en Rust, fondé par Mujahid Siyam (Mawja / itsmawja). C'est également le nom de son entreprise de développement logiciel, à travers laquelle il construit des outils pour développeurs, gère des infrastructures et fournit du conseil en ingénierie. Visitez zaroxi.com pour plus d'informations.",
+        a: "Zaroxi Studio est un IDE accéléré par GPU, alimenté par l'IA et écrit en Rust, fondé par Mujahid Siyam (Mawja / iammawja). C'est également le nom de son entreprise de développement logiciel, à travers laquelle il construit des outils pour développeurs, gère des infrastructures et fournit du conseil en ingénierie. Visitez zaroxi.com pour plus d'informations.",
       },
       {
         q: "Quel genre de musique fait Mawja ?",
-        a: "Mawja (Mujahid Siyam / itsmawja) fait du rap arabe, du rap moyen-oriental, du rap soudanais et du rap africain avec une production hip-hop. Son son mélange ses racines soudanaises avec sa vie en Europe, créant une musique sur l'identité, le déplacement, l'ambition et la tension entre qui l'on était et qui l'on devient. Son premier EP KAKASHI est sorti en 2022, et son prochain EP Rockstar arrive en août 2026.",
+        a: "Mawja (Mujahid Siyam / iammawja) fait du rap arabe, du rap moyen-oriental, du rap soudanais et du rap africain avec une production hip-hop. Son son mélange ses racines soudanaises avec sa vie en Europe, créant une musique sur l'identité, le déplacement, l'ambition et la tension entre qui l'on était et qui l'on devient. Son premier EP KAKASHI est sorti en 2022, et son prochain EP Rockstar arrive en août 2026.",
       },
       {
         q: "Où puis-je écouter la musique de Mawja ?",
-        a: "Vous pouvez écouter Mawja (Mujahid Siyam / itsmawja) sur Spotify, Apple Music, SoundCloud, YouTube, YouTube Music, Deezer, Anghami, Tidal et Bandcamp. Tous les liens de streaming sont disponibles sur itsmawja.com/music. Son premier EP KAKASHI (2022) est disponible, et l'EP Rockstar sort en août 2026.",
+        a: "Vous pouvez écouter Mawja (Mujahid Siyam / iammawja) sur Spotify, Apple Music, SoundCloud, YouTube, YouTube Music, Deezer, Anghami, Tidal et Bandcamp. Tous les liens de streaming sont disponibles sur iammawja.com/music. Son premier EP KAKASHI (2022) est disponible, et l'EP Rockstar sort en août 2026.",
       },
       {
         q: "Mujahid Siyam est-il disponible pour une embauche ou une collaboration ?",
-        a: "Oui — Mujahid Siyam (Mawja / itsmawja) est ouvert aux collaborations en ingénierie logicielle, architecture cloud, conseil en IA et production musicale. Contactez-le à hello@itsmawja.com pour des projets d'ingénierie, du conseil en infrastructure, des collaborations musicales ou des partenariats créatifs.",
+        a: "Oui — Mujahid Siyam (Mawja / iammawja) est ouvert aux collaborations en ingénierie logicielle, architecture cloud, conseil en IA et production musicale. Contactez-le à hello@iammawja.com pour des projets d'ingénierie, du conseil en infrastructure, des collaborations musicales ou des partenariats créatifs.",
       },
       {
         q: "Où est basé Mujahid Siyam ?",
-        a: "Mujahid Siyam (Mawja / itsmawja) est né au Soudan et actuellement basé à Paris, France. Il travaille à l'échelle mondiale avec des clients et collaborateurs en Europe, au Moyen-Orient, en Afrique et au-delà, reliant l'ingénierie et la musique depuis Paris.",
+        a: "Mujahid Siyam (Mawja / iammawja) est né au Soudan et actuellement basé à Paris, France. Il travaille à l'échelle mondiale avec des clients et collaborateurs en Europe, au Moyen-Orient, en Afrique et au-delà, reliant l'ingénierie et la musique depuis Paris.",
       },
     ],
   },

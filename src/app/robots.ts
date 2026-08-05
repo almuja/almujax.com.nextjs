@@ -180,9 +180,9 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: [
-      "https://itsmawja.com/sitemap.xml",
-      "https://itsmawja.com/geo.kml",
+      "https://iammawja.com/sitemap.xml",
+      "https://iammawja.com/geo.kml",
     ],
-    host: "https://itsmawja.com",
+    host: "https://iammawja.com",
   };
 }

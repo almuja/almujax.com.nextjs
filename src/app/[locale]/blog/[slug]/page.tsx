@@ -100,7 +100,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
-  const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
+  const validLocale = locales.includes(resolvedParams.locale as Locale)
+    ? (resolvedParams.locale as Locale)
+    : "en";
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
   const fullPath = join(blogDirectory, `${slug}.mdx`);
 
@@ -111,7 +113,7 @@ export async function generateMetadata({
 
     const title = data.title || slug;
     const description = data.description || "";
-    const image = data.image || "https://itsmawja.com/img/profile.png";
+    const image = data.image || "https://iammawja.com/img/profile.png";
     const publishedTime = data.date;
 
     return {
@@ -122,7 +124,7 @@ export async function generateMetadata({
         data.category,
         "Mujahid Siyam",
         "Mawja",
-        "itsmawja",
+        "iammawja",
         "AI Engineer",
         "Software Engineer",
         "DevSecOps",
@@ -134,18 +136,18 @@ export async function generateMetadata({
         "blog",
       ].filter(Boolean),
       alternates: {
-        canonical: `https://itsmawja.com/${validLocale}/blog/${slug}`,
+        canonical: `https://iammawja.com/${validLocale}/blog/${slug}`,
         languages: {
-          en: `https://itsmawja.com/en/blog/${slug}`,
-          ar: `https://itsmawja.com/ar/blog/${slug}`,
-          fr: `https://itsmawja.com/fr/blog/${slug}`,
+          en: `https://iammawja.com/en/blog/${slug}`,
+          ar: `https://iammawja.com/ar/blog/${slug}`,
+          fr: `https://iammawja.com/fr/blog/${slug}`,
         },
       },
       openGraph: {
         title: `${title} | Mawja (Mujahid Siyam)`,
         description,
         type: "article",
-        url: `https://itsmawja.com/${validLocale}/blog/${slug}`,
+        url: `https://iammawja.com/${validLocale}/blog/${slug}`,
         images: [{ url: image, width: 1200, height: 630, alt: title }],
         publishedTime,
         modifiedTime: publishedTime,
@@ -157,8 +159,8 @@ export async function generateMetadata({
         title: `${title} | Mujahid Siyam`,
         description,
         images: [image],
-        site: "@itsmawja",
-        creator: "@itsmawja",
+        site: "@iammawja",
+        creator: "@iammawja",
       },
       category: data.category || undefined,
       other: {
@@ -179,7 +181,7 @@ export async function generateMetadata({
     return {
       title: slug,
       alternates: {
-        canonical: `https://itsmawja.com/${validLocale}/blog/${slug}`,
+        canonical: `https://iammawja.com/${validLocale}/blog/${slug}`,
       },
     };
   }
@@ -197,7 +199,9 @@ export default async function BlogPostPage({
       notFound();
     }
 
-    const validLocale = locales.includes(resolvedParams.locale as Locale) ? (resolvedParams.locale as Locale) : "en";
+    const validLocale = locales.includes(resolvedParams.locale as Locale)
+      ? (resolvedParams.locale as Locale)
+      : "en";
     const dict = getDictionary(validLocale);
     const dir = validLocale === "ar" ? "rtl" : "ltr";
 
@@ -224,7 +228,10 @@ export default async function BlogPostPage({
     const html = await compileMdx(content);
 
     return (
-      <div className="min-h-screen bg-background transition-colors duration-300" dir={dir}>
+      <div
+        className="min-h-screen bg-background transition-colors duration-300"
+        dir={dir}
+      >
         <ArticleStructuredData
           title={title}
           description={frontmatter.description || dict.blog.noDescription}
@@ -234,21 +241,35 @@ export default async function BlogPostPage({
               : new Date().toISOString()
           }
           image={frontmatter.image || ""}
-          url={`https://itsmawja.com/${validLocale}/blog/${resolvedParams.slug}`}
+          url={`https://iammawja.com/${validLocale}/blog/${resolvedParams.slug}`}
           authorName="Mujahid Siyam"
-          authorUrl="https://itsmawja.com"
+          authorUrl="https://iammawja.com"
         />
         <BreadcrumbStructuredData
           items={[
-            { name: validLocale === "ar" ? "الرئيسية" : "Home", url: `https://itsmawja.com/${validLocale}` },
-            { name: dict.blog.title.replace(" | Mawja (Mujahid Siyam)", "").replace(/^Blog \| /, ""), url: `https://itsmawja.com/${validLocale}/blog` },
-            { name: title, url: `https://itsmawja.com/${validLocale}/blog/${resolvedParams.slug}` },
+            {
+              name: validLocale === "ar" ? "الرئيسية" : "Home",
+              url: `https://iammawja.com/${validLocale}`,
+            },
+            {
+              name: dict.blog.title
+                .replace(" | Mawja (Mujahid Siyam)", "")
+                .replace(/^Blog \| /, ""),
+              url: `https://iammawja.com/${validLocale}/blog`,
+            },
+            {
+              name: title,
+              url: `https://iammawja.com/${validLocale}/blog/${resolvedParams.slug}`,
+            },
           ]}
         />
 
         {/* Hero Header — full width, flowing naturally */}
         <section className="relative pt-32 pb-12 overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+          >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[450px] rounded-full bg-[var(--color-wave-1)] opacity-[0.04] blur-[140px] animate-pulse-slow" />
             <div className="absolute top-[30%] right-[5%] w-[400px] h-[300px] rounded-full bg-[var(--color-wave-3)] opacity-[0.03] blur-[100px] animate-pulse-slow animation-delay-2000" />
           </div>
@@ -271,7 +292,10 @@ export default async function BlogPostPage({
                 {frontmatter.category || dict.blog.uncategorized}
               </span>
               {frontmatter.tags?.slice(0, 3).map((tag: string) => (
-                <span key={tag} className="px-2.5 py-0.5 rounded-full bg-muted/50 text-[10px] text-foreground/40 border border-border/30">
+                <span
+                  key={tag}
+                  className="px-2.5 py-0.5 rounded-full bg-muted/50 text-[10px] text-foreground/40 border border-border/30"
+                >
                   {tag}
                 </span>
               ))}
@@ -311,7 +335,11 @@ export default async function BlogPostPage({
             {date !== "Unknown date" && (
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5" />
-                {new Date(date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                {new Date(date).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
               </span>
             )}
             {readingTime && (
@@ -338,16 +366,20 @@ export default async function BlogPostPage({
               bio={dict.blog.authorBio}
               aboutLabel={dict.blog.aboutTheAuthor}
               socialLinks={{
-                github: "https://github.com/itsmawja",
-                twitter: "https://x.com/itsmawja",
-                linkedin: "https://linkedin.com/in/itsmawja",
-                website: "https://itsmawja.com",
+                github: "https://github.com/iammawja",
+                twitter: "https://x.com/iammawja",
+                linkedin: "https://linkedin.com/in/iammawja",
+                website: "https://iammawja.com",
               }}
             />
           </div>
 
           {/* Next/Previous Navigation */}
-          <PostNavigation currentSlug={resolvedParams.slug} locale={validLocale} dict={dict} />
+          <PostNavigation
+            currentSlug={resolvedParams.slug}
+            locale={validLocale}
+            dict={dict}
+          />
 
           <RelatedPosts
             currentSlug={resolvedParams.slug}
@@ -364,7 +396,15 @@ export default async function BlogPostPage({
   }
 }
 
-async function PostNavigation({ currentSlug, locale, dict }: { currentSlug: string; locale: string; dict: any }) {
+async function PostNavigation({
+  currentSlug,
+  locale,
+  dict,
+}: {
+  currentSlug: string;
+  locale: string;
+  dict: any;
+}) {
   const posts = await getBlogPosts(dict);
   const currentIndex = posts.findIndex((post) => post.slug === currentSlug);
 
@@ -382,8 +422,18 @@ async function PostNavigation({ currentSlug, locale, dict }: { currentSlug: stri
     const d = dir === "prev" ? prevPath : nextPath;
     return (
       <div className="flex-shrink-0 p-2 rounded-xl bg-muted/40 border border-border/30 group-hover:border-primary/20 group-hover:bg-primary/[0.06] transition-all duration-300">
-        <svg className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={d} />
+        <svg
+          className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d={d}
+          />
         </svg>
       </div>
     );
@@ -391,26 +441,38 @@ async function PostNavigation({ currentSlug, locale, dict }: { currentSlug: stri
 
   return (
     <nav className="mt-16 pt-8 border-t border-border">
-      <div className={`flex flex-col sm:flex-row justify-between gap-6 ${!previousPost || !nextPost ? "items-center" : ""}`}>
+      <div
+        className={`flex flex-col sm:flex-row justify-between gap-6 ${!previousPost || !nextPost ? "items-center" : ""}`}
+      >
         {previousPost && (
-          <Link href={`/${locale}/blog/${previousPost.slug}`}
-            className={`group flex-1 max-w-md ${!nextPost ? "sm:mx-auto" : ""}`}>
+          <Link
+            href={`/${locale}/blog/${previousPost.slug}`}
+            className={`group flex-1 max-w-md ${!nextPost ? "sm:mx-auto" : ""}`}
+          >
             <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-gradient-to-br from-card/80 via-card/60 to-transparent p-5 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/[0.04] hover:-translate-y-0.5 transition-all duration-400">
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/[0.04] to-transparent" />
               <div className="relative flex items-start gap-4">
                 <CardArrow dir="prev" />
                 <div className="flex-1 min-w-0">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">{dict.blog.previous}</span>
-                  <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">{previousPost.title}</h4>
-                  <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">{previousPost.description}</p>
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">
+                    {dict.blog.previous}
+                  </span>
+                  <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">
+                    {previousPost.title}
+                  </h4>
+                  <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">
+                    {previousPost.description}
+                  </p>
                 </div>
               </div>
             </div>
           </Link>
         )}
         {nextPost && (
-          <Link href={`/${locale}/blog/${nextPost.slug}`}
-            className={`group flex-1 max-w-md ${!previousPost ? "sm:mx-auto" : "ms-auto"}`}>
+          <Link
+            href={`/${locale}/blog/${nextPost.slug}`}
+            className={`group flex-1 max-w-md ${!previousPost ? "sm:mx-auto" : "ms-auto"}`}
+          >
             <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-gradient-to-br from-card/80 via-card/60 to-transparent p-5 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/[0.04] hover:-translate-y-0.5 transition-all duration-400">
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/[0.04] to-transparent" />
               <div className="relative flex items-start gap-4">
@@ -418,17 +480,29 @@ async function PostNavigation({ currentSlug, locale, dict }: { currentSlug: stri
                   <>
                     <CardArrow dir="next" />
                     <div className="flex-1 min-w-0 text-start">
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">{dict.blog.next}</span>
-                      <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">{nextPost.title}</h4>
-                      <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">{nextPost.description}</p>
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">
+                        {dict.blog.next}
+                      </span>
+                      <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">
+                        {nextPost.title}
+                      </h4>
+                      <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">
+                        {nextPost.description}
+                      </p>
                     </div>
                   </>
                 ) : (
                   <>
                     <div className="flex-1 min-w-0 text-end">
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">{dict.blog.next}</span>
-                      <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">{nextPost.title}</h4>
-                      <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">{nextPost.description}</p>
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-primary/50 mb-2 block">
+                        {dict.blog.next}
+                      </span>
+                      <h4 className="font-bold text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 text-sm">
+                        {nextPost.title}
+                      </h4>
+                      <p className="text-xs text-foreground/35 line-clamp-1 mt-1.5">
+                        {nextPost.description}
+                      </p>
                     </div>
                     <CardArrow dir="next" />
                   </>
@@ -489,7 +563,16 @@ async function RelatedPosts({
                   {post.description}
                 </p>
                 <div className="flex items-center gap-3 text-[10px] text-foreground/30 border-t border-border/20 pt-3">
-                  <span>{new Date(post.date).toLocaleDateString(locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US", { year: "numeric", month: "short", day: "numeric" })}</span>
+                  <span>
+                    {new Date(post.date).toLocaleDateString(
+                      locale === "ar"
+                        ? "ar-SA"
+                        : locale === "fr"
+                          ? "fr-FR"
+                          : "en-US",
+                      { year: "numeric", month: "short", day: "numeric" },
+                    )}
+                  </span>
                   <span className="text-foreground/15">·</span>
                   <span>{post.readingTime}</span>
                 </div>

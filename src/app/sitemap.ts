@@ -3,7 +3,7 @@ import { join } from "path";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 
-const baseUrl = "https://itsmawja.com";
+const baseUrl = "https://iammawja.com";
 const locales = ["en", "ar", "fr"];
 
 function toAbsoluteImage(image: string | undefined): string | undefined {
@@ -37,7 +37,9 @@ async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
           if (data.draft === true) return null;
 
           const postDate = data.date ? new Date(data.date) : stats.mtime;
-          const image = isValidImage(data.image) ? toAbsoluteImage(data.image) : undefined;
+          const image = isValidImage(data.image)
+            ? toAbsoluteImage(data.image)
+            : undefined;
 
           return {
             url: `${baseUrl}/en/blog/${slug}`,
@@ -62,9 +64,15 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
     const files = await fs.readdir(projectsDirectory, { recursive: true });
     const projects = await Promise.all(
       files
-        .filter((file): file is string => typeof file === "string" && file.endsWith(".mdx"))
+        .filter(
+          (file): file is string =>
+            typeof file === "string" && file.endsWith(".mdx"),
+        )
         .map(async (file) => {
-          const slug = file.replace(/\.mdx$/, "").split("/").pop()!;
+          const slug = file
+            .replace(/\.mdx$/, "")
+            .split("/")
+            .pop()!;
           const filePath = join(projectsDirectory, file);
           const fileContents = await fs.readFile(filePath, "utf8");
           const { data } = matter(fileContents);
@@ -73,7 +81,9 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
           if (data.draft === true) return null;
 
           const projDate = data.date ? new Date(data.date) : stats.mtime;
-          const image = isValidImage(data.image) ? toAbsoluteImage(data.image) : undefined;
+          const image = isValidImage(data.image)
+            ? toAbsoluteImage(data.image)
+            : undefined;
 
           return {
             url: `${baseUrl}/en/projects/${slug}`,
@@ -108,7 +118,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const route of pageRoutes) {
     for (const locale of locales) {
       staticPages.push({
-        url: route.slug ? `${baseUrl}/${locale}/${route.slug}` : `${baseUrl}/${locale}`,
+        url: route.slug
+          ? `${baseUrl}/${locale}/${route.slug}`
+          : `${baseUrl}/${locale}`,
         lastModified: now,
         changeFrequency: route.changeFrequency,
         priority: route.priority,

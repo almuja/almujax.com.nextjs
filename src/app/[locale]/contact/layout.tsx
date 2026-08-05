@@ -8,7 +8,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
   const t = getDictionary(validLocale);
 
   return {
@@ -16,12 +18,12 @@ export async function generateMetadata({
     description: t.contact.description,
     keywords: [...t.seo.keywords],
     alternates: {
-      canonical: `https://itsmawja.com/${validLocale}/contact`,
+      canonical: `https://iammawja.com/${validLocale}/contact`,
     },
     openGraph: {
       title: t.contact.title,
       description: t.contact.description,
-      url: `https://itsmawja.com/${validLocale}/contact`,
+      url: `https://iammawja.com/${validLocale}/contact`,
       type: "website",
     },
   };

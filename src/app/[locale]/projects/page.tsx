@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { ExternalLink, Code2, GitFork, Calendar, ArrowRight, Pin, Sparkles } from "lucide-react";
+import {
+  ExternalLink,
+  Code2,
+  GitFork,
+  Calendar,
+  ArrowRight,
+  Pin,
+  Sparkles,
+} from "lucide-react";
 import { join } from "path";
 import { promises as fs } from "fs";
 import type { Metadata } from "next";
@@ -12,18 +20,20 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
   const t = getDictionary(validLocale);
 
   return {
     title: t.projects.title,
     description: t.projects.description,
     keywords: [...t.seo.keywords],
-    alternates: { canonical: `https://itsmawja.com/${validLocale}/projects` },
+    alternates: { canonical: `https://iammawja.com/${validLocale}/projects` },
     openGraph: {
       title: t.projects.title,
       description: t.projects.description,
-      url: `https://itsmawja.com/${validLocale}/projects`,
+      url: `https://iammawja.com/${validLocale}/projects`,
       type: "website",
     },
   };
@@ -56,39 +66,87 @@ async function getProjects(): Promise<Project[]> {
         .filter((f) => typeof f === "string" && f.endsWith(".mdx"))
         .map(async (file) => {
           try {
-            const slug = file.split("/").pop()!.replace(/\.mdx$/, "");
-            const fileContent = await fs.readFile(join(projectsDirectory, file), "utf8");
+            const slug = file
+              .split("/")
+              .pop()!
+              .replace(/\.mdx$/, "");
+            const fileContent = await fs.readFile(
+              join(projectsDirectory, file),
+              "utf8",
+            );
             const fmMatch = fileContent.match(/^---\n([\s\S]*?)\n---/);
             if (!fmMatch) return null;
 
-            const project: Project = { slug, title: "", description: "", date: "" };
+            const project: Project = {
+              slug,
+              title: "",
+              description: "",
+              date: "",
+            };
             fmMatch[1].split("\n").forEach((line) => {
               const [key, ...vp] = line.split(":");
-              const value = vp.join(":").trim().replace(/^['"](.*)['"]$/, "$1");
+              const value = vp
+                .join(":")
+                .trim()
+                .replace(/^['"](.*)['"]$/, "$1");
               if (!key || !vp.length) return;
               switch (key.trim()) {
-                case "title": project.title = value; break;
-                case "description": project.description = value; break;
-                case "date": project.date = value; break;
-                case "category": project.category = value; break;
-                case "tags": try { project.tags = value.startsWith("[") ? JSON.parse(value) : value.split(",").map((t) => t.trim()); } catch { project.tags = [value]; } break;
-                case "githubUrl": project.githubUrl = value; break;
-                case "liveUrl": project.liveUrl = value; break;
-                case "featured": project.featured = value === "true"; break;
-                case "language": project.language = value; break;
-                case "languageColor": project.languageColor = value; break;
-                case "forks": project.forks = parseInt(value) || 0; break;
-                case "image": project.image = value; break;
+                case "title":
+                  project.title = value;
+                  break;
+                case "description":
+                  project.description = value;
+                  break;
+                case "date":
+                  project.date = value;
+                  break;
+                case "category":
+                  project.category = value;
+                  break;
+                case "tags":
+                  try {
+                    project.tags = value.startsWith("[")
+                      ? JSON.parse(value)
+                      : value.split(",").map((t) => t.trim());
+                  } catch {
+                    project.tags = [value];
+                  }
+                  break;
+                case "githubUrl":
+                  project.githubUrl = value;
+                  break;
+                case "liveUrl":
+                  project.liveUrl = value;
+                  break;
+                case "featured":
+                  project.featured = value === "true";
+                  break;
+                case "language":
+                  project.language = value;
+                  break;
+                case "languageColor":
+                  project.languageColor = value;
+                  break;
+                case "forks":
+                  project.forks = parseInt(value) || 0;
+                  break;
+                case "image":
+                  project.image = value;
+                  break;
               }
             });
             return project;
-          } catch { return null; }
+          } catch {
+            return null;
+          }
         }),
     );
     return projects
       .filter((p): p is Project => p !== null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  } catch { return []; }
+  } catch {
+    return [];
+  }
 }
 
 export default async function ProjectsPage({
@@ -97,7 +155,9 @@ export default async function ProjectsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
   const t = getDictionary(validLocale);
   const projects = await getProjects();
 
@@ -108,7 +168,10 @@ export default async function ProjectsPage({
     <div className="min-h-screen" dir={validLocale === "ar" ? "rtl" : "ltr"}>
       {/* Hero Header */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+        >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[var(--color-wave-1)] opacity-[0.04] blur-[140px] animate-pulse-slow" />
           <div className="absolute top-[30%] right-[5%] w-[350px] h-[300px] rounded-full bg-[var(--color-wave-3)] opacity-[0.03] blur-[100px] animate-pulse-slow animation-delay-2000" />
         </div>
@@ -119,9 +182,7 @@ export default async function ProjectsPage({
             {t.projects.heroSubtitle}
           </div>
           <h1 className="hero-enter text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">
-            <span className="wave-gradient-text">
-              {t.projects.heroTitle}
-            </span>
+            <span className="wave-gradient-text">{t.projects.heroTitle}</span>
           </h1>
           <p className="hero-enter text-base sm:text-lg text-foreground/45 font-light leading-relaxed max-w-lg mx-auto">
             {t.projects.heroDescription}
@@ -140,14 +201,22 @@ export default async function ProjectsPage({
                 <Pin className="w-3.5 h-3.5 text-amber-500/50" />
               </div>
               <div>
-                <span className="text-sm font-bold text-foreground">{t.projects.pinned}</span>
+                <span className="text-sm font-bold text-foreground">
+                  {t.projects.pinned}
+                </span>
               </div>
               <div className="flex-1 h-px bg-gradient-to-r from-amber-500/10 to-transparent" />
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {featuredProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} locale={validLocale} t={t} featured />
+                <ProjectCard
+                  key={project.slug}
+                  project={project}
+                  locale={validLocale}
+                  t={t}
+                  featured
+                />
               ))}
             </div>
           </section>
@@ -169,7 +238,12 @@ export default async function ProjectsPage({
             )}
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {regularProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} locale={validLocale} t={t} />
+                <ProjectCard
+                  key={project.slug}
+                  project={project}
+                  locale={validLocale}
+                  t={t}
+                />
               ))}
             </div>
           </section>
@@ -177,7 +251,9 @@ export default async function ProjectsPage({
 
         {projects.length === 0 && (
           <div className="text-center py-24">
-            <p className="text-sm text-foreground/30 font-light">{t.projects.noProjects}</p>
+            <p className="text-sm text-foreground/30 font-light">
+              {t.projects.noProjects}
+            </p>
           </div>
         )}
       </main>
@@ -185,14 +261,26 @@ export default async function ProjectsPage({
   );
 }
 
-function ProjectCard({ project, locale, t, featured }: { project: Project; locale: string; t: Dictionary; featured?: boolean }) {
+function ProjectCard({
+  project,
+  locale,
+  t,
+  featured,
+}: {
+  project: Project;
+  locale: string;
+  t: Dictionary;
+  featured?: boolean;
+}) {
   return (
     <Link href={`/${locale}/projects/${project.slug}`} className="group block">
-      <article className={`relative h-full overflow-hidden border transition-all duration-700 group flex flex-col hover:-translate-y-1 ${
-        featured
-          ? "rounded-2xl border-border/20 bg-card/10 backdrop-blur-sm hover:border-primary/25 hover:shadow-2xl hover:shadow-primary/[0.04]"
-          : "rounded-xl border-border/25 bg-card/5 backdrop-blur-sm hover:border-primary/15 hover:shadow-lg hover:shadow-primary/[0.03]"
-      }`}>
+      <article
+        className={`relative h-full overflow-hidden border transition-all duration-700 group flex flex-col hover:-translate-y-1 ${
+          featured
+            ? "rounded-2xl border-border/20 bg-card/10 backdrop-blur-sm hover:border-primary/25 hover:shadow-2xl hover:shadow-primary/[0.04]"
+            : "rounded-xl border-border/25 bg-card/5 backdrop-blur-sm hover:border-primary/15 hover:shadow-lg hover:shadow-primary/[0.03]"
+        }`}
+      >
         {/* Shine sweep */}
         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none z-20" />
         {/* Image or gradient placeholder */}
@@ -222,14 +310,21 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
           <div className="flex items-center gap-2 mb-3">
             {project.language && (
               <span className="flex items-center gap-1.5 text-[10px] text-foreground/40">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ background: project.languageColor || "var(--color-primary)" }} />
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{
+                    background: project.languageColor || "var(--color-primary)",
+                  }}
+                />
                 {project.language}
               </span>
             )}
             {project.category && (
               <>
                 <span className="text-foreground/10">·</span>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-primary/50">{project.category}</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-primary/50">
+                  {project.category}
+                </span>
               </>
             )}
             {project.forks !== undefined && project.forks > 0 && (
@@ -239,7 +334,9 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
             )}
           </div>
 
-          <h2 className={`font-bold text-foreground group-hover:text-primary/80 transition-colors duration-300 line-clamp-1 mb-2 leading-snug ${featured ? "text-base" : "text-sm"}`}>
+          <h2
+            className={`font-bold text-foreground group-hover:text-primary/80 transition-colors duration-300 line-clamp-1 mb-2 leading-snug ${featured ? "text-base" : "text-sm"}`}
+          >
             {project.title}
           </h2>
 
@@ -251,18 +348,32 @@ function ProjectCard({ project, locale, t, featured }: { project: Project; local
             {project.tags && project.tags.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {project.tags.slice(0, 4).map((tag) => (
-                  <span key={tag} className="px-2.5 py-1 text-[10px] bg-muted/30 text-foreground/45 border border-border/20 rounded-lg font-medium">
+                  <span
+                    key={tag}
+                    className="px-2.5 py-1 text-[10px] bg-muted/30 text-foreground/45 border border-border/20 rounded-lg font-medium"
+                  >
                     {tag}
                   </span>
                 ))}
                 {project.tags.length > 4 && (
-                  <span className="px-2.5 py-1 text-[10px] text-foreground/30 border border-border/20 rounded-lg">+{project.tags.length - 4}</span>
+                  <span className="px-2.5 py-1 text-[10px] text-foreground/30 border border-border/20 rounded-lg">
+                    +{project.tags.length - 4}
+                  </span>
                 )}
               </div>
             )}
             <div className="flex items-center justify-between">
               <span className="text-[10px] text-foreground/30 tabular-nums font-medium">
-                {project.date ? new Date(project.date).toLocaleDateString(locale === "ar" ? "ar-SA" : locale === "fr" ? "fr-FR" : "en-US", { month: "short", year: "numeric" }) : ""}
+                {project.date
+                  ? new Date(project.date).toLocaleDateString(
+                      locale === "ar"
+                        ? "ar-SA"
+                        : locale === "fr"
+                          ? "fr-FR"
+                          : "en-US",
+                      { month: "short", year: "numeric" },
+                    )
+                  : ""}
               </span>
               <span className="flex items-center gap-1.5 text-[10px] text-foreground/25 font-semibold group-hover:text-primary/60 transition-all duration-300">
                 {t.projects.view}

@@ -1,5 +1,5 @@
 const INDEXNOW_KEY = "b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0";
-const BASE_URL = "https://itsmawja.com";
+const BASE_URL = "https://iammawja.com";
 
 const SEARCH_ENGINES = [
   "https://www.bing.com/indexnow",
@@ -17,14 +17,17 @@ async function notifyIndexNow(urls: string[]) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            host: "itsmawja.com",
+            host: "iammawja.com",
             key: INDEXNOW_KEY,
             keyLocation: `${BASE_URL}/${INDEXNOW_KEY}.txt`,
             urlList: urls.slice(0, 100),
           }),
           signal: AbortSignal.timeout(15000),
         });
-        results.push({ engine: new URL(engine).hostname, status: response.status });
+        results.push({
+          engine: new URL(engine).hostname,
+          status: response.status,
+        });
       } catch {
         results.push({ engine: new URL(engine).hostname, status: 0 });
       }
@@ -36,9 +39,12 @@ async function notifyIndexNow(urls: string[]) {
 
 async function pingGoogle() {
   try {
-    await fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`, {
-      signal: AbortSignal.timeout(10000),
-    });
+    await fetch(
+      `https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`,
+      {
+        signal: AbortSignal.timeout(10000),
+      },
+    );
     return true;
   } catch {
     return false;

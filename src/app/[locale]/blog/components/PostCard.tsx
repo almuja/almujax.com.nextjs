@@ -12,7 +12,12 @@ interface PostCardProps {
   locale?: string;
 }
 
-export function PostCard({ post, onCategoryClick, onTagClick, locale = "en" }: PostCardProps) {
+export function PostCard({
+  post,
+  onCategoryClick,
+  onTagClick,
+  locale = "en",
+}: PostCardProps) {
   return (
     <Link href={`/${locale}/blog/${post.slug}`} className="block group">
       <article className="bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105 h-full flex flex-col">

@@ -11,17 +11,17 @@ import {
 } from "./components/StructuredData";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://itsmawja.com"),
+  metadataBase: new URL("https://iammawja.com"),
   manifest: "/manifest.json",
   icons: {
     icon: "/img/favicon.ico",
     shortcut: "/img/favicon.ico",
     apple: "/img/apple-touch-icon.png",
   },
-    verification: {
-      google: "ADD_YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN",
-      yandex: "ADD_YOUR_YANDEX_WEBMASTER_TOKEN",
-    },
+  verification: {
+    google: "ADD_YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN",
+    yandex: "ADD_YOUR_YANDEX_WEBMASTER_TOKEN",
+  },
   robots: {
     index: true,
     follow: true,
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     languages: {
-      en: "https://itsmawja.com/en",
-      ar: "https://itsmawja.com/ar",
-      fr: "https://itsmawja.com/fr",
+      en: "https://iammawja.com/en",
+      ar: "https://iammawja.com/ar",
+      fr: "https://iammawja.com/fr",
     },
   },
 };
@@ -79,13 +79,13 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="itsmawja.com RSS Feed"
+          title="iammawja.com RSS Feed"
           href="/feed.xml"
         />
         <link
           rel="alternate"
           type="application/atom+xml"
-          title="itsmawja.com Atom Feed"
+          title="iammawja.com Atom Feed"
           href="/atom.xml"
         />
         <link
@@ -100,30 +100,28 @@ export default function RootLayout({
           title="Full content for AI indexing"
           href="/llms-full.txt"
         />
-        <link rel="me" href="https://github.com/itsmawja" />
-        <link rel="me" href="https://linkedin.com/in/itsmawja" />
-        <link rel="me" href="https://x.com/itsmawja" />
-        <link rel="me" href="https://twitter.com/itsmawja" />
-        <link rel="me" href="https://instagram.com/itsmawja" />
-        <link rel="me" href="https://dev.to/itsmawja" />
-        <link rel="me" href="https://reddit.com/user/itsmawja" />
-        <link rel="me" href="https://youtube.com/@itsmawja" />
-        <link rel="me" href="https://soundcloud.com/itsmawja" />
-        <link rel="me" href="https://tiktok.com/@itsmawja" />
-        <link rel="me" href="https://open.spotify.com/user/itsmawja" />
-        <link rel="me" href="https://music.apple.com/profile/itsmawja" />
-        <link rel="me" href="https://music.youtube.com/@itsmawja" />
-        <link rel="me" href="https://www.deezer.com/us/artist/itsmawja" />
-        <link rel="me" href="https://play.anghami.com/artist/itsmawja" />
-        <link rel="me" href="https://itsmawja.bandcamp.com" />
-        <link rel="me" href="https://tidal.com/browse/artist/itsmawja" />
-        <link rel="me" href="https://music.amazon.com/artist/itsmawja" />
-        <link rel="me" href="https://www.pandora.com/artist/itsmawja" />
+        <link rel="me" href="https://github.com/iammawja" />
+        <link rel="me" href="https://linkedin.com/in/iammawja" />
+        <link rel="me" href="https://x.com/iammawja" />
+        <link rel="me" href="https://twitter.com/iammawja" />
+        <link rel="me" href="https://instagram.com/iammawja" />
+        <link rel="me" href="https://dev.to/iammawja" />
+        <link rel="me" href="https://reddit.com/user/iammawja" />
+        <link rel="me" href="https://youtube.com/@iammawja" />
+        <link rel="me" href="https://soundcloud.com/iammawja" />
+        <link rel="me" href="https://tiktok.com/@iammawja" />
+        <link rel="me" href="https://open.spotify.com/user/iammawja" />
+        <link rel="me" href="https://music.apple.com/profile/iammawja" />
+        <link rel="me" href="https://music.youtube.com/@iammawja" />
+        <link rel="me" href="https://www.deezer.com/us/artist/iammawja" />
+        <link rel="me" href="https://play.anghami.com/artist/iammawja" />
+        <link rel="me" href="https://iammawja.bandcamp.com" />
+        <link rel="me" href="https://tidal.com/browse/artist/iammawja" />
+        <link rel="me" href="https://music.amazon.com/artist/iammawja" />
+        <link rel="me" href="https://www.pandora.com/artist/iammawja" />
       </head>
       <body className="antialiased" suppressHydrationWarning>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

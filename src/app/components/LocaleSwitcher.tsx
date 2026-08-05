@@ -32,7 +32,8 @@ export default function LocaleSwitcher({ locale }: LocaleSwitcherProps) {
 
   function switchLocale(newLocale: string) {
     const info = locales[newLocale as keyof typeof locales] || locales.en;
-    document.documentElement.lang = newLocale === "ar" ? "ar" : newLocale === "fr" ? "fr" : "en";
+    document.documentElement.lang =
+      newLocale === "ar" ? "ar" : newLocale === "fr" ? "fr" : "en";
     document.documentElement.dir = info.dir;
     document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
 
@@ -63,7 +64,12 @@ export default function LocaleSwitcher({ locale }: LocaleSwitcherProps) {
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </button>
 
@@ -74,14 +80,28 @@ export default function LocaleSwitcher({ locale }: LocaleSwitcherProps) {
               key={key}
               onClick={() => switchLocale(key)}
               className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-muted/30 ${
-                key === locale ? "text-primary font-semibold bg-primary/5" : "text-foreground/70"
+                key === locale
+                  ? "text-primary font-semibold bg-primary/5"
+                  : "text-foreground/70"
               }`}
             >
-              <span className="text-xs font-bold w-6">{locales[key].label}</span>
+              <span className="text-xs font-bold w-6">
+                {locales[key].label}
+              </span>
               <span>{locales[key].name}</span>
               {key === locale && (
-                <svg className="w-4 h-4 ml-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-4 h-4 ml-auto text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               )}
             </button>

@@ -39,7 +39,10 @@ export default function Header({ locale, dict, nav }: HeaderProps) {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/95 border-b border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.1)]" suppressHydrationWarning>
+      <header
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/95 border-b border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.1)]"
+        suppressHydrationWarning
+      >
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3 md:py-4">
             <Link href={`/${locale}`} className="flex items-center gap-3 group">
@@ -62,24 +65,45 @@ export default function Header({ locale, dict, nav }: HeaderProps) {
               <ul className="flex gap-6">
                 {navigationItems.map((item) => (
                   <li key={item.href}>
-                    <Button variant="ghost" size="md" asChild className="text-foreground font-bold text-base" suppressHydrationWarning>
+                    <Button
+                      variant="ghost"
+                      size="md"
+                      asChild
+                      className="text-foreground font-bold text-base"
+                      suppressHydrationWarning
+                    >
                       <Link href={item.href}>{item.label}</Link>
                     </Button>
                   </li>
                 ))}
               </ul>
               <div className="flex items-center gap-4">
-                <div className="relative"><Search /></div>
-                <div><ModeToggle /></div>
+                <div className="relative">
+                  <Search />
+                </div>
+                <div>
+                  <ModeToggle />
+                </div>
                 <LocaleSwitcher locale={locale} />
               </div>
             </nav>
 
             <div className="flex md:hidden items-center gap-2">
-              <div><Search /></div>
-              <div><ModeToggle /></div>
+              <div>
+                <Search />
+              </div>
+              <div>
+                <ModeToggle />
+              </div>
               <LocaleSwitcher locale={locale} />
-              <Button variant="default" size="sm" onClick={() => setIsMobileMenuOpen(true)} className="h-9 w-9 flex items-center justify-center p-0" aria-label={nav.menu} suppressHydrationWarning>
+              <Button
+                variant="default"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="h-9 w-9 flex items-center justify-center p-0"
+                aria-label={nav.menu}
+                suppressHydrationWarning
+              >
                 <Menu className="w-4 h-4" />
               </Button>
             </div>
@@ -87,7 +111,15 @@ export default function Header({ locale, dict, nav }: HeaderProps) {
         </div>
       </header>
 
-      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} navigationItems={navigationItems} locale={locale} menuLabel={nav.menu} authorName={locale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"} authorBio={dict.blog.authorBio} />
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        navigationItems={navigationItems}
+        locale={locale}
+        menuLabel={nav.menu}
+        authorName={locale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
+        authorBio={dict.blog.authorBio}
+      />
     </>
   );
 }

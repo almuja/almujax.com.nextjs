@@ -50,9 +50,9 @@ export function proxy(request: NextRequest) {
 
   // Handle www redirect
   const host = request.headers.get("host") || "";
-  if (host === "www.itsmawja.com") {
+  if (host === "www.iammawja.com") {
     const redirectUrl = new URL(request.url);
-    redirectUrl.host = "itsmawja.com";
+    redirectUrl.host = "iammawja.com";
     return NextResponse.redirect(redirectUrl, 301);
   }
 
@@ -65,7 +65,7 @@ export function proxy(request: NextRequest) {
     if (parts.length > 1 && parts[0] !== "localhost") {
       subdomain = parts[0];
     }
-  } else if (hostname.endsWith("itsmawja.com")) {
+  } else if (hostname.endsWith("iammawja.com")) {
     if (parts.length >= 3 && parts[0] !== "www") {
       subdomain = parts[0];
     }
@@ -89,7 +89,10 @@ export function proxy(request: NextRequest) {
   if (pathnameHasLocale) {
     const locale = pathname.split("/")[1];
     const response = NextResponse.next();
-    response.cookies.set("NEXT_LOCALE", locale, { path: "/", maxAge: 31536000 });
+    response.cookies.set("NEXT_LOCALE", locale, {
+      path: "/",
+      maxAge: 31536000,
+    });
     return response;
   }
 
@@ -103,5 +106,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\.ico|.*\\.png|.*\\.svg|.*\\.txt|.*\\.xml|.*\\.kml).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.ico|.*\\.png|.*\\.svg|.*\\.txt|.*\\.xml|.*\\.kml).*)",
+  ],
 };

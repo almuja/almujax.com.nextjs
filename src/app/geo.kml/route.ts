@@ -3,12 +3,12 @@ export async function GET() {
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
   <Document>
     <atom:author>
-      <atom:name>Mujahid Siyam (Mawja / itsmawja)</atom:name>
+      <atom:name>Mujahid Siyam (Mawja / iammawja)</atom:name>
     </atom:author>
     <Placemark>
-      <name>Mujahid Siyam (Mawja / itsmawja) | Software & AI Engineer</name>
-      <description>Mujahid Siyam, also known as Mawja (itsmawja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology. Based in France — global reach.</description>
-      <atom:link href="https://itsmawja.com"/>
+      <name>Mujahid Siyam (Mawja / iammawja) | Software & AI Engineer</name>
+      <description>Mujahid Siyam, also known as Mawja (iammawja), is a Software Engineer, AI Engineer, DevSecOps Engineer, and Music Artist building AI-first systems and creative technology. Based in France — global reach.</description>
+      <atom:link href="https://iammawja.com"/>
       <Point>
         <coordinates>1.888334,46.603354,0</coordinates>
       </Point>

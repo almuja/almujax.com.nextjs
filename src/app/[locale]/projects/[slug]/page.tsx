@@ -32,11 +32,19 @@ async function findProjectFile(slug: string): Promise<string | null> {
     const files = await fs.readdir(dir, { recursive: true });
     for (const file of files) {
       if (typeof file === "string" && file.endsWith(".mdx")) {
-        if (file.split("/").pop()!.replace(/\.mdx$/, "") === slug) return join(dir, file);
+        if (
+          file
+            .split("/")
+            .pop()!
+            .replace(/\.mdx$/, "") === slug
+        )
+          return join(dir, file);
       }
     }
     return null;
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 }
 
 export async function generateMetadata({
@@ -45,9 +53,18 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
   const fullPath = await findProjectFile(slug);
-  const base = { canonical: `https://itsmawja.com/${validLocale}/projects/${slug}`, languages: { en: `https://itsmawja.com/en/projects/${slug}`, ar: `https://itsmawja.com/ar/projects/${slug}`, fr: `https://itsmawja.com/fr/projects/${slug}` } };
+  const base = {
+    canonical: `https://iammawja.com/${validLocale}/projects/${slug}`,
+    languages: {
+      en: `https://iammawja.com/en/projects/${slug}`,
+      ar: `https://iammawja.com/ar/projects/${slug}`,
+      fr: `https://iammawja.com/fr/projects/${slug}`,
+    },
+  };
 
   if (!fullPath) return { title: slug, alternates: base };
 
@@ -58,9 +75,27 @@ export async function generateMetadata({
     return {
       title: `${title} | Mawja (Mujahid Siyam)`,
       description: desc,
-      keywords: [...(data.tags || []), data.category, "Mujahid Siyam", "Mawja", "itsmawja", "open source", "project", "Arabic Rap", "Sudanese Rap", "Hip Hop", "راب سوداني", "راب عربي"].filter(Boolean),
+      keywords: [
+        ...(data.tags || []),
+        data.category,
+        "Mujahid Siyam",
+        "Mawja",
+        "iammawja",
+        "open source",
+        "project",
+        "Arabic Rap",
+        "Sudanese Rap",
+        "Hip Hop",
+        "راب سوداني",
+        "راب عربي",
+      ].filter(Boolean),
       alternates: base,
-      openGraph: { title: `${title} | Mawja (Mujahid Siyam)`, description: desc, type: "article", url: `https://itsmawja.com/${validLocale}/projects/${slug}` },
+      openGraph: {
+        title: `${title} | Mawja (Mujahid Siyam)`,
+        description: desc,
+        type: "article",
+        url: `https://iammawja.com/${validLocale}/projects/${slug}`,
+      },
       twitter: { card: "summary_large_image", title, description: desc },
     };
   } catch {
@@ -75,7 +110,9 @@ export default async function ProjectPage({
 }) {
   const { locale, slug } = await params;
   if (!slug) notFound();
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
   const dict = getDictionary(validLocale);
   const dir = validLocale === "ar" ? "rtl" : "ltr";
   const fullPath = await findProjectFile(slug);
@@ -98,12 +135,47 @@ export default async function ProjectPage({
 
     return (
       <div className="min-h-screen" dir={dir}>
-        <SoftwareSourceCodeStructuredData name={project.title} description={project.description} url={`https://itsmawja.com/${validLocale}/projects/${slug}`} codeRepository={project.githubUrl} dateCreated={project.date} programmingLanguage={project.tags} />
-        <BreadcrumbStructuredData items={[{ name: validLocale === "ar" ? "الرئيسية" : validLocale === "fr" ? "Accueil" : "Home", url: `https://itsmawja.com/${validLocale}` }, { name: validLocale === "ar" ? "المشاريع" : validLocale === "fr" ? "Projets" : "Projects", url: `https://itsmawja.com/${validLocale}/projects` }, { name: project.title, url: `https://itsmawja.com/${validLocale}/projects/${slug}` }]} />
+        <SoftwareSourceCodeStructuredData
+          name={project.title}
+          description={project.description}
+          url={`https://iammawja.com/${validLocale}/projects/${slug}`}
+          codeRepository={project.githubUrl}
+          dateCreated={project.date}
+          programmingLanguage={project.tags}
+        />
+        <BreadcrumbStructuredData
+          items={[
+            {
+              name:
+                validLocale === "ar"
+                  ? "الرئيسية"
+                  : validLocale === "fr"
+                    ? "Accueil"
+                    : "Home",
+              url: `https://iammawja.com/${validLocale}`,
+            },
+            {
+              name:
+                validLocale === "ar"
+                  ? "المشاريع"
+                  : validLocale === "fr"
+                    ? "Projets"
+                    : "Projects",
+              url: `https://iammawja.com/${validLocale}/projects`,
+            },
+            {
+              name: project.title,
+              url: `https://iammawja.com/${validLocale}/projects/${slug}`,
+            },
+          ]}
+        />
 
         {/* Hero Header */}
         <section className="relative pt-32 pb-16 overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+          >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[350px] rounded-full bg-[var(--color-wave-1)] opacity-[0.04] blur-[140px] animate-pulse-slow" />
             <div className="absolute top-[20%] right-[10%] w-[350px] h-[250px] rounded-full bg-[var(--color-wave-3)] opacity-[0.03] blur-[100px] animate-pulse-slow animation-delay-2000" />
           </div>
@@ -130,7 +202,14 @@ export default async function ProjectPage({
               {project.date && (
                 <span className="flex items-center gap-1.5 text-[10px] text-foreground/35">
                   <Clock className="w-3 h-3" />
-                  {new Date(project.date).toLocaleDateString(validLocale === "ar" ? "ar-SA" : validLocale === "fr" ? "fr-FR" : "en-US", { month: "long", day: "numeric", year: "numeric" })}
+                  {new Date(project.date).toLocaleDateString(
+                    validLocale === "ar"
+                      ? "ar-SA"
+                      : validLocale === "fr"
+                        ? "fr-FR"
+                        : "en-US",
+                    { month: "long", day: "numeric", year: "numeric" },
+                  )}
                 </span>
               )}
             </div>
@@ -148,15 +227,23 @@ export default async function ProjectPage({
             {/* Action buttons */}
             <div className="hero-enter flex flex-wrap gap-3">
               {project.githubUrl && (
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-5 py-3 bg-foreground text-background rounded-xl text-sm font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-5 py-3 bg-foreground text-background rounded-xl text-sm font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300"
+                >
                   <Code2 className="w-4 h-4" />
                   {dict.projects.viewOnGithub}
                 </a>
               )}
               {project.liveUrl && (
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-5 py-3 border border-border rounded-xl text-sm font-semibold text-foreground hover:bg-muted hover:scale-[1.02] transition-all duration-300">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-5 py-3 border border-border rounded-xl text-sm font-semibold text-foreground hover:bg-muted hover:scale-[1.02] transition-all duration-300"
+                >
                   <ExternalLink className="w-4 h-4" />
                   {dict.projects.liveSite}
                 </a>
@@ -179,11 +266,16 @@ export default async function ProjectPage({
             <div className="mt-16 pt-8 border-t border-border/20">
               <div className="flex items-center gap-2 mb-5">
                 <Tag className="w-3.5 h-3.5 text-foreground/30" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">{dict.projects.technologiesUsed}</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30">
+                  {dict.projects.technologiesUsed}
+                </span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1.5 text-xs bg-muted/40 text-foreground/40 rounded-lg border border-border/20 hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-300">
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 text-xs bg-muted/40 text-foreground/40 rounded-lg border border-border/20 hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-300"
+                  >
                     {tag}
                   </span>
                 ))}
@@ -202,6 +294,15 @@ export async function generateStaticParams() {
   const dir = join(process.cwd(), "src", "content", "projects");
   try {
     const files = await fs.readdir(dir, { recursive: true });
-    return files.filter((f) => typeof f === "string" && f.endsWith(".mdx")).map((f) => ({ slug: f.split("/").pop()!.replace(/\.mdx$/, "") }));
-  } catch { return []; }
+    return files
+      .filter((f) => typeof f === "string" && f.endsWith(".mdx"))
+      .map((f) => ({
+        slug: f
+          .split("/")
+          .pop()!
+          .replace(/\.mdx$/, ""),
+      }));
+  } catch {
+    return [];
+  }
 }

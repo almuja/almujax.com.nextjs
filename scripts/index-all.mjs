@@ -5,7 +5,7 @@
  * Run after deployment: node scripts/index-all.mjs
  */
 
-const BASE_URL = "https://itsmawja.com";
+const BASE_URL = "https://iammawja.com";
 const INDEXNOW_KEY = "b8a9e2d4f6c3a1b5e7d9f0c2a4b6d8e0";
 
 const urls = [
@@ -31,10 +31,16 @@ const urls = [
 
 // Add blog posts
 const blogPosts = [
-  "python-data-science", "react-hooks-guide", "typescript-nextjs",
-  "rust-systems-programming", "building-llm-apps", "devsecops-pipeline",
-  "nixos-reproducible-builds", "postgres-optimization",
-  "docker-kubernetes-deployment", "api-design-rest",
+  "python-data-science",
+  "react-hooks-guide",
+  "typescript-nextjs",
+  "rust-systems-programming",
+  "building-llm-apps",
+  "devsecops-pipeline",
+  "nixos-reproducible-builds",
+  "postgres-optimization",
+  "docker-kubernetes-deployment",
+  "api-design-rest",
 ];
 
 for (const slug of blogPosts) {
@@ -97,7 +103,7 @@ async function main() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            host: "itsmawja.com",
+            host: "iammawja.com",
             key: INDEXNOW_KEY,
             keyLocation: `${BASE_URL}/${INDEXNOW_KEY}.txt`,
             urlList: batch,
@@ -108,7 +114,9 @@ async function main() {
         console.log(`✅ IndexNow ${name}: ${r.status} (${batch.length} URLs)`);
       } catch (e) {
         const name = new URL(endpoint).hostname;
-        console.log(`❌ IndexNow ${name}: ${e instanceof Error ? e.message : "failed"}`);
+        console.log(
+          `❌ IndexNow ${name}: ${e instanceof Error ? e.message : "failed"}`,
+        );
       }
     }
   }
@@ -129,9 +137,15 @@ async function main() {
 
   console.log(`\n🎯 Done! ${urls.length} URLs submitted for indexing.\n`);
   console.log("   Manual steps:");
-  console.log("   1. Submit sitemap in Google Search Console: https://search.google.com/search-console");
-  console.log("   2. Submit sitemap in Bing Webmaster: https://www.bing.com/webmasters");
-  console.log("   3. Add site to Yandex Webmaster: https://webmaster.yandex.com");
+  console.log(
+    "   1. Submit sitemap in Google Search Console: https://search.google.com/search-console",
+  );
+  console.log(
+    "   2. Submit sitemap in Bing Webmaster: https://www.bing.com/webmasters",
+  );
+  console.log(
+    "   3. Add site to Yandex Webmaster: https://webmaster.yandex.com",
+  );
   console.log("");
 }
 

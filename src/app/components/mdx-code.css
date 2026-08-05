@@ -6,7 +6,10 @@
   word-break: break-word;
 }
 
-.prose-content h1, .prose-content h2, .prose-content h3, .prose-content h4 {
+.prose-content h1,
+.prose-content h2,
+.prose-content h3,
+.prose-content h4 {
   color: var(--color-foreground);
   font-weight: 700;
   line-height: 1.25;
@@ -15,10 +18,20 @@
   letter-spacing: -0.02em;
 }
 
-.prose-content h1 { font-size: 2rem; }
-.prose-content h2 { font-size: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); }
-.prose-content h3 { font-size: 1.25rem; }
-.prose-content h4 { font-size: 1.1rem; }
+.prose-content h1 {
+  font-size: 2rem;
+}
+.prose-content h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.prose-content h3 {
+  font-size: 1.25rem;
+}
+.prose-content h4 {
+  font-size: 1.1rem;
+}
 
 .prose-content p {
   margin-bottom: 1.5rem;
@@ -100,7 +113,9 @@
   background: transparent !important;
   padding: 0 !important;
   border: none !important;
-  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, SFMono-Regular, monospace;
+  font-family:
+    "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace,
+    SFMono-Regular, monospace;
   font-size: 0.8125rem;
   line-height: 1.75;
   tab-size: 2;
@@ -143,7 +158,8 @@
   color: var(--color-foreground);
 }
 
-.prose-content td, .prose-content th {
+.prose-content td,
+.prose-content th {
   padding: 0.75rem 1rem;
   border: 1px solid var(--color-border);
 }
@@ -154,7 +170,8 @@
 }
 
 /* ─── Lists ─── */
-.prose-content ul, .prose-content ol {
+.prose-content ul,
+.prose-content ol {
   padding-inline-start: 1.5rem;
   margin: 1.5rem 0;
   color: var(--color-foreground);
@@ -171,7 +188,8 @@
   opacity: 0.5;
 }
 
-.prose-content li > ul, .prose-content li > ol {
+.prose-content li > ul,
+.prose-content li > ol {
   margin-top: 0.5rem;
   margin-bottom: 0;
 }
@@ -180,7 +198,12 @@
 .prose-content hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border),
+    transparent
+  );
   margin: 3rem 0;
 }
 

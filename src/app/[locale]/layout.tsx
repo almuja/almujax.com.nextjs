@@ -12,31 +12,39 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
   const dict = getDictionary(validLocale);
 
   return {
     title: {
-      template: validLocale === "ar"
-        ? `%s | موجا — مجاهد صيام`
-        : `%s | Mawja (Mujahid Siyam)`,
+      template:
+        validLocale === "ar"
+          ? `%s | موجا (موجة) — مجاهد صيام`
+          : `%s | Mawja (Mujahid Siyam)`,
       default: dict.site.defaultTitle,
     },
     description: dict.site.description,
     keywords: [...dict.seo.keywords],
-    authors: [{ name: "Mujahid Siyam", url: "https://itsmawja.com" }],
+    authors: [{ name: "Mujahid Siyam", url: "https://iammawja.com" }],
     alternates: {
-      canonical: `https://itsmawja.com/${validLocale}`,
+      canonical: `https://iammawja.com/${validLocale}`,
     },
     openGraph: {
       title: dict.site.defaultTitle,
       description: dict.site.description,
       type: "website",
-      locale: validLocale === "ar" ? "ar_SA" : validLocale === "fr" ? "fr_FR" : "en_US",
-      siteName: "itsmawja.com",
+      locale:
+        validLocale === "ar"
+          ? "ar_SA"
+          : validLocale === "fr"
+            ? "fr_FR"
+            : "en_US",
+      siteName: "iammawja.com",
       images: [
         {
-          url: "https://itsmawja.com/img/profile.png",
+          url: "https://iammawja.com/img/profile.png",
           width: 1200,
           height: 630,
           alt: "Mawja (Mujahid Siyam)",
@@ -47,9 +55,9 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: dict.site.defaultTitle,
       description: dict.site.description,
-      images: ["https://itsmawja.com/img/profile.png"],
-      site: "@itsmawja",
-      creator: "@itsmawja",
+      images: ["https://iammawja.com/img/profile.png"],
+      site: "@iammawja",
+      creator: "@iammawja",
     },
     category: "technology",
     creator: "Mujahid Siyam",
@@ -80,7 +88,9 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
   const dict = getDictionary(validLocale);
   const authorName = validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam";
 
@@ -88,9 +98,18 @@ export default async function LocaleLayout({
     <>
       <DirManager locale={validLocale} />
       <HreflangLinks locale={validLocale} />
-      <Header locale={validLocale} dict={{ blog: { authorBio: dict.blog.authorBio } }} nav={dict.nav} />
+      <Header
+        locale={validLocale}
+        dict={{ blog: { authorBio: dict.blog.authorBio } }}
+        nav={dict.nav}
+      />
       <main className="flex-1 pt-14">{children}</main>
-      <Footer locale={validLocale} footer={dict.footer} authorBio={dict.blog.authorBio} authorName={authorName} />
+      <Footer
+        locale={validLocale}
+        footer={dict.footer}
+        authorBio={dict.blog.authorBio}
+        authorName={authorName}
+      />
     </>
   );
 }
