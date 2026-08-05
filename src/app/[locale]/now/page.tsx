@@ -54,7 +54,7 @@ export async function generateMetadata({
           : "What Mujahid Siyam (Mawja) is focused on right now.",
       url: `https://iammawja.com/${validLocale}/now`,
       type: "website",
-      images: ["https://iammawja.com/img/profile.png"],
+      images: ["https://iammawja.com/img/profile.png?v=2"],
       siteName: "iammawja.com",
     },
     twitter: {
@@ -67,7 +67,7 @@ export async function generateMetadata({
         validLocale === "ar"
           ? "ما يركز عليه موجا — مجاهد صيام حالياً."
           : "What Mujahid Siyam (Mawja) is focused on right now.",
-      images: ["https://iammawja.com/img/profile.png"],
+      images: ["https://iammawja.com/img/profile.png?v=2"],
       site: "@iammawja",
       creator: "@iammawja",
     },

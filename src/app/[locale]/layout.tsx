@@ -44,7 +44,7 @@ export async function generateMetadata({
       siteName: "iammawja.com",
       images: [
         {
-          url: "https://iammawja.com/img/profile.png",
+          url: "https://iammawja.com/img/profile.png?v=2",
           width: 1200,
           height: 630,
           alt: "Mawja (Mujahid Siyam)",
@@ -55,7 +55,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: dict.site.defaultTitle,
       description: dict.site.description,
-      images: ["https://iammawja.com/img/profile.png"],
+      images: ["https://iammawja.com/img/profile.png?v=2"],
       site: "@iammawja",
       creator: "@iammawja",
     },

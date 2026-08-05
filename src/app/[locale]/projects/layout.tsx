@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Projects | Mujahid Siyam",
     description: "Showcase of software projects and contributions",
     type: "website",
-    images: ["/img/profile.png"],
+    images: ["/img/profile.png?v=2"],
   },
   robots: "index, follow",
 };

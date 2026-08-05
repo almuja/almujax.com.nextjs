@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Music | Mujahid Siyam",
     description: "Music portfolio and creative works",
     type: "website",
-    images: ["/img/profile.png"],
+    images: ["/img/profile.png?v=2"],
   },
   robots: "index, follow",
 };

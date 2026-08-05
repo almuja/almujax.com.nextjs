@@ -113,7 +113,7 @@ export async function generateMetadata({
 
     const title = data.title || slug;
     const description = data.description || "";
-    const image = data.image || "https://iammawja.com/img/profile.png";
+    const image = data.image || "https://iammawja.com/img/profile.png?v=2";
     const publishedTime = data.date;
 
     return {
@@ -362,7 +362,7 @@ export default async function BlogPostPage({
           <div className="mt-16 pt-8 border-t border-border/20">
             <Author
               name={validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
-              image="/img/profile.png"
+              image="/img/profile.png?v=2"
               bio={dict.blog.authorBio}
               aboutLabel={dict.blog.aboutTheAuthor}
               socialLinks={{
