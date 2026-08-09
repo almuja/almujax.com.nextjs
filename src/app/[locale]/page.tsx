@@ -119,12 +119,12 @@ const socials = [
     label: "YouTube",
   },
   {
-    href: "https://open.spotify.com/user/iammawja",
+    href: "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
     icon: SpotifyIcon,
     label: "Spotify",
   },
   {
-    href: "https://music.apple.com/profile/iammawja",
+    href: "https://music.apple.com/fr/artist/mawja/6798360501",
     icon: AppleMusicIcon,
     label: "Apple Music",
   },

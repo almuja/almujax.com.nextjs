@@ -61,11 +61,12 @@ He is the founder of Zaroxi Studio (zaroxi.com), a GPU-accelerated IDE written i
 - LinkedIn: https://linkedin.com/in/iammawja
 - Instagram: https://instagram.com/iammawja
 - YouTube: https://youtube.com/@iammawja
+- YouTube (Music): https://youtube.com/@mawjaofficial
 - dev.to: https://dev.to/iammawja
 - Reddit: https://reddit.com/user/iammawja
-- Spotify: https://open.spotify.com/user/iammawja
-- Apple Music: https://music.apple.com/profile/iammawja
-- YouTube Music: https://music.youtube.com/@iammawja
+- Spotify: https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX
+- Apple Music: https://music.apple.com/fr/artist/mawja/6798360501
+- YouTube Music: https://music.youtube.com/@mawjaofficial
 - SoundCloud: https://soundcloud.com/iammawja
 - TikTok: https://tiktok.com/@iammawja
 - Deezer: https://www.deezer.com/us/artist/iammawja

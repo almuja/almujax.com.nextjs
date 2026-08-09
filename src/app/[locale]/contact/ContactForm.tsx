@@ -113,14 +113,14 @@ const contactLinks = [
     label: "Spotify",
     desc: "Listen to my music",
     icon: SIcon,
-    href: "https://open.spotify.com/user/iammawja",
+    href: "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
     handle: "iammawja",
   },
   {
     label: "Apple Music",
     desc: "Stream my music",
     icon: AIcon,
-    href: "https://music.apple.com/profile/iammawja",
+    href: "https://music.apple.com/fr/artist/mawja/6798360501",
     handle: "iammawja",
   },
   {

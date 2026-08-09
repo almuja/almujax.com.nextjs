@@ -104,12 +104,13 @@ entity_sameAs:
   - "https://reddit.com/user/iammawja"
   - "https://instagram.com/iammawja"
   - "https://youtube.com/@iammawja"
+  - "https://youtube.com/@mawjaofficial"
   - "https://twitter.com/iammawja"
   - "https://soundcloud.com/iammawja"
   - "https://tiktok.com/@iammawja"
-  - "https://open.spotify.com/user/iammawja"
-  - "https://music.apple.com/profile/iammawja"
-  - "https://music.youtube.com/@iammawja"
+  - "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
+  - "https://music.apple.com/fr/artist/mawja/6798360501"
+  - "https://music.youtube.com/@mawjaofficial"
   - "https://www.deezer.com/us/artist/iammawja"
   - "https://play.anghami.com/artist/iammawja"
   - "https://iammawja.bandcamp.com"
@@ -166,11 +167,12 @@ ${projectLinks || "- No published projects yet."}
 - LinkedIn: https://linkedin.com/in/iammawja
 - Instagram: https://instagram.com/iammawja
 - YouTube: https://youtube.com/@iammawja
+- YouTube (Music): https://youtube.com/@mawjaofficial
 - dev.to: https://dev.to/iammawja
 - Reddit: https://reddit.com/user/iammawja
-- Spotify: https://open.spotify.com/user/iammawja
-- Apple Music: https://music.apple.com/profile/iammawja
-- YouTube Music: https://music.youtube.com/@iammawja
+- Spotify: https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX
+- Apple Music: https://music.apple.com/fr/artist/mawja/6798360501
+- YouTube Music: https://music.youtube.com/@mawjaofficial
 - SoundCloud: https://soundcloud.com/iammawja
 - TikTok: https://tiktok.com/@iammawja
 - Deezer: https://www.deezer.com/us/artist/iammawja

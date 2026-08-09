@@ -95,19 +95,25 @@ const streamingPlatforms = [
   {
     name: "Spotify",
     icon: SpotifyIcon,
-    url: "https://open.spotify.com/user/iammawja",
+    url: "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
     color: "#1ED760",
   },
   {
     name: "Apple Music",
     icon: AppleMusicIcon,
-    url: "https://music.apple.com/profile/iammawja",
+    url: "https://music.apple.com/fr/artist/mawja/6798360501",
     color: "#FA243C",
   },
   {
     name: "YouTube",
     icon: YouTubeIcon,
-    url: "https://www.youtube.com/@iammawja",
+    url: "https://www.youtube.com/@mawjaofficial",
+    color: "#FF0000",
+  },
+  {
+    name: "YouTube Music",
+    icon: YouTubeIcon,
+    url: "https://music.youtube.com/@mawjaofficial",
     color: "#FF0000",
   },
   {
@@ -154,14 +160,8 @@ const streamingPlatforms = [
   },
 ] as const;
 
-const musicVideos = [
-  { id: "QETIqXOf_KU", title: "Music Video" },
-  { id: "3JEXFwKn24g", title: "Music Video" },
-  { id: "FY_braEkhIo", title: "Music Video" },
-  { id: "c-EY43l0M7Y", title: "Music Video" },
-  { id: "j28Cn-NPpH4", title: "Music Video" },
-  { id: "XGGFjI9hMx0", title: "Music Video" },
-];
+const featuredVideo = "XLiBdOhSnF0";
+const youtubeMusicPlaylist = "OLAK5uy_nAor0lFvK6ZoNznx6nFA9uVU7yhR7qOLc";
 
 export function MusicContent({ locale, t }: MusicContentProps) {
   const [showStory, setShowStory] = useState(true);
@@ -291,10 +291,10 @@ export function MusicContent({ locale, t }: MusicContentProps) {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-foreground">Spotify</h3>
-                <p className="text-[11px] text-foreground/40">@iammawja</p>
+                <p className="text-[11px] text-foreground/40">Mawja</p>
               </div>
               <a
-                href="https://open.spotify.com/user/iammawja"
+                href="https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ms-auto flex items-center gap-1 text-xs text-[#1ED760] hover:underline font-medium"
@@ -309,7 +309,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
             </div>
             <div className="rounded-xl overflow-hidden">
               <iframe
-                src="https://open.spotify.com/embed/artist/6ON7p79Y2e0QqLaxkYXHA?utm_source=generator"
+                src="https://open.spotify.com/embed/artist/24n3um6erIOUxobs69qDPX?utm_source=generator"
                 width="100%"
                 height="352"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -330,10 +330,10 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 <h3 className="text-sm font-bold text-foreground">
                   Apple Music
                 </h3>
-                <p className="text-[11px] text-foreground/40">@iammawja</p>
+                <p className="text-[11px] text-foreground/40">Mawja</p>
               </div>
               <a
-                href="https://music.apple.com/profile/iammawja"
+                href="https://music.apple.com/fr/artist/mawja/6798360501"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ms-auto flex items-center gap-1 text-xs text-[#FA243C] hover:underline font-medium"
@@ -346,19 +346,17 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
-            <div className="rounded-xl overflow-hidden">
+            <div className="rounded-xl overflow-hidden w-full">
               <iframe
                 allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                frameBorder="0"
                 height="450"
                 style={{
                   width: "100%",
-                  maxWidth: "660px",
                   overflow: "hidden",
                   borderRadius: "12px",
                 }}
                 sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
-                src="https://embed.music.apple.com/us/playlist/mawja/pl.u-yZyVEWNi1GbY6dD"
+                src="https://embed.music.apple.com/fr/artist/mawja/6798360501"
                 title="Apple Music Player"
               />
             </div>
@@ -438,21 +436,9 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                     {[
                       {
                         label: locale === "ar" ? "يوتيوب" : "YouTube",
-                        url: "https://www.youtube.com/@iammawja",
+                        url: "https://www.youtube.com/@mawjaofficial",
                         icon: YouTubeIcon,
                         color: "#FF0000",
-                      },
-                      {
-                        label: locale === "ar" ? "ساوند كلاود" : "SoundCloud",
-                        url: "https://soundcloud.com/iammawja",
-                        icon: SoundCloudIcon,
-                        color: "#FF5500",
-                      },
-                      {
-                        label: locale === "ar" ? "سبوتيفاي" : "Spotify",
-                        url: "https://open.spotify.com/user/iammawja",
-                        icon: SpotifyIcon,
-                        color: "#1ED760",
                       },
                     ].map((b) => (
                       <a
@@ -512,13 +498,13 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                     {[
                       {
                         label: locale === "ar" ? "سبوتيفاي" : "Spotify",
-                        url: "https://open.spotify.com/user/iammawja",
+                        url: "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
                         icon: SpotifyIcon,
                         color: "#1ED760",
                       },
                       {
                         label: locale === "ar" ? "أبل ميوزك" : "Apple Music",
-                        url: "https://music.apple.com/profile/iammawja",
+                        url: "https://music.apple.com/fr/artist/mawja/6798360501",
                         icon: AppleMusicIcon,
                         color: "#FA243C",
                       },
@@ -530,7 +516,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                       },
                       {
                         label: locale === "ar" ? "يوتيوب" : "YouTube",
-                        url: "https://www.youtube.com/@iammawja",
+                        url: "https://www.youtube.com/@mawjaofficial",
                         icon: YouTubeIcon,
                         color: "#FF0000",
                       },
@@ -562,75 +548,165 @@ export function MusicContent({ locale, t }: MusicContentProps) {
           )}
         </div>
 
-        {/* ===== VIDEOS GRID ===== */}
+        {/* ===== FEATURED VIDEO ===== */}
         <div className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-red-500/10 shadow-sm shadow-red-500/10">
-                <YouTubeIcon className="w-5 h-5 text-red-500" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-foreground">
-                  {locale === "ar"
-                    ? "الفيديوهات"
-                    : locale === "fr"
-                      ? "Vidéos"
-                      : "Videos"}
-                </h2>
-                <p className="text-sm text-foreground/40">@iammawja</p>
-              </div>
-            </div>
-            <a
-              href="https://www.youtube.com/@iammawja"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs text-red-400 hover:text-red-300 font-medium transition-colors"
-            >
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-[2px] flex-1 bg-gradient-to-r from-red-500/30 to-transparent" />
+            <h2 className="text-2xl font-bold text-foreground whitespace-nowrap flex items-center gap-2">
+              <Play className="w-5 h-5 text-red-400" />
               {locale === "ar"
-                ? "القناة"
+                ? "شاهد واستمع"
                 : locale === "fr"
-                  ? "Chaîne"
-                  : "Channel"}{" "}
-              <ExternalLink className="w-3 h-3" />
-            </a>
+                  ? "Regarder & Écouter"
+                  : "Watch & Listen"}
+            </h2>
+            <div className="h-[2px] flex-1 bg-gradient-to-l from-red-500/30 to-transparent" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {musicVideos.map((video, i) => (
-              <div
-                key={video.id}
-                className="group rounded-2xl overflow-hidden bg-card/30 backdrop-blur-sm hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-500 hover:-translate-y-1"
-              >
-                <div className="aspect-video w-full bg-black">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${video.id}`}
-                    width="100%"
-                    height="100%"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    loading="lazy"
-                    className="w-full h-full"
-                    title={video.title}
-                  />
+          {/* Hero Official Audio */}
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-red-500/5 via-purple-500/5 to-violet-500/5 p-6 sm:p-10 shadow-2xl shadow-black/5 mb-8 group">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-red-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-violet-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/[0.03] rounded-full blur-2xl pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500" />
+                </span>
+                <span className="text-xs font-bold uppercase tracking-[0.15em] text-red-400/80">
+                  {locale === "ar"
+                    ? "الفيديو الرسمي"
+                    : locale === "fr"
+                      ? "Vidéo Officielle"
+                      : "Official Audio"}
+                </span>
+              </div>
+
+              <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-2xl shadow-black/20 ring-1 ring-white/5 mb-6">
+                <iframe
+                  src={`https://www.youtube.com/embed/${featuredVideo}`}
+                  width="100%"
+                  height="100%"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                  className="w-full h-full"
+                  title="Official Audio"
+                />
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-1">
+                    {locale === "ar"
+                      ? "Rockstar — الصوت الرسمي"
+                      : locale === "fr"
+                        ? "Rockstar — Audio Officiel"
+                        : "Rockstar — Official Audio"}
+                  </h3>
+                  <p className="text-sm text-foreground/40">@mawjaofficial</p>
                 </div>
-                <div className="p-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0 shadow-[0_0_8px_rgba(239,68,68,0.5)]"></span>
-                    <span className="text-sm font-medium text-foreground/50 group-hover:text-foreground/80 transition-colors truncate">
-                      {video.title}
-                    </span>
-                  </div>
+                <div className="flex items-center gap-3">
                   <a
-                    href={`https://www.youtube.com/watch?v=${video.id}`}
+                    href="https://www.youtube.com/@mawjaofficial"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-xs text-foreground/30 group-hover:text-red-400 transition-colors flex-shrink-0 ms-2"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 font-medium text-sm transition-all duration-300 hover:scale-[1.02]"
                   >
-                    <ExternalLink className="w-3 h-3" />
+                    <YouTubeIcon className="w-4 h-4" />
+                    {locale === "ar"
+                      ? "اشترك"
+                      : locale === "fr"
+                        ? "S'abonner"
+                        : "Subscribe"}
+                  </a>
+                  <a
+                    href={`https://youtu.be/${featuredVideo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-foreground/50 hover:text-foreground font-medium transition-colors"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    {locale === "ar"
+                      ? "افتح في يوتيوب"
+                      : locale === "fr"
+                        ? "Ouvrir sur YouTube"
+                        : "Open on YouTube"}
                   </a>
                 </div>
               </div>
-            ))}
+            </div>
+          </div>
+
+          {/* YouTube Music Playlist */}
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-red-500/[0.02] via-orange-500/[0.02] to-transparent p-6 sm:p-10 shadow-xl shadow-black/5 group">
+            <div className="absolute top-0 left-0 w-72 h-72 bg-orange-500/[0.03] rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-64 h-64 bg-red-500/[0.03] rounded-full blur-3xl translate-y-1/2 translate-x-1/4 pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-2.5 rounded-2xl bg-red-500/10 shadow-sm">
+                  <YouTubeIcon className="w-5 h-5 text-red-500" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">
+                    YouTube Music
+                  </h3>
+                  <p className="text-sm text-foreground/40">@mawjaofficial</p>
+                </div>
+                <a
+                  href="https://music.youtube.com/@mawjaofficial"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ms-auto inline-flex items-center gap-1.5 text-sm text-red-400 hover:text-red-300 font-medium transition-colors"
+                >
+                  {locale === "ar"
+                    ? "القناة"
+                    : locale === "fr"
+                      ? "Chaîne"
+                      : "Channel"}{" "}
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
+              <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/20 ring-1 ring-white/5">
+                <iframe
+                  src={`https://www.youtube.com/embed/videoseries?list=${youtubeMusicPlaylist}`}
+                  width="100%"
+                  height="400"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                  className="w-full"
+                  title="YouTube Music Playlist"
+                />
+              </div>
+
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/[0.03]">
+                <p className="text-xs text-foreground/30 font-light">
+                  {locale === "ar"
+                    ? "قائمة تشغيل Rockstar الكاملة على YouTube Music"
+                    : locale === "fr"
+                      ? "Playlist Rockstar complète sur YouTube Music"
+                      : "Full Rockstar playlist on YouTube Music"}
+                </p>
+                <a
+                  href={`https://music.youtube.com/playlist?list=${youtubeMusicPlaylist}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground font-medium transition-colors"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  {locale === "ar"
+                    ? "افتح في YouTube Music"
+                    : locale === "fr"
+                      ? "Ouvrir YouTube Music"
+                      : "Open in YouTube Music"}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
