@@ -116,7 +116,7 @@ export function PerformingArtistStructuredData() {
     subjectOf: {
       "@type": "MusicGroup",
       "@id": "https://iammawja.com/music#artist",
-      name: "Mawja — Mujahid Siyam | Mawja",
+      name: "Mawja",
       url: "https://iammawja.com/music",
     },
   };
@@ -381,9 +381,9 @@ export function MusicArtistStructuredData() {
     "@type": "MusicGroup",
     "@id": "https://iammawja.com/music#artist",
     name: "Mawja",
-    alternateName: ["Mawja", "iammawja", "موجا", "موجة", "موجه"],
+    alternateName: ["Mawja", "موجا", "موجة", "موجه"],
     description:
-      "Mawja (موجا, also spelled موجة / موجه — meaning 'wave' in Arabic) is the music artist name of Mujahid Siyam (handle: iammawja) — Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
+      "Mawja (موجا, also spelled موجة / موجه — meaning 'wave' in Arabic) is the music artist name of Mujahid Siyam — Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
     url: "https://iammawja.com/music",
     image: "https://iammawja.com/img/profile.png?v=3",
     foundingDate: "2022",
@@ -417,7 +417,6 @@ export function MusicArtistStructuredData() {
     sameAs: [
       "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
       "https://soundcloud.com/iammawja",
-      "https://youtube.com/@iammawja",
       "https://youtube.com/@mawjaofficial",
       "https://music.youtube.com/@mawjaofficial",
       "https://instagram.com/iammawja",
