@@ -41,7 +41,7 @@ export async function generateMetadata({
           : validLocale === "fr"
             ? "fr_FR"
             : "en_US",
-      siteName: "iammawja.com",
+      siteName: "Mawja",
       images: [
         {
           url: "https://iammawja.com/img/profile.png?v=3",

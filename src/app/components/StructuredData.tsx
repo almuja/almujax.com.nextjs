@@ -116,7 +116,7 @@ export function PerformingArtistStructuredData() {
     subjectOf: {
       "@type": "MusicGroup",
       "@id": "https://iammawja.com/music#artist",
-      name: "Mawja",
+      name: "Mawja — Mujahid Siyam | Mawja",
       url: "https://iammawja.com/music",
     },
   };
@@ -232,7 +232,7 @@ export function WebSiteStructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": "https://iammawja.com/#website",
-    name: "Mawja — Mujahid Siyam | iammawja.com",
+    name: "Mawja",
     url: "https://iammawja.com",
     description:
       "Official website of Mujahid Siyam, known as Mawja (handle: iammawja) — a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer born in Sudan and based in Paris, France. He started music at 16, moved to France, built a career in software engineering and cloud infrastructure, then returned to music in 2022 with his debut EP KAKASHI. His next EP Rockstar drops August 2026. He founded Zaroxi Studio, a GPU-accelerated IDE written in Rust, and creates Arabic, Middle Eastern, and African rap and hip-hop. This site hosts his projects, technical writing, and music.",

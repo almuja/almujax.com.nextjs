@@ -15,9 +15,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://iammawja.com"),
   manifest: "/manifest.json",
   icons: {
-    icon: "/img/favicon.ico",
-    shortcut: "/img/favicon.ico",
-    apple: "/img/apple-touch-icon.png",
+    icon: [
+      { url: "/img/favicon-32x32.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/img/favicon-16x16.png?v=3", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/img/favicon.ico?v=3",
+    apple: "/img/apple-touch-icon.png?v=3",
   },
   verification: {
     google: "ADD_YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN",
@@ -120,8 +123,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="me" href="https://youtube.com/@iammawja" />
         <link rel="me" href="https://soundcloud.com/iammawja" />
         <link rel="me" href="https://tiktok.com/@iammawja" />
-        <link rel="me" href="https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX" />
-        <link rel="me" href="https://music.apple.com/fr/artist/mawja/6798360501" />
+        <link
+          rel="me"
+          href="https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
+        />
+        <link
+          rel="me"
+          href="https://music.apple.com/fr/artist/mawja/6798360501"
+        />
         <link rel="me" href="https://music.youtube.com/@mawjaofficial" />
         <link rel="me" href="https://www.deezer.com/us/artist/iammawja" />
         <link rel="me" href="https://play.anghami.com/artist/29651679" />

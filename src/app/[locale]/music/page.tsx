@@ -47,7 +47,7 @@ export async function generateMetadata({
       url: `https://iammawja.com/${validLocale}/music`,
       type: "music.playlist",
       images: ["https://iammawja.com/img/profile.png?v=3"],
-      siteName: "iammawja.com",
+      siteName: "Mawja",
     },
     twitter: {
       card: "summary_large_image",
