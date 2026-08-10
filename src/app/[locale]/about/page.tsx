@@ -32,7 +32,7 @@ export async function generateMetadata({
       description: t.about.description,
       type: "profile",
       url: `https://iammawja.com/${validLocale}/about`,
-      images: ["https://iammawja.com/img/profile.png?v=2"],
+      images: ["https://iammawja.com/img/profile.png?v=3"],
       firstName: "Mujahid",
       lastName: "Siyam",
       username: "iammawja",
@@ -200,7 +200,7 @@ export default async function AboutPage({
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-[var(--color-wave-1)] to-[var(--color-wave-2)] p-[3px] group-hover:scale-[1.03] transition-transform duration-500">
                 <div className="w-full h-full rounded-full overflow-hidden bg-background">
                   <img
-                    src="/img/profile.png?v=2"
+                    src="/img/profile.png?v=3"
                     alt="Mawja"
                     className="w-full h-full object-cover"
                   />

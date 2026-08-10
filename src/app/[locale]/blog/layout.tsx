@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Blog | Mujahid Siyam",
     description: "Thoughts on software engineering, AI/ML, and technology",
     type: "website",
-    images: ["/img/profile.png?v=2"],
+    images: ["/img/profile.png?v=3"],
   },
   robots: "index, follow",
 };

@@ -197,8 +197,8 @@ export function OrganizationStructuredData() {
     url: "https://zaroxi.com",
     description:
       "Zaroxi Studio is the software development and creative technology company founded by Mujahid Siyam (Mawja). Building AI-first systems, developer tools, and creative technology solutions including a GPU-accelerated IDE written in Rust.",
-    logo: "https://iammawja.com/img/profile.png?v=2",
-    image: "https://iammawja.com/img/profile.png?v=2",
+    logo: "https://iammawja.com/img/profile.png?v=3",
+    image: "https://iammawja.com/img/profile.png?v=3",
     email: "hello@iammawja.com",
     foundingDate: "2023",
     location: {
@@ -293,7 +293,7 @@ export function ArticleStructuredData({
     description: description,
     datePublished: datePublished,
     dateModified: dateModified || datePublished,
-    image: image || "https://iammawja.com/img/profile.png?v=2",
+    image: image || "https://iammawja.com/img/profile.png?v=3",
     url: url,
     inLanguage: "en",
     isAccessibleForFree: true,
@@ -385,7 +385,7 @@ export function MusicArtistStructuredData() {
     description:
       "Mawja (موجا, also spelled موجة / موجه — meaning 'wave' in Arabic) is the music artist name of Mujahid Siyam (handle: iammawja) — Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
     url: "https://iammawja.com/music",
-    image: "https://iammawja.com/img/profile.png?v=2",
+    image: "https://iammawja.com/img/profile.png?v=3",
     foundingDate: "2022",
     genre: [
       "Arabic Rap",

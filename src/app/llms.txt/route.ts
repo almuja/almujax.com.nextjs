@@ -96,7 +96,7 @@ entity_nationality: "Sudanese"
 entity_location: "Paris, France"
 entity_occupation: ["Software Engineer", "Network Engineer", "AI Cloud Architect", "Data Scientist", "System Administrator", "Rapper", "Hip-Hop Producer", "Content Creator"]
 entity_organization: "Zaroxi Studio"
-entity_image: "https://iammawja.com/img/profile.png?v=2"
+entity_image: "https://iammawja.com/img/profile.png?v=3"
 entity_sameAs:
   - "https://github.com/iammawja"
   - "https://linkedin.com/in/iammawja"

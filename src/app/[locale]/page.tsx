@@ -32,7 +32,7 @@ export async function generateMetadata({
       description: dict.home.description,
       url: `https://iammawja.com/${validLocale}`,
       type: "website",
-      images: ["https://iammawja.com/img/profile.png?v=2"],
+      images: ["https://iammawja.com/img/profile.png?v=3"],
     },
   };
 }
