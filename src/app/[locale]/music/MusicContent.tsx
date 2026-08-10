@@ -131,7 +131,7 @@ const streamingPlatforms = [
   {
     name: "Amazon Music",
     icon: AmazonMusicIcon,
-    url: "https://music.amazon.com/",
+    url: "https://music.amazon.fr/artists/B0HDMF43R7",
     color: "#46C3D0",
   },
   {

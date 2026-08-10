@@ -115,7 +115,7 @@ entity_sameAs:
   - "https://play.anghami.com/artist/29651679"
   - "https://iammawja.bandcamp.com"
   - "https://tidal.com/browse/artist/iammawja"
-  - "https://music.amazon.com/artist/iammawja"
+  - "https://music.amazon.fr/artists/B0HDMF43R7"
   - "https://www.pandora.com/artist/iammawja"
 canonical: true
 crawlers_allowed: "GPTBot, ChatGPT-User, Google-Extended, GoogleOther, ClaudeBot, Claude-Web, Claude-Search, PerplexityBot, CCBot, Applebot-Extended, Bytespider, and all major search engine bots"
@@ -179,7 +179,7 @@ ${projectLinks || "- No published projects yet."}
 - Anghami: https://play.anghami.com/artist/29651679
 - Bandcamp: https://iammawja.bandcamp.com
 - Tidal: https://tidal.com/browse/artist/iammawja
-- Amazon Music: https://music.amazon.com/artist/iammawja
+- Amazon Music: https://music.amazon.fr/artists/B0HDMF43R7
 - Pandora: https://www.pandora.com/artist/iammawja
 
 ## Biography

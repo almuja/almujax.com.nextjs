@@ -68,10 +68,8 @@ export function PersonStructuredData() {
       "https://play.anghami.com/artist/29651679",
       "https://iammawja.bandcamp.com",
       "https://tidal.com/browse/artist/iammawja",
-      "https://music.amazon.com/artist/iammawja",
+      "https://music.amazon.fr/artists/B0HDMF43R7",
       "https://www.pandora.com/artist/iammawja",
-      // Spotify, Apple Music, Anghami, Deezer, and Tidal artist profile URLs
-      // to be added here once those profiles exist after music release.
     ],
   };
 
@@ -108,10 +106,8 @@ export function PerformingArtistStructuredData() {
       "https://play.anghami.com/artist/29651679",
       "https://iammawja.bandcamp.com",
       "https://tidal.com/browse/artist/iammawja",
-      "https://music.amazon.com/artist/iammawja",
+      "https://music.amazon.fr/artists/B0HDMF43R7",
       "https://www.pandora.com/artist/iammawja",
-      // Spotify, Apple Music, Anghami, Deezer, and Tidal artist profile URLs
-      // to be added here once those profiles exist after music release.
     ],
     subjectOf: {
       "@type": "MusicGroup",
