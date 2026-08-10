@@ -125,7 +125,7 @@ const streamingPlatforms = [
   {
     name: "Deezer",
     icon: DeezerIcon,
-    url: "https://www.deezer.com/us/artist/iammawja",
+    url: "https://www.deezer.com/en/artist/409144252",
     color: "#A238FF",
   },
   {

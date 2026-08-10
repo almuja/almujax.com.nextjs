@@ -69,7 +69,7 @@ He is the founder of Zaroxi Studio (zaroxi.com), a GPU-accelerated IDE written i
 - YouTube Music: https://music.youtube.com/@mawjaofficial
 - SoundCloud: https://soundcloud.com/iammawja
 - TikTok: https://tiktok.com/@iammawja
-- Deezer: https://www.deezer.com/us/artist/iammawja
+- Deezer: https://www.deezer.com/en/artist/409144252
 - Anghami: https://play.anghami.com/artist/29651679
 - Bandcamp: https://iammawja.bandcamp.com
 - Tidal: https://tidal.com/browse/artist/iammawja
