@@ -124,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="me" href="https://music.apple.com/fr/artist/mawja/6798360501" />
         <link rel="me" href="https://music.youtube.com/@mawjaofficial" />
         <link rel="me" href="https://www.deezer.com/us/artist/iammawja" />
-        <link rel="me" href="https://play.anghami.com/artist/iammawja" />
+        <link rel="me" href="https://play.anghami.com/artist/29651679" />
         <link rel="me" href="https://iammawja.bandcamp.com" />
         <link rel="me" href="https://tidal.com/browse/artist/iammawja" />
         <link rel="me" href="https://music.amazon.com/artist/iammawja" />

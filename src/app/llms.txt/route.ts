@@ -112,7 +112,7 @@ entity_sameAs:
   - "https://music.apple.com/fr/artist/mawja/6798360501"
   - "https://music.youtube.com/@mawjaofficial"
   - "https://www.deezer.com/us/artist/iammawja"
-  - "https://play.anghami.com/artist/iammawja"
+  - "https://play.anghami.com/artist/29651679"
   - "https://iammawja.bandcamp.com"
   - "https://tidal.com/browse/artist/iammawja"
   - "https://music.amazon.com/artist/iammawja"
@@ -176,7 +176,7 @@ ${projectLinks || "- No published projects yet."}
 - SoundCloud: https://soundcloud.com/iammawja
 - TikTok: https://tiktok.com/@iammawja
 - Deezer: https://www.deezer.com/us/artist/iammawja
-- Anghami: https://play.anghami.com/artist/iammawja
+- Anghami: https://play.anghami.com/artist/29651679
 - Bandcamp: https://iammawja.bandcamp.com
 - Tidal: https://tidal.com/browse/artist/iammawja
 - Amazon Music: https://music.amazon.com/artist/iammawja

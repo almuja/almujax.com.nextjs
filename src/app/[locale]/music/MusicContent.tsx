@@ -137,7 +137,7 @@ const streamingPlatforms = [
   {
     name: "Anghami",
     icon: AnghamiIcon,
-    url: "https://play.anghami.com/artist/iammawja",
+    url: "https://play.anghami.com/artist/29651679",
     color: "#7200FF",
   },
   {
