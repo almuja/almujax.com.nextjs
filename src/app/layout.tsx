@@ -129,7 +129,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <link
           rel="me"
-          href="https://music.apple.com/fr/artist/mawja/6798360501"
+          href="https://music.apple.com/fr/artist/mawja/6800033494"
         />
         <link rel="me" href="https://music.youtube.com/@mawjaofficial" />
         <link rel="me" href="https://www.deezer.com/en/artist/409144252" />

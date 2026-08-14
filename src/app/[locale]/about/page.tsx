@@ -106,7 +106,7 @@ const socialLinks = [
   },
   {
     n: "AM",
-    h: "https://music.apple.com/fr/artist/mawja/6798360501",
+    h: "https://music.apple.com/fr/artist/mawja/6800033494",
     i: (c: string) => (
       <svg className={c} viewBox="0 0 24 24" fill="currentColor">
         <path d="M9 18V5l12-2v13c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4c.8 0 1.5.2 2 .6V3l-8 1.3v10.7c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4c.8 0 1.5.2 2 .6z" />

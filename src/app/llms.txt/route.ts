@@ -109,7 +109,7 @@ entity_sameAs:
   - "https://soundcloud.com/iammawja"
   - "https://tiktok.com/@iammawja"
   - "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
-  - "https://music.apple.com/fr/artist/mawja/6798360501"
+  - "https://music.apple.com/fr/artist/mawja/6800033494"
   - "https://music.youtube.com/@mawjaofficial"
   - "https://www.deezer.com/en/artist/409144252"
   - "https://play.anghami.com/artist/29651679"
@@ -171,7 +171,7 @@ ${projectLinks || "- No published projects yet."}
 - dev.to: https://dev.to/iammawja
 - Reddit: https://reddit.com/user/iammawja
 - Spotify: https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX
-- Apple Music: https://music.apple.com/fr/artist/mawja/6798360501
+- Apple Music: https://music.apple.com/fr/artist/mawja/6800033494
 - YouTube Music: https://music.youtube.com/@mawjaofficial
 - SoundCloud: https://soundcloud.com/iammawja
 - TikTok: https://tiktok.com/@iammawja

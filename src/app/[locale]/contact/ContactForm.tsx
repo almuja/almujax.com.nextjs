@@ -120,7 +120,7 @@ const contactLinks = [
     label: "Apple Music",
     desc: "Stream my music",
     icon: AIcon,
-    href: "https://music.apple.com/fr/artist/mawja/6798360501",
+    href: "https://music.apple.com/fr/artist/mawja/6800033494",
     handle: "iammawja",
   },
   {

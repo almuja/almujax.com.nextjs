@@ -101,7 +101,7 @@ const streamingPlatforms = [
   {
     name: "Apple Music",
     icon: AppleMusicIcon,
-    url: "https://music.apple.com/fr/artist/mawja/6798360501",
+    url: "https://music.apple.com/fr/artist/mawja/6800033494",
     color: "#FA243C",
   },
   {
@@ -333,7 +333,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                 <p className="text-[11px] text-foreground/40">Mawja</p>
               </div>
               <a
-                href="https://music.apple.com/fr/artist/mawja/6798360501"
+                href="https://music.apple.com/fr/artist/mawja/6800033494"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ms-auto flex items-center gap-1 text-xs text-[#FA243C] hover:underline font-medium"
@@ -356,7 +356,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   borderRadius: "12px",
                 }}
                 sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
-                src="https://embed.music.apple.com/fr/artist/mawja/6798360501"
+                src="https://embed.music.apple.com/fr/artist/mawja/6800033494"
                 title="Apple Music Player"
               />
             </div>
@@ -504,7 +504,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                       },
                       {
                         label: locale === "ar" ? "أبل ميوزك" : "Apple Music",
-                        url: "https://music.apple.com/fr/artist/mawja/6798360501",
+                        url: "https://music.apple.com/fr/artist/mawja/6800033494",
                         icon: AppleMusicIcon,
                         color: "#FA243C",
                       },
