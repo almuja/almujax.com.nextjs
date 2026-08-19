@@ -29,11 +29,11 @@ export async function generateMetadata({
     title: t.projects.title,
     description: t.projects.description,
     keywords: [...t.seo.keywords],
-    alternates: { canonical: `https://iammawja.com/${validLocale}/projects` },
+    alternates: { canonical: `https://almujax.com/${validLocale}/projects` },
     openGraph: {
       title: t.projects.title,
       description: t.projects.description,
-      url: `https://iammawja.com/${validLocale}/projects`,
+      url: `https://almujax.com/${validLocale}/projects`,
       type: "website",
     },
   };

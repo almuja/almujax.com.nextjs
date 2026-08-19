@@ -16,17 +16,17 @@ export async function generateMetadata({
   return {
     title:
       validLocale === "ar"
-        ? "الآن | موجا — مجاهد صيام"
-        : "Now | Mawja (Mujahid Siyam)",
+        ? "الآن | الموجا — مجاهد صيام"
+        : "Now | Almuja (Mujahid Siyam)",
     description:
       validLocale === "ar"
-        ? "ما يركز عليه موجا — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
-        : "What Mujahid Siyam (Mawja) is focused on right now — work, learning, and current interests.",
+        ? "ما يركز عليه الموجا — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
+        : "What Mujahid Siyam (Almuja) is focused on right now — work, learning, and current interests.",
     keywords:
       validLocale === "ar"
         ? [
             "الآن",
-            "موجا",
+            "الموجا",
             "مجاهد صيام",
             "تركيز",
             "تعلم",
@@ -34,42 +34,42 @@ export async function generateMetadata({
             "حاليا",
             "ما أعمل عليه",
           ]
-        : ["now", "Mawja", "Mujahid Siyam", "focus", "learning", "projects"],
+        : ["now", "Almuja", "Mujahid Siyam", "focus", "learning", "projects"],
     alternates: {
-      canonical: `https://iammawja.com/${validLocale}/now`,
+      canonical: `https://almujax.com/${validLocale}/now`,
       languages: {
-        en: "https://iammawja.com/en/now",
-        ar: "https://iammawja.com/ar/now",
-        fr: "https://iammawja.com/fr/now",
+        en: "https://almujax.com/en/now",
+        ar: "https://almujax.com/ar/now",
+        fr: "https://almujax.com/fr/now",
       },
     },
     openGraph: {
       title:
         validLocale === "ar"
-          ? "الآن | موجا — مجاهد صيام"
-          : "Now | Mawja (Mujahid Siyam)",
+          ? "الآن | الموجا — مجاهد صيام"
+          : "Now | Almuja (Mujahid Siyam)",
       description:
         validLocale === "ar"
-          ? "ما يركز عليه موجا — مجاهد صيام حالياً."
-          : "What Mujahid Siyam (Mawja) is focused on right now.",
-      url: `https://iammawja.com/${validLocale}/now`,
+          ? "ما يركز عليه الموجا — مجاهد صيام حالياً."
+          : "What Mujahid Siyam (Almuja) is focused on right now.",
+      url: `https://almujax.com/${validLocale}/now`,
       type: "website",
-      images: ["https://iammawja.com/img/profile.png?v=3"],
-      siteName: "Mawja",
+      images: ["https://almujax.com/img/profile.png?v=3"],
+      siteName: "Almuja",
     },
     twitter: {
       card: "summary_large_image",
       title:
         validLocale === "ar"
-          ? "الآن | موجا — مجاهد صيام"
-          : "Now | Mawja (Mujahid Siyam)",
+          ? "الآن | الموجا — مجاهد صيام"
+          : "Now | Almuja (Mujahid Siyam)",
       description:
         validLocale === "ar"
-          ? "ما يركز عليه موجا — مجاهد صيام حالياً."
-          : "What Mujahid Siyam (Mawja) is focused on right now.",
-      images: ["https://iammawja.com/img/profile.png?v=3"],
-      site: "@iammawja",
-      creator: "@iammawja",
+          ? "ما يركز عليه الموجا — مجاهد صيام حالياً."
+          : "What Mujahid Siyam (Almuja) is focused on right now.",
+      images: ["https://almujax.com/img/profile.png?v=3"],
+      site: "@almujax",
+      creator: "@almujax",
     },
     other: {
       "geo.region": "FR",
@@ -79,8 +79,8 @@ export async function generateMetadata({
       "DC.creator": "Mujahid Siyam",
       "DC.subject":
         validLocale === "ar"
-          ? "الآن، موجا، مجاهد صيام، تركيز، تعلم، مشاريع"
-          : "Now, Mawja, Mujahid Siyam, Focus, Learning, Projects",
+          ? "الآن، الموجا، مجاهد صيام، تركيز، تعلم، مشاريع"
+          : "Now, Almuja, Mujahid Siyam, Focus, Learning, Projects",
     },
   };
 }
@@ -267,11 +267,11 @@ export default async function NowPage({
         items={[
           {
             name: validLocale === "ar" ? "الرئيسية" : "Home",
-            url: `https://iammawja.com/${validLocale}`,
+            url: `https://almujax.com/${validLocale}`,
           },
           {
             name: sectionTitle,
-            url: `https://iammawja.com/${validLocale}/now`,
+            url: `https://almujax.com/${validLocale}/now`,
           },
         ]}
       />

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>iammawja.com - Mujahid Siyam (Mawja)</name>
-    <description>Geo location data for Mujahid Siyam (Mawja / iammawja) — Software Engineer, Rapper, and Hip-Hop Producer based in Paris, France.</description>
+    <name>almujax.com - Mujahid Siyam (Almuja)</name>
+    <description>Geo location data for Mujahid Siyam (Almuja / almujax) — Software Engineer, Rapper, and Hip-Hop Producer based in Paris, France.</description>
     <Placemark>
-      <name>Mujahid Siyam (Mawja)</name>
+      <name>Mujahid Siyam (Almuja)</name>
       <description>Born in Sudan. Based in Paris, France. Software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer. Founder of Zaroxi Studio (zaroxi.com).</description>
       <address>Paris, France</address>
       <Point>
@@ -13,7 +13,7 @@
     </Placemark>
     <Placemark>
       <name>Sudan (Birthplace)</name>
-      <description>Country of birth and origin of Mujahid Siyam (Mawja / iammawja).</description>
+      <description>Country of birth and origin of Mujahid Siyam (Almuja / almujax).</description>
       <Point>
         <coordinates>32.5599,15.5007,0</coordinates>
       </Point>

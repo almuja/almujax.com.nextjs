@@ -50,9 +50,9 @@ export function proxy(request: NextRequest) {
 
   // Handle www redirect
   const host = request.headers.get("host") || "";
-  if (host === "www.iammawja.com") {
+  if (host === "www.almujax.com") {
     const redirectUrl = new URL(request.url);
-    redirectUrl.host = "iammawja.com";
+    redirectUrl.host = "almujax.com";
     return NextResponse.redirect(redirectUrl, 301);
   }
 
@@ -65,7 +65,7 @@ export function proxy(request: NextRequest) {
     if (parts.length > 1 && parts[0] !== "localhost") {
       subdomain = parts[0];
     }
-  } else if (hostname.endsWith("iammawja.com")) {
+  } else if (hostname.endsWith("almujax.com")) {
     if (parts.length >= 3 && parts[0] !== "www") {
       subdomain = parts[0];
     }

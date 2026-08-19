@@ -22,41 +22,41 @@ export async function generateMetadata({
     keywords: [
       ...t.seo.keywords,
       "rapper",
-      "mawja",
-      "mawjaofficial",
+      "almuja",
+      "almujaofficial",
       "rapper",
       "album",
       "single",
       "release",
       "streaming",
       "playlist",
-      "Mawja rapper",
+      "Almuja rapper",
       "Sudanese rapper",
       "Arabic rapper",
     ],
     alternates: {
-      canonical: `https://iammawja.com/${validLocale}/music`,
+      canonical: `https://almujax.com/${validLocale}/music`,
       languages: {
-        en: "https://iammawja.com/en/music",
-        ar: "https://iammawja.com/ar/music",
-        fr: "https://iammawja.com/fr/music",
+        en: "https://almujax.com/en/music",
+        ar: "https://almujax.com/ar/music",
+        fr: "https://almujax.com/fr/music",
       },
     },
     openGraph: {
       title: t.music.title,
       description: t.music.description,
-      url: `https://iammawja.com/${validLocale}/music`,
+      url: `https://almujax.com/${validLocale}/music`,
       type: "music.playlist",
-      images: ["https://iammawja.com/img/profile.png?v=3"],
-      siteName: "Mawja",
+      images: ["https://almujax.com/img/profile.png?v=3"],
+      siteName: "Almuja",
     },
     twitter: {
       card: "summary_large_image",
       title: t.music.title,
       description: t.music.description,
-      images: ["https://iammawja.com/img/profile.png?v=3"],
-      site: "@iammawja",
-      creator: "@iammawja",
+      images: ["https://almujax.com/img/profile.png?v=3"],
+      site: "@almujax",
+      creator: "@almujax",
     },
     other: {
       "geo.region": "FR",
@@ -90,11 +90,11 @@ export default async function MusicPage({
         items={[
           {
             name: validLocale === "ar" ? "الرئيسية" : "Home",
-            url: `https://iammawja.com/${validLocale}`,
+            url: `https://almujax.com/${validLocale}`,
           },
           {
             name: dict.music.heading,
-            url: `https://iammawja.com/${validLocale}/music`,
+            url: `https://almujax.com/${validLocale}/music`,
           },
         ]}
       />

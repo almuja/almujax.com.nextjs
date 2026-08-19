@@ -20,19 +20,19 @@ export async function generateMetadata({
     description: dict.home.description,
     keywords: [...dict.seo.keywords],
     alternates: {
-      canonical: `https://iammawja.com/${validLocale}`,
+      canonical: `https://almujax.com/${validLocale}`,
       languages: {
-        en: "https://iammawja.com/en",
-        ar: "https://iammawja.com/ar",
-        fr: "https://iammawja.com/fr",
+        en: "https://almujax.com/en",
+        ar: "https://almujax.com/ar",
+        fr: "https://almujax.com/fr",
       },
     },
     openGraph: {
       title: dict.home.title,
       description: dict.home.description,
-      url: `https://iammawja.com/${validLocale}`,
+      url: `https://almujax.com/${validLocale}`,
       type: "website",
-      images: ["https://iammawja.com/img/profile.png?v=3"],
+      images: ["https://almujax.com/img/profile.png?v=3"],
     },
   };
 }
@@ -96,25 +96,25 @@ const SnapchatIcon = ({ className }: { className?: string }) => (
 );
 
 const socials = [
-  { href: "https://github.com/iammawja", icon: GitHubIcon, label: "GitHub" },
-  { href: "https://x.com/iammawja", icon: XIcon, label: "X" },
+  { href: "https://github.com/almujax", icon: GitHubIcon, label: "GitHub" },
+  { href: "https://x.com/almujax", icon: XIcon, label: "X" },
   {
-    href: "https://linkedin.com/in/iammawja",
+    href: "https://linkedin.com/in/almujax",
     icon: LinkedInIcon,
     label: "LinkedIn",
   },
   {
-    href: "https://instagram.com/iammawja",
+    href: "https://instagram.com/almujax",
     icon: InstagramIcon,
     label: "Instagram",
   },
   {
-    href: "https://snapchat.com/add/iammawja",
+    href: "https://snapchat.com/add/almujax",
     icon: SnapchatIcon,
     label: "Snapchat",
   },
   {
-    href: "https://youtube.com/@iammawja",
+    href: "https://youtube.com/@almujax",
     icon: YouTubeIcon,
     label: "YouTube",
   },
@@ -124,15 +124,15 @@ const socials = [
     label: "Spotify",
   },
   {
-    href: "https://music.apple.com/fr/artist/mawja/6800033494",
+    href: "https://music.apple.com/fr/artist/almuja/6800033494",
     icon: AppleMusicIcon,
     label: "Apple Music",
   },
 ];
 
 const waveSubtitles: Record<string, string> = {
-  ar: "موجا — التدفق، الإشارة، التغيّر",
-  fr: "Mawja (موجا) — la vague, le flux, le signal",
+  ar: "الموجا — التدفق، الإشارة، التغيّر",
+  fr: "Almuja (الموجا) — la vague, le flux, le signal",
 };
 const availabilityBadge: Record<string, string> = {
   ar: "متاح للعمل",
@@ -317,7 +317,7 @@ export default async function Home({
 
           <h1 className="hero-enter select-none">
             <span className="block text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-[1.1] wave-gradient-text mb-3">
-              Mawja
+              Almuja
             </span>
             <span className="block text-lg sm:text-xl text-foreground/40 font-light tracking-wide">
               Mujahid Siyam
@@ -326,7 +326,7 @@ export default async function Home({
 
           <p className="hero-enter mt-6 text-sm text-foreground/40 font-light italic">
             {waveSubtitles[validLocale] ??
-              "Mawja (موجا) — the wave, the flow, the signal"}
+              "Almuja (الموجا) — the wave, the flow, the signal"}
           </p>
 
           <p className="hero-enter mt-8 text-base sm:text-lg text-foreground/50 leading-relaxed max-w-lg mx-auto">
@@ -367,10 +367,10 @@ export default async function Home({
 
           <div className="hero-enter mt-8">
             <a
-              href="mailto:hello@iammawja.com"
+              href="mailto:hello@almujax.com"
               className="inline-flex items-center gap-2 text-xs text-foreground/35 hover:text-primary transition-colors duration-300 font-mono"
             >
-              hello@iammawja.com
+              hello@almujax.com
               <ArrowRight className="w-3 h-3" />
             </a>
           </div>
@@ -403,7 +403,7 @@ export default async function Home({
 
           <p className="text-sm text-foreground/40 font-light italic mb-6 leading-relaxed max-w-xl">
             {waveSubtitles[validLocale] ??
-              "Mawja (موجا) — the wave, the flow, the signal"}
+              "Almuja (الموجا) — the wave, the flow, the signal"}
           </p>
 
           <div className="mb-8 w-12 h-px bg-gradient-to-r from-foreground/20 to-transparent" />
@@ -753,7 +753,7 @@ export default async function Home({
             {t.home.ctaDescription}
           </p>
           <Link
-            href="mailto:hello@iammawja.com"
+            href="mailto:hello@almujax.com"
             className="group inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-2xl font-semibold text-sm hover:opacity-90 hover:scale-[1.02] hover:shadow-2xl hover:shadow-foreground/10 transition-all duration-300"
           >
             {t.home.ctaButton}

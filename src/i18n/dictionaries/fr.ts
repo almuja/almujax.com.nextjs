@@ -1,11 +1,11 @@
 const fr = {
   site: {
     title:
-      "Mawja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes · Rappeur · Producteur · Créateur de Contenu | iammawja",
+      "Almuja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes · Rappeur · Producteur · Créateur de Contenu | almujax",
     description:
-      "Mujahid Siyam, connu sous le nom de Mawja (موجا, aussi موجة/موجه) et pseudonyme iammawja, est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu basé à Paris, France. Site personnel avec projets, écrits et musique.",
+      "Mujahid Siyam, connu sous le nom d'Almuja (الموجا, aussi الموجة/الموجه) et pseudonyme almujax, est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu basé à Paris, France. Site personnel avec projets, écrits et musique.",
     defaultTitle:
-      "Mawja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes · Rappeur · Producteur · Créateur de Contenu | iammawja",
+      "Almuja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes · Rappeur · Producteur · Créateur de Contenu | almujax",
   },
   nav: {
     projects: "Projets",
@@ -21,9 +21,9 @@ const fr = {
   },
   home: {
     title:
-      "Mawja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA & Systèmes | iammawja",
+      "Almuja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA & Systèmes | almujax",
     description:
-      "Mujahid Siyam (iammawja) est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il construit des systèmes, écrit du code, gère des infrastructures et fait de la musique.",
+      "Mujahid Siyam (almujax) est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il construit des systèmes, écrit du code, gère des infrastructures et fait de la musique.",
     sparkle: "Construire des systèmes et faire de la musique",
     roles:
       "Ingénieur Logiciel · Ingénieur Réseaux · Cloud Architect IA · Data Scientist · Administrateur Systèmes (Linux & Windows) · Rappeur · Producteur Musical · Créateur de Contenu",
@@ -113,9 +113,9 @@ const fr = {
     },
     exploreProjects: "Explorer les projets",
     readBlog: "Lire le blog",
-    aboutHeading: "À propos de Mawja (Mujahid Siyam)",
+    aboutHeading: "À propos d'Almuja (Mujahid Siyam)",
     about1:
-      "Mawja (موجا) est le nom que j'utilise en ligne — court, chaleureux, facile à dire. Il vient du mot arabe pour \"vague\" — mouvement, signal, flux. Je l'ai choisi parce qu'il est simple, musical et mémorable. Mon vrai nom est Mujahid Siyam, et mon pseudonyme partout est iammawja. Je suis un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, rappeur et producteur de hip-hop soudanais, né au Soudan et actuellement basé à Paris, France.",
+      "Almuja (الموجا) est le nom que j'utilise en ligne — court, chaleureux, facile à dire. Il vient du mot arabe pour \"la vague\" — mouvement, signal, flux. Je l'ai choisi parce qu'il est simple, musical et mémorable. Mon vrai nom est Mujahid Siyam, et mon pseudonyme partout est almujax. Je suis un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, rappeur et producteur de hip-hop soudanais, né au Soudan et actuellement basé à Paris, France.",
     about2:
       "J'ai commencé par la musique avant d'écrire une seule ligne de code. À 16 ans, je formais des groupes au Soudan, j'enregistrais des morceaux, je me produisais partout où c'était possible. La musique m'a appris à construire quelque chose à partir de rien — une idée devient un son, un son devient une performance, une performance connecte avec les gens. Cet instinct créatif ne m'a jamais quitté. Je l'ai transporté dans l'ingénierie par la suite, où j'ai retrouvé le même cycle : imaginer, construire, affiner, livrer.",
     about3:
@@ -134,17 +134,17 @@ const fr = {
   },
   about: {
     title:
-      "À propos | Mujahid Siyam (Mawja / iammawja) — Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes & Artiste Musical",
+      "À propos | Mujahid Siyam (Almuja / almujax) — Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes & Artiste Musical",
     description:
-      "Mujahid Siyam (Mawja / موجة, pseudonyme: iammawja) est un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur et producteur de hip-hop soudanais basé à Paris, France. Découvrez son profil professionnel, son expérience, ses compétences et son parcours.",
+      "Mujahid Siyam (Almuja / الموجة, pseudonyme: almujax) est un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur et producteur de hip-hop soudanais basé à Paris, France. Découvrez son profil professionnel, son expérience, ses compétences et son parcours.",
     heading: "À propos de Mujahid Siyam",
     roles:
       "Ingénieur Logiciel · Ingénieur Réseaux · Cloud Architect IA · Data Scientist · Administrateur Systèmes (Linux & Windows) · Rappeur · Producteur Musical · Créateur de Contenu",
     profileTitle: "Ingénieur Logiciel & IA · Artiste Musical",
-    akaLabel: "Alias Mawja (موجا / موجة)",
+    akaLabel: "Alias Almuja (الموجا / الموجة)",
     location: "Paris, France",
-    email: "hello@iammawja.com",
-    website: "iammawja.com",
+    email: "hello@almujax.com",
+    website: "almujax.com",
     coreCompetencies: "Expertise principale",
     languages: "Langues",
     experience: "Expérience professionnelle",
@@ -161,10 +161,10 @@ const fr = {
     summary3:
       "Aujourd'hui, je suis un ingénieur de niveau senior à l'aise sur l'ensemble de la stack technologique. J'écris du code de production en Rust, TypeScript et Python. Je conçois et déploie des infrastructures avec Terraform, Ansible, Docker et Kubernetes sur AWS. J'administre des serveurs Linux (Ubuntu, Debian, Arch, NixOS) et des environnements Windows Server. Je travaille avec des bases de données comme PostgreSQL, MySQL, MongoDB et Redis — optimisation de requêtes, conception de schémas, stratégies de réplication et de sauvegarde. Je construis des pipelines CI/CD, j'implémente le scanning de sécurité dans les workflows de développement et je surveille les systèmes de production avec Prometheus et Grafana. Je comprends les réseaux du modèle OSI jusqu'à la configuration BGP et OSPF. Et je maîtrise le cycle complet du machine learning — entraînement de modèles, déploiement, construction de systèmes RAG et travail avec les architectures LLM.",
     summary4:
-      "En 2022, après des années loin de la musique, je suis retourné en studio. J'ai produit KAKASHI, mon premier EP sous le nom Mawja — rap arabe, rap soudanais, hip hop. Ce n'était pas un changement de carrière. C'était moi qui renouais avec quelque chose que j'avais laissé derrière, réalisant que je n'avais pas à choisir entre être ingénieur et être artiste. Les deux s'enrichissent mutuellement. La rigueur de l'ingénierie me garde ancré. Le travail créatif me garde inspiré. Mon prochain EP, Rockstar, sortira en août 2026.",
+      "En 2022, après des années loin de la musique, je suis retourné en studio. J'ai produit KAKASHI, mon premier EP sous le nom Almuja — rap arabe, rap soudanais, hip hop. Ce n'était pas un changement de carrière. C'était moi qui renouais avec quelque chose que j'avais laissé derrière, réalisant que je n'avais pas à choisir entre être ingénieur et être artiste. Les deux s'enrichissent mutuellement. La rigueur de l'ingénierie me garde ancré. Le travail créatif me garde inspiré. Mon prochain EP, Rockstar, sortira en août 2026.",
     summary5:
       "J'opère actuellement via Zaroxi Studio — mon entreprise de développement logiciel, ingénierie IA, outils développeur et consulting. Je suis ouvert aux missions en contrat, aux collaborations sur des projets intéressants et aux opportunités où une expertise technique approfondie rencontre un impact concret. Si vous avez besoin de quelqu'un qui peut architecturer un système, écrire le code, sécuriser le déploiement et déboguer l'incident de production à 3h du matin — le tout sans rendre les choses plus compliquées que nécessaire — nous devrions parler.",
-    connectHeading: "Retrouvez Mawja en ligne",
+    connectHeading: "Retrouvez Almuja en ligne",
     connectDescription:
       "GitHub, réseaux sociaux, plateformes de streaming — comme vous préférez",
     education: "Formation",
@@ -256,9 +256,9 @@ const fr = {
     ],
   },
   blog: {
-    title: "Blog | Mawja (Mujahid Siyam) — Logiciel, IA & Ingénierie Systèmes",
+    title: "Blog | Almuja (Mujahid Siyam) — Logiciel, IA & Ingénierie Systèmes",
     description:
-      "Articles de Mujahid Siyam (Mawja) sur l'ingénierie logicielle, l'IA, Rust, le DevSecOps, l'infrastructure cloud, les réseaux, l'administration systèmes et la technologie créative. De vrais écrits, pas du contenu SEO.",
+      "Articles de Mujahid Siyam (Almuja) sur l'ingénierie logicielle, l'IA, Rust, le DevSecOps, l'infrastructure cloud, les réseaux, l'administration systèmes et la technologie créative. De vrais écrits, pas du contenu SEO.",
     backToBlog: "Retour au blog",
     previous: "Précédent",
     next: "Suivant",
@@ -299,9 +299,9 @@ const fr = {
     browsePosts: "Parcourir",
   },
   projects: {
-    title: "Projets | Mawja (Mujahid Siyam) — Open Source & Outils Développeur",
+    title: "Projets | Almuja (Mujahid Siyam) — Open Source & Outils Développeur",
     description:
-      "Projets open source et contributions de Mujahid Siyam (Mawja). Outils développeur, configurations NixOS, utilitaires IA, automatisation d'infrastructure et expérimentations créatives.",
+      "Projets open source et contributions de Mujahid Siyam (Almuja). Outils développeur, configurations NixOS, utilitaires IA, automatisation d'infrastructure et expérimentations créatives.",
     backToProjects: "Retour aux projets",
     viewOnGithub: "Voir sur GitHub",
     visitWebsite: "Visiter le site",
@@ -326,26 +326,26 @@ const fr = {
   },
   music: {
     title:
-      "Musique | Mawja | Rap Arabe | Rap Soudanais | Hip Hop Moyen-Oriental | Rap Africain",
+      "Musique | Almuja | Rap Arabe | Rap Soudanais | Hip Hop Moyen-Oriental | Rap Africain",
     description:
-      "Mawja (موجا) est le nom d'artiste de Mujahid Siyam (pseudonyme: iammawja). Rappeur soudanais et producteur de hip-hop créant du rap arabe, moyen-oriental et africain. Écoutez l'EP KAKASHI (2022). EP Rockstar à venir en août 2026. Suivez les prochaines sorties.",
-    heading: "Mawja — Musique",
+      "Almuja (الموجا) est le nom d'artiste de Mujahid Siyam (pseudonyme: almujax). Rappeur soudanais et producteur de hip-hop créant du rap arabe, moyen-oriental et africain. Écoutez l'EP KAKASHI (2022). EP Rockstar à venir en août 2026. Suivez les prochaines sorties.",
+    heading: "Almuja — Musique",
     subtitle:
-      "Musique sous le nom Mawja. Rap arabe, moyen-oriental et africain, hip-hop. Rap soudanais et productions originales. EP KAKASHI disponible. EP Rockstar à venir en août 2026.",
+      "Musique sous le nom Almuja. Rap arabe, moyen-oriental et africain, hip-hop. Rap soudanais et productions originales. EP KAKASHI disponible. EP Rockstar à venir en août 2026.",
     noPlaylists: "Aucune sortie pour le moment. Restez à l'écoute.",
     loading: "Chargement...",
     listenOn: "Écouter sur",
     tracks: "pistes",
     openInApp: "Ouvrir dans",
-    artistName: "Mawja",
+    artistName: "Almuja",
     artistDescription: "Rap Arabe · Rap Soudanais · Hip Hop",
     artistStory:
-      "J'ai commencé la musique à 16 ans, bien avant d'écrire une seule ligne de code. En grandissant au Soudan, la musique était partout — et je voulais en faire partie. J'ai formé des groupes, écrit des paroles, enregistré partout où je pouvais et joué devant quiconque voulait bien écouter. La musique était mon premier langage pour construire des choses : on part d'une idée, on la façonne, on l'affine, puis on la présente et on voit comment les gens réagissent.\n\nQuand j'ai déménagé en France, j'ai mis la musique de côté pour me concentrer sur l'ingénierie logicielle. Pendant des années, le code a tout remplacé. J'ai construit des systèmes, géré des infrastructures, travaillé sur des projets d'IA. C'était exigeant et gratifiant, mais quelque chose manquait. En 2022, après un long silence, je suis retourné en studio. J'ai produit mon premier EP — KAKASHI — sous le nom Mawja. C'était brut, honnête et exactement ce que j'avais besoin de faire. Ce n'était pas une stratégie de comeback. C'était moi qui me souvenais de qui j'étais avant de devenir ingénieur.\n\nMaintenant, je travaille sur mon prochain EP, Rockstar, prévu pour août 2026. C'est le chapitre suivant — plus grand, plus concentré, une expression plus profonde de là où j'en suis. La musique n'est pas un projet secondaire. Elle fait partie de mon identité, tout comme l'ingénierie. Si vous avez écouté KAKASHI, vous connaissez le son. Si ce n'est pas le cas, c'est le bon moment.\n\nJe fais du rap arabe et du rap soudanais, avec une production hip hop qui puise dans mes racines et ma vie en Europe. La musique est personnelle. Elle parle d'identité, de déplacement, d'ambition et de la tension entre qui l'on était et qui l'on devient. Si cela vous parle, je pense que vous aimerez ce qui arrive.",
+      "J'ai commencé la musique à 16 ans, bien avant d'écrire une seule ligne de code. En grandissant au Soudan, la musique était partout — et je voulais en faire partie. J'ai formé des groupes, écrit des paroles, enregistré partout où je pouvais et joué devant quiconque voulait bien écouter. La musique était mon premier langage pour construire des choses : on part d'une idée, on la façonne, on l'affine, puis on la présente et on voit comment les gens réagissent.\n\nQuand j'ai déménagé en France, j'ai mis la musique de côté pour me concentrer sur l'ingénierie logicielle. Pendant des années, le code a tout remplacé. J'ai construit des systèmes, géré des infrastructures, travaillé sur des projets d'IA. C'était exigeant et gratifiant, mais quelque chose manquait. En 2022, après un long silence, je suis retourné en studio. J'ai produit mon premier EP — KAKASHI — sous le nom Almuja. C'était brut, honnête et exactement ce que j'avais besoin de faire. Ce n'était pas une stratégie de comeback. C'était moi qui me souvenais de qui j'étais avant de devenir ingénieur.\n\nMaintenant, je travaille sur mon prochain EP, Rockstar, prévu pour août 2026. C'est le chapitre suivant — plus grand, plus concentré, une expression plus profonde de là où j'en suis. La musique n'est pas un projet secondaire. Elle fait partie de mon identité, tout comme l'ingénierie. Si vous avez écouté KAKASHI, vous connaissez le son. Si ce n'est pas le cas, c'est le bon moment.\n\nJe fais du rap arabe et du rap soudanais, avec une production hip hop qui puise dans mes racines et ma vie en Europe. La musique est personnelle. Elle parle d'identité, de déplacement, d'ambition et de la tension entre qui l'on était et qui l'on devient. Si cela vous parle, je pense que vous aimerez ce qui arrive.",
   },
   contact: {
-    title: "Contact | Mujahid Siyam (Mawja / iammawja) — Prendre contact",
+    title: "Contact | Mujahid Siyam (Almuja / almujax) — Prendre contact",
     description:
-      "Contactez Mujahid Siyam (Mawja, pseudonyme: iammawja), un ingénieur logiciel soudanais, rappeur et producteur de hip-hop basé à Paris, France. Collaboration en ingénierie, projets IA, consulting en infrastructure, demandes musicales, ou simplement pour dire bonjour.",
+      "Contactez Mujahid Siyam (Almuja, pseudonyme: almujax), un ingénieur logiciel soudanais, rappeur et producteur de hip-hop basé à Paris, France. Collaboration en ingénierie, projets IA, consulting en infrastructure, demandes musicales, ou simplement pour dire bonjour.",
     heading: "Me contacter",
     subtitle:
       "Un projet, une question ou simplement envie de se connecter ? Je lis chaque message et je réponds aux vrais. Parlons-en.",
@@ -380,7 +380,7 @@ const fr = {
     sending: "Envoi en cours...",
     sendMessage: "Envoyer",
     networkError:
-      "Quelque chose s'est mal passé. Veuillez réessayer ou m'envoyer un email directement à hello@iammawja.com.",
+      "Quelque chose s'est mal passé. Veuillez réessayer ou m'envoyer un email directement à hello@almujax.com.",
   },
   footer: {
     connect: "Restons en contact",
@@ -402,45 +402,45 @@ const fr = {
     tagline:
       "Construire des logiciels, des systèmes et de la musique. Basé à Paris, France, travaillant dans le monde entier.",
     errorMessage:
-      "Quelque chose s'est mal passé. Veuillez réessayer ou m'envoyer un email à hello@iammawja.com.",
+      "Quelque chose s'est mal passé. Veuillez réessayer ou m'envoyer un email à hello@almujax.com.",
   },
   structuredData: {
     description:
-      "Mujahid Siyam, connu sous le nom de Mawja (موجا, aussi épelé موجة / موجه — vague en arabe) avec le pseudonyme iammawja, est un ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il a commencé la musique à 16 ans, formant des groupes et se produisant avant de se tourner vers l'ingénierie logicielle, le cloud et l'IA. Il construit des systèmes avec Rust, TypeScript et Python, gère des infrastructures avec Terraform, Ansible, Docker et Kubernetes sur AWS, et administre des serveurs Linux et Windows. En 2022 il est revenu à la musique, sortant son premier EP KAKASHI sous le nom Mawja. Son prochain EP Rockstar est prévu pour août 2026. Sa musique couvre le rap arabe, moyen-oriental et africain, mêlant ses racines soudanaises à sa vie européenne. Il est le fondateur de Zaroxi Studio, un IDE accéléré par GPU écrit en Rust, et le créateur de MujaOS. Il relie l'ingénierie et la musique depuis Paris, France. Contact : hello@iammawja.com.",
+      "Mujahid Siyam, connu sous le nom d'Almuja (الموجا, aussi épelé الموجة / الموجه — la vague en arabe) avec le pseudonyme almujax, est un ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il a commencé la musique à 16 ans, formant des groupes et se produisant avant de se tourner vers l'ingénierie logicielle, le cloud et l'IA. Il construit des systèmes avec Rust, TypeScript et Python, gère des infrastructures avec Terraform, Ansible, Docker et Kubernetes sur AWS, et administre des serveurs Linux et Windows. En 2022 il est revenu à la musique, sortant son premier EP KAKASHI sous le nom Almuja. Son prochain EP Rockstar est prévu pour août 2026. Sa musique couvre le rap arabe, moyen-oriental et africain, mêlant ses racines soudanaises à sa vie européenne. Il est le fondateur de Zaroxi Studio, un IDE accéléré par GPU écrit en Rust, et le créateur de MujaOS. Il relie l'ingénierie et la musique depuis Paris, France. Contact : hello@almujax.com.",
     websiteDescription:
-      "Site personnel officiel de Mujahid Siyam (Mawja / iammawja) — ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur et artiste musical né au Soudan, basé à Paris, France. A commencé la musique à 16 ans, a construit une carrière en ingénierie et infrastructure cloud, est revenu à la musique en 2022 avec l'EP KAKASHI. EP Rockstar à venir en août 2026. Fondateur de Zaroxi Studio (zaroxi.com). Projets, écrits techniques et rap original arabe, moyen-oriental et africain.",
+      "Site personnel officiel de Mujahid Siyam (Almuja / almujax) — ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur et artiste musical né au Soudan, basé à Paris, France. A commencé la musique à 16 ans, a construit une carrière en ingénierie et infrastructure cloud, est revenu à la musique en 2022 avec l'EP KAKASHI. EP Rockstar à venir en août 2026. Fondateur de Zaroxi Studio (zaroxi.com). Projets, écrits techniques et rap original arabe, moyen-oriental et africain.",
   },
   seo: {
     keywords: [
       "Mujahid Siyam",
-      "Mawja",
-      "iammawja",
-      "موجا",
-      "موجة",
-      "موجه",
+      "Almuja",
+      "almujax",
+      "الموجا",
+      "الموجة",
+      "الموجه",
       "Mujahid Siyam rappeur",
       "Mujahid Siyam musique",
-      "Mawja rappeur",
-      "Mawja musique",
-      "iammawja rappeur",
-      "Mawja ingénieur",
-      "Mawja artiste",
-      "Mawja créatif",
-      "Mawja développeur",
-      "Mawja ingénieur et artiste",
-      "Mawja logiciel et musique",
+      "Almuja rappeur",
+      "Almuja musique",
+      "almujax rappeur",
+      "Almuja ingénieur",
+      "Almuja artiste",
+      "Almuja créatif",
+      "Almuja développeur",
+      "Almuja ingénieur et artiste",
+      "Almuja logiciel et musique",
       "ingénieur et rappeur",
       "codeur et musicien",
-      "Mawja site officiel",
-      "Mawja site personnel",
-      "Mawja portfolio",
-      "Mawja du Soudan",
-      "Mawja basé à Paris",
-      "Mawja artiste soudanais",
+      "Almuja site officiel",
+      "Almuja site personnel",
+      "Almuja portfolio",
+      "Almuja du Soudan",
+      "Almuja basé à Paris",
+      "Almuja artiste soudanais",
       "talent soudanais France",
-      "Mawja nouvel EP",
-      "Mawja musique 2026",
-      "Mawja actualité",
+      "Almuja nouvel EP",
+      "Almuja musique 2026",
+      "Almuja actualité",
       "Rappeur",
       "Producteur Hip Hop",
       "Producteur Rap",
@@ -491,14 +491,14 @@ const fr = {
       "Hip Hop",
       "KAKASHI EP",
       "Rockstar EP",
-      "Mawja musique",
-      "Mawja hip hop",
-      "Mawja musique électronique",
-      "Mawja artiste rap",
+      "Almuja musique",
+      "Almuja hip hop",
+      "Almuja musique électronique",
+      "Almuja artiste rap",
       "artiste musical soudanais",
-      "موجا",
-      "موجة",
-      "موجه",
+      "الموجا",
+      "الموجة",
+      "الموجه",
       "راب عربي",
       "راب سوداني",
       "رابر",
@@ -507,7 +507,7 @@ const fr = {
       "Rapper",
       "Sudanese Rapper",
       "Rap Artist",
-      "Mawja rapper",
+      "Almuja rapper",
       "Open Source",
       "Rust",
       "TypeScript",
@@ -529,7 +529,7 @@ const fr = {
       "Mujahid Siyam Paris",
       "Mujahid Siyam Soudan",
       "Mujahid Siyam France",
-      "Mawja rappeur Paris",
+      "Almuja rappeur Paris",
       "ingénieur soudanais Paris",
       "rappeur soudanais Paris",
       "développeur Rust Paris",
@@ -537,17 +537,17 @@ const fr = {
       "architecte cloud",
       "Mujahid Siyam portfolio",
       "Mujahid Siyam contact",
-      "Mawja GitHub",
-      "Mawja LinkedIn",
-      "Mawja blog",
-      "Mawja projets",
+      "Almuja GitHub",
+      "Almuja LinkedIn",
+      "Almuja blog",
+      "Almuja projets",
       "créatif soudanais",
       "ingénieur africain Paris",
       "talent tech MENA",
-      "iammawja",
-      "iammawja.com",
-      "iam mawja",
-      "i am mawja",
+      "almujax",
+      "almujax.com",
+      "almuja nom de scène",
+      "almujax handle",
       "ingénieur logiciel rappeur",
       "développeur et musicien",
       "ingénieur musique Paris",
@@ -556,42 +556,42 @@ const fr = {
       "ingénieur diaspora",
     ],
     dcSubject:
-      "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Data Analyst, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS, Mawja, موجة, موجه, ingénieur et artiste, iammawja",
+      "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Data Analyst, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS, Almuja, الموجة, الموجه, ingénieur et artiste, almujax",
   },
   faq: {
     heading: "Questions Fréquentes",
     items: [
       {
         q: "Qui est Mujahid Siyam ?",
-        a: "Mujahid Siyam — également connu sous le nom de Mawja, avec le pseudonyme iammawja — est un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes, rappeur et producteur de hip-hop soudanais basé à Paris, France. Il est le fondateur de Zaroxi Studio (zaroxi.com), un IDE accéléré par GPU écrit en Rust. Son travail couvre l'automatisation d'infrastructure, les systèmes d'IA et la création de rap arabe, moyen-oriental et africain.",
+        a: "Mujahid Siyam — également connu sous le nom d'Almuja, avec le pseudonyme almujax — est un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes, rappeur et producteur de hip-hop soudanais basé à Paris, France. Il est le fondateur de Zaroxi Studio (zaroxi.com), un IDE accéléré par GPU écrit en Rust. Son travail couvre l'automatisation d'infrastructure, les systèmes d'IA et la création de rap arabe, moyen-oriental et africain.",
       },
       {
-        q: "Qui est Mawja ?",
-        a: "Mawja (موجا, aussi épelé موجة / موجه) est le nom d'artiste et le pseudonyme en ligne de Mujahid Siyam (pseudonyme : iammawja). Court, musical, inspiré du mot arabe signifiant « vague » — représentant le mouvement, le flux et le signal. Mawja représente son identité en tant que rappeur et producteur de hip-hop soudanais créant du rap arabe, moyen-oriental et africain. Il a sorti son premier EP KAKASHI en 2022, et son prochain EP Rockstar est prévu pour août 2026.",
+        q: "Qui est Almuja ?",
+        a: "Almuja (الموجا, aussi épelé الموجة / الموجه) est le nom d'artiste et le pseudonyme en ligne de Mujahid Siyam (pseudonyme : almujax). Court, musical, inspiré du mot arabe signifiant « la vague » — représentant le mouvement, le flux et le signal. Almuja représente son identité en tant que rappeur et producteur de hip-hop soudanais créant du rap arabe, moyen-oriental et africain. Il a sorti son premier EP KAKASHI en 2022, et son prochain EP Rockstar est prévu pour août 2026.",
       },
       {
-        q: "Qu'est-ce que iammawja ?",
-        a: "iammawja est le pseudonyme universel de Mujahid Siyam (également connu sous le nom de Mawja / موجة) — utilisé sur toutes les plateformes comme GitHub, LinkedIn, Instagram, YouTube et X (Twitter). Il se prononce « I am Mawja » — un pseudonyme personnel et déclaratif. Le nom est Mawja, et le vrai nom est Mujahid Siyam.",
+        q: "Qu'est-ce que almujax ?",
+        a: "almujax est le pseudonyme universel de Mujahid Siyam (également connu sous le nom d'Almuja / الموجا) — utilisé sur toutes les plateformes comme GitHub, LinkedIn, Instagram, YouTube et X (Twitter). Le nom est Almuja, et le vrai nom est Mujahid Siyam.",
       },
       {
         q: "Qu'est-ce que Zaroxi Studio ?",
-        a: "Zaroxi Studio est un IDE accéléré par GPU, alimenté par l'IA et écrit en Rust, fondé par Mujahid Siyam (Mawja / iammawja). C'est également le nom de son entreprise de développement logiciel, à travers laquelle il construit des outils pour développeurs, gère des infrastructures et fournit du conseil en ingénierie. Visitez zaroxi.com pour plus d'informations.",
+        a: "Zaroxi Studio est un IDE accéléré par GPU, alimenté par l'IA et écrit en Rust, fondé par Mujahid Siyam (Almuja / almujax). C'est également le nom de son entreprise de développement logiciel, à travers laquelle il construit des outils pour développeurs, gère des infrastructures et fournit du conseil en ingénierie. Visitez zaroxi.com pour plus d'informations.",
       },
       {
-        q: "Quel genre de musique fait Mawja ?",
-        a: "Mawja (Mujahid Siyam / iammawja) fait du rap arabe, du rap moyen-oriental, du rap soudanais et du rap africain avec une production hip-hop. Son son mélange ses racines soudanaises avec sa vie en Europe, créant une musique sur l'identité, le déplacement, l'ambition et la tension entre qui l'on était et qui l'on devient. Son premier EP KAKASHI est sorti en 2022, et son prochain EP Rockstar arrive en août 2026.",
+        q: "Quel genre de musique fait Almuja ?",
+        a: "Almuja (Mujahid Siyam / almujax) fait du rap arabe, du rap moyen-oriental, du rap soudanais et du rap africain avec une production hip-hop. Son son mélange ses racines soudanaises avec sa vie en Europe, créant une musique sur l'identité, le déplacement, l'ambition et la tension entre qui l'on était et qui l'on devient. Son premier EP KAKASHI est sorti en 2022, et son prochain EP Rockstar arrive en août 2026.",
       },
       {
-        q: "Où puis-je écouter la musique de Mawja ?",
-        a: "Vous pouvez écouter Mawja (Mujahid Siyam / iammawja) sur Spotify, Apple Music, SoundCloud, YouTube, YouTube Music, Deezer, Anghami, Tidal et Bandcamp. Tous les liens de streaming sont disponibles sur iammawja.com/music. Son premier EP KAKASHI (2022) est disponible, et l'EP Rockstar sort en août 2026.",
+        q: "Où puis-je écouter la musique d'Almuja ?",
+        a: "Vous pouvez écouter Almuja (Mujahid Siyam / almujax) sur Spotify, Apple Music, SoundCloud, YouTube, YouTube Music, Deezer, Anghami, Tidal et Bandcamp. Tous les liens de streaming sont disponibles sur almujax.com/music. Son premier EP KAKASHI (2022) est disponible, et l'EP Rockstar sort en août 2026.",
       },
       {
         q: "Mujahid Siyam est-il disponible pour une embauche ou une collaboration ?",
-        a: "Oui — Mujahid Siyam (Mawja / iammawja) est ouvert aux collaborations en ingénierie logicielle, architecture cloud, conseil en IA et production musicale. Contactez-le à hello@iammawja.com pour des projets d'ingénierie, du conseil en infrastructure, des collaborations musicales ou des partenariats créatifs.",
+        a: "Oui — Mujahid Siyam (Almuja / almujax) est ouvert aux collaborations en ingénierie logicielle, architecture cloud, conseil en IA et production musicale. Contactez-le à hello@almujax.com pour des projets d'ingénierie, du conseil en infrastructure, des collaborations musicales ou des partenariats créatifs.",
       },
       {
         q: "Où est basé Mujahid Siyam ?",
-        a: "Mujahid Siyam (Mawja / iammawja) est né au Soudan et actuellement basé à Paris, France. Il travaille à l'échelle mondiale avec des clients et collaborateurs en Europe, au Moyen-Orient, en Afrique et au-delà, reliant l'ingénierie et la musique depuis Paris.",
+        a: "Mujahid Siyam (Almuja / almujax) est né au Soudan et actuellement basé à Paris, France. Il travaille à l'échelle mondiale avec des clients et collaborateurs en Europe, au Moyen-Orient, en Afrique et au-delà, reliant l'ingénierie et la musique depuis Paris.",
       },
     ],
   },

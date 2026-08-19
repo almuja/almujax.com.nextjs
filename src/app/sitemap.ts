@@ -3,7 +3,7 @@ import { join } from "path";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 
-const baseUrl = "https://iammawja.com";
+const baseUrl = "https://almujax.com";
 const locales = ["en", "ar", "fr"];
 
 function toAbsoluteImage(image: string | undefined): string | undefined {

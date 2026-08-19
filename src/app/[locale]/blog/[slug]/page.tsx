@@ -113,18 +113,18 @@ export async function generateMetadata({
 
     const title = data.title || slug;
     const description = data.description || "";
-    const image = data.image || "https://iammawja.com/img/profile.png?v=3";
+    const image = data.image || "https://almujax.com/img/profile.png?v=3";
     const publishedTime = data.date;
 
     return {
-      title: `${title} | Mawja (Mujahid Siyam)`,
+      title: `${title} | Almuja (Mujahid Siyam)`,
       description,
       keywords: [
         ...(data.tags || []),
         data.category,
         "Mujahid Siyam",
-        "Mawja",
-        "iammawja",
+        "Almuja",
+        "almujax",
         "AI Engineer",
         "Software Engineer",
         "DevSecOps",
@@ -136,18 +136,18 @@ export async function generateMetadata({
         "blog",
       ].filter(Boolean),
       alternates: {
-        canonical: `https://iammawja.com/${validLocale}/blog/${slug}`,
+        canonical: `https://almujax.com/${validLocale}/blog/${slug}`,
         languages: {
-          en: `https://iammawja.com/en/blog/${slug}`,
-          ar: `https://iammawja.com/ar/blog/${slug}`,
-          fr: `https://iammawja.com/fr/blog/${slug}`,
+          en: `https://almujax.com/en/blog/${slug}`,
+          ar: `https://almujax.com/ar/blog/${slug}`,
+          fr: `https://almujax.com/fr/blog/${slug}`,
         },
       },
       openGraph: {
-        title: `${title} | Mawja (Mujahid Siyam)`,
+        title: `${title} | Almuja (Mujahid Siyam)`,
         description,
         type: "article",
-        url: `https://iammawja.com/${validLocale}/blog/${slug}`,
+        url: `https://almujax.com/${validLocale}/blog/${slug}`,
         images: [{ url: image, width: 1200, height: 630, alt: title }],
         publishedTime,
         modifiedTime: publishedTime,
@@ -159,8 +159,8 @@ export async function generateMetadata({
         title: `${title} | Mujahid Siyam`,
         description,
         images: [image],
-        site: "@iammawja",
-        creator: "@iammawja",
+        site: "@almujax",
+        creator: "@almujax",
       },
       category: data.category || undefined,
       other: {
@@ -181,7 +181,7 @@ export async function generateMetadata({
     return {
       title: slug,
       alternates: {
-        canonical: `https://iammawja.com/${validLocale}/blog/${slug}`,
+        canonical: `https://almujax.com/${validLocale}/blog/${slug}`,
       },
     };
   }
@@ -241,25 +241,25 @@ export default async function BlogPostPage({
               : new Date().toISOString()
           }
           image={frontmatter.image || ""}
-          url={`https://iammawja.com/${validLocale}/blog/${resolvedParams.slug}`}
+          url={`https://almujax.com/${validLocale}/blog/${resolvedParams.slug}`}
           authorName="Mujahid Siyam"
-          authorUrl="https://iammawja.com"
+          authorUrl="https://almujax.com"
         />
         <BreadcrumbStructuredData
           items={[
             {
               name: validLocale === "ar" ? "الرئيسية" : "Home",
-              url: `https://iammawja.com/${validLocale}`,
+              url: `https://almujax.com/${validLocale}`,
             },
             {
               name: dict.blog.title
-                .replace(" | Mawja (Mujahid Siyam)", "")
+                .replace(" | Almuja (Mujahid Siyam)", "")
                 .replace(/^Blog \| /, ""),
-              url: `https://iammawja.com/${validLocale}/blog`,
+              url: `https://almujax.com/${validLocale}/blog`,
             },
             {
               name: title,
-              url: `https://iammawja.com/${validLocale}/blog/${resolvedParams.slug}`,
+              url: `https://almujax.com/${validLocale}/blog/${resolvedParams.slug}`,
             },
           ]}
         />
@@ -366,10 +366,10 @@ export default async function BlogPostPage({
               bio={dict.blog.authorBio}
               aboutLabel={dict.blog.aboutTheAuthor}
               socialLinks={{
-                github: "https://github.com/iammawja",
-                twitter: "https://x.com/iammawja",
-                linkedin: "https://linkedin.com/in/iammawja",
-                website: "https://iammawja.com",
+                github: "https://github.com/almujax",
+                twitter: "https://x.com/almujax",
+                linkedin: "https://linkedin.com/in/almujax",
+                website: "https://almujax.com",
               }}
             />
           </div>

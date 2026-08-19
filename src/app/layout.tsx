@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import {
   PersonStructuredData,
-  PerformingArtistStructuredData,
+  ArtistPersonStructuredData,
   SoftwareApplicationStructuredData,
   MusicArtistStructuredData,
   OrganizationStructuredData,
@@ -12,7 +12,7 @@ import {
 } from "./components/StructuredData";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://iammawja.com"),
+  metadataBase: new URL("https://almujax.com"),
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     languages: {
-      en: "https://iammawja.com/en",
-      ar: "https://iammawja.com/ar",
-      fr: "https://iammawja.com/fr",
+      en: "https://almujax.com/en",
+      ar: "https://almujax.com/ar",
+      fr: "https://almujax.com/fr",
     },
   },
 };
@@ -74,11 +74,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var d=document.documentElement.classList;var s=localStorage.getItem('mawja-theme');if(s==='dark'||(!s&&window.matchMedia('(prefers-color-scheme:dark)').matches)){d.add('dark')}else{d.remove('dark')}}catch(e){}`,
+            __html: `try{var d=document.documentElement.classList;var s=localStorage.getItem('almuja-theme');if(s==='dark'||(!s&&window.matchMedia('(prefers-color-scheme:dark)').matches)){d.add('dark')}else{d.remove('dark')}}catch(e){}`,
           }}
         />
         <PersonStructuredData />
-        <PerformingArtistStructuredData />
+        <ArtistPersonStructuredData />
         <SoftwareApplicationStructuredData />
         <MusicArtistStructuredData />
         <OrganizationStructuredData />
@@ -92,13 +92,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="iammawja.com RSS Feed"
+          title="almujax.com RSS Feed"
           href="/feed.xml"
         />
         <link
           rel="alternate"
           type="application/atom+xml"
-          title="iammawja.com Atom Feed"
+          title="almujax.com Atom Feed"
           href="/atom.xml"
         />
         <link
@@ -113,31 +113,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           title="Full content for AI indexing"
           href="/llms-full.txt"
         />
-        <link rel="me" href="https://github.com/iammawja" />
-        <link rel="me" href="https://linkedin.com/in/iammawja" />
-        <link rel="me" href="https://x.com/iammawja" />
-        <link rel="me" href="https://twitter.com/iammawja" />
-        <link rel="me" href="https://instagram.com/iammawja" />
-        <link rel="me" href="https://dev.to/iammawja" />
-        <link rel="me" href="https://reddit.com/user/iammawja" />
-        <link rel="me" href="https://youtube.com/@iammawja" />
-        <link rel="me" href="https://soundcloud.com/iammawja" />
-        <link rel="me" href="https://tiktok.com/@iammawja" />
+        <link rel="me" href="https://github.com/almujax" />
+        <link rel="me" href="https://linkedin.com/in/almujax" />
+        <link rel="me" href="https://x.com/almujax" />
+        <link rel="me" href="https://twitter.com/almujax" />
+        <link rel="me" href="https://instagram.com/almujax" />
+        <link rel="me" href="https://dev.to/almujax" />
+        <link rel="me" href="https://reddit.com/user/almujax" />
+        <link rel="me" href="https://youtube.com/@almujax" />
+        <link rel="me" href="https://soundcloud.com/almujax" />
+        <link rel="me" href="https://tiktok.com/@almujax" />
         <link
           rel="me"
           href="https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
         />
         <link
           rel="me"
-          href="https://music.apple.com/fr/artist/mawja/6800033494"
+          href="https://music.apple.com/fr/artist/almuja/6800033494"
         />
-        <link rel="me" href="https://music.youtube.com/@mawjaofficial" />
+        <link rel="me" href="https://music.youtube.com/@almujaofficial" />
         <link rel="me" href="https://www.deezer.com/en/artist/409144252" />
         <link rel="me" href="https://play.anghami.com/artist/29651679" />
-        <link rel="me" href="https://iammawja.bandcamp.com" />
-        <link rel="me" href="https://tidal.com/browse/artist/iammawja" />
+        <link rel="me" href="https://almujax.bandcamp.com" />
+        <link rel="me" href="https://tidal.com/browse/artist/almujax" />
         <link rel="me" href="https://music.amazon.fr/artists/B0HDMF43R7" />
-        <link rel="me" href="https://www.pandora.com/artist/iammawja" />
+        <link rel="me" href="https://www.pandora.com/artist/almujax" />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <noscript>
