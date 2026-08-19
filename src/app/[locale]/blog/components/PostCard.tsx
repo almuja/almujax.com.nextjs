@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { Calendar, Clock, Star } from "lucide-react";
-import { BlogPost } from "../lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import type { BlogPost } from "../lib/utils";
 
 interface PostCardProps {
   post: BlogPost;
@@ -39,10 +39,11 @@ export function PostCard({
           <div className="flex flex-wrap gap-2 mb-3">
             {post.category && (
               <button
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  onCategoryClick?.(post.category!);
+                  if (post.category) onCategoryClick?.(post.category);
                 }}
                 className="px-3 py-1 bg-primary/20 text-primary text-xs font-medium rounded-full hover:bg-primary hover:text-white transition-colors"
               >
@@ -52,6 +53,7 @@ export function PostCard({
             {post.tags?.slice(0, 2).map((tag) => (
               <button
                 key={tag}
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();

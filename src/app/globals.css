@@ -170,7 +170,7 @@
   }
 
   .responsive-card-image {
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
     width: 100%;
     height: auto;
   }

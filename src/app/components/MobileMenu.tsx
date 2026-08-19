@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "./ui/Button";
 import { X } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "./ui/Button";
 
 interface MobileMenuProps {
   isOpen: boolean;

@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles, Star } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { cn } from "../lib/utils";
 
 interface HeroProps {

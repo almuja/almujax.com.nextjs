@@ -1,6 +1,6 @@
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import { join } from "path";
 
 // Use Node.js runtime to access file system
 export const runtime = "nodejs";
@@ -17,8 +17,8 @@ async function getProjects() {
           // Use the filename without extension as the slug
           const slug = file
             .split("/")
-            .pop()!
-            .replace(/\.mdx$/, "");
+            .pop()
+            ?.replace(/\.mdx$/, "");
           const filePath = join(projectsDirectory, file);
           const content = await fs.readFile(filePath, "utf-8");
 

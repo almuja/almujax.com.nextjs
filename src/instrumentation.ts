@@ -11,32 +11,26 @@ export async function register() {
     ];
 
     const pings = [
-      {
-        name: "Google",
-        url: `https://www.google.com/ping?sitemap=${encodeURIComponent("https://almujax.com/sitemap.xml")}`,
-      },
       { name: "Bing", url: "https://www.bing.com/indexnow" },
-      { name: "Yandex", url: "https://indexnow.yandex.com/indexnow" },
+      { name: "Yandex", url: "https://yandex.com/indexnow" },
+      { name: "Seznam", url: "https://indexnow.seznam.cz/indexnow" },
+      { name: "IndexNow", url: "https://api.indexnow.org/indexnow" },
     ];
 
     for (const { name, url } of pings) {
       try {
-        if (name === "Google") {
-          await fetch(url, { signal: AbortSignal.timeout(5000) });
-        } else {
-          await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              host: "almujax.com",
-              key: "1dac02664f4d441084286ceca1a2640e",
-              keyLocation:
-                "https://almujax.com/1dac02664f4d441084286ceca1a2640e.txt",
-              urlList: urls,
-            }),
-            signal: AbortSignal.timeout(5000),
-          });
-        }
+        await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            host: "almujax.com",
+            key: "1dac02664f4d441084286ceca1a2640e",
+            keyLocation:
+              "https://almujax.com/1dac02664f4d441084286ceca1a2640e.txt",
+            urlList: urls,
+          }),
+          signal: AbortSignal.timeout(5000),
+        });
         console.log(`[auto-index] ✅ ${name}`);
       } catch {
         console.log(

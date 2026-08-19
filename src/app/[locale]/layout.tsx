@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import { type Locale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { locales, type Locale } from "@/i18n/config";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import DirManager from "../components/DirManager";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import HreflangLinks from "../components/HreflangLinks";
 
 export async function generateMetadata({
@@ -97,7 +97,7 @@ export default async function LocaleLayout({
   return (
     <>
       <DirManager locale={validLocale} />
-      <HreflangLinks locale={validLocale} />
+      <HreflangLinks />
       <Header
         locale={validLocale}
         dict={{ blog: { authorBio: dict.blog.authorBio } }}

@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import {
-  ExternalLink,
-  Disc3,
   ChevronDown,
   ChevronUp,
+  Disc3,
+  ExternalLink,
   Play,
   Sparkles,
 } from "lucide-react";
+import { useState } from "react";
 
 const SpotifyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
@@ -107,13 +107,13 @@ const streamingPlatforms = [
   {
     name: "YouTube",
     icon: YouTubeIcon,
-    url: "https://www.youtube.com/@almujaofficial",
+    url: "https://www.youtube.com/@almujamusic",
     color: "#FF0000",
   },
   {
     name: "YouTube Music",
     icon: YouTubeIcon,
-    url: "https://music.youtube.com/@almujaofficial",
+    url: "https://music.youtube.com/@almujamusic",
     color: "#FF0000",
   },
   {
@@ -239,6 +239,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
         {t.artistStory && (
           <div className="mb-16">
             <button
+              type="button"
               onClick={() => setShowStory(!showStory)}
               className="w-full flex items-center justify-between p-5 rounded-2xl bg-card/30 backdrop-blur-sm hover:bg-card/50 hover:shadow-md transition-all duration-300 group"
             >
@@ -380,6 +381,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
 
           <div className="flex gap-2 mb-6">
             <button
+              type="button"
               onClick={() => setActiveTab("kakashi")}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                 activeTab === "kakashi"
@@ -391,6 +393,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
               <span className="text-[10px] opacity-50">2022</span>
             </button>
             <button
+              type="button"
               onClick={() => setActiveTab("rockstar")}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                 activeTab === "rockstar"
@@ -436,7 +439,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                     {[
                       {
                         label: locale === "ar" ? "يوتيوب" : "YouTube",
-                        url: "https://www.youtube.com/@almujaofficial",
+                        url: "https://www.youtube.com/@almujamusic",
                         icon: YouTubeIcon,
                         color: "#FF0000",
                       },
@@ -516,7 +519,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                       },
                       {
                         label: locale === "ar" ? "يوتيوب" : "YouTube",
-                        url: "https://www.youtube.com/@almujaofficial",
+                        url: "https://www.youtube.com/@almujamusic",
                         icon: YouTubeIcon,
                         color: "#FF0000",
                       },
@@ -606,11 +609,11 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                         ? "Rockstar — Audio Officiel"
                         : "Rockstar — Official Audio"}
                   </h3>
-                  <p className="text-sm text-foreground/40">@almujaofficial</p>
+                  <p className="text-sm text-foreground/40">@almujamusic</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="https://www.youtube.com/@almujaofficial"
+                    href="https://www.youtube.com/@almujamusic"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 font-medium text-sm transition-all duration-300 hover:scale-[1.02]"
@@ -654,10 +657,10 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   <h3 className="text-lg font-bold text-foreground">
                     YouTube Music
                   </h3>
-                  <p className="text-sm text-foreground/40">@almujaofficial</p>
+                  <p className="text-sm text-foreground/40">@almujamusic</p>
                 </div>
                 <a
-                  href="https://music.youtube.com/@almujaofficial"
+                  href="https://music.youtube.com/@almujamusic"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ms-auto inline-flex items-center gap-1.5 text-sm text-red-400 hover:text-red-300 font-medium transition-colors"

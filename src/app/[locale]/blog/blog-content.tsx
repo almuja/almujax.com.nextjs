@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import Link from "next/link";
+import { ArrowRight, Clock, Pin, Search, Sparkles, X } from "lucide-react";
 import Image from "next/image";
-import { Search, X, Clock, Pin, ArrowRight, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
 interface BlogPost {
   slug: string;
@@ -17,7 +18,7 @@ interface BlogPost {
   featured?: boolean;
 }
 
-const categoryColors: Record<string, string> = {
+const _categoryColors: Record<string, string> = {
   AI: "amber",
   Rust: "orange",
   DevSecOps: "emerald",
@@ -36,7 +37,7 @@ export default function BlogContent({
 }: {
   posts: BlogPost[];
   locale: string;
-  dict: any;
+  dict: Dictionary["blog"];
 }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -85,6 +86,7 @@ export default function BlogContent({
             />
             {searchQuery && (
               <button
+                type="button"
                 onClick={() => setSearchQuery("")}
                 className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg hover:bg-muted text-foreground/30 hover:text-foreground transition-colors"
               >
@@ -96,6 +98,7 @@ export default function BlogContent({
 
         <div className="flex flex-wrap gap-2 justify-center">
           <button
+            type="button"
             onClick={() => setActiveCategory(null)}
             className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
               !activeCategory
@@ -108,6 +111,7 @@ export default function BlogContent({
           {categories.map(([cat, count]) => (
             <button
               key={cat}
+              type="button"
               onClick={() =>
                 setActiveCategory(activeCategory === cat ? null : cat)
               }
@@ -126,6 +130,7 @@ export default function BlogContent({
         {hasFilters && (
           <div className="text-center">
             <button
+              type="button"
               onClick={() => {
                 setSearchQuery("");
                 setActiveCategory(null);

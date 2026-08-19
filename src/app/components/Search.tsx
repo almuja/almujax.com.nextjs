@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { Search as SearchIcon } from "lucide-react";
+import { useState } from "react";
 import SearchModal from "./SearchModal";
 import { Button } from "./ui/Button";
 

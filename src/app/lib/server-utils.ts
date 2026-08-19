@@ -3,8 +3,8 @@ export async function readContentFile<T>(
   slug: string,
   parser: (fileContent: string, slug: string) => T,
 ): Promise<T> {
-  const { promises: fs } = await import("fs");
-  const { join } = await import("path");
+  const { promises: fs } = await import("node:fs");
+  const { join } = await import("node:path");
 
   const fullPath = join(
     process.cwd(),

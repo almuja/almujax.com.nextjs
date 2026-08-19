@@ -299,7 +299,8 @@ const fr = {
     browsePosts: "Parcourir",
   },
   projects: {
-    title: "Projets | Almuja (Mujahid Siyam) — Open Source & Outils Développeur",
+    title:
+      "Projets | Almuja (Mujahid Siyam) — Open Source & Outils Développeur",
     description:
       "Projets open source et contributions de Mujahid Siyam (Almuja). Outils développeur, configurations NixOS, utilitaires IA, automatisation d'infrastructure et expérimentations créatives.",
     backToProjects: "Retour aux projets",

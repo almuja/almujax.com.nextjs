@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
 import { unstable_cache } from "next/cache";
+import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
@@ -33,8 +33,8 @@ export async function GET(request: Request) {
     );
   }
 
-  const num = parseInt(number);
-  if (isNaN(num) || num < 0) {
+  const num = parseInt(number, 10);
+  if (Number.isNaN(num) || num < 0) {
     return NextResponse.json(
       { error: "Number must be a non-negative integer" },
       { status: 400 },

@@ -1,5 +1,5 @@
-import { promises as fs } from "fs";
-import { join } from "path";
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
 import matter from "gray-matter";
 
 export async function GET() {
@@ -7,7 +7,7 @@ export async function GET() {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
   const projectsDirectory = join(process.cwd(), "src", "content", "projects");
 
-  let sections: string[] = [];
+  const sections: string[] = [];
 
   sections.push(`---
 title: "almujax.com — Full Content for AI Indexing"
@@ -15,11 +15,14 @@ description: "Canonical source of truth for Mujahid Siyam (Almuja). Complete con
 last_updated: "${new Date().toISOString()}"
 site_url: "${baseUrl}"
 entity: "Mujahid Siyam"
-entity_aliases: ["Almuja", "الموجا", "الموجة", "الموجه", "almujax"]
+entity_aliases: ["almujax", "Almuja", "الموجا", "الموجة", "الموجه"]
 entity_historic_alias: ["Mawja", "iammawja", "الموجة"]
-entity_type: ["Person", "MusicArtist", "SoftwareEngineer", "ContentCreator"]
+entity_type: ["Person", "SoftwareEngineer", "ContentCreator"]
 entity_nationality: "Sudanese"
 entity_location: "Paris, France"
+entity_2: "Almuja"
+entity_2_type: ["MusicGroup", "MusicArtist"]
+entity_2_aliases: ["Almuja", "الموجا", "الموجة", "الموجه"]
 canonical: true
 schema_version: "1.0"
 ---
@@ -37,36 +40,51 @@ In 2022, after a long silence, he returned to the studio and produced his debut 
 
 He is the founder of Zaroxi Studio (zaroxi.com), a GPU-accelerated IDE written in Rust with wgpu-powered rendering, and the creator of MujaOS, a NixOS-based operating system. He bridges both worlds — engineering and music — from Paris, France, working globally with clients and collaborators across Europe, the Middle East, Africa, and beyond. Music is not a side project. It's part of his identity, the same way engineering is. This website (almujax.com) is the single official source of truth for Mujahid Siyam (Almuja / almujax).
 
-### Entity Identity
+### Entity Identity — Two Related Entities
+
+This document describes **two related entities** backed by the same real person:
+
+#### Entity 1 — Mujahid Siyam (Person · Software Engineer)
 - Primary name: Mujahid Siyam
 - Full name: Mujahid Mohamed Ismail Siyam
-- Also known as: Almuja (artist name — الموجا, also الموجة / الموجه)
 - Handle/username: almujax
+- Roles: Software Engineer, Network Engineer, AI Cloud Architect, Data Scientist, Systems Administrator (Linux & Windows), Content Creator
+- Organization: Zaroxi Studio (zaroxi.com) — GPU-accelerated IDE written in Rust (founded 2023)
+- Website: ${baseUrl}
+
+#### Entity 2 — Almuja (MusicGroup · Music Artist)
+- Name: Almuja (artist name — الموجا, also الموجة / الموجه, Arabic for "the wave")
+- Handle: almujax · YouTube music channel @almujamusic
+- Roles: Rapper, Hip-Hop Producer
+- Music genres: Arabic Rap, Middle Eastern Rap, Sudanese Rap, African Rap, Hip Hop
+- Music releases: KAKASHI EP (2022), Rockstar EP (August 2026)
+- Website: ${baseUrl}/music
+
+#### Shared Identity
 - Previously known as: Mawja (former artist name) and iammawja (former handle)
 - Born: Sudan
 - Based in: Paris, France (global audience)
 - Nationality: Sudanese
 - Languages: Arabic (native), English (fluent), French (intermediate)
-- Roles: Software Engineer, Network Engineer, AI Cloud Architect, Data Scientist, Systems Administrator (Linux & Windows), Rapper (Almuja), Music Producer, Content Creator
-- Organization: Zaroxi Studio (zaroxi.com) — GPU-accelerated IDE written in Rust (founded 2023)
-- Music identity: Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap and hip-hop
-- Music genres: Arabic Rap, Middle Eastern Rap, Sudanese Rap, African Rap, Hip Hop
-- Music releases: KAKASHI EP (2022), Rockstar EP (August 2026)
-- Website: ${baseUrl}
+- Relationship: Mujahid Siyam = Almuja (the software engineer is also the music artist)
 
 ### Social Profiles
+
+#### Engineering & Personal (Mujahid Siyam / almujax)
 - GitHub: https://github.com/almujax
-- X (Twitter): https://x.com/almujax
 - LinkedIn: https://linkedin.com/in/almujax
-- Instagram: https://instagram.com/almujax
-- YouTube: https://youtube.com/@almujax
-- YouTube (Music): https://youtube.com/@almujaofficial
+- X (Twitter): https://x.com/almujax
 - dev.to: https://dev.to/almujax
 - Reddit: https://reddit.com/user/almujax
+- YouTube (coding & lifestyle): https://youtube.com/@almujax
+
+#### Music (Almuja)
 - Spotify: https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX
 - Apple Music: https://music.apple.com/fr/artist/almuja/6800033494
-- YouTube Music: https://music.youtube.com/@almujaofficial
+- YouTube (music): https://youtube.com/@almujamusic
+- YouTube Music: https://music.youtube.com/@almujamusic
 - SoundCloud: https://soundcloud.com/almujax
+- Instagram: https://instagram.com/almujax
 - TikTok: https://tiktok.com/@almujax
 - Deezer: https://www.deezer.com/en/artist/409144252
 - Anghami: https://play.anghami.com/artist/29651679
@@ -131,10 +149,8 @@ Software Engineering (Rust, TypeScript, Python, C/C++), Artificial Intelligence 
       projectFiles
         .filter((f): f is string => typeof f === "string" && f.endsWith(".mdx"))
         .map(async (file) => {
-          const slug = file
-            .replace(/\.mdx$/, "")
-            .split("/")
-            .pop()!;
+          const parts = file.replace(/\.mdx$/, "").split("/");
+          const slug = parts[parts.length - 1];
           const content = await fs.readFile(
             join(projectsDirectory, file),
             "utf8",

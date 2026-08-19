@@ -1,5 +1,5 @@
-import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import type { NextConfig } from "next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
@@ -87,6 +87,16 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],
+    localPatterns: [
+      {
+        pathname: "/img/**",
+        search: "",
+      },
+      {
+        pathname: "/img/**",
+        search: "?v=3",
+      },
+    ],
     remotePatterns: [
       {
         protocol: "https",

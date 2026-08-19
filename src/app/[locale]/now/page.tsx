@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getDictionary } from "@/i18n/get-dictionary";
-import { locales, type Locale } from "@/i18n/config";
+import { type Locale, locales } from "@/i18n/config";
 import { BreadcrumbStructuredData } from "../../components/BreadcrumbJsonLd";
 
 export async function generateMetadata({

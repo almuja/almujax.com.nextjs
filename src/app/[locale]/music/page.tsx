@@ -1,9 +1,9 @@
-import { MusicContent } from "./MusicContent";
+import type { Metadata } from "next";
+import { type Locale, locales } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
 import { BreadcrumbStructuredData } from "../../components/BreadcrumbJsonLd";
 import { MusicArtistStructuredData } from "../../components/StructuredData";
-import type { Metadata } from "next";
-import { getDictionary } from "@/i18n/get-dictionary";
-import { locales, type Locale } from "@/i18n/config";
+import { MusicContent } from "./MusicContent";
 
 export async function generateMetadata({
   params,
@@ -23,7 +23,7 @@ export async function generateMetadata({
       ...t.seo.keywords,
       "rapper",
       "almuja",
-      "almujaofficial",
+      "almujax",
       "rapper",
       "album",
       "single",

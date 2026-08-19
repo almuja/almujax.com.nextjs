@@ -3,8 +3,9 @@ const BASE_URL = "https://almujax.com";
 
 const SEARCH_ENGINES = [
   "https://www.bing.com/indexnow",
-  "https://indexnow.yandex.com/indexnow",
+  "https://yandex.com/indexnow",
   "https://indexnow.seznam.cz/indexnow",
+  "https://api.indexnow.org/indexnow",
 ];
 
 async function notifyIndexNow(urls: string[]) {
@@ -37,20 +38,6 @@ async function notifyIndexNow(urls: string[]) {
   return results;
 }
 
-async function pingGoogle() {
-  try {
-    await fetch(
-      `https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`,
-      {
-        signal: AbortSignal.timeout(10000),
-      },
-    );
-    return true;
-  } catch {
-    return false;
-  }
-}
-
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const key = searchParams.get("key");
@@ -65,7 +52,6 @@ export async function GET(request: Request) {
   }
 
   const results = await notifyIndexNow([url]);
-  await pingGoogle();
 
   return Response.json({ success: true, submitted: [url], results });
 }
@@ -84,12 +70,10 @@ export async function POST(request: Request) {
     }
 
     const results = await notifyIndexNow(urls);
-    const googleOk = await pingGoogle();
 
     return Response.json({
       success: true,
       submitted: urls.length,
-      google: googleOk ? "pinged" : "failed",
       results,
     });
   } catch {

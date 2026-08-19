@@ -1,9 +1,9 @@
-import { promises as fs } from "fs";
-import { join } from "path";
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
 import matter from "gray-matter";
 import type { Metadata } from "next";
-import { getDictionary } from "@/i18n/get-dictionary";
-import { locales, type Locale } from "@/i18n/config";
+import { type Locale, locales } from "@/i18n/config";
+import { type Dictionary, getDictionary } from "@/i18n/get-dictionary";
 import BlogContent from "./blog-content";
 
 export async function generateMetadata({
@@ -45,14 +45,14 @@ interface BlogPost {
   featured?: boolean;
 }
 
-function calculateReadingTime(content: string, t: any): string {
+function calculateReadingTime(content: string, t: Dictionary): string {
   const wordsPerMinute = 200;
   const words = content.split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
   return `${minutes} ${t.blog.minRead}`;
 }
 
-async function getBlogPosts(t: any): Promise<BlogPost[]> {
+async function getBlogPosts(t: Dictionary): Promise<BlogPost[]> {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
   try {
     const files = await fs.readdir(blogDirectory);

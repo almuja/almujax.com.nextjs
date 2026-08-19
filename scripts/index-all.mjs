@@ -1,8 +1,19 @@
 #!/usr/bin/env node
 
 /**
- * Submit all site URLs to search engines for indexing.
+ * Submit all site URLs to search engines via IndexNow.
  * Run after deployment: node scripts/index-all.mjs
+ *
+ * Notes:
+ * - Google's sitemap "ping" endpoint (google.com/ping) was deprecated in 2023,
+ *   and Bing's legacy SubmitSitemap API is retired. Both engines now discover
+ *   updates through the sitemap referenced in robots.txt and their Webmaster
+ *   consoles, so neither is pinged here.
+ * - IndexNow is the supported programmatic protocol for Bing, Yandex, Seznam,
+ *   and Naver. The generic api.indexnow.org endpoint forwards to all of them.
+ * - Submissions are accepted (200/202) only after the search engine verifies
+ *   the key file at https://almujax.com/<KEY>.txt. A 403 means the key has not
+ *   been verified yet — make sure the site is live before running this script.
  */
 
 const BASE_URL = "https://almujax.com";
@@ -66,77 +77,55 @@ urls.push(`${BASE_URL}/sitemap.xml`);
 urls.push(`${BASE_URL}/feed.xml`);
 urls.push(`${BASE_URL}/atom.xml`);
 
+const indexNowEndpoints = [
+  "https://www.bing.com/indexnow",
+  "https://yandex.com/indexnow",
+  "https://indexnow.seznam.cz/indexnow",
+  "https://api.indexnow.org/indexnow",
+];
+
+async function submitBatch(endpoint, batch) {
+  const name = new URL(endpoint).hostname;
+  try {
+    const r = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        host: "almujax.com",
+        key: INDEXNOW_KEY,
+        keyLocation: `${BASE_URL}/${INDEXNOW_KEY}.txt`,
+        urlList: batch,
+      }),
+      signal: AbortSignal.timeout(15000),
+    });
+    const ok = r.status === 200 || r.status === 202;
+    console.log(
+      `${ok ? "✅" : "⚠️ "} IndexNow ${name}: ${r.status} ${r.statusText} (${batch.length} URLs)`,
+    );
+  } catch (e) {
+    console.log(
+      `❌ IndexNow ${name}: ${e instanceof Error ? e.message : "failed"}`,
+    );
+  }
+}
+
 async function main() {
-  console.log(`\n🔍 Indexing ${urls.length} URLs across all locales...\n`);
-
-  // 1. Google Sitemap Ping
-  try {
-    const googleUrl = `https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`;
-    const r = await fetch(googleUrl, { signal: AbortSignal.timeout(10000) });
-    console.log(`✅ Google: ${r.status} ${r.statusText}`);
-  } catch (e) {
-    console.log(`❌ Google: ${e instanceof Error ? e.message : "failed"}`);
-  }
-
-  // 2. Bing Sitemap Submission
-  try {
-    const bingUrl = `https://ssl.bing.com/webmaster/api.svc/pox/SubmitSitemap?apikey=&siteUrl=${encodeURIComponent(BASE_URL)}&sitemapUrl=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`;
-    const r = await fetch(bingUrl, { signal: AbortSignal.timeout(10000) });
-    console.log(`✅ Bing: ${r.status} ${r.statusText}`);
-  } catch (e) {
-    console.log(`⚠️  Bing: requires API key — use Bing Webmaster Tools`);
-  }
-
-  // 3. IndexNow — submit to Bing, Yandex, Seznam
-  const indexNowEndpoints = [
-    "https://www.bing.com/indexnow",
-    "https://indexnow.yandex.com/indexnow",
-    "https://indexnow.seznam.cz/indexnow",
-  ];
+  console.log(`\n🔍 Submitting ${urls.length} URLs via IndexNow...\n`);
 
   // Submit in batches of 100 (IndexNow limit)
   for (let i = 0; i < urls.length; i += 100) {
     const batch = urls.slice(i, i + 100);
-    for (const endpoint of indexNowEndpoints) {
-      try {
-        const r = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            host: "almujax.com",
-            key: INDEXNOW_KEY,
-            keyLocation: `${BASE_URL}/${INDEXNOW_KEY}.txt`,
-            urlList: batch,
-          }),
-          signal: AbortSignal.timeout(15000),
-        });
-        const name = new URL(endpoint).hostname;
-        console.log(`✅ IndexNow ${name}: ${r.status} (${batch.length} URLs)`);
-      } catch (e) {
-        const name = new URL(endpoint).hostname;
-        console.log(
-          `❌ IndexNow ${name}: ${e instanceof Error ? e.message : "failed"}`,
-        );
-      }
-    }
+    await Promise.all(
+      indexNowEndpoints.map((endpoint) => submitBatch(endpoint, batch)),
+    );
   }
 
-  // 4. Yandex (direct ping)
-  try {
-    const yandexUrls = [
-      `https://webmaster.yandex.com/ping?sitemap=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`,
-      `https://webmaster.yandex.ru/ping?sitemap=${encodeURIComponent(`${BASE_URL}/sitemap.xml`)}`,
-    ];
-    for (const yu of yandexUrls) {
-      const r = await fetch(yu, { signal: AbortSignal.timeout(10000) });
-      console.log(`✅ Yandex ping: ${r.status}`);
-    }
-  } catch (e) {
-    console.log(`⚠️  Yandex ping: ${e instanceof Error ? e.message : "failed"}`);
-  }
-
-  console.log(`\n🎯 Done! ${urls.length} URLs submitted for indexing.\n`);
-  console.log("   Manual steps:");
+  console.log(`\n🎯 Done! ${urls.length} URLs submitted via IndexNow.\n`);
+  console.log("   If any engine returned 403, its key is not verified yet.");
+  console.log(
+    `   Verify the key file is live at ${BASE_URL}/${INDEXNOW_KEY}.txt and resubmit.`,
+  );
+  console.log("\n   Manual steps:");
   console.log(
     "   1. Submit sitemap in Google Search Console: https://search.google.com/search-console",
   );

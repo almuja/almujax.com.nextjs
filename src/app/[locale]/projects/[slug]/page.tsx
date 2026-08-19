@@ -1,16 +1,16 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { promises as fs } from "fs";
-import { join } from "path";
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
 import matter from "gray-matter";
-import { Code2, ExternalLink, ArrowLeft, Clock, Tag } from "lucide-react";
-import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
-import { SoftwareSourceCodeStructuredData } from "../../../components/StructuredData";
-import { BreadcrumbStructuredData } from "../../../components/BreadcrumbJsonLd";
+import { ArrowLeft, Clock, Code2, ExternalLink, Tag } from "lucide-react";
 import type { Metadata } from "next";
-import { locales, type Locale } from "@/i18n/config";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { type Locale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { compileMdx } from "@/lib/mdx-compiler";
+import { BreadcrumbStructuredData } from "../../../components/BreadcrumbJsonLd";
+import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
+import { SoftwareSourceCodeStructuredData } from "../../../components/StructuredData";
 
 export const revalidate = 60;
 
@@ -35,8 +35,8 @@ async function findProjectFile(slug: string): Promise<string | null> {
         if (
           file
             .split("/")
-            .pop()!
-            .replace(/\.mdx$/, "") === slug
+            .pop()
+            ?.replace(/\.mdx$/, "") === slug
         )
           return join(dir, file);
       }
@@ -299,8 +299,8 @@ export async function generateStaticParams() {
       .map((f) => ({
         slug: f
           .split("/")
-          .pop()!
-          .replace(/\.mdx$/, ""),
+          .pop()
+          ?.replace(/\.mdx$/, ""),
       }));
   } catch {
     return [];

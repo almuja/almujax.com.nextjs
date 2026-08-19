@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Send, ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle, Send } from "lucide-react";
+import { type ComponentType, useState } from "react";
 import { submitContactForm } from "../../actions/contact";
 
 /* -- brand icons -- */
@@ -202,7 +202,7 @@ export default function ContactForm({ locale, t }: ContactFormProps) {
 
               <div className="space-y-2">
                 {contactLinks.map((l) => {
-                  const LI = l.icon as any;
+                  const LI = l.icon as ComponentType<{ className?: string }>;
                   return (
                     <a
                       key={l.label}

@@ -1,15 +1,15 @@
 "use client";
 
-import { Card, CardContent, CardFooter, CardHeader } from "./Card";
-import { cn } from "../../lib/utils";
 import {
-  Star,
-  GitFork,
-  Eye,
   Calendar,
-  ExternalLink,
   Code2,
+  ExternalLink,
+  Eye,
+  GitFork,
+  Star,
 } from "lucide-react";
+import { cn } from "../../lib/utils";
+import { Card, CardContent, CardFooter, CardHeader } from "./Card";
 
 interface GitHubProjectCardProps {
   title: string;

@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -179,10 +179,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: [
-      "https://almujax.com/sitemap.xml",
-      "https://almujax.com/geo.kml",
-    ],
+    sitemap: ["https://almujax.com/sitemap.xml"],
     host: "https://almujax.com",
   };
 }

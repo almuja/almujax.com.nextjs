@@ -2,18 +2,14 @@
 
 import { usePathname } from "next/navigation";
 
-interface HreflangLinksProps {
-  locale: string;
-}
-
-export default function HreflangLinks({ locale }: HreflangLinksProps) {
+export default function HreflangLinks() {
   const pathname = usePathname();
   const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "");
 
   const locales = {
-    en: "https://almujax.com/en" + pathWithoutLocale,
-    ar: "https://almujax.com/ar" + pathWithoutLocale,
-    fr: "https://almujax.com/fr" + pathWithoutLocale,
+    en: `https://almujax.com/en${pathWithoutLocale}`,
+    ar: `https://almujax.com/ar${pathWithoutLocale}`,
+    fr: `https://almujax.com/fr${pathWithoutLocale}`,
   };
 
   return (
@@ -24,7 +20,7 @@ export default function HreflangLinks({ locale }: HreflangLinksProps) {
       <link
         rel="alternate"
         hrefLang="x-default"
-        href={"https://almujax.com/en" + pathWithoutLocale}
+        href={`https://almujax.com/en${pathWithoutLocale}`}
       />
     </>
   );

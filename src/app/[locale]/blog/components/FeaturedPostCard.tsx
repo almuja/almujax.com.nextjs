@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { ArrowRight, Calendar, Clock, Star } from "lucide-react";
 import Image from "next/image";
-import { Calendar, Clock, Star, ArrowRight } from "lucide-react";
-import { BlogPost } from "../lib/utils";
+import Link from "next/link";
+import type { BlogPost } from "../lib/utils";
 
 interface FeaturedPostCardProps {
   post: BlogPost;
@@ -46,10 +46,11 @@ export function FeaturedPostCard({
           <div className="absolute top-4 left-4 flex flex-wrap gap-2">
             {post.category && (
               <button
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  onCategoryClick?.(post.category!);
+                  if (post.category) onCategoryClick?.(post.category);
                 }}
                 className="inline-flex items-center px-3 py-1.5 bg-primary text-white text-xs font-medium rounded-full hover:bg-primary-dark transition-all duration-300 hover:scale-105 backdrop-blur-sm"
               >

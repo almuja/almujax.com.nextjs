@@ -1,6 +1,7 @@
 "use client";
 
 import { Globe, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 const GithubIcon = () => (
   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -50,10 +51,11 @@ export default function Author({
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 via-purple-500/30 to-secondary/30 blur-md opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
             <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 shadow-lg">
-              <img
+              <Image
                 src={image || "/img/profile.png?v=3"}
                 alt={name}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           </div>

@@ -7,8 +7,10 @@ export function PersonStructuredData() {
     additionalName: "Almuja",
     alternateName: ["almujax", "Almuja", "الموجا", "الموجة", "الموجه"],
     url: "https://almujax.com",
+    image: "https://almujax.com/img/profile.png?v=3",
+    email: "hello@almujax.com",
     description:
-      "Mujahid Siyam, known as Almuja (الموجا, also spelt الموجة/الموجه — Arabic for 'the wave'), online handle almujax. Sudanese new things engineer, AI cloud architect, rapper, music producer, and content creator born in Sudan and based in Paris, France. He started making music at age 16 in Sudan, forming bands and performing before ever touching a computer. After relocating to France, he transitioned into software engineering, AI engineering, cloud architecture, and systems administration, building production systems with Rust, TypeScript, Python and managing infrastructure with Terraform, Ansible, Docker, Kubernetes on AWS. He administers Linux and Windows servers and works with PostgreSQL, MySQL, MongoDB, and Redis. In 2022, after a long silence, he returned to music production and released his debut EP KAKASHI under the name Almuja — a raw, honest project marking the beginning of his return. His next EP Rockstar is scheduled for August 2026, representing a bigger, more focused chapter. His music spans Arabic, Middle Eastern, and African rap and hip-hop, blending his Sudanese roots with his life in Europe. He is the founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust, and the creator of MujaOS, a NixOS-based operating system. He bridges both worlds — engineering and music — from Paris. His universal handle across all platforms is almujax. Contact: hello@almujax.com.",
+      "Mujahid Siyam, known as Almuja (الموجا, also spelt الموجة/الموجه — Arabic for 'the wave'), online handle almujax. Sudanese software engineer, network engineer, AI cloud architect, data scientist, systems administrator (Linux and Windows), rapper, music producer, and content creator born in Sudan and based in Paris, France. He started making music at age 16 in Sudan, forming bands and performing before ever touching a computer. After relocating to France, he transitioned into software engineering, AI engineering, cloud architecture, and systems administration, building production systems with Rust, TypeScript, and Python and managing infrastructure with Terraform, Ansible, Docker, and Kubernetes on AWS. He administers Linux and Windows servers and works with PostgreSQL, MySQL, MongoDB, and Redis. In 2022, after a long silence, he returned to music production and released his debut EP KAKASHI under the name Almuja — a raw, honest project marking the beginning of his return. His next EP Rockstar is scheduled for August 2026, representing a bigger, more focused chapter. His music spans Arabic, Middle Eastern, and African rap and hip-hop, blending his Sudanese roots with his life in Europe. He is the founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust, and the creator of MujaOS, a NixOS-based operating system. He bridges both worlds — engineering and music — from Paris, France. His universal handle across all platforms is almujax. Contact: hello@almujax.com.",
     birthPlace: { "@type": "Country", name: "Sudan" },
     homeLocation: {
       "@type": "Place",
@@ -25,7 +27,7 @@ export function PersonStructuredData() {
       "AI Cloud Architect",
       "Data Scientist",
       "System Administrator",
-      "Music Artist",
+      "Rapper",
       "Music Producer",
       "Content Creator",
     ],
@@ -38,6 +40,8 @@ export function PersonStructuredData() {
       "Linux Administration",
       "Windows Server Administration",
       "Rust Programming",
+      "DevSecOps",
+      "Infrastructure as Code",
       "Music Production",
       "Hip-Hop",
       "Rap Music",
@@ -51,105 +55,25 @@ export function PersonStructuredData() {
       name: "Zaroxi Studio",
       url: "https://zaroxi.com",
     },
-    sameAs: [
-      "https://github.com/almujax",
-      "https://linkedin.com/in/almujax",
-      "https://dev.to/almujax",
-      "https://reddit.com/user/almujax",
-      "https://instagram.com/almujax",
-      "https://youtube.com/@almujax",
-      "https://twitter.com/almujax",
-      "https://soundcloud.com/almujax",
-      "https://tiktok.com/@almujax",
-      "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
-      "https://music.apple.com/fr/artist/almuja/6800033494",
-      "https://music.youtube.com/@almujaofficial",
-      "https://www.deezer.com/en/artist/409144252",
-      "https://play.anghami.com/artist/29651679",
-      "https://almujax.bandcamp.com",
-      "https://tidal.com/browse/artist/almujax",
-      "https://music.amazon.fr/artists/B0HDMF43R7",
-      "https://www.pandora.com/artist/almujax",
-    ],
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
-}
-
-export function ArtistPersonStructuredData() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://almujax.com/#artist",
-    name: "Almuja",
-    additionalName: "Mujahid Siyam",
-    alternateName: [
-      "almujax",
-      "Almuja",
-      "الموجا",
-      "الموجة",
-      "الموجه",
-      "Mujahid Siyam",
-    ],
-    url: "https://almujax.com/music",
-    description:
-      "Almuja (الموجا, also spelled الموجة / الموجه — Arabic for 'the wave') is the artist stage name of Mujahid Siyam. Sudanese rapper and hip-hop producer creating Arabic, Middle Eastern, and African rap. Debut EP KAKASHI (2022). Next EP Rockstar coming August 2026.",
-    birthPlace: { "@type": "Country", name: "Sudan" },
-    homeLocation: {
-      "@type": "Place",
-      name: "Paris, France",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Paris",
-        addressCountry: "FR",
-      },
-    },
-    jobTitle: ["Rapper", "Hip-Hop Producer", "Music Artist"],
-    knowsAbout: [
-      "Arabic Rap",
-      "Middle Eastern Rap",
-      "Sudanese Rap",
-      "African Rap",
-      "Hip-Hop",
-      "Music Production",
-    ],
-    genre: [
-      "Arabic Rap",
-      "Middle Eastern Rap",
-      "Sudanese Rap",
-      "African Rap",
-      "Hip Hop",
-    ],
-    knowsLanguage: ["ar", "en", "fr"],
-    nationality: { "@type": "Country", name: "Sudan" },
-    sameAs: [
-      "https://instagram.com/almujax",
-      "https://youtube.com/@almujaofficial",
-      "https://youtube.com/@almujax",
-      "https://twitter.com/almujax",
-      "https://soundcloud.com/almujax",
-      "https://tiktok.com/@almujax",
-      "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
-      "https://music.apple.com/fr/artist/almuja/6800033494",
-      "https://music.youtube.com/@almujaofficial",
-      "https://www.deezer.com/en/artist/409144252",
-      "https://play.anghami.com/artist/29651679",
-      "https://almujax.bandcamp.com",
-      "https://tidal.com/browse/artist/almujax",
-      "https://music.amazon.fr/artists/B0HDMF43R7",
-      "https://www.pandora.com/artist/almujax",
-    ],
-    subjectOf: {
+    memberOf: {
       "@type": "MusicGroup",
       "@id": "https://almujax.com/music#artist",
       name: "Almuja",
       url: "https://almujax.com/music",
     },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://almujax.com",
+    },
+    sameAs: [
+      "https://github.com/almujax",
+      "https://linkedin.com/in/almujax",
+      "https://dev.to/almujax",
+      "https://reddit.com/user/almujax",
+      "https://x.com/almujax",
+      "https://twitter.com/almujax",
+      "https://youtube.com/@almujax",
+    ],
   };
 
   return (
@@ -412,9 +336,9 @@ export function MusicArtistStructuredData() {
     "@type": "MusicGroup",
     "@id": "https://almujax.com/music#artist",
     name: "Almuja",
-    alternateName: ["Almuja", "الموجا", "الموجة", "الموجه"],
+    alternateName: ["Almuja", "الموجا", "الموجة", "الموجه", "almujax"],
     description:
-      "Almuja (الموجا, also spelled الموجة / الموجه — meaning 'the wave' in Arabic) is the music artist name of Mujahid Siyam — Sudanese rapper and hip-hop producer based in Paris, France. Creating Arabic, Middle Eastern, and African rap and hip-hop. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
+      "Almuja (الموجا, also spelled الموجة / الموجه — meaning 'the wave' in Arabic) is the music artist project of Mujahid Siyam — a Sudanese rapper and hip-hop producer based in Paris, France, creating Arabic, Middle Eastern, and African rap. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
     url: "https://almujax.com/music",
     image: "https://almujax.com/img/profile.png?v=3",
     foundingDate: "2022",
@@ -445,23 +369,32 @@ export function MusicArtistStructuredData() {
         url: "https://almujax.com/music",
       },
     ],
-    sameAs: [
-      "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
-      "https://soundcloud.com/almujax",
-      "https://youtube.com/@almujaofficial",
-      "https://music.youtube.com/@almujaofficial",
-      "https://instagram.com/almujax",
-      "https://tiktok.com/@almujax",
-      // Spotify Artist, Apple Music Artist, Anghami, Deezer, and Tidal artist profile URLs
-      // to be added once those profiles exist after music release.
-    ],
-    founder: {
+    member: {
       "@type": "Person",
       "@id": "https://almujax.com/#person",
       name: "Mujahid Siyam",
       alternateName: ["Almuja", "almujax"],
       url: "https://almujax.com",
     },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://almujax.com/music",
+    },
+    sameAs: [
+      "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
+      "https://music.apple.com/fr/artist/almuja/6800033494",
+      "https://soundcloud.com/almujax",
+      "https://youtube.com/@almujamusic",
+      "https://music.youtube.com/@almujamusic",
+      "https://instagram.com/almujax",
+      "https://tiktok.com/@almujax",
+      "https://www.deezer.com/en/artist/409144252",
+      "https://play.anghami.com/artist/29651679",
+      "https://almujax.bandcamp.com",
+      "https://tidal.com/browse/artist/almujax",
+      "https://music.amazon.fr/artists/B0HDMF43R7",
+      "https://www.pandora.com/artist/almujax",
+    ],
     inLanguage: ["en", "ar", "fr"],
   };
 

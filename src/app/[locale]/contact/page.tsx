@@ -1,5 +1,5 @@
+import { type Locale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { locales, type Locale } from "@/i18n/config";
 import ContactForm from "./ContactForm";
 
 export default async function ContactPage({

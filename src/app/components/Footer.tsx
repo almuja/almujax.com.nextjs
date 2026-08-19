@@ -1,10 +1,10 @@
 "use client";
 
+import { ArrowRight, Globe, Heart, Mail, Send } from "lucide-react";
 import Image from "next/image";
-import { Heart, Send, ArrowRight, Mail, Globe } from "lucide-react";
-import { Button } from "./ui/Button";
 import { useState } from "react";
 import { submitContactForm } from "../actions/contact";
+import { Button } from "./ui/Button";
 
 interface FooterProps {
   locale: string;

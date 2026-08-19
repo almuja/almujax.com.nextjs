@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { Search as SearchIcon, Loader2 } from "lucide-react";
+import { Loader2, Search as SearchIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 interface SearchResult {
   title: string;
@@ -164,9 +164,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             <div className="flex-1 overflow-y-auto border-t border-gray-200 dark:border-gray-700">
               {results.length > 0 ? (
                 <div className="py-2">
-                  {results.map((result, index) => (
+                  {results.map((result) => (
                     <button
-                      key={index}
+                      key={result.href}
+                      type="button"
                       onClick={() => handleResultClick(result.href)}
                       className="w-full text-start px-6 py-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 group"
                     >

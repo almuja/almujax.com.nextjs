@@ -1,11 +1,17 @@
-import { NextResponse } from "next/server";
 import { unstable_cache } from "next/cache";
+import { NextResponse } from "next/server";
 
 interface SearchResult {
   title: string;
   description: string;
   href: string;
   type: "blog" | "project" | "page";
+}
+
+interface SearchableItem {
+  title: string;
+  description: string;
+  slug: string;
 }
 
 // Fallback data in case API endpoints fail
@@ -78,11 +84,14 @@ const staticPages: SearchResult[] = [
   },
 ];
 
-async function fetchWithFallback(url: string, fallbackData: any[]) {
+async function fetchWithFallback(
+  url: string,
+  fallbackData: SearchableItem[],
+): Promise<SearchableItem[]> {
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error("Failed to fetch");
-    return await response.json();
+    return (await response.json()) as SearchableItem[];
   } catch (error) {
     console.error(`Failed to fetch from ${url}:`, error);
     return fallbackData;
@@ -102,13 +111,13 @@ const getCachedSearchResults = unstable_cache(
     // Combine all searchable items
     const allItems: SearchResult[] = [
       ...staticPages,
-      ...blogPosts.map((post: any) => ({
+      ...blogPosts.map((post) => ({
         title: post.title,
         description: post.description,
         href: `/blog/${post.slug}`,
         type: "blog" as const,
       })),
-      ...projects.map((project: any) => ({
+      ...projects.map((project) => ({
         title: project.title,
         description: project.description,
         href: `/projects/${project.slug}`,

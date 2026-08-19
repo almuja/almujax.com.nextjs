@@ -1,18 +1,11 @@
-import Link from "next/link";
-import {
-  ExternalLink,
-  Code2,
-  GitFork,
-  Calendar,
-  ArrowRight,
-  Pin,
-  Sparkles,
-} from "lucide-react";
-import { join } from "path";
-import { promises as fs } from "fs";
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
+import { ArrowRight, Code2, GitFork, Pin, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
-import { getDictionary, type Dictionary } from "@/i18n/get-dictionary";
-import { locales, type Locale } from "@/i18n/config";
+import Image from "next/image";
+import Link from "next/link";
+import { type Locale, locales } from "@/i18n/config";
+import { type Dictionary, getDictionary } from "@/i18n/get-dictionary";
 
 export async function generateMetadata({
   params,
@@ -66,10 +59,8 @@ async function getProjects(): Promise<Project[]> {
         .filter((f) => typeof f === "string" && f.endsWith(".mdx"))
         .map(async (file) => {
           try {
-            const slug = file
-              .split("/")
-              .pop()!
-              .replace(/\.mdx$/, "");
+            const parts = file.split("/");
+            const slug = parts[parts.length - 1].replace(/\.mdx$/, "");
             const fileContent = await fs.readFile(
               join(projectsDirectory, file),
               "utf8",
@@ -128,7 +119,7 @@ async function getProjects(): Promise<Project[]> {
                   project.languageColor = value;
                   break;
                 case "forks":
-                  project.forks = parseInt(value) || 0;
+                  project.forks = parseInt(value, 10) || 0;
                   break;
                 case "image":
                   project.image = value;
@@ -286,10 +277,11 @@ function ProjectCard({
         {/* Image or gradient placeholder */}
         <div className="relative aspect-[16/10] overflow-hidden">
           {project.image ? (
-            <img
+            <Image
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
           ) : (
             <div className="relative w-full h-full bg-gradient-to-br from-muted/40 via-muted/20 to-muted/10 flex items-center justify-center overflow-hidden">

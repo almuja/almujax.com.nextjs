@@ -1,18 +1,18 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import { promises as fs } from "fs";
-import { join } from "path";
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
 import matter from "gray-matter";
 import { ArrowLeft, Clock } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { type Locale, locales } from "@/i18n/config";
+import { type Dictionary, getDictionary } from "@/i18n/get-dictionary";
+import { compileMdx } from "@/lib/mdx-compiler";
 import Author from "../../../components/Author";
+import { BreadcrumbStructuredData } from "../../../components/BreadcrumbJsonLd";
 import ClientMDXRenderer from "../../../components/ClientMDXRenderer";
 import { ArticleStructuredData } from "../../../components/StructuredData";
-import { BreadcrumbStructuredData } from "../../../components/BreadcrumbJsonLd";
-import type { Metadata } from "next";
-import { locales, type Locale } from "@/i18n/config";
-import { getDictionary } from "@/i18n/get-dictionary";
-import { compileMdx } from "@/lib/mdx-compiler";
 
 export const revalidate = 60;
 
@@ -35,7 +35,7 @@ interface AuthorData {
   };
 }
 
-async function getBlogPosts(_dict?: any) {
+async function getBlogPosts() {
   const blogDirectory = join(process.cwd(), "src", "content", "blog");
 
   try {
@@ -403,9 +403,9 @@ async function PostNavigation({
 }: {
   currentSlug: string;
   locale: string;
-  dict: any;
+  dict: Dictionary;
 }) {
-  const posts = await getBlogPosts(dict);
+  const posts = await getBlogPosts();
   const currentIndex = posts.findIndex((post) => post.slug === currentSlug);
 
   if (currentIndex === -1) return null;
@@ -525,9 +525,9 @@ async function RelatedPosts({
   currentSlug: string;
   category?: string;
   locale: string;
-  dict: any;
+  dict: Dictionary;
 }) {
-  const posts = await getBlogPosts(dict);
+  const posts = await getBlogPosts();
   const relatedPosts = posts
     .filter((post) => post.slug !== currentSlug && post.category === category)
     .slice(0, 3);

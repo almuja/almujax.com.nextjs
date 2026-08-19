@@ -1,8 +1,7 @@
 "use client";
 
 import { Search, X } from "lucide-react";
-import { useState } from "react";
-import { BlogPost } from "../lib/utils";
+import type { BlogPost } from "../lib/utils";
 
 interface SearchAndFiltersProps {
   searchQuery: string;
@@ -27,7 +26,11 @@ export function SearchAndFilters({
     ...new Set(posts.map((post) => post.category).filter(Boolean)),
   ] as string[];
   const tags = new Set<string>();
-  posts.forEach((post) => post.tags?.forEach((tag) => tags.add(tag)));
+  posts.forEach((post) => {
+    post.tags?.forEach((tag) => {
+      tags.add(tag);
+    });
+  });
   const allTags = Array.from(tags);
 
   const hasActiveFilters = searchQuery || selectedCategory || selectedTag;
@@ -53,6 +56,7 @@ export function SearchAndFilters({
           />
           {searchQuery && (
             <button
+              type="button"
               onClick={() => onSearchChange("")}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
             >
@@ -73,6 +77,7 @@ export function SearchAndFilters({
               <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary text-white text-xs rounded-full">
                 #{selectedTag}
                 <button
+                  type="button"
                   onClick={() => onTagChange(null)}
                   className="hover:bg-white/20 rounded"
                 >
@@ -84,6 +89,7 @@ export function SearchAndFilters({
               <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary text-white text-xs rounded-full">
                 {selectedCategory}
                 <button
+                  type="button"
                   onClick={() => onCategoryChange(null)}
                   className="hover:bg-white/20 rounded"
                 >
@@ -95,6 +101,7 @@ export function SearchAndFilters({
               <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary text-white text-xs rounded-full">
                 "{searchQuery}"
                 <button
+                  type="button"
                   onClick={() => onSearchChange("")}
                   className="hover:bg-white/20 rounded"
                 >
@@ -103,6 +110,7 @@ export function SearchAndFilters({
               </span>
             )}
             <button
+              type="button"
               onClick={clearAllFilters}
               className="text-xs text-primary hover:text-primary-dark ml-2"
             >
@@ -115,6 +123,7 @@ export function SearchAndFilters({
       {/* Categories */}
       <div className="flex flex-wrap gap-3 justify-center">
         <button
+          type="button"
           onClick={() => {
             onCategoryChange(null);
             onTagChange(null);
@@ -131,6 +140,7 @@ export function SearchAndFilters({
         {categories.map((category) => (
           <button
             key={category}
+            type="button"
             onClick={() => {
               onCategoryChange(category);
               onTagChange(null);
@@ -154,6 +164,7 @@ export function SearchAndFilters({
           {allTags.map((tag) => (
             <button
               key={tag}
+              type="button"
               onClick={() => {
                 onTagChange(tag);
                 onCategoryChange(null);

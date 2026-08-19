@@ -1,7 +1,7 @@
-import { MetadataRoute } from "next";
-import { join } from "path";
-import { promises as fs } from "fs";
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
 import matter from "gray-matter";
+import type { MetadataRoute } from "next";
 
 const baseUrl = "https://almujax.com";
 const locales = ["en", "ar", "fr"];
@@ -69,10 +69,8 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
             typeof file === "string" && file.endsWith(".mdx"),
         )
         .map(async (file) => {
-          const slug = file
-            .replace(/\.mdx$/, "")
-            .split("/")
-            .pop()!;
+          const parts = file.replace(/\.mdx$/, "").split("/");
+          const slug = parts[parts.length - 1];
           const filePath = join(projectsDirectory, file);
           const fileContents = await fs.readFile(filePath, "utf8");
           const { data } = matter(fileContents);

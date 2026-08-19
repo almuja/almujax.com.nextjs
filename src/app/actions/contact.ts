@@ -172,14 +172,15 @@ export async function submitContactForm(formData: FormData) {
       message:
         "Thank you for your message! I have received it and will get back to you within 24 hours.",
     };
-  } catch (error: any) {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
     console.error("Contact form submission error:", error);
 
     // Check for network errors
     if (
-      error.message?.includes("fetch") ||
-      error.message?.includes("network") ||
-      error.message?.includes("connection")
+      message.includes("fetch") ||
+      message.includes("network") ||
+      message.includes("connection")
     ) {
       return {
         success: false,

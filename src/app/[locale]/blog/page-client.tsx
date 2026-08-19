@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import Link from "next/link";
-import { PostCard } from "./components/PostCard";
-import { FeaturedPostCard } from "./components/FeaturedPostCard";
-import { SearchAndFilters } from "./components/SearchAndFilters";
-import { BlogPost, filterPosts } from "./lib/utils";
 import { Star } from "lucide-react";
+import { useMemo, useState } from "react";
+import { FeaturedPostCard } from "./components/FeaturedPostCard";
+import { PostCard } from "./components/PostCard";
+import { SearchAndFilters } from "./components/SearchAndFilters";
+import { type BlogPost, filterPosts } from "./lib/utils";
 
 interface BlogPageProps {
   posts: BlogPost[];
@@ -68,7 +67,7 @@ export default function BlogPageClient({ posts, locale, t }: BlogPageProps) {
   }, [searchQuery, selectedCategory, selectedTag, sortBy, posts]);
 
   const featuredPosts = filteredPosts.filter((post) => post.featured);
-  const regularPosts = filteredPosts.filter((post) => !post.featured);
+  const _regularPosts = filteredPosts.filter((post) => !post.featured);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -119,7 +118,11 @@ export default function BlogPageClient({ posts, locale, t }: BlogPageProps) {
                   <select
                     id="sort"
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
+                    onChange={(e) =>
+                      setSortBy(
+                        e.target.value as "recent" | "popular" | "featured",
+                      )
+                    }
                     className="block w-40 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary appearance-none cursor-pointer"
                   >
                     <option value="recent">{t.mostRecent}</option>
@@ -157,7 +160,11 @@ export default function BlogPageClient({ posts, locale, t }: BlogPageProps) {
                 <select
                   id="sort2"
                   value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
+                  onChange={(e) =>
+                    setSortBy(
+                      e.target.value as "recent" | "popular" | "featured",
+                    )
+                  }
                   className="block w-40 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary appearance-none cursor-pointer"
                 >
                   <option value="recent">{t.mostRecent}</option>
@@ -237,6 +244,7 @@ export default function BlogPageClient({ posts, locale, t }: BlogPageProps) {
                 </div>
                 {(searchQuery || selectedCategory || selectedTag) && (
                   <button
+                    type="button"
                     onClick={() => {
                       setSearchQuery("");
                       setSelectedCategory(null);

@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
-import { getDictionary } from "@/i18n/get-dictionary";
-import { locales, type Locale } from "@/i18n/config";
 import {
-  MapPin,
-  Mail,
-  Globe,
-  Medal,
-  BookOpen,
-  Sparkles,
   ArrowUpRight,
+  BookOpen,
+  Globe,
+  Mail,
+  MapPin,
+  Medal,
+  Sparkles,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
 import { FaqPageStructuredData } from "@/app/components/StructuredData";
+import { type Locale, locales } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
 
 export async function generateMetadata({
   params,
@@ -155,7 +156,7 @@ export default async function AboutPage({
     : "en";
   const t = getDictionary(validLocale);
   const dir = validLocale === "ar" ? "rtl" : "ltr";
-  const isAr = validLocale === "ar";
+  const _isAr = validLocale === "ar";
 
   return (
     <div dir={dir} className="min-h-screen">
@@ -198,11 +199,12 @@ export default async function AboutPage({
             <div className="relative flex-shrink-0">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--color-wave-1)] via-[var(--color-wave-2)] to-[var(--color-wave-3)] blur-2xl opacity-20 animate-pulse-slow" />
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-[var(--color-wave-1)] to-[var(--color-wave-2)] p-[3px] group-hover:scale-[1.03] transition-transform duration-500">
-                <div className="w-full h-full rounded-full overflow-hidden bg-background">
-                  <img
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-background">
+                  <Image
                     src="/img/profile.png?v=3"
                     alt="Almuja"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -280,12 +282,10 @@ export default async function AboutPage({
           {/* ── FAQ ── */}
           <section className="relative rounded-3xl border border-border/20 bg-gradient-to-br from-card/30 via-card/20 to-transparent p-8 sm:p-12 overflow-hidden group hover:border-primary/15 hover:shadow-2xl hover:shadow-primary/[0.03] transition-all duration-700">
             <FaqPageStructuredData
-              questions={(t as any).faq.items.map(
-                (item: { q: string; a: string }) => ({
-                  question: item.q,
-                  answer: item.a,
-                }),
-              )}
+              questions={t.faq.items.map((item) => ({
+                question: item.q,
+                answer: item.a,
+              }))}
             />
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none" />
             <div className="relative">
@@ -295,54 +295,52 @@ export default async function AboutPage({
                 </div>
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/30 mb-0.5">
-                    {(t as any).faq?.heading || "Frequently Asked Questions"}
+                    {t.faq.heading}
                   </p>
                   <div className="w-12 h-[2px] bg-gradient-to-r from-primary/30 to-transparent rounded-full" />
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
-                {(t as any).faq?.items?.map(
-                  (item: { q: string; a: string }, i: number) => {
-                    const accentColors = [
-                      "border-amber-500/10 hover:border-amber-500/25",
-                      "border-violet-500/10 hover:border-violet-500/25",
-                      "border-emerald-500/10 hover:border-emerald-500/25",
-                      "border-sky-500/10 hover:border-sky-500/25",
-                    ];
-                    const glowColors = [
-                      "bg-amber-500/5",
-                      "bg-violet-500/5",
-                      "bg-emerald-500/5",
-                      "bg-sky-500/5",
-                    ];
-                    return (
+                {t.faq.items.map((item, i) => {
+                  const accentColors = [
+                    "border-amber-500/10 hover:border-amber-500/25",
+                    "border-violet-500/10 hover:border-violet-500/25",
+                    "border-emerald-500/10 hover:border-emerald-500/25",
+                    "border-sky-500/10 hover:border-sky-500/25",
+                  ];
+                  const glowColors = [
+                    "bg-amber-500/5",
+                    "bg-violet-500/5",
+                    "bg-emerald-500/5",
+                    "bg-sky-500/5",
+                  ];
+                  return (
+                    <div
+                      key={item.q}
+                      className={`group/faq relative p-6 rounded-2xl border ${accentColors[i]} bg-muted/10 backdrop-blur-sm transition-all duration-700 hover:-translate-y-1 hover:shadow-xl overflow-hidden`}
+                    >
+                      <div className="absolute inset-0 -translate-x-full group-hover/faq:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none" />
                       <div
-                        key={item.q}
-                        className={`group/faq relative p-6 rounded-2xl border ${accentColors[i]} bg-muted/10 backdrop-blur-sm transition-all duration-700 hover:-translate-y-1 hover:shadow-xl overflow-hidden`}
-                      >
-                        <div className="absolute inset-0 -translate-x-full group-hover/faq:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none" />
-                        <div
-                          className={`absolute inset-0 rounded-2xl ${glowColors[i]} opacity-0 group-hover/faq:opacity-100 transition-opacity duration-700`}
-                        />
-                        <div className="relative z-10">
-                          <div className="flex items-start gap-3">
-                            <span className="text-lg font-light opacity-30 group-hover/faq:opacity-60 transition-opacity duration-500 shrink-0 mt-0.5">
-                              {["①", "②", "③", "④"][i]}
-                            </span>
-                            <div className="min-w-0">
-                              <h4 className="text-sm font-bold text-foreground mb-2 group-hover/faq:text-foreground/90 transition-colors duration-300">
-                                {item.q}
-                              </h4>
-                              <p className="text-xs text-foreground/45 leading-relaxed group-hover/faq:text-foreground/50 transition-colors duration-300">
-                                {item.a}
-                              </p>
-                            </div>
+                        className={`absolute inset-0 rounded-2xl ${glowColors[i]} opacity-0 group-hover/faq:opacity-100 transition-opacity duration-700`}
+                      />
+                      <div className="relative z-10">
+                        <div className="flex items-start gap-3">
+                          <span className="text-lg font-light opacity-30 group-hover/faq:opacity-60 transition-opacity duration-500 shrink-0 mt-0.5">
+                            {["①", "②", "③", "④"][i]}
+                          </span>
+                          <div className="min-w-0">
+                            <h4 className="text-sm font-bold text-foreground mb-2 group-hover/faq:text-foreground/90 transition-colors duration-300">
+                              {item.q}
+                            </h4>
+                            <p className="text-xs text-foreground/45 leading-relaxed group-hover/faq:text-foreground/50 transition-colors duration-300">
+                              {item.a}
+                            </p>
                           </div>
                         </div>
                       </div>
-                    );
-                  },
-                )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -362,8 +360,11 @@ export default async function AboutPage({
                   </span>
                 </div>
                 <div className="space-y-0">
-                  {(t.about as any).expItems?.map((exp: any, i: number) => (
-                    <div key={i} className="relative pl-8 pb-8 last:pb-0">
+                  {t.about.expItems.map((exp) => (
+                    <div
+                      key={exp.title}
+                      className="relative pl-8 pb-8 last:pb-0"
+                    >
                       <div className="absolute left-0 top-1.5 bottom-0 w-px bg-gradient-to-b from-primary/20 via-primary/10 to-transparent" />
                       <div className="absolute left-[-4px] top-1.5 w-[9px] h-[9px] rounded-full bg-background border-2 border-primary/30 group-hover:border-primary/60 transition-colors" />
                       <h4 className="text-sm font-bold text-foreground mb-1">
@@ -399,9 +400,9 @@ export default async function AboutPage({
                   </span>
                 </div>
                 <div className="space-y-5">
-                  {(t.about as any).eduItems?.map((edu: any, i: number) => (
+                  {t.about.eduItems.map((edu) => (
                     <div
-                      key={i}
+                      key={edu.degree}
                       className="p-4 rounded-2xl bg-muted/10 border border-border/20 hover:border-primary/10 hover:bg-muted/20 transition-all duration-300"
                     >
                       <div className="flex justify-between items-start gap-4 mb-1">

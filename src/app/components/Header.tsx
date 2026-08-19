@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import ModeToggle from "./ModeToggle";
-import Search from "./Search";
-import MobileMenu from "./MobileMenu";
 import { Menu } from "lucide-react";
-import { Button } from "./ui/Button";
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import LocaleSwitcher from "./LocaleSwitcher";
+import MobileMenu from "./MobileMenu";
+import ModeToggle from "./ModeToggle";
+import Search from "./Search";
+import { Button } from "./ui/Button";
 
 interface HeaderProps {
   locale: string;

@@ -1,15 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { ThemeProvider } from "./components/ThemeProvider";
 import {
-  PersonStructuredData,
-  ArtistPersonStructuredData,
-  SoftwareApplicationStructuredData,
   MusicArtistStructuredData,
   OrganizationStructuredData,
+  PersonStructuredData,
+  SoftwareApplicationStructuredData,
   WebSiteStructuredData,
 } from "./components/StructuredData";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://almujax.com"),
@@ -21,10 +20,6 @@ export const metadata: Metadata = {
     ],
     shortcut: "/img/favicon.ico?v=3",
     apple: "/img/apple-touch-icon.png?v=3",
-  },
-  verification: {
-    google: "ADD_YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN",
-    yandex: "ADD_YOUR_YANDEX_WEBMASTER_TOKEN",
   },
   robots: {
     index: true,
@@ -78,7 +73,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         <PersonStructuredData />
-        <ArtistPersonStructuredData />
         <SoftwareApplicationStructuredData />
         <MusicArtistStructuredData />
         <OrganizationStructuredData />
@@ -121,6 +115,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="me" href="https://dev.to/almujax" />
         <link rel="me" href="https://reddit.com/user/almujax" />
         <link rel="me" href="https://youtube.com/@almujax" />
+        <link rel="me" href="https://youtube.com/@almujamusic" />
         <link rel="me" href="https://soundcloud.com/almujax" />
         <link rel="me" href="https://tiktok.com/@almujax" />
         <link
@@ -131,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           rel="me"
           href="https://music.apple.com/fr/artist/almuja/6800033494"
         />
-        <link rel="me" href="https://music.youtube.com/@almujaofficial" />
+        <link rel="me" href="https://music.youtube.com/@almujamusic" />
         <link rel="me" href="https://www.deezer.com/en/artist/409144252" />
         <link rel="me" href="https://play.anghami.com/artist/29651679" />
         <link rel="me" href="https://almujax.bandcamp.com" />
@@ -143,6 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MDTS748Z"
+            title="Google Tag Manager"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}

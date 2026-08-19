@@ -1,6 +1,6 @@
 import type { Locale } from "./config";
-import en from "./dictionaries/en";
 import ar from "./dictionaries/ar";
+import en from "./dictionaries/en";
 import fr from "./dictionaries/fr";
 
 const dictionaries = { en, ar, fr } as const;
