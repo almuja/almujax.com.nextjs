@@ -96,6 +96,14 @@ const nextConfig: NextConfig = {
         pathname: "/img/**",
         search: "?v=3",
       },
+      {
+        pathname: "/projects/**",
+        search: "",
+      },
+      {
+        pathname: "/vercel.svg",
+        search: "",
+      },
     ],
     remotePatterns: [
       {
