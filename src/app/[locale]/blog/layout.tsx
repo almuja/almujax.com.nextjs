@@ -5,14 +5,23 @@ export const metadata: Metadata = {
     default: "Blog | Mujahid Siyam",
     template: "%s | Blog | Mujahid Siyam",
   },
-  description: "Thoughts on software engineering, AI/ML, and technology",
+  description:
+    "Articles by Mujahid Siyam on software engineering, AI, Rust, DevSecOps, cloud infrastructure, networking, and systems administration.",
   openGraph: {
     title: "Blog | Mujahid Siyam",
-    description: "Thoughts on software engineering, AI/ML, and technology",
+    description:
+      "Articles by Mujahid Siyam on software engineering, AI, Rust, DevSecOps, cloud infrastructure, networking, and systems administration.",
     type: "website",
-    images: ["/img/profile.png?v=3"],
+    images: [
+      {
+        url: "/img/profile-engineer-1200x630.png",
+        width: 1200,
+        height: 630,
+        alt: "Mujahid Siyam",
+      },
+    ],
   },
-  robots: "index, follow",
+  robots: { index: true, follow: true },
 };
 
 export default function BlogLayout({

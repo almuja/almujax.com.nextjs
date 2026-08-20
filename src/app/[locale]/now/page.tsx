@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localeLanguages } from "@/app/lib/seo";
 import { type Locale, locales } from "@/i18n/config";
 import { BreadcrumbStructuredData } from "../../components/BreadcrumbJsonLd";
 
@@ -21,26 +22,9 @@ export async function generateMetadata({
       validLocale === "ar"
         ? "ما يركز عليه الموجا — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
         : "What Mujahid Siyam (Almuja) is focused on right now — work, learning, and current interests.",
-    keywords:
-      validLocale === "ar"
-        ? [
-            "الآن",
-            "الموجا",
-            "مجاهد صيام",
-            "تركيز",
-            "تعلم",
-            "مشاريع",
-            "حاليا",
-            "ما أعمل عليه",
-          ]
-        : ["now", "Almuja", "Mujahid Siyam", "focus", "learning", "projects"],
     alternates: {
       canonical: `https://almujax.com/${validLocale}/now`,
-      languages: {
-        en: "https://almujax.com/en/now",
-        ar: "https://almujax.com/ar/now",
-        fr: "https://almujax.com/fr/now",
-      },
+      languages: localeLanguages("now"),
     },
     openGraph: {
       title:
@@ -53,7 +37,14 @@ export async function generateMetadata({
           : "What Mujahid Siyam (Almuja) is focused on right now.",
       url: `https://almujax.com/${validLocale}/now`,
       type: "website",
-      images: ["https://almujax.com/img/profile.png?v=3"],
+      images: [
+        {
+          url: "https://almujax.com/img/profile-engineer-1200x630.png",
+          width: 1200,
+          height: 630,
+          alt: "Mujahid Siyam",
+        },
+      ],
       siteName: "Almuja",
     },
     twitter: {
@@ -66,20 +57,9 @@ export async function generateMetadata({
         validLocale === "ar"
           ? "ما يركز عليه الموجا — مجاهد صيام حالياً."
           : "What Mujahid Siyam (Almuja) is focused on right now.",
-      images: ["https://almujax.com/img/profile.png?v=3"],
+      images: ["https://almujax.com/img/profile-engineer-1200x630.png"],
       site: "@almujax",
       creator: "@almujax",
-    },
-    other: {
-      "geo.region": "FR",
-      "geo.placename": "France",
-      "geo.position": "46.603354;1.888334",
-      ICBM: "46.603354, 1.888334",
-      "DC.creator": "Mujahid Siyam",
-      "DC.subject":
-        validLocale === "ar"
-          ? "الآن، الموجا، مجاهد صيام، تركيز، تعلم، مشاريع"
-          : "Now, Almuja, Mujahid Siyam, Focus, Learning, Projects",
     },
   };
 }

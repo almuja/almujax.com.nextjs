@@ -4,6 +4,7 @@ import { ArrowRight, Code2, GitFork, Pin, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { localeLanguages } from "@/app/lib/seo";
 import { type Locale, locales } from "@/i18n/config";
 import { type Dictionary, getDictionary } from "@/i18n/get-dictionary";
 
@@ -21,8 +22,10 @@ export async function generateMetadata({
   return {
     title: t.projects.title,
     description: t.projects.description,
-    keywords: [...t.seo.keywords],
-    alternates: { canonical: `https://almujax.com/${validLocale}/projects` },
+    alternates: {
+      canonical: `https://almujax.com/${validLocale}/projects`,
+      languages: localeLanguages("projects"),
+    },
     openGraph: {
       title: t.projects.title,
       description: t.projects.description,

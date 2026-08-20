@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localeLanguages } from "@/app/lib/seo";
 import { type Locale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
@@ -16,9 +17,9 @@ export async function generateMetadata({
   return {
     title: t.contact.title,
     description: t.contact.description,
-    keywords: [...t.seo.keywords],
     alternates: {
       canonical: `https://almujax.com/${validLocale}/contact`,
+      languages: localeLanguages("contact"),
     },
     openGraph: {
       title: t.contact.title,

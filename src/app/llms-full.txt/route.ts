@@ -21,7 +21,7 @@ entity_type: ["Person", "SoftwareEngineer", "ContentCreator"]
 entity_nationality: "Sudanese"
 entity_location: "Paris, France"
 entity_2: "Almuja"
-entity_2_type: ["MusicGroup", "MusicArtist"]
+entity_2_type: ["Person", "MusicArtist"]
 entity_2_aliases: ["Almuja", "الموجا", "الموجة", "الموجه"]
 canonical: true
 schema_version: "1.0"
@@ -52,7 +52,7 @@ This document describes **two related entities** backed by the same real person:
 - Organization: Zaroxi Studio (zaroxi.com) — GPU-accelerated IDE written in Rust (founded 2023)
 - Website: ${baseUrl}
 
-#### Entity 2 — Almuja (MusicGroup · Music Artist)
+#### Entity 2 — Almuja (Person · Music Artist)
 - Name: Almuja (artist name — الموجا, also الموجة / الموجه, Arabic for "the wave")
 - Handle: almujax · YouTube music channel @almujamusic
 - Roles: Rapper, Hip-Hop Producer

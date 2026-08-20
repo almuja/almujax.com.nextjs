@@ -1,5 +1,5 @@
 {
-  "name": "Almuja — Mujahid Siyam | Almuja",
+  "name": "Almuja | Mujahid Siyam",
   "short_name": "Almuja",
   "description": "Official website of Mujahid Siyam (Almuja). Software Engineer, AI Engineer, Cloud Architect, DevSecOps, and Music Artist. Projects, writing, and original music.",
   "start_url": "/",
@@ -28,7 +28,7 @@
   ],
   "screenshots": [
     {
-      "src": "/img/profile.png",
+      "src": "/img/profile-engineer-1200x630.png",
       "sizes": "1200x630",
       "type": "image/png",
       "form_factor": "wide",

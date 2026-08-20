@@ -24,6 +24,7 @@ interface Project {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  language?: string;
 }
 
 async function findProjectFile(slug: string): Promise<string | null> {
@@ -63,6 +64,7 @@ export async function generateMetadata({
       en: `https://almujax.com/en/projects/${slug}`,
       ar: `https://almujax.com/ar/projects/${slug}`,
       fr: `https://almujax.com/fr/projects/${slug}`,
+      "x-default": `https://almujax.com/en/projects/${slug}`,
     },
   };
 
@@ -75,26 +77,20 @@ export async function generateMetadata({
     return {
       title: `${title} | Almuja (Mujahid Siyam)`,
       description: desc,
-      keywords: [
-        ...(data.tags || []),
-        data.category,
-        "Mujahid Siyam",
-        "Almuja",
-        "almujax",
-        "open source",
-        "project",
-        "Arabic Rap",
-        "Sudanese Rap",
-        "Hip Hop",
-        "راب سوداني",
-        "راب عربي",
-      ].filter(Boolean),
       alternates: base,
       openGraph: {
         title: `${title} | Almuja (Mujahid Siyam)`,
         description: desc,
         type: "article",
         url: `https://almujax.com/${validLocale}/projects/${slug}`,
+        images: [
+          {
+            url: "https://almujax.com/img/profile-engineer-1200x630.png",
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
       },
       twitter: { card: "summary_large_image", title, description: desc },
     };
@@ -130,6 +126,7 @@ export default async function ProjectPage({
       githubUrl: fm.githubUrl,
       liveUrl: fm.liveUrl,
       featured: fm.featured || false,
+      language: fm.language,
     };
     const html = await compileMdx(content);
 
@@ -141,7 +138,7 @@ export default async function ProjectPage({
           url={`https://almujax.com/${validLocale}/projects/${slug}`}
           codeRepository={project.githubUrl}
           dateCreated={project.date}
-          programmingLanguage={project.tags}
+          programmingLanguage={project.language}
         />
         <BreadcrumbStructuredData
           items={[

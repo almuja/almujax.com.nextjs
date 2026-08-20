@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import Script from "next/script";
 import "./globals.css";
 import {
-  MusicArtistStructuredData,
   OrganizationStructuredData,
   PersonStructuredData,
   SoftwareApplicationStructuredData,
@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/img/favicon-32x32.png?v=3", sizes: "32x32", type: "image/png" },
-      { url: "/img/favicon-16x16.png?v=3", sizes: "16x16", type: "image/png" },
+      { url: "/img/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/img/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
-    shortcut: "/img/favicon.ico?v=3",
-    apple: "/img/apple-touch-icon.png?v=3",
+    shortcut: "/img/favicon.ico",
+    apple: "/img/apple-touch-icon.png",
   },
   robots: {
     index: true,
@@ -30,13 +30,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
-    },
-  },
-  alternates: {
-    languages: {
-      en: "https://almujax.com/en",
-      ar: "https://almujax.com/ar",
-      fr: "https://almujax.com/fr",
     },
   },
 };
@@ -50,13 +43,17 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = (await headers()).get("x-locale") ?? "en";
+  const lang = locale === "ar" ? "ar" : locale === "fr" ? "fr" : "en";
+  const dir = locale === "ar" ? "rtl" : "ltr";
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} dir={dir} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -74,15 +71,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <PersonStructuredData />
         <SoftwareApplicationStructuredData />
-        <MusicArtistStructuredData />
         <OrganizationStructuredData />
         <WebSiteStructuredData />
-        <meta name="geo.region" content="FR" />
-        <meta name="geo.placename" content="France" />
-        <meta name="geo.position" content="46.603354;1.888334" />
-        <meta name="ICBM" content="46.603354, 1.888334" />
-        <meta name="language" content="English, Arabic, French" />
-        <meta name="content-language" content="en, ar, fr" />
         <link
           rel="alternate"
           type="application/rss+xml"
@@ -107,32 +97,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           title="Full content for AI indexing"
           href="/llms-full.txt"
         />
-        <link rel="me" href="https://github.com/almujax" />
-        <link rel="me" href="https://linkedin.com/in/almujax" />
-        <link rel="me" href="https://x.com/almujax" />
-        <link rel="me" href="https://twitter.com/almujax" />
-        <link rel="me" href="https://instagram.com/almujax" />
-        <link rel="me" href="https://dev.to/almujax" />
-        <link rel="me" href="https://reddit.com/user/almujax" />
-        <link rel="me" href="https://youtube.com/@almujax" />
-        <link rel="me" href="https://youtube.com/@almujamusic" />
-        <link rel="me" href="https://soundcloud.com/almujax" />
-        <link rel="me" href="https://tiktok.com/@almujax" />
-        <link
-          rel="me"
-          href="https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
-        />
-        <link
-          rel="me"
-          href="https://music.apple.com/fr/artist/almuja/6800033494"
-        />
-        <link rel="me" href="https://music.youtube.com/@almujamusic" />
-        <link rel="me" href="https://www.deezer.com/en/artist/409144252" />
-        <link rel="me" href="https://play.anghami.com/artist/29651679" />
-        <link rel="me" href="https://almujax.bandcamp.com" />
-        <link rel="me" href="https://tidal.com/browse/artist/almujax" />
-        <link rel="me" href="https://music.amazon.fr/artists/B0HDMF43R7" />
-        <link rel="me" href="https://www.pandora.com/artist/almujax" />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <noscript>

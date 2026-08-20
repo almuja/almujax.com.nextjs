@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { localeLanguages } from "@/app/lib/seo";
 import { type Locale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { BreadcrumbStructuredData } from "../../components/BreadcrumbJsonLd";
-import { MusicArtistStructuredData } from "../../components/StructuredData";
+import {
+  KakashiAlbumStructuredData,
+  MusicArtistStructuredData,
+} from "../../components/StructuredData";
 import { MusicContent } from "./MusicContent";
 
 export async function generateMetadata({
@@ -19,55 +23,32 @@ export async function generateMetadata({
   return {
     title: t.music.title,
     description: t.music.description,
-    keywords: [
-      ...t.seo.keywords,
-      "rapper",
-      "almuja",
-      "almujax",
-      "rapper",
-      "album",
-      "single",
-      "release",
-      "streaming",
-      "playlist",
-      "Almuja rapper",
-      "Sudanese rapper",
-      "Arabic rapper",
-    ],
     alternates: {
       canonical: `https://almujax.com/${validLocale}/music`,
-      languages: {
-        en: "https://almujax.com/en/music",
-        ar: "https://almujax.com/ar/music",
-        fr: "https://almujax.com/fr/music",
-      },
+      languages: localeLanguages("music"),
     },
     openGraph: {
       title: t.music.title,
       description: t.music.description,
       url: `https://almujax.com/${validLocale}/music`,
       type: "music.playlist",
-      images: ["https://almujax.com/img/profile.png?v=3"],
+      images: [
+        {
+          url: "https://almujax.com/img/profile-artist-1200x630.png",
+          width: 1200,
+          height: 630,
+          alt: "Almuja",
+        },
+      ],
       siteName: "Almuja",
     },
     twitter: {
       card: "summary_large_image",
       title: t.music.title,
       description: t.music.description,
-      images: ["https://almujax.com/img/profile.png?v=3"],
+      images: ["https://almujax.com/img/profile-artist-1200x630.png"],
       site: "@almujax",
       creator: "@almujax",
-    },
-    other: {
-      "geo.region": "FR",
-      "geo.placename": "France",
-      "geo.position": "46.603354;1.888334",
-      ICBM: "46.603354, 1.888334",
-      "DC.creator": "Mujahid Siyam",
-      "DC.subject":
-        "Music, Rapper, Sudanese Rapper, Arabic Rap, Middle Eastern Rap, Sudanese Rap, African Rap, Hip Hop, Playlists, Streaming",
-      music:
-        "rapper, arabic rap, middle eastern rap, sudanese rap, african rap, hip hop",
     },
   };
 }
@@ -86,6 +67,7 @@ export default async function MusicPage({
   return (
     <>
       <MusicArtistStructuredData />
+      <KakashiAlbumStructuredData />
       <BreadcrumbStructuredData
         items={[
           {

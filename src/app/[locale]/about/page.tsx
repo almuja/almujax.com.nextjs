@@ -9,7 +9,12 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { FaqPageStructuredData } from "@/app/components/StructuredData";
+import { BreadcrumbStructuredData } from "@/app/components/BreadcrumbJsonLd";
+import {
+  AboutPageStructuredData,
+  FaqPageStructuredData,
+} from "@/app/components/StructuredData";
+import { localeLanguages } from "@/app/lib/seo";
 import { type Locale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
@@ -26,14 +31,23 @@ export async function generateMetadata({
   return {
     title: t.about.title,
     description: t.about.description,
-    keywords: [...t.seo.keywords],
-    alternates: { canonical: `https://almujax.com/${validLocale}/about` },
+    alternates: {
+      canonical: `https://almujax.com/${validLocale}/about`,
+      languages: localeLanguages("about"),
+    },
     openGraph: {
       title: t.about.title,
       description: t.about.description,
       type: "profile",
       url: `https://almujax.com/${validLocale}/about`,
-      images: ["https://almujax.com/img/profile.png?v=3"],
+      images: [
+        {
+          url: "https://almujax.com/img/profile-engineer-1200x630.png",
+          width: 1200,
+          height: 630,
+          alt: "Mujahid Siyam",
+        },
+      ],
       firstName: "Mujahid",
       lastName: "Siyam",
       username: "almujax",
@@ -160,6 +174,26 @@ export default async function AboutPage({
 
   return (
     <div dir={dir} className="min-h-screen">
+      <AboutPageStructuredData
+        url={`https://almujax.com/${validLocale}/about`}
+      />
+      <BreadcrumbStructuredData
+        items={[
+          {
+            name: validLocale === "ar" ? "الرئيسية" : "Home",
+            url: `https://almujax.com/${validLocale}`,
+          },
+          {
+            name:
+              validLocale === "ar"
+                ? "عنّي"
+                : validLocale === "fr"
+                  ? "À propos"
+                  : "About",
+            url: `https://almujax.com/${validLocale}/about`,
+          },
+        ]}
+      />
       {/* ── Hero ── */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
@@ -201,8 +235,8 @@ export default async function AboutPage({
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-[var(--color-wave-1)] to-[var(--color-wave-2)] p-[3px] group-hover:scale-[1.03] transition-transform duration-500">
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-background">
                   <Image
-                    src="/img/profile.png?v=3"
-                    alt="Almuja"
+                    src="/img/profile.png"
+                    alt="Mujahid Siyam"
                     fill
                     className="object-cover"
                   />

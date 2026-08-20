@@ -2,6 +2,7 @@ import { promises as fs } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
 import type { Metadata } from "next";
+import { localeLanguages } from "@/app/lib/seo";
 import { type Locale, locales } from "@/i18n/config";
 import { type Dictionary, getDictionary } from "@/i18n/get-dictionary";
 import BlogContent from "./blog-content";
@@ -20,9 +21,9 @@ export async function generateMetadata({
   return {
     title: t.blog.title,
     description: t.blog.description,
-    keywords: [...t.seo.keywords],
     alternates: {
       canonical: `https://almujax.com/${validLocale}/blog`,
+      languages: localeLanguages("blog"),
     },
     openGraph: {
       title: t.blog.title,

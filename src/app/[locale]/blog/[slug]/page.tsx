@@ -113,34 +113,19 @@ export async function generateMetadata({
 
     const title = data.title || slug;
     const description = data.description || "";
-    const image = data.image || "https://almujax.com/img/profile.png?v=3";
+    const image = "https://almujax.com/img/profile-engineer-1200x630.png";
     const publishedTime = data.date;
 
     return {
       title: `${title} | Almuja (Mujahid Siyam)`,
       description,
-      keywords: [
-        ...(data.tags || []),
-        data.category,
-        "Mujahid Siyam",
-        "Almuja",
-        "almujax",
-        "AI Engineer",
-        "Software Engineer",
-        "DevSecOps",
-        "Arabic Rap",
-        "Sudanese Rap",
-        "Hip Hop",
-        "راب سوداني",
-        "راب عربي",
-        "blog",
-      ].filter(Boolean),
       alternates: {
         canonical: `https://almujax.com/${validLocale}/blog/${slug}`,
         languages: {
           en: `https://almujax.com/en/blog/${slug}`,
           ar: `https://almujax.com/ar/blog/${slug}`,
           fr: `https://almujax.com/fr/blog/${slug}`,
+          "x-default": `https://almujax.com/en/blog/${slug}`,
         },
       },
       openGraph: {
@@ -168,13 +153,6 @@ export async function generateMetadata({
         "article:author": "Mujahid Siyam",
         "article:tag": (data.tags || []).join(", "),
         "article:section": data.category || "",
-        "geo.region": "FR",
-        "geo.placename": "France",
-        "geo.position": "46.603354;1.888334",
-        ICBM: "46.603354, 1.888334",
-        "DC.creator": "Mujahid Siyam",
-        "DC.subject": (data.tags || []).join(", "),
-        "DC.date": publishedTime || "",
       },
     };
   } catch {
@@ -242,8 +220,6 @@ export default async function BlogPostPage({
           }
           image={frontmatter.image || ""}
           url={`https://almujax.com/${validLocale}/blog/${resolvedParams.slug}`}
-          authorName="Mujahid Siyam"
-          authorUrl="https://almujax.com"
         />
         <BreadcrumbStructuredData
           items={[
@@ -362,7 +338,7 @@ export default async function BlogPostPage({
           <div className="mt-16 pt-8 border-t border-border/20">
             <Author
               name={validLocale === "ar" ? "مجاهد صيام" : "Mujahid Siyam"}
-              image="/img/profile.png?v=3"
+              image="/img/profile.png"
               bio={dict.blog.authorBio}
               aboutLabel={dict.blog.aboutTheAuthor}
               socialLinks={{

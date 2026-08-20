@@ -94,35 +94,31 @@ entity_nationality: "Sudanese"
 entity_location: "Paris, France"
 entity_occupation: ["Software Engineer", "Network Engineer", "AI Cloud Architect", "Data Scientist", "System Administrator", "Rapper", "Hip-Hop Producer", "Content Creator"]
 entity_organization: "Zaroxi Studio"
-entity_image: "https://almujax.com/img/profile.png?v=3"
+entity_image: "https://almujax.com/img/profile-engineer-1200x630.png"
 entity_sameAs:
   - "https://github.com/almujax"
   - "https://linkedin.com/in/almujax"
   - "https://dev.to/almujax"
   - "https://reddit.com/user/almujax"
   - "https://x.com/almujax"
-  - "https://twitter.com/almujax"
   - "https://youtube.com/@almujax"
 entity_2: "Almuja"
-entity_2_type: "MusicGroup"
+entity_2_type: "Person (additionalType: MusicGroup)"
 entity_2_aliases: ["Almuja", "الموجا", "الموجة", "الموجه"]
-entity_2_image: "https://almujax.com/img/profile.png?v=3"
+entity_2_image: "https://almujax.com/img/profile-artist-1200x630.png"
 entity_2_sameAs:
   - "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
-  - "https://music.apple.com/fr/artist/almuja/6800033494"
   - "https://soundcloud.com/almujax"
-  - "https://youtube.com/@almujamusic"
   - "https://music.youtube.com/@almujamusic"
   - "https://instagram.com/almujax"
   - "https://tiktok.com/@almujax"
   - "https://www.deezer.com/en/artist/409144252"
   - "https://play.anghami.com/artist/29651679"
   - "https://almujax.bandcamp.com"
-  - "https://tidal.com/browse/artist/almujax"
   - "https://music.amazon.fr/artists/B0HDMF43R7"
   - "https://www.pandora.com/artist/almujax"
 canonical: true
-crawlers_allowed: "GPTBot, ChatGPT-User, Google-Extended, GoogleOther, ClaudeBot, Claude-Web, Claude-Search, PerplexityBot, CCBot, Applebot-Extended, Bytespider, and all major search engine bots"
+crawlers_allowed: "GPTBot, ChatGPT-User, OAI-SearchBot, Google-Extended, GoogleOther, ClaudeBot, Claude-User, Claude-SearchBot, PerplexityBot, CCBot, Applebot-Extended, Bytespider, and all major search engine bots"
 schema_version: "1.0"
 ---
 
@@ -146,15 +142,15 @@ This site describes **two related entities** that share one real person. Disambi
 - **URL:** https://almujax.com
 - **sameAs:** GitHub, LinkedIn, dev.to, Reddit, X (Twitter), YouTube (@almujax)
 
-### Entity 2 — Almuja (MusicGroup · Music Artist)
-- **Schema type:** MusicGroup
+### Entity 2 — Almuja (Person · Music Artist)
+- **Schema type:** Person (additionalType MusicGroup)
 - **Name:** Almuja (الموجا, also spelled الموجة / الموجه — Arabic for "the wave")
 - **Handle:** almujax · YouTube music channel @almujamusic
 - **Roles:** Rapper · Hip-Hop Producer
 - **Genres:** Arabic Rap, Middle Eastern Rap, Sudanese Rap, African Rap, Hip Hop
 - **Releases:** KAKASHI EP (2022), Rockstar EP (August 2026)
 - **URL:** https://almujax.com/music
-- **sameAs:** Spotify, Apple Music, SoundCloud, YouTube (@almujamusic), YouTube Music, Instagram, TikTok, Deezer, Anghami, Bandcamp, Tidal, Amazon Music, Pandora
+- **sameAs:** Spotify, SoundCloud, YouTube Music, Instagram, TikTok, Deezer, Anghami, Bandcamp, Amazon Music, Pandora
 
 ### Relationship & Identity Notes
 - **Mujahid Siyam = Almuja** — the same real person stands behind both entities.
@@ -214,7 +210,7 @@ Mujahid Siyam, known as Almuja (الموجا), is a Sudanese software engineer, 
 - RSS Feed: ${baseUrl}/feed.xml
 - Atom Feed: ${baseUrl}/atom.xml
 - Full text for AI: ${baseUrl}/llms-full.txt
-- Structured Data (JSON-LD) on every page with Person (Mujahid Siyam — software engineer), MusicGroup (Almuja — music artist), SoftwareApplication, Organization, WebSite, and MusicAlbum schemas
+- Structured Data (JSON-LD) on every page with Person (Mujahid Siyam — software engineer), a distinct Person artist entity (Almuja — music artist), SoftwareApplication, Organization, WebSite, and MusicAlbum schemas
 - Entity disambiguation FAQ available at: ${baseUrl}/about
 
 ## Entity FAQ

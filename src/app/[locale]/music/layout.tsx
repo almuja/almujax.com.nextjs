@@ -2,17 +2,26 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Music | Mujahid Siyam",
-    template: "%s | Music | Mujahid Siyam",
+    default: "Music | Almuja",
+    template: "%s | Music | Almuja",
   },
-  description: "Music portfolio and creative works",
+  description:
+    "Almuja is a rapper and producer — the music artist persona of Mujahid Siyam. Arabic, Middle Eastern, and African rap and hip-hop.",
   openGraph: {
-    title: "Music | Mujahid Siyam",
-    description: "Music portfolio and creative works",
+    title: "Music | Almuja",
+    description:
+      "Almuja is a rapper and producer — the music artist persona of Mujahid Siyam. Arabic, Middle Eastern, and African rap and hip-hop.",
     type: "website",
-    images: ["/img/profile.png?v=3"],
+    images: [
+      {
+        url: "/img/profile-artist-1200x630.png",
+        width: 1200,
+        height: 630,
+        alt: "Almuja",
+      },
+    ],
   },
-  robots: "index, follow",
+  robots: { index: true, follow: true },
 };
 
 export default function MusicLayout({

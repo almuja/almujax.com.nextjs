@@ -52,7 +52,7 @@ export default function Author({
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 via-purple-500/30 to-secondary/30 blur-md opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
             <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 shadow-lg">
               <Image
-                src={image || "/img/profile.png?v=3"}
+                src={image || "/img/profile.png"}
                 alt={name}
                 fill
                 className="object-cover"

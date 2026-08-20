@@ -44,8 +44,6 @@ async function getBlogPosts(): Promise<MetadataRoute.Sitemap> {
           return {
             url: `${baseUrl}/en/blog/${slug}`,
             lastModified: postDate > stats.mtime ? postDate : stats.mtime,
-            changeFrequency: "daily" as const,
-            priority: 0.9,
             images: image ? [image] : undefined,
           };
         }),
@@ -86,8 +84,6 @@ async function getProjects(): Promise<MetadataRoute.Sitemap> {
           return {
             url: `${baseUrl}/en/projects/${slug}`,
             lastModified: projDate > stats.mtime ? projDate : stats.mtime,
-            changeFrequency: "daily" as const,
-            priority: 0.9,
             images: image ? [image] : undefined,
           };
         }),
@@ -103,13 +99,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const pageRoutes = [
-    { slug: "", priority: 1, changeFrequency: "daily" as const },
-    { slug: "about", priority: 0.8, changeFrequency: "weekly" as const },
-    { slug: "projects", priority: 0.8, changeFrequency: "daily" as const },
-    { slug: "blog", priority: 0.8, changeFrequency: "daily" as const },
-    { slug: "now", priority: 0.7, changeFrequency: "weekly" as const },
-    { slug: "contact", priority: 0.5, changeFrequency: "monthly" as const },
-    { slug: "music", priority: 0.6, changeFrequency: "weekly" as const },
+    { slug: "" },
+    { slug: "about" },
+    { slug: "projects" },
+    { slug: "blog" },
+    { slug: "now" },
+    { slug: "contact" },
+    { slug: "music" },
   ];
 
   const staticPages: MetadataRoute.Sitemap = [];
@@ -120,8 +116,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ? `${baseUrl}/${locale}/${route.slug}`
           : `${baseUrl}/${locale}`,
         lastModified: now,
-        changeFrequency: route.changeFrequency,
-        priority: route.priority,
       });
     }
   }

@@ -2,6 +2,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqPageStructuredData } from "@/app/components/StructuredData";
+import { localeLanguages } from "@/app/lib/seo";
 import { type Locale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
@@ -18,21 +19,23 @@ export async function generateMetadata({
   return {
     title: dict.home.title,
     description: dict.home.description,
-    keywords: [...dict.seo.keywords],
     alternates: {
       canonical: `https://almujax.com/${validLocale}`,
-      languages: {
-        en: "https://almujax.com/en",
-        ar: "https://almujax.com/ar",
-        fr: "https://almujax.com/fr",
-      },
+      languages: localeLanguages(),
     },
     openGraph: {
       title: dict.home.title,
       description: dict.home.description,
       url: `https://almujax.com/${validLocale}`,
       type: "website",
-      images: ["https://almujax.com/img/profile.png?v=3"],
+      images: [
+        {
+          url: "https://almujax.com/img/profile-engineer-1200x630.png",
+          width: 1200,
+          height: 630,
+          alt: "Mujahid Siyam",
+        },
+      ],
     },
   };
 }

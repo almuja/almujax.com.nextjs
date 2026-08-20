@@ -1,87 +1,173 @@
+const SITE_URL = "https://almujax.com";
+const PERSON_ID = `${SITE_URL}/#person`;
+const ARTIST_ID = `${SITE_URL}/music#artist`;
+
+function JsonLd({ data }: { data: unknown }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 export function PersonStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://almujax.com/#person",
+    "@id": PERSON_ID,
     name: "Mujahid Siyam",
-    additionalName: "Almuja",
-    alternateName: ["almujax", "Almuja", "الموجا", "الموجة", "الموجه"],
-    url: "https://almujax.com",
-    image: "https://almujax.com/img/profile.png?v=3",
-    email: "hello@almujax.com",
+    alternateName: ["Almujax", "almujax"],
+    disambiguatingDescription:
+      "Software engineer, network engineer, and AI/cloud architect. Also known by the artist name Almuja.",
     description:
-      "Mujahid Siyam, known as Almuja (الموجا, also spelt الموجة/الموجه — Arabic for 'the wave'), online handle almujax. Sudanese software engineer, network engineer, AI cloud architect, data scientist, systems administrator (Linux and Windows), rapper, music producer, and content creator born in Sudan and based in Paris, France. He started making music at age 16 in Sudan, forming bands and performing before ever touching a computer. After relocating to France, he transitioned into software engineering, AI engineering, cloud architecture, and systems administration, building production systems with Rust, TypeScript, and Python and managing infrastructure with Terraform, Ansible, Docker, and Kubernetes on AWS. He administers Linux and Windows servers and works with PostgreSQL, MySQL, MongoDB, and Redis. In 2022, after a long silence, he returned to music production and released his debut EP KAKASHI under the name Almuja — a raw, honest project marking the beginning of his return. His next EP Rockstar is scheduled for August 2026, representing a bigger, more focused chapter. His music spans Arabic, Middle Eastern, and African rap and hip-hop, blending his Sudanese roots with his life in Europe. He is the founder of Zaroxi Studio, a GPU-accelerated IDE written in Rust, and the creator of MujaOS, a NixOS-based operating system. He bridges both worlds — engineering and music — from Paris, France. His universal handle across all platforms is almujax. Contact: hello@almujax.com.",
-    birthPlace: { "@type": "Country", name: "Sudan" },
+      "Software engineer, network engineer, AI cloud architect, and data scientist based in Paris, France. Also releases music as Almuja.",
+    url: SITE_URL,
+    image: `${SITE_URL}/img/profile-engineer-1200x630.png`,
+    nationality: {
+      "@type": "Country",
+      name: "Sudan",
+    },
     homeLocation: {
       "@type": "Place",
       name: "Paris, France",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Paris",
-        addressCountry: "FR",
-      },
     },
-    jobTitle: [
-      "Software Engineer",
-      "Network Engineer",
-      "AI Cloud Architect",
-      "Data Scientist",
-      "System Administrator",
-      "Rapper",
-      "Music Producer",
-      "Content Creator",
+    knowsLanguage: [
+      { "@type": "Language", name: "Arabic", alternateName: "اللغة العربية" },
+      { "@type": "Language", name: "English", alternateName: "English" },
+      { "@type": "Language", name: "French", alternateName: "Français" },
     ],
-    knowsAbout: [
-      "Software Engineering",
-      "Network Engineering",
-      "Cloud Architecture",
-      "Artificial Intelligence",
-      "Data Science",
-      "Linux Administration",
-      "Windows Server Administration",
-      "Rust Programming",
-      "DevSecOps",
-      "Infrastructure as Code",
-      "Music Production",
-      "Hip-Hop",
-      "Rap Music",
-      "Arabic Music",
-      "African Music",
-    ],
-    knowsLanguage: ["ar", "en", "fr"],
-    nationality: { "@type": "Country", name: "Sudan" },
-    worksFor: {
-      "@type": "Organization",
-      name: "Zaroxi Studio",
-      url: "https://zaroxi.com",
-    },
-    memberOf: {
-      "@type": "MusicGroup",
-      "@id": "https://almujax.com/music#artist",
-      name: "Almuja",
-      url: "https://almujax.com/music",
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": "https://almujax.com",
-    },
     sameAs: [
       "https://github.com/almujax",
       "https://linkedin.com/in/almujax",
       "https://dev.to/almujax",
       "https://reddit.com/user/almujax",
       "https://x.com/almujax",
-      "https://twitter.com/almujax",
       "https://youtube.com/@almujax",
+    ],
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Software Engineer",
+      occupationLocation: {
+        "@type": "City",
+        name: "Paris",
+      },
+      skills:
+        "Software engineering, network engineering, AI/cloud architecture, data science, Rust, systems programming",
+    },
+    knows: {
+      "@type": "Person",
+      "@id": ARTIST_ID,
+      name: "Almuja",
+      disambiguatingDescription:
+        "Music artist persona (rapper and producer) of Mujahid Siyam.",
+    },
+    subjectOf: {
+      "@type": "WebPage",
+      url: `${SITE_URL}/music`,
+    },
+  };
+
+  return <JsonLd data={structuredData} />;
+}
+
+export function MusicArtistStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": ARTIST_ID,
+    name: "Almuja",
+    alternateName: ["الموجا", "الموجة", "الموجه", "Mawja", "iammawja"],
+    additionalType: "https://schema.org/MusicGroup",
+    disambiguatingDescription:
+      "Music artist, rapper and producer. Solo artist persona of engineer Mujahid Siyam.",
+    description: "Almuja is a rapper and producer. Real name Mujahid Siyam.",
+    url: `${SITE_URL}/music`,
+    image: `${SITE_URL}/img/profile-artist-1200x630.png`,
+    jobTitle: "Music Artist",
+    knowsLanguage: [
+      { "@type": "Language", name: "Arabic", alternateName: "اللغة العربية" },
+      { "@type": "Language", name: "English", alternateName: "English" },
+      { "@type": "Language", name: "French", alternateName: "Français" },
+    ],
+    sameAs: [
+      "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
+      "https://www.deezer.com/en/artist/409144252",
+      "https://play.anghami.com/artist/29651679",
+      "https://soundcloud.com/almujax",
+      "https://music.youtube.com/@almujamusic",
+      "https://almujax.bandcamp.com",
+      "https://music.amazon.fr/artists/B0HDMF43R7",
+      "https://www.pandora.com/artist/almujax",
+      "https://instagram.com/almujax",
+      "https://tiktok.com/@almujax",
+    ],
+    knows: {
+      "@type": "Person",
+      "@id": PERSON_ID,
+      name: "Mujahid Siyam",
+      disambiguatingDescription:
+        "Real-name software, network and AI engineer identity behind Almuja.",
+    },
+    subjectOf: {
+      "@type": "WebPage",
+      url: SITE_URL,
+    },
+  };
+
+  return <JsonLd data={structuredData} />;
+}
+
+export function AboutPageStructuredData({ url }: { url: string }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: "About Mujahid Siyam",
+    about: {
+      "@id": PERSON_ID,
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+    },
+  };
+
+  return <JsonLd data={structuredData} />;
+}
+
+export function KakashiAlbumStructuredData() {
+  const albumId = `${SITE_URL}/music/kakashi#album`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MusicAlbum",
+        "@id": albumId,
+        name: "Kakashi",
+        byArtist: {
+          "@id": ARTIST_ID,
+        },
+        url: `${SITE_URL}/music`,
+        albumProductionType: "https://schema.org/StudioAlbum",
+      },
+      {
+        "@type": "MusicRecording",
+        "@id": `${SITE_URL}/music/kakashi#nafs-alwshosh`,
+        name: "Nafs Alwshosh",
+        byArtist: {
+          "@id": ARTIST_ID,
+        },
+        inAlbum: {
+          "@type": "MusicAlbum",
+          "@id": albumId,
+        },
+      },
     ],
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+  return <JsonLd data={structuredData} />;
 }
 
 export function FaqPageStructuredData({
@@ -102,31 +188,26 @@ export function FaqPageStructuredData({
     })),
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+  return <JsonLd data={structuredData} />;
 }
 
 export function SoftwareApplicationStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": "https://almujax.com/#zaroxi-app",
+    "@id": `${SITE_URL}/#zaroxi-app`,
     name: "Zaroxi Studio",
     url: "https://zaroxi.com",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Linux, macOS, Windows",
     description:
-      "Zaroxi Studio is a GPU-accelerated IDE written in Rust, built by Mujahid Siyam (Almuja). An AI-first developer environment with wgpu-powered rendering.",
+      "Zaroxi Studio is a GPU-accelerated IDE written in Rust, built by Mujahid Siyam. An AI-first developer environment with wgpu-powered rendering.",
     programmingLanguage: "Rust",
     author: {
       "@type": "Person",
-      "@id": "https://almujax.com/#person",
+      "@id": PERSON_ID,
       name: "Mujahid Siyam",
-      url: "https://almujax.com",
+      url: SITE_URL,
     },
     offers: {
       "@type": "Offer",
@@ -135,25 +216,18 @@ export function SoftwareApplicationStructuredData() {
     },
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+  return <JsonLd data={structuredData} />;
 }
 
 export function OrganizationStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://almujax.com/#org",
+    "@id": `${SITE_URL}/#org`,
     name: "Zaroxi Studio",
     url: "https://zaroxi.com",
     description:
-      "Zaroxi Studio is the software development and creative technology company founded by Mujahid Siyam (Almuja). Building AI-first systems, developer tools, and creative technology solutions including a GPU-accelerated IDE written in Rust.",
-    logo: "https://almujax.com/img/profile.png?v=3",
-    image: "https://almujax.com/img/profile.png?v=3",
+      "Zaroxi Studio is the software development and creative technology company founded by Mujahid Siyam. Building AI-first systems, developer tools, and creative technology solutions including a GPU-accelerated IDE written in Rust.",
     email: "hello@almujax.com",
     foundingDate: "2023",
     location: {
@@ -167,60 +241,41 @@ export function OrganizationStructuredData() {
     },
     founder: {
       "@type": "Person",
-      "@id": "https://almujax.com/#person",
+      "@id": PERSON_ID,
       name: "Mujahid Siyam",
-      url: "https://almujax.com",
+      url: SITE_URL,
     },
-    sameAs: ["https://github.com/almujax", "https://linkedin.com/in/almujax"],
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+  return <JsonLd data={structuredData} />;
 }
 
 export function WebSiteStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://almujax.com/#website",
+    "@id": `${SITE_URL}/#website`,
     name: "Almuja",
-    url: "https://almujax.com",
+    url: SITE_URL,
     description:
-      "Official website of Mujahid Siyam, known as Almuja (handle: almujax) — a Sudanese software engineer, network engineer, AI cloud architect, data scientist, system administrator, rapper, and hip-hop producer born in Sudan and based in Paris, France. He started music at 16, moved to France, built a career in software engineering and cloud infrastructure, then returned to music in 2022 with his debut EP KAKASHI. His next EP Rockstar drops August 2026. He founded Zaroxi Studio, a GPU-accelerated IDE written in Rust, and creates Arabic, Middle Eastern, and African rap and hip-hop. This site hosts his projects, technical writing, and music.",
+      "Official website of Mujahid Siyam, also known by the artist name Almuja. Hosts his software engineering projects, technical writing, and music.",
     inLanguage: ["en", "ar", "fr"],
     about: {
       "@type": "Person",
-      "@id": "https://almujax.com/#person",
+      "@id": PERSON_ID,
       name: "Mujahid Siyam",
-      alternateName: ["Almuja", "almujax"],
-      url: "https://almujax.com",
+      alternateName: ["Almujax", "almujax"],
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
-      "@id": "https://almujax.com/#org",
+      "@id": `${SITE_URL}/#org`,
       name: "Zaroxi Studio",
       url: "https://zaroxi.com",
     },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: "https://almujax.com/search?q={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+  return <JsonLd data={structuredData} />;
 }
 
 export function ArticleStructuredData({
@@ -237,8 +292,6 @@ export function ArticleStructuredData({
   dateModified?: string;
   image?: string;
   url: string;
-  authorName: string;
-  authorUrl: string;
 }) {
   const structuredData = {
     "@context": "https://schema.org",
@@ -248,20 +301,20 @@ export function ArticleStructuredData({
     description: description,
     datePublished: datePublished,
     dateModified: dateModified || datePublished,
-    image: image || "https://almujax.com/img/profile.png?v=3",
+    image: image || `${SITE_URL}/img/profile-engineer-1200x630.png`,
     url: url,
     inLanguage: "en",
     isAccessibleForFree: true,
     author: {
       "@type": "Person",
-      "@id": "https://almujax.com/#person",
+      "@id": PERSON_ID,
       name: "Mujahid Siyam",
-      alternateName: ["Almuja", "almujax"],
-      url: "https://almujax.com",
+      alternateName: ["Almujax", "almujax"],
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
-      "@id": "https://almujax.com/#org",
+      "@id": `${SITE_URL}/#org`,
       name: "Zaroxi Studio",
       url: "https://zaroxi.com",
     },
@@ -271,12 +324,7 @@ export function ArticleStructuredData({
     },
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+  return <JsonLd data={structuredData} />;
 }
 
 export function SoftwareSourceCodeStructuredData({
@@ -292,7 +340,7 @@ export function SoftwareSourceCodeStructuredData({
   url: string;
   codeRepository?: string;
   dateCreated?: string;
-  programmingLanguage?: string[];
+  programmingLanguage?: string;
 }) {
   const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -303,10 +351,10 @@ export function SoftwareSourceCodeStructuredData({
     url,
     author: {
       "@type": "Person",
-      "@id": "https://almujax.com/#person",
+      "@id": PERSON_ID,
       name: "Mujahid Siyam",
-      alternateName: ["Almuja", "almujax"],
-      url: "https://almujax.com",
+      alternateName: ["Almujax", "almujax"],
+      url: SITE_URL,
     },
   };
 
@@ -318,90 +366,9 @@ export function SoftwareSourceCodeStructuredData({
     structuredData.dateCreated = dateCreated;
   }
 
-  if (programmingLanguage?.length) {
+  if (programmingLanguage) {
     structuredData.programmingLanguage = programmingLanguage;
   }
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
-}
-
-export function MusicArtistStructuredData() {
-  const musicSchema = {
-    "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    "@id": "https://almujax.com/music#artist",
-    name: "Almuja",
-    alternateName: ["Almuja", "الموجا", "الموجة", "الموجه", "almujax"],
-    description:
-      "Almuja (الموجا, also spelled الموجة / الموجه — meaning 'the wave' in Arabic) is the music artist project of Mujahid Siyam — a Sudanese rapper and hip-hop producer based in Paris, France, creating Arabic, Middle Eastern, and African rap. His debut EP KAKASHI released in 2022, and his next EP Rockstar is scheduled for release in August 2026.",
-    url: "https://almujax.com/music",
-    image: "https://almujax.com/img/profile.png?v=3",
-    foundingDate: "2022",
-    genre: [
-      "Arabic Rap",
-      "Middle Eastern Rap",
-      "Sudanese Rap",
-      "African Rap",
-      "Hip Hop",
-      "راب عربي",
-      "راب سوداني",
-    ],
-    album: [
-      {
-        "@type": "MusicAlbum",
-        "@id": "https://almujax.com/music#kakashi",
-        name: "KAKASHI",
-        datePublished: "2022",
-        albumProductionType: "https://schema.org/EP",
-        url: "https://almujax.com/music",
-      },
-      {
-        "@type": "MusicAlbum",
-        "@id": "https://almujax.com/music#rockstar",
-        name: "Rockstar",
-        datePublished: "2026-08",
-        albumProductionType: "https://schema.org/EP",
-        url: "https://almujax.com/music",
-      },
-    ],
-    member: {
-      "@type": "Person",
-      "@id": "https://almujax.com/#person",
-      name: "Mujahid Siyam",
-      alternateName: ["Almuja", "almujax"],
-      url: "https://almujax.com",
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": "https://almujax.com/music",
-    },
-    sameAs: [
-      "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
-      "https://music.apple.com/fr/artist/almuja/6800033494",
-      "https://soundcloud.com/almujax",
-      "https://youtube.com/@almujamusic",
-      "https://music.youtube.com/@almujamusic",
-      "https://instagram.com/almujax",
-      "https://tiktok.com/@almujax",
-      "https://www.deezer.com/en/artist/409144252",
-      "https://play.anghami.com/artist/29651679",
-      "https://almujax.bandcamp.com",
-      "https://tidal.com/browse/artist/almujax",
-      "https://music.amazon.fr/artists/B0HDMF43R7",
-      "https://www.pandora.com/artist/almujax",
-    ],
-    inLanguage: ["en", "ar", "fr"],
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(musicSchema) }}
-    />
-  );
+  return <JsonLd data={structuredData} />;
 }
