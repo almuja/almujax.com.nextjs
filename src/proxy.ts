@@ -88,7 +88,8 @@ export function proxy(request: NextRequest) {
 
   if (pathnameHasLocale) {
     const locale = pathname.split("/")[1];
-    const response = NextResponse.next();
+    request.headers.set("x-locale", locale);
+    const response = NextResponse.next({ request });
     response.cookies.set("NEXT_LOCALE", locale, {
       path: "/",
       maxAge: 31536000,
