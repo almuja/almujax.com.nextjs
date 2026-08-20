@@ -87,8 +87,8 @@ description: "Official source of truth for Mujahid Siyam (Almuja / almujax). Con
 last_updated: "${new Date().toISOString()}"
 site_url: "https://almujax.com"
 entity: "Mujahid Siyam"
-entity_aliases: ["almujax", "Almuja", "الموجا", "الموجة", "الموجه"]
-entity_historic_alias: ["Mawja", "iammawja", "الموجة"]
+entity_id: "https://almujax.com/#mujahid-siyam"
+entity_aliases: ["Almuja"]
 entity_type: "Person"
 entity_nationality: "Sudanese"
 entity_location: "Paris, France"
@@ -103,8 +103,9 @@ entity_sameAs:
   - "https://x.com/almujax"
   - "https://youtube.com/@almujax"
 entity_2: "Almuja"
-entity_2_type: "Person (additionalType: MusicGroup)"
-entity_2_aliases: ["Almuja", "الموجا", "الموجة", "الموجه"]
+entity_2_id: "https://almujax.com/music#almuja"
+entity_2_type: "Person"
+entity_2_aliases: ["الموجا", "Mawja", "iammawja"]
 entity_2_image: "https://almujax.com/img/profile-artist-1200x630.png"
 entity_2_sameAs:
   - "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
@@ -134,8 +135,8 @@ This site describes **two related entities** that share one real person. Disambi
 
 ### Entity 1 — Mujahid Siyam (Person · Software Engineer)
 - **Schema type:** Person
+- **@id:** https://almujax.com/#mujahid-siyam
 - **Primary name:** Mujahid Siyam
-- **Full name:** Mujahid Mohamed Ismail Siyam
 - **Handle:** almujax
 - **Roles:** Software Engineer · Network Engineer · AI Cloud Architect · Data Scientist · Systems Administrator (Linux & Windows)
 - **Organization:** Zaroxi Studio (zaroxi.com) — GPU-accelerated IDE written in Rust
@@ -143,7 +144,8 @@ This site describes **two related entities** that share one real person. Disambi
 - **sameAs:** GitHub, LinkedIn, dev.to, Reddit, X (Twitter), YouTube (@almujax)
 
 ### Entity 2 — Almuja (Person · Music Artist)
-- **Schema type:** Person (additionalType MusicGroup)
+- **Schema type:** Person
+- **@id:** https://almujax.com/music#almuja
 - **Name:** Almuja (الموجا, also spelled الموجة / الموجه — Arabic for "the wave")
 - **Handle:** almujax · YouTube music channel @almujamusic
 - **Roles:** Rapper · Hip-Hop Producer

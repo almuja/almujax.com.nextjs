@@ -447,7 +447,6 @@ export default async function AboutPage({
                           {edu.period}
                         </span>
                       </div>
-                      <p className="text-xs text-foreground/40">{edu.school}</p>
                       <p className="text-xs text-foreground/35 mt-1">
                         {edu.description}
                       </p>

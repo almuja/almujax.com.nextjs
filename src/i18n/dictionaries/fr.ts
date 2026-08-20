@@ -157,7 +157,7 @@ const fr = {
     summary1:
       "J'ai grandi au Soudan et j'ai commencé la musique à 16 ans, bien avant de toucher un ordinateur. J'ai formé des groupes, je me suis produit sur scène et j'ai passé mon adolescence à apprendre ce que signifie créer quelque chose et le présenter aux autres. Cette expérience précoce a façonné ma façon d'aborder tout ce que je construis aujourd'hui — avec intention, attention aux détails et la compréhension que ce que l'on crée doit fonctionner pour quelqu'un, pas seulement sur le papier.",
     summary2:
-      "Quand j'ai découvert l'ingénierie logicielle, j'ai retrouvé le même processus créatif que j'aimais dans la musique, simplement dans un autre medium. J'ai étudié l'informatique, obtenu un master avec spécialisation en intelligence artificielle et machine learning, et passé des années à construire des applications, gérer des infrastructures et concevoir des réseaux pour des startups et des laboratoires de data science. En chemin, j'ai acquis une expertise approfondie en administration systèmes Linux et Windows, architecture cloud, automatisation DevOps et ingénierie réseaux.",
+      "Quand j'ai découvert l'ingénierie logicielle, j'ai retrouvé le même processus créatif que j'aimais dans la musique, simplement dans un autre medium. J'ai étudié l'informatique, obtenu un master avec spécialisation en intelligence artificielle et machine learning, et passé des années à construire des applications, gérer des infrastructures et concevoir des réseaux pour des startups et des équipes de recherche. En chemin, j'ai acquis une expertise approfondie en administration systèmes Linux et Windows, architecture cloud, automatisation DevOps et ingénierie réseaux.",
     summary3:
       "Aujourd'hui, je suis un ingénieur de niveau senior à l'aise sur l'ensemble de la stack technologique. J'écris du code de production en Rust, TypeScript et Python. Je conçois et déploie des infrastructures avec Terraform, Ansible, Docker et Kubernetes sur AWS. J'administre des serveurs Linux (Ubuntu, Debian, Arch, NixOS) et des environnements Windows Server. Je travaille avec des bases de données comme PostgreSQL, MySQL, MongoDB et Redis — optimisation de requêtes, conception de schémas, stratégies de réplication et de sauvegarde. Je construis des pipelines CI/CD, j'implémente le scanning de sécurité dans les workflows de développement et je surveille les systèmes de production avec Prometheus et Grafana. Je comprends les réseaux du modèle OSI jusqu'à la configuration BGP et OSPF. Et je maîtrise le cycle complet du machine learning — entraînement de modèles, déploiement, construction de systèmes RAG et travail avec les architectures LLM.",
     summary4:
@@ -205,35 +205,19 @@ const fr = {
         description:
           "Construction de systèmes logiciels en production et d'intégrations IA. Gestion d'infrastructure cloud sur AWS avec Terraform, Docker et Kubernetes. Administration de serveurs Linux et Windows. Développement d'outils open source pour développeurs. Travail avec Rust, TypeScript, Python, NixOS, PostgreSQL et architectures LLM. Pilotage de projets de bout en bout, de l'architecture au déploiement.",
       },
-      {
-        title: "Ingénieur IA/ML",
-        company: "Data Science Labs",
-        period: "2020 – 2022",
-        description:
-          "Construction et déploiement de modèles de machine learning pour l'analyse prédictive en production. Mise en place et gestion de l'infrastructure AWS, incluant EC2, S3, RDS et EKS. Administration de serveurs Linux et configuration d'infrastructure réseau. Construction de pipelines de données et de systèmes de monitoring.",
-      },
-      {
-        title: "Développeur & Admin Systèmes",
-        company: "Startup Ventures",
-        period: "2018 – 2020",
-        description:
-          "Développement d'applications web et mobiles full-stack. Administration d'environnements serveurs Linux et Windows. Configuration d'infrastructure réseau incluant pare-feu, VPN et répartiteurs de charge. Mise en place de pipelines CI/CD et automatisation des déploiements. Travail en équipes agiles et pluridisciplinaires.",
-      },
     ],
     eduItems: [
       {
         degree: "Master en Informatique",
-        school: "Université de Technologie",
         period: "2016 – 2018",
         description:
-          "Spécialisation en intelligence artificielle et machine learning. Mémoire sur les architectures de réseaux de neurones pour le traitement du langage naturel.",
+          "Spécialisation en intelligence artificielle et machine learning.",
       },
       {
         degree: "Licence en Génie Logiciel",
-        school: "Tech University",
         period: "2012 – 2016",
         description:
-          "Focus sur les systèmes distribués, l'architecture réseau, les systèmes d'exploitation et la programmation système. Diplômé avec mention.",
+          "Focus sur les systèmes distribués, l'architecture réseau, les systèmes d'exploitation et la programmation système.",
       },
     ],
     skills: [
@@ -339,7 +323,8 @@ const fr = {
     tracks: "pistes",
     openInApp: "Ouvrir dans",
     artistName: "Almuja",
-    artistDescription: "Rap Arabe · Rap Soudanais · Hip Hop",
+    artistDescription:
+      "Almuja (الموجا) est le nom d'artiste de Mujahid Siyam. Le nom est dérivé du mot arabe الموجة, qui signifie « la vague ».",
     artistStory:
       "J'ai commencé la musique à 16 ans, bien avant d'écrire une seule ligne de code. En grandissant au Soudan, la musique était partout — et je voulais en faire partie. J'ai formé des groupes, écrit des paroles, enregistré partout où je pouvais et joué devant quiconque voulait bien écouter. La musique était mon premier langage pour construire des choses : on part d'une idée, on la façonne, on l'affine, puis on la présente et on voit comment les gens réagissent.\n\nQuand j'ai déménagé en France, j'ai mis la musique de côté pour me concentrer sur l'ingénierie logicielle. Pendant des années, le code a tout remplacé. J'ai construit des systèmes, géré des infrastructures, travaillé sur des projets d'IA. C'était exigeant et gratifiant, mais quelque chose manquait. En 2022, après un long silence, je suis retourné en studio. J'ai produit mon premier EP — KAKASHI — sous le nom Almuja. C'était brut, honnête et exactement ce que j'avais besoin de faire. Ce n'était pas une stratégie de comeback. C'était moi qui me souvenais de qui j'étais avant de devenir ingénieur.\n\nMaintenant, je travaille sur mon prochain EP, Rockstar, prévu pour août 2026. C'est le chapitre suivant — plus grand, plus concentré, une expression plus profonde de là où j'en suis. La musique n'est pas un projet secondaire. Elle fait partie de mon identité, tout comme l'ingénierie. Si vous avez écouté KAKASHI, vous connaissez le son. Si ce n'est pas le cas, c'est le bon moment.\n\nJe fais du rap arabe et du rap soudanais, avec une production hip hop qui puise dans mes racines et ma vie en Europe. La musique est personnelle. Elle parle d'identité, de déplacement, d'ambition et de la tension entre qui l'on était et qui l'on devient. Si cela vous parle, je pense que vous aimerez ce qui arrive.",
   },

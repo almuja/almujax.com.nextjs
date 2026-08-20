@@ -157,7 +157,7 @@ const en = {
     summary1:
       "I grew up in Sudan and started making music at 16, long before I touched a computer. I formed bands, performed live, and spent my teenage years learning what it means to create something and put it in front of people. That early experience shaped how I approach everything I build today — with intention, attention to detail, and the understanding that the thing you make has to work for someone, not just work on paper.",
     summary2:
-      "When I found software engineering, I found the same creative process I loved in music, just in a different medium. I studied computer science, earned my MSc with a focus on artificial intelligence and machine learning, and spent years building applications, managing infrastructure, and designing networks for startups and data science labs. Along the way, I picked up deep expertise in Linux and Windows system administration, cloud architecture, DevOps automation, and network engineering.",
+      "When I found software engineering, I found the same creative process I loved in music, just in a different medium. I studied computer science, earned my MSc with a focus on artificial intelligence and machine learning, and spent years building applications, managing infrastructure, and designing networks for startups and research teams. Along the way, I picked up deep expertise in Linux and Windows system administration, cloud architecture, DevOps automation, and network engineering.",
     summary3:
       "Today, I'm a senior-level engineer comfortable across the full technology stack. I write production code in Rust, TypeScript, and Python. I design and deploy infrastructure using Terraform, Ansible, Docker, and Kubernetes on AWS. I administer Linux servers (Ubuntu, Debian, Arch, NixOS) and Windows Server environments. I work with databases like PostgreSQL, MySQL, MongoDB, and Redis — optimizing queries, designing schemas, and setting up replication and backup strategies. I build CI/CD pipelines, implement security scanning in development workflows, and monitor production systems with Prometheus and Grafana. I understand networking from the OSI model down to BGP and OSPF configuration. And I'm comfortable with the full ML lifecycle — training models, deploying them, building RAG systems, and working with LLM architectures.",
     summary4:
@@ -205,35 +205,19 @@ const en = {
         description:
           "Building production software systems and AI integrations. Managing cloud infrastructure on AWS with Terraform, Docker, and Kubernetes. Administering Linux and Windows servers. Developing open source developer tools. Working with Rust, TypeScript, Python, NixOS, PostgreSQL, and LLM architectures. Leading end-to-end projects from architecture to deployment.",
       },
-      {
-        title: "AI/ML Engineer",
-        company: "Data Science Labs",
-        period: "2020 – 2022",
-        description:
-          "Built and deployed machine learning models for predictive analytics in production. Set up and managed AWS infrastructure, including EC2, S3, RDS, and EKS. Administered Linux servers and configured network infrastructure. Built data pipelines and monitoring systems.",
-      },
-      {
-        title: "Software Developer & SysAdmin",
-        company: "Startup Ventures",
-        period: "2018 – 2020",
-        description:
-          "Developed full-stack web and mobile applications. Administered Linux and Windows server environments. Configured network infrastructure including firewalls, VPNs, and load balancers. Set up CI/CD pipelines and automated deployment workflows. Worked in agile, cross-functional teams.",
-      },
     ],
     eduItems: [
       {
         degree: "MSc in Computer Science",
-        school: "University of Technology",
         period: "2016 – 2018",
         description:
-          "Specialized in artificial intelligence and machine learning. Thesis on neural network architectures for natural language processing.",
+          "Specialized in artificial intelligence and machine learning.",
       },
       {
         degree: "BSc in Software Engineering",
-        school: "Tech University",
         period: "2012 – 2016",
         description:
-          "Focus on distributed systems, network architecture, operating systems, and systems programming. Graduated with honors.",
+          "Focus on distributed systems, network architecture, operating systems, and systems programming.",
       },
     ],
     skills: [
@@ -339,7 +323,7 @@ const en = {
     openInApp: "Open in",
     artistName: "Almuja",
     artistDescription:
-      "Arabic Rap · Middle Eastern Rap · Sudanese Rap · African Rap · Hip Hop",
+      'Almuja (الموجا) is the artist name of Mujahid Siyam. The name is derived from the Arabic word الموجة, meaning "the wave."',
     artistStory:
       "I started making music when I was 16, long before I wrote a line of code. Growing up in Sudan, music was everywhere — and I wanted to be part of it. I formed bands, wrote lyrics, recorded wherever I could, and performed in front of anyone who would listen. Music was my first language for building things: you start with an idea, you shape it, you refine it, and then you put it out there and see how people respond.\n\nWhen I moved to France, I stepped away from music to focus on software engineering. For years, code replaced everything. I built systems, managed infrastructure, worked on AI projects. It was demanding and rewarding, but something was missing. In 2022, after a long silence, I went back to the studio. I produced my first EP — KAKASHI — under the name Almuja. It was raw, honest, and exactly what I needed to make. It wasn't a comeback strategy. It was me remembering who I was before I became an engineer.\n\nNow I'm working on my next EP, Rockstar, set for release in August 2026. It's the next chapter — bigger, more focused, and a deeper expression of where I am now. Music is not a side project. It's part of my identity, the same way engineering is. If you've listened to KAKASHI, you already know the sound. If you haven't, now's a good time.\n\nI make Arabic rap and Sudanese rap, with hip hop production that draws from both my roots and my life in Europe. The music is personal. It's about identity, displacement, ambition, and the tension between who you were and who you're becoming. If that resonates with you, I think you'll like what's coming.",
   },

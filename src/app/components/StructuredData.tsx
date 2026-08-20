@@ -1,6 +1,19 @@
 const SITE_URL = "https://almujax.com";
-const PERSON_ID = `${SITE_URL}/#person`;
-const ARTIST_ID = `${SITE_URL}/music#artist`;
+const PERSON_ID = `${SITE_URL}/#mujahid-siyam`;
+const ARTIST_ID = `${SITE_URL}/music#almuja`;
+
+const KNOWS_LANGUAGE = [
+  { "@type": "Language", name: "Arabic", alternateName: "اللغة العربية" },
+  { "@type": "Language", name: "English", alternateName: "English" },
+  { "@type": "Language", name: "French", alternateName: "Français" },
+];
+
+const personRef = {
+  "@type": "Person",
+  "@id": PERSON_ID,
+  name: "Mujahid Siyam",
+  url: SITE_URL,
+};
 
 function JsonLd({ data }: { data: unknown }) {
   return (
@@ -17,7 +30,7 @@ export function PersonStructuredData() {
     "@type": "Person",
     "@id": PERSON_ID,
     name: "Mujahid Siyam",
-    alternateName: ["Almujax", "almujax"],
+    alternateName: ["Almuja"],
     disambiguatingDescription:
       "Software engineer, network engineer, and AI/cloud architect. Also known by the artist name Almuja.",
     description:
@@ -32,11 +45,7 @@ export function PersonStructuredData() {
       "@type": "Place",
       name: "Paris, France",
     },
-    knowsLanguage: [
-      { "@type": "Language", name: "Arabic", alternateName: "اللغة العربية" },
-      { "@type": "Language", name: "English", alternateName: "English" },
-      { "@type": "Language", name: "French", alternateName: "Français" },
-    ],
+    knowsLanguage: KNOWS_LANGUAGE,
     sameAs: [
       "https://github.com/almujax",
       "https://linkedin.com/in/almujax",
@@ -55,17 +64,6 @@ export function PersonStructuredData() {
       skills:
         "Software engineering, network engineering, AI/cloud architecture, data science, Rust, systems programming",
     },
-    knows: {
-      "@type": "Person",
-      "@id": ARTIST_ID,
-      name: "Almuja",
-      disambiguatingDescription:
-        "Music artist persona (rapper and producer) of Mujahid Siyam.",
-    },
-    subjectOf: {
-      "@type": "WebPage",
-      url: `${SITE_URL}/music`,
-    },
   };
 
   return <JsonLd data={structuredData} />;
@@ -77,19 +75,14 @@ export function MusicArtistStructuredData() {
     "@type": "Person",
     "@id": ARTIST_ID,
     name: "Almuja",
-    alternateName: ["الموجا", "الموجة", "الموجه", "Mawja", "iammawja"],
-    additionalType: "https://schema.org/MusicGroup",
+    alternateName: ["الموجا", "Mawja", "iammawja"],
     disambiguatingDescription:
       "Music artist, rapper and producer. Solo artist persona of engineer Mujahid Siyam.",
     description: "Almuja is a rapper and producer. Real name Mujahid Siyam.",
     url: `${SITE_URL}/music`,
     image: `${SITE_URL}/img/profile-artist-1200x630.png`,
     jobTitle: "Music Artist",
-    knowsLanguage: [
-      { "@type": "Language", name: "Arabic", alternateName: "اللغة العربية" },
-      { "@type": "Language", name: "English", alternateName: "English" },
-      { "@type": "Language", name: "French", alternateName: "Français" },
-    ],
+    knowsLanguage: KNOWS_LANGUAGE,
     sameAs: [
       "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX",
       "https://www.deezer.com/en/artist/409144252",
@@ -102,17 +95,6 @@ export function MusicArtistStructuredData() {
       "https://instagram.com/almujax",
       "https://tiktok.com/@almujax",
     ],
-    knows: {
-      "@type": "Person",
-      "@id": PERSON_ID,
-      name: "Mujahid Siyam",
-      disambiguatingDescription:
-        "Real-name software, network and AI engineer identity behind Almuja.",
-    },
-    subjectOf: {
-      "@type": "WebPage",
-      url: SITE_URL,
-    },
   };
 
   return <JsonLd data={structuredData} />;
@@ -203,12 +185,7 @@ export function SoftwareApplicationStructuredData() {
     description:
       "Zaroxi Studio is a GPU-accelerated IDE written in Rust, built by Mujahid Siyam. An AI-first developer environment with wgpu-powered rendering.",
     programmingLanguage: "Rust",
-    author: {
-      "@type": "Person",
-      "@id": PERSON_ID,
-      name: "Mujahid Siyam",
-      url: SITE_URL,
-    },
+    author: personRef,
     offers: {
       "@type": "Offer",
       price: "0",
@@ -239,12 +216,7 @@ export function OrganizationStructuredData() {
         addressCountry: "FR",
       },
     },
-    founder: {
-      "@type": "Person",
-      "@id": PERSON_ID,
-      name: "Mujahid Siyam",
-      url: SITE_URL,
-    },
+    founder: personRef,
   };
 
   return <JsonLd data={structuredData} />;
@@ -260,13 +232,7 @@ export function WebSiteStructuredData() {
     description:
       "Official website of Mujahid Siyam, also known by the artist name Almuja. Hosts his software engineering projects, technical writing, and music.",
     inLanguage: ["en", "ar", "fr"],
-    about: {
-      "@type": "Person",
-      "@id": PERSON_ID,
-      name: "Mujahid Siyam",
-      alternateName: ["Almujax", "almujax"],
-      url: SITE_URL,
-    },
+    about: personRef,
     publisher: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#org`,
@@ -305,13 +271,7 @@ export function ArticleStructuredData({
     url: url,
     inLanguage: "en",
     isAccessibleForFree: true,
-    author: {
-      "@type": "Person",
-      "@id": PERSON_ID,
-      name: "Mujahid Siyam",
-      alternateName: ["Almujax", "almujax"],
-      url: SITE_URL,
-    },
+    author: personRef,
     publisher: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#org`,
@@ -349,13 +309,7 @@ export function SoftwareSourceCodeStructuredData({
     name,
     description,
     url,
-    author: {
-      "@type": "Person",
-      "@id": PERSON_ID,
-      name: "Mujahid Siyam",
-      alternateName: ["Almujax", "almujax"],
-      url: SITE_URL,
-    },
+    author: personRef,
   };
 
   if (codeRepository) {
