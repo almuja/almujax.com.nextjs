@@ -55,6 +55,7 @@ export default function Author({
                 src={image || "/img/profile.png"}
                 alt={name}
                 fill
+                sizes="5rem"
                 className="object-cover"
               />
             </div>

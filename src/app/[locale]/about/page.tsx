@@ -238,6 +238,7 @@ export default async function AboutPage({
                     src="/img/profile.png"
                     alt="Mujahid Siyam"
                     fill
+                    sizes="(min-width: 640px) 10rem, 8rem"
                     className="object-cover"
                   />
                 </div>
