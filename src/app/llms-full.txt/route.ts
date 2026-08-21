@@ -54,7 +54,7 @@ This document describes **two related entities** backed by the same real person:
 
 #### Entity 2 — Almuja (Person · Music Artist)
 - Name: Almuja (artist name — موجا, derived from الموجة / الموجه, Arabic for "the wave")
-- Handle: almujax · YouTube music channel @almujamusic
+- Handle: almujax · YouTube music channel @AlmujaMusic
 - Roles: Rapper, Hip-Hop Producer
 - Music genres: Arabic Rap, Middle Eastern Rap, Sudanese Rap, African Rap, Hip Hop
 - Music releases: KAKASHI EP (2022), Rockstar EP (August 2026)
@@ -81,8 +81,8 @@ This document describes **two related entities** backed by the same real person:
 #### Music (Almuja)
 - Spotify: https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX
 - Apple Music: https://music.apple.com/fr/artist/almuja/6800033494
-- YouTube (music): https://youtube.com/@almujamusic
-- YouTube Music: https://music.youtube.com/@almujamusic
+- YouTube (music): https://youtube.com/@AlmujaMusic
+- YouTube Music: https://music.youtube.com/@AlmujaMusic
 - SoundCloud: https://soundcloud.com/almujax
 - Instagram: https://instagram.com/almujax
 - TikTok: https://tiktok.com/@almujax

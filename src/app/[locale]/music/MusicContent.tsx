@@ -107,13 +107,13 @@ const streamingPlatforms = [
   {
     name: "YouTube",
     icon: YouTubeIcon,
-    url: "https://www.youtube.com/@almujamusic",
+    url: "https://www.youtube.com/@AlmujaMusic",
     color: "#FF0000",
   },
   {
     name: "YouTube Music",
     icon: YouTubeIcon,
-    url: "https://music.youtube.com/@almujamusic",
+    url: "https://music.youtube.com/@AlmujaMusic",
     color: "#FF0000",
   },
   {
@@ -439,7 +439,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                     {[
                       {
                         label: locale === "ar" ? "يوتيوب" : "YouTube",
-                        url: "https://www.youtube.com/@almujamusic",
+                        url: "https://www.youtube.com/@AlmujaMusic",
                         icon: YouTubeIcon,
                         color: "#FF0000",
                       },
@@ -519,7 +519,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                       },
                       {
                         label: locale === "ar" ? "يوتيوب" : "YouTube",
-                        url: "https://www.youtube.com/@almujamusic",
+                        url: "https://www.youtube.com/@AlmujaMusic",
                         icon: YouTubeIcon,
                         color: "#FF0000",
                       },
@@ -609,11 +609,11 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                         ? "Rockstar — Audio Officiel"
                         : "Rockstar — Official Audio"}
                   </h3>
-                  <p className="text-sm text-foreground/40">@almujamusic</p>
+                  <p className="text-sm text-foreground/40">@AlmujaMusic</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="https://www.youtube.com/@almujamusic"
+                    href="https://www.youtube.com/@AlmujaMusic"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 font-medium text-sm transition-all duration-300 hover:scale-[1.02]"
@@ -657,10 +657,10 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   <h3 className="text-lg font-bold text-foreground">
                     YouTube Music
                   </h3>
-                  <p className="text-sm text-foreground/40">@almujamusic</p>
+                  <p className="text-sm text-foreground/40">@AlmujaMusic</p>
                 </div>
                 <a
-                  href="https://music.youtube.com/@almujamusic"
+                  href="https://music.youtube.com/@AlmujaMusic"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ms-auto inline-flex items-center gap-1.5 text-sm text-red-400 hover:text-red-300 font-medium transition-colors"

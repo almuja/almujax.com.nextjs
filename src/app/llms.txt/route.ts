@@ -110,7 +110,7 @@ entity_2_image: "https://almujax.com/img/profile-artist-1200x630.png"
 entity_2_sameAs:
   - "https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX"
   - "https://soundcloud.com/almujax"
-  - "https://music.youtube.com/@almujamusic"
+  - "https://music.youtube.com/@AlmujaMusic"
   - "https://instagram.com/almujax"
   - "https://tiktok.com/@almujax"
   - "https://www.deezer.com/en/artist/409144252"
@@ -147,7 +147,7 @@ This site describes **two related entities** that share one real person. Disambi
 - **Schema type:** Person
 - **@id:** https://almujax.com/music#almuja
 - **Name:** Almuja (Arabic: موجا, derived from الموجة / الموجه — Arabic for "the wave")
-- **Handle:** almujax · YouTube music channel @almujamusic
+- **Handle:** almujax · YouTube music channel @AlmujaMusic
 - **Roles:** Rapper · Hip-Hop Producer
 - **Genres:** Arabic Rap, Middle Eastern Rap, Sudanese Rap, African Rap, Hip Hop
 - **Releases:** KAKASHI EP (2022), Rockstar EP (August 2026)
@@ -191,8 +191,8 @@ ${projectLinks || "- No published projects yet."}
 ### Music (Almuja)
 - Spotify: https://open.spotify.com/artist/24n3um6erIOUxobs69qDPX
 - Apple Music: https://music.apple.com/fr/artist/almuja/6800033494
-- YouTube (music): https://youtube.com/@almujamusic
-- YouTube Music: https://music.youtube.com/@almujamusic
+- YouTube (music): https://youtube.com/@AlmujaMusic
+- YouTube Music: https://music.youtube.com/@AlmujaMusic
 - SoundCloud: https://soundcloud.com/almujax
 - Instagram: https://instagram.com/almujax
 - TikTok: https://tiktok.com/@almujax
