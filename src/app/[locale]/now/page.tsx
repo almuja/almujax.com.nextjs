@@ -16,11 +16,11 @@ export async function generateMetadata({
   return {
     title:
       validLocale === "ar"
-        ? "الآن | الموجا — مجاهد صيام"
+        ? "الآن | موجا — مجاهد صيام"
         : "Now | Almuja (Mujahid Siyam)",
     description:
       validLocale === "ar"
-        ? "ما يركز عليه الموجا — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
+        ? "ما يركز عليه موجا — مجاهد صيام حالياً من عمل وتعلم واهتمامات."
         : "What Mujahid Siyam (Almuja) is focused on right now — work, learning, and current interests.",
     alternates: {
       canonical: `https://almujax.com/${validLocale}/now`,
@@ -29,11 +29,11 @@ export async function generateMetadata({
     openGraph: {
       title:
         validLocale === "ar"
-          ? "الآن | الموجا — مجاهد صيام"
+          ? "الآن | موجا — مجاهد صيام"
           : "Now | Almuja (Mujahid Siyam)",
       description:
         validLocale === "ar"
-          ? "ما يركز عليه الموجا — مجاهد صيام حالياً."
+          ? "ما يركز عليه موجا — مجاهد صيام حالياً."
           : "What Mujahid Siyam (Almuja) is focused on right now.",
       url: `https://almujax.com/${validLocale}/now`,
       type: "website",
@@ -51,11 +51,11 @@ export async function generateMetadata({
       card: "summary_large_image",
       title:
         validLocale === "ar"
-          ? "الآن | الموجا — مجاهد صيام"
+          ? "الآن | موجا — مجاهد صيام"
           : "Now | Almuja (Mujahid Siyam)",
       description:
         validLocale === "ar"
-          ? "ما يركز عليه الموجا — مجاهد صيام حالياً."
+          ? "ما يركز عليه موجا — مجاهد صيام حالياً."
           : "What Mujahid Siyam (Almuja) is focused on right now.",
       images: ["https://almujax.com/img/profile-engineer-1200x630.png"],
       site: "@almujax",

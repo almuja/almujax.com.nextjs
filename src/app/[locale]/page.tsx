@@ -134,8 +134,8 @@ const socials = [
 ];
 
 const waveSubtitles: Record<string, string> = {
-  ar: "الموجا — التدفق، الإشارة، التغيّر",
-  fr: "Almuja (الموجا) — la vague, le flux, le signal",
+  ar: "موجا — التدفق، الإشارة، التغيّر",
+  fr: "Almuja (موجا) — la vague, le flux, le signal",
 };
 const availabilityBadge: Record<string, string> = {
   ar: "متاح للعمل",
@@ -329,7 +329,7 @@ export default async function Home({
 
           <p className="hero-enter mt-6 text-sm text-foreground/40 font-light italic">
             {waveSubtitles[validLocale] ??
-              "Almuja (الموجا) — the wave, the flow, the signal"}
+              "Almuja (موجا) — the wave, the flow, the signal"}
           </p>
 
           <p className="hero-enter mt-8 text-base sm:text-lg text-foreground/50 leading-relaxed max-w-lg mx-auto">
@@ -406,7 +406,7 @@ export default async function Home({
 
           <p className="text-sm text-foreground/40 font-light italic mb-6 leading-relaxed max-w-xl">
             {waveSubtitles[validLocale] ??
-              "Almuja (الموجا) — the wave, the flow, the signal"}
+              "Almuja (موجا) — the wave, the flow, the signal"}
           </p>
 
           <div className="mb-8 w-12 h-px bg-gradient-to-r from-foreground/20 to-transparent" />

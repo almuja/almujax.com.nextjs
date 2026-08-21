@@ -3,7 +3,7 @@ const fr = {
     title:
       "Almuja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes · Rappeur · Producteur · Créateur de Contenu | almujax",
     description:
-      "Mujahid Siyam, connu sous le nom d'Almuja (الموجا, aussi الموجة/الموجه) et pseudonyme almujax, est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu basé à Paris, France. Site personnel avec projets, écrits et musique.",
+      "Mujahid Siyam, connu sous le nom d'Almuja (موجا, dérivé de الموجة/الموجه) et pseudonyme almujax, est ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu basé à Paris, France. Site personnel avec projets, écrits et musique.",
     defaultTitle:
       "Almuja (Mujahid Siyam) | Ingénieur Logiciel · Réseaux · IA Cloud · Data Scientist · Admin Systèmes · Rappeur · Producteur · Créateur de Contenu | almujax",
   },
@@ -115,7 +115,7 @@ const fr = {
     readBlog: "Lire le blog",
     aboutHeading: "À propos d'Almuja (Mujahid Siyam)",
     about1:
-      "Almuja (الموجا) est le nom que j'utilise en ligne — court, chaleureux, facile à dire. Il vient du mot arabe pour \"la vague\" — mouvement, signal, flux. Je l'ai choisi parce qu'il est simple, musical et mémorable. Mon vrai nom est Mujahid Siyam, et mon pseudonyme partout est almujax. Je suis un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, rappeur et producteur de hip-hop soudanais, né au Soudan et actuellement basé à Paris, France.",
+      "Almuja (موجا) est le nom que j'utilise en ligne — court, chaleureux, facile à dire. Il vient du mot arabe pour \"la vague\" — mouvement, signal, flux. Je l'ai choisi parce qu'il est simple, musical et mémorable. Mon vrai nom est Mujahid Siyam, et mon pseudonyme partout est almujax. Je suis un ingénieur logiciel, ingénieur réseaux, cloud architect IA, data scientist, rappeur et producteur de hip-hop soudanais, né au Soudan et actuellement basé à Paris, France.",
     about2:
       "J'ai commencé par la musique avant d'écrire une seule ligne de code. À 16 ans, je formais des groupes au Soudan, j'enregistrais des morceaux, je me produisais partout où c'était possible. La musique m'a appris à construire quelque chose à partir de rien — une idée devient un son, un son devient une performance, une performance connecte avec les gens. Cet instinct créatif ne m'a jamais quitté. Je l'ai transporté dans l'ingénierie par la suite, où j'ai retrouvé le même cycle : imaginer, construire, affiner, livrer.",
     about3:
@@ -141,7 +141,7 @@ const fr = {
     roles:
       "Ingénieur Logiciel · Ingénieur Réseaux · Cloud Architect IA · Data Scientist · Administrateur Systèmes (Linux & Windows) · Rappeur · Producteur Musical · Créateur de Contenu",
     profileTitle: "Ingénieur Logiciel & IA · Artiste Musical",
-    akaLabel: "Alias Almuja (الموجا / الموجة)",
+    akaLabel: "Alias Almuja (موجا)",
     location: "Paris, France",
     email: "hello@almujax.com",
     website: "almujax.com",
@@ -313,7 +313,7 @@ const fr = {
     title:
       "Musique | Almuja | Rap Arabe | Rap Soudanais | Hip Hop Moyen-Oriental | Rap Africain",
     description:
-      "Almuja (الموجا) est le nom d'artiste de Mujahid Siyam (pseudonyme: almujax). Rappeur soudanais et producteur de hip-hop créant du rap arabe, moyen-oriental et africain. Écoutez l'EP KAKASHI (2022). EP Rockstar à venir en août 2026. Suivez les prochaines sorties.",
+      "Almuja (موجا) est le nom d'artiste de Mujahid Siyam (pseudonyme: almujax). Rappeur soudanais et producteur de hip-hop créant du rap arabe, moyen-oriental et africain. Écoutez l'EP KAKASHI (2022). EP Rockstar à venir en août 2026. Suivez les prochaines sorties.",
     heading: "Almuja — Musique",
     subtitle:
       "Musique sous le nom Almuja. Rap arabe, moyen-oriental et africain, hip-hop. Rap soudanais et productions originales. EP KAKASHI disponible. EP Rockstar à venir en août 2026.",
@@ -324,7 +324,7 @@ const fr = {
     openInApp: "Ouvrir dans",
     artistName: "Almuja",
     artistDescription:
-      "Almuja (الموجا) est le nom d'artiste de Mujahid Siyam. Le nom est dérivé du mot arabe الموجة, qui signifie « la vague ».",
+      "Almuja (موجا) est le nom d'artiste de Mujahid Siyam. Le nom est dérivé du mot arabe الموجة, qui signifie « la vague ».",
     artistStory:
       "J'ai commencé la musique à 16 ans, bien avant d'écrire une seule ligne de code. En grandissant au Soudan, la musique était partout — et je voulais en faire partie. J'ai formé des groupes, écrit des paroles, enregistré partout où je pouvais et joué devant quiconque voulait bien écouter. La musique était mon premier langage pour construire des choses : on part d'une idée, on la façonne, on l'affine, puis on la présente et on voit comment les gens réagissent.\n\nQuand j'ai déménagé en France, j'ai mis la musique de côté pour me concentrer sur l'ingénierie logicielle. Pendant des années, le code a tout remplacé. J'ai construit des systèmes, géré des infrastructures, travaillé sur des projets d'IA. C'était exigeant et gratifiant, mais quelque chose manquait. En 2022, après un long silence, je suis retourné en studio. J'ai produit mon premier EP — KAKASHI — sous le nom Almuja. C'était brut, honnête et exactement ce que j'avais besoin de faire. Ce n'était pas une stratégie de comeback. C'était moi qui me souvenais de qui j'étais avant de devenir ingénieur.\n\nMaintenant, je travaille sur mon prochain EP, Rockstar, prévu pour août 2026. C'est le chapitre suivant — plus grand, plus concentré, une expression plus profonde de là où j'en suis. La musique n'est pas un projet secondaire. Elle fait partie de mon identité, tout comme l'ingénierie. Si vous avez écouté KAKASHI, vous connaissez le son. Si ce n'est pas le cas, c'est le bon moment.\n\nJe fais du rap arabe et du rap soudanais, avec une production hip hop qui puise dans mes racines et ma vie en Europe. La musique est personnelle. Elle parle d'identité, de déplacement, d'ambition et de la tension entre qui l'on était et qui l'on devient. Si cela vous parle, je pense que vous aimerez ce qui arrive.",
   },
@@ -392,7 +392,7 @@ const fr = {
   },
   structuredData: {
     description:
-      "Mujahid Siyam, connu sous le nom d'Almuja (الموجا, aussi épelé الموجة / الموجه — la vague en arabe) avec le pseudonyme almujax, est un ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il a commencé la musique à 16 ans, formant des groupes et se produisant avant de se tourner vers l'ingénierie logicielle, le cloud et l'IA. Il construit des systèmes avec Rust, TypeScript et Python, gère des infrastructures avec Terraform, Ansible, Docker et Kubernetes sur AWS, et administre des serveurs Linux et Windows. En 2022 il est revenu à la musique, sortant son premier EP KAKASHI sous le nom Almuja. Son prochain EP Rockstar est prévu pour août 2026. Sa musique couvre le rap arabe, moyen-oriental et africain, mêlant ses racines soudanaises à sa vie européenne. Il est le fondateur de Zaroxi Studio, un IDE accéléré par GPU écrit en Rust, et le créateur de MujaOS. Il relie l'ingénierie et la musique depuis Paris, France. Contact : hello@almujax.com.",
+      "Mujahid Siyam, connu sous le nom d'Almuja (موجا, dérivé de الموجة / الموجه — la vague en arabe) avec le pseudonyme almujax, est un ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux et Windows), rappeur, producteur musical et créateur de contenu né au Soudan et basé à Paris, France. Il a commencé la musique à 16 ans, formant des groupes et se produisant avant de se tourner vers l'ingénierie logicielle, le cloud et l'IA. Il construit des systèmes avec Rust, TypeScript et Python, gère des infrastructures avec Terraform, Ansible, Docker et Kubernetes sur AWS, et administre des serveurs Linux et Windows. En 2022 il est revenu à la musique, sortant son premier EP KAKASHI sous le nom Almuja. Son prochain EP Rockstar est prévu pour août 2026. Sa musique couvre le rap arabe, moyen-oriental et africain, mêlant ses racines soudanaises à sa vie européenne. Il est le fondateur de Zaroxi Studio, un IDE accéléré par GPU écrit en Rust, et le créateur de MujaOS. Il relie l'ingénierie et la musique depuis Paris, France. Contact : hello@almujax.com.",
     websiteDescription:
       "Site personnel officiel de Mujahid Siyam (Almuja / almujax) — ingénieur logiciel soudanais, ingénieur réseaux, cloud architect IA, data scientist, administrateur systèmes (Linux & Windows), rappeur et artiste musical né au Soudan, basé à Paris, France. A commencé la musique à 16 ans, a construit une carrière en ingénierie et infrastructure cloud, est revenu à la musique en 2022 avec l'EP KAKASHI. EP Rockstar à venir en août 2026. Fondateur de Zaroxi Studio (zaroxi.com). Projets, écrits techniques et rap original arabe, moyen-oriental et africain.",
   },
@@ -401,7 +401,7 @@ const fr = {
       "Mujahid Siyam",
       "Almuja",
       "almujax",
-      "الموجا",
+      "موجا",
       "الموجة",
       "الموجه",
       "Mujahid Siyam rappeur",
@@ -482,7 +482,7 @@ const fr = {
       "Almuja musique électronique",
       "Almuja artiste rap",
       "artiste musical soudanais",
-      "الموجا",
+      "موجا",
       "الموجة",
       "الموجه",
       "راب عربي",
@@ -542,7 +542,7 @@ const fr = {
       "ingénieur diaspora",
     ],
     dcSubject:
-      "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Data Analyst, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS, Almuja, الموجة, الموجه, ingénieur et artiste, almujax",
+      "Ingénierie logicielle, Intelligence artificielle, Développeur Rust, Ingénierie réseau, Administration systèmes Linux et Windows, Data Scientist, Data Analyst, Rappeur, Producteur Hip Hop, Artiste Rap, Artiste musical, Créateur de contenu, Rap arabe, Rap moyen-oriental, Rap soudanais, Rappeur Soudanais, Rap africain, Hip Hop Soudanais, Hip Hop Arabe, Rap Underground, Producteur Musical, Programmation, Terraform, Ansible, PostgreSQL, MySQL, NixOS, Almuja, موجا, الموجة, الموجه, ingénieur et artiste, almujax",
   },
   faq: {
     heading: "Questions Fréquentes",
@@ -553,11 +553,11 @@ const fr = {
       },
       {
         q: "Qui est Almuja ?",
-        a: "Almuja (الموجا, aussi épelé الموجة / الموجه) est le nom d'artiste et le pseudonyme en ligne de Mujahid Siyam (pseudonyme : almujax). Court, musical, inspiré du mot arabe signifiant « la vague » — représentant le mouvement, le flux et le signal. Almuja représente son identité en tant que rappeur et producteur de hip-hop soudanais créant du rap arabe, moyen-oriental et africain. Il a sorti son premier EP KAKASHI en 2022, et son prochain EP Rockstar est prévu pour août 2026.",
+        a: "Almuja (موجا, dérivé de الموجة / الموجه) est le nom d'artiste et le pseudonyme en ligne de Mujahid Siyam (pseudonyme : almujax). Court, musical, inspiré du mot arabe signifiant « la vague » — représentant le mouvement, le flux et le signal. Almuja représente son identité en tant que rappeur et producteur de hip-hop soudanais créant du rap arabe, moyen-oriental et africain. Il a sorti son premier EP KAKASHI en 2022, et son prochain EP Rockstar est prévu pour août 2026.",
       },
       {
         q: "Qu'est-ce que almujax ?",
-        a: "almujax est le pseudonyme universel de Mujahid Siyam (également connu sous le nom d'Almuja / الموجا) — utilisé sur toutes les plateformes comme GitHub, LinkedIn, Instagram, YouTube et X (Twitter). Le nom est Almuja, et le vrai nom est Mujahid Siyam.",
+        a: "almujax est le pseudonyme universel de Mujahid Siyam (également connu sous le nom d'Almuja / موجا) — utilisé sur toutes les plateformes comme GitHub, LinkedIn, Instagram, YouTube et X (Twitter). Le nom est Almuja, et le vrai nom est Mujahid Siyam.",
       },
       {
         q: "Qu'est-ce que Zaroxi Studio ?",

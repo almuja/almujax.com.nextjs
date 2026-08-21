@@ -75,7 +75,7 @@ export function MusicArtistStructuredData() {
     "@type": "Person",
     "@id": ARTIST_ID,
     name: "Almuja",
-    alternateName: ["الموجا", "Mawja", "iammawja"],
+    alternateName: ["موجا", "Mawja", "iammawja"],
     disambiguatingDescription:
       "Music artist, rapper and producer. Solo artist persona of engineer Mujahid Siyam.",
     description: "Almuja is a rapper and producer. Real name Mujahid Siyam.",

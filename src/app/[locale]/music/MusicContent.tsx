@@ -430,7 +430,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   </h3>
                   <p className="text-foreground/40 text-sm mb-6 max-w-sm">
                     {locale === "ar"
-                      ? "أول EP لالموجا — بداية جديدة في مسيرته الفنية"
+                      ? "أول EP لموجا — بداية جديدة في مسيرته الفنية"
                       : locale === "fr"
                         ? "Premier EP d'Almuja — un nouveau départ artistique"
                         : "Almuja's debut EP — marking the beginning of his return to music"}
@@ -492,7 +492,7 @@ export function MusicContent({ locale, t }: MusicContentProps) {
                   </h3>
                   <p className="text-foreground/40 text-sm mb-6 max-w-sm">
                     {locale === "ar"
-                      ? "EP الثاني لالموجا — فصل جديد، صوت أكبر، تعبير أعمق. يصدر قريباً."
+                      ? "EP الثاني لموجا — فصل جديد، صوت أكبر، تعبير أعمق. يصدر قريباً."
                       : locale === "fr"
                         ? "Le deuxième EP d'Almuja — un nouveau chapitre, un son plus grand, une expression plus profonde. Sortie prochaine."
                         : "Almuja's second EP — the next chapter. Bigger sound, deeper expression. Releasing soon."}

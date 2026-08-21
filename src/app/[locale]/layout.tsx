@@ -19,7 +19,7 @@ export async function generateMetadata({
     title: {
       template:
         validLocale === "ar"
-          ? `%s | الموجا (الموجة) — مجاهد صيام`
+          ? `%s | موجا (الموجة) — مجاهد صيام`
           : `%s | Almuja (Mujahid Siyam)`,
       default: dict.site.defaultTitle,
     },
